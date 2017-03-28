@@ -12,6 +12,17 @@
     "type": "git",
     "url": "git@code.aliyun.com:liudongpu/uhutucli.git"
   },
+  "dependencies": {
+    "argv-parse": "^1.0.1",
+    "assign-deep": "^0.4.5",
+    "beautify": "^0.0.8",
+    "gradlejs": "^1.0.0",
+    "xmldom": "^0.1.27",
+    "xpath": "^0.0.23",
+    "glob": "^7.1.1",
+    "htmlparser2": "^3.9.2",
+    "ejs": "^2.5.5"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
