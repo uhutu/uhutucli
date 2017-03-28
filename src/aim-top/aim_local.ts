@@ -1,6 +1,5 @@
 export class MAimLocalEnv {
 
-
     /**
      * start文件所在的路径
      */
@@ -16,7 +15,6 @@ export class MAimLocalEnv {
 
     fileConfig="config.json"
 
-
     dirTemplateInit="files-template/project-init"
 
     /**
@@ -24,11 +22,22 @@ export class MAimLocalEnv {
      */
     argsInit:boolean=false
 
+}
 
 
+
+
+export class MAimLocalConfig{
+
+
+    env:MAimLocalEnv
 
 
 }
+
+
+
+
 
 
 /**
@@ -37,5 +46,13 @@ export class MAimLocalEnv {
 export interface IAimLocalInit{
 
     initStart(envs:MAimLocalEnv)
+
+}
+
+
+
+export interface IInitProject extends IAimLocalInit{
+
+    flagExistConfig(envs:MAimLocalEnv):boolean
 
 }

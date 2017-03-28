@@ -2,7 +2,7 @@
 import * as AimLocal from "../aim-top/aim_local";
 
 import init_project = require("../exec-init/init_project");
-import utils_io=require("../utils/io");
+import utils_io = require("../utils/io");
 
 class StartBase implements AimLocal.IAimLocalInit {
 
@@ -16,6 +16,11 @@ class StartBase implements AimLocal.IAimLocalInit {
 
         if (envs.argsInit) {
             init_project.initStart(envs);
+        } else {
+
+
+
+
         }
 
     }
@@ -25,9 +30,9 @@ class StartBase implements AimLocal.IAimLocalInit {
      * 本地重新初始化格式变量
      * @param envs 
      */
-    _initFormatEnv(envs: AimLocal.MAimLocalEnv){
+    _initFormatEnv(envs: AimLocal.MAimLocalEnv) {
 
-        envs.pathCli=utils_io.parentPath(envs.pathStart);
+        envs.pathCli = utils_io.parentPath(envs.pathStart);
 
 
     }
