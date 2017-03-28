@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin":"cli-local/test.js",
+  "bin":"cli-local/start.js",
   "scripts": {
     "ts": "./node_modules/gulp/bin/gulp.js ts  --gulpfile files-dev/gulp-config/gulp_ts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
