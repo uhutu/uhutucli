@@ -1,0 +1,16 @@
+{
+  "name": "uhutu-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin":"local-cli/test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@code.aliyun.com:liudongpu/uhutucli.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
