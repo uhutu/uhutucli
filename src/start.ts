@@ -18,13 +18,13 @@ let args = argv.option(
     [
     {
         name: 'init',
-        short:'i',
-        type: 'boolean'
+        type: 'boolean',
+        description: 'init project with one config.json file'
     },
     {
         name: 'install',
-        short: 'p',
-        type: 'boolean'
+        type: 'boolean',
+        description: 'install npm files ,exec after init'
     }
 ]
 ).run();
