@@ -2,6 +2,7 @@
 import * as AimLocal from "../aim-top/aim_local";
 
 import init_project = require("../exec-init/init_project");
+import utils_io=require("../utils/io");
 
 class StartBase implements AimLocal.IAimLocalInit {
 
@@ -26,6 +27,7 @@ class StartBase implements AimLocal.IAimLocalInit {
      */
     _initFormatEnv(envs: AimLocal.MAimLocalEnv){
 
+        envs.pathCli=utils_io.parentPath(envs.pathStart);
 
 
     }

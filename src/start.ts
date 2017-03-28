@@ -5,26 +5,32 @@ import { MAimLocalEnv } from "./aim-top/aim_local";
 
 
 
-import argv = require('argv-parse');
+import argv = require('argv');
 
 
 let defEnv: MAimLocalEnv = new MAimLocalEnv();
-defEnv.dirPath = __dirname;
+defEnv.pathStart = __dirname;
 
-defEnv.cwdPath = process.cwd();
-//定义命令行参数类型
-var args = argv({
-    init: {
-        type: 'bool',
-        alias: 'i'
+defEnv.pathCwd = process.cwd();
+
+
+var args = argv.option( 
+    [
+    {
+        name: 'init',
+        short:'i',
+        type: 'boolean'
     },
-    force: {
-        type: 'bool',
-        alias: 'f'
+    {
+        name: 'install',
+        short: 'p',
+        type: 'boolean'
     }
-});
+]
+).run();
 
-defEnv.argsInit = args.init;
+
+defEnv.argsInit = args.options.init;
 
 
 start_base.initStart(defEnv);

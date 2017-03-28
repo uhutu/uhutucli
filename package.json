@@ -14,7 +14,7 @@
     "url": "git@code.aliyun.com:liudongpu/uhutucli.git"
   },
   "dependencies": {
-    "argv-parse": "^1.0.1",
+    "argv": "^0.0.2",
     "assign-deep": "^0.4.5",
     "beautify": "^0.0.8",
     "gradlejs": "^1.0.0",

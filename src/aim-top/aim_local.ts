@@ -1,18 +1,28 @@
 export class MAimLocalEnv {
 
+
     /**
-     * 执行文件目录
+     * start文件所在的路径
      */
-    dirPath: string
+    pathStart:string
+    /**
+     * uhutu-cli目录
+     */
+    pathCli: string
     /**
      * 项目路径
      */
-    cwdPath:string
+    pathCwd:string
+
+    fileConfig="config.json"
 
 
+    dirTemplateInit="files-template/project-init"
 
-
-    argsInit:boolean
+    /**
+     * 参数 是否初始化
+     */
+    argsInit:boolean=false
 
 
 

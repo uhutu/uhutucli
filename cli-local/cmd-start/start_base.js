@@ -1,5 +1,6 @@
 "use strict";
 var init_project = require("../exec-init/init_project");
+var utils_io = require("../utils/io");
 var StartBase = (function () {
     function StartBase() {
     }
@@ -15,6 +16,7 @@ var StartBase = (function () {
      * @param envs
      */
     StartBase.prototype._initFormatEnv = function (envs) {
+        envs.pathCli = utils_io.parentPath(envs.pathStart);
     };
     return StartBase;
 }());

@@ -3,20 +3,21 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var start_base = require("./cmd-start/start_base");
 var aim_local_1 = require("./aim-top/aim_local");
-var argv = require("argv-parse");
+var argv = require("argv");
 var defEnv = new aim_local_1.MAimLocalEnv();
-defEnv.dirPath = __dirname;
-defEnv.cwdPath = process.cwd();
-//定义命令行参数类型
-var args = argv({
-    init: {
-        type: 'bool',
-        alias: 'i'
+defEnv.pathStart = __dirname;
+defEnv.pathCwd = process.cwd();
+var args = argv.option([
+    {
+        name: 'init',
+        short: 'i',
+        type: 'boolean'
     },
-    force: {
-        type: 'bool',
-        alias: 'f'
+    {
+        name: 'install',
+        short: 'p',
+        type: 'boolean'
     }
-});
-defEnv.argsInit = args.init;
+]).run();
+defEnv.argsInit = args.options.init;
 start_base.initStart(defEnv);
