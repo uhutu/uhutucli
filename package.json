@@ -11,6 +11,20 @@
     "type": "git",
     "url": "git@code.aliyun.com:liudongpu/uhutucli.git"
   },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-react-native-css": "^0.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-typescript": "^3.1.4",
+    "typescript": "^2.1.5",
+    "@types/node": "^6.0.60",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "should": "^11.1.2",
+    "supertest": "^2.0.1"
+  },
   "author": "",
   "license": "ISC"
 }
