@@ -1,0 +1,10 @@
+# OSX
+#
+.DS_Store
+*.zip
+.vscode
+
+node_modules/
+npm-debug.log
+
+build/
