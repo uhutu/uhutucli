@@ -14,7 +14,7 @@ defEnv.pathStart = __dirname;
 defEnv.pathCwd = process.cwd();
 
 
-var args = argv.option( 
+let args = argv.option( 
     [
     {
         name: 'init',
