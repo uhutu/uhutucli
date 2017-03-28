@@ -1,20 +1,17 @@
 #!/usr/bin/env node
 
 import start_base = require("./cmd-start/start_base");
-import { IAimLocalEnv } from "./aim-interface/aim-local";
+import { MAimLocalEnv } from "./aim-top/aim_local";
 
 
 
-let argv = require('argv-parse');
+import argv = require('argv-parse');
 
 
-let defEnv: IAimLocalEnv = {
-    dirPath: "",
-    argStart: null
-};
+let defEnv: MAimLocalEnv = new MAimLocalEnv();
 defEnv.dirPath = __dirname;
 
-
+defEnv.cwdPath = process.cwd();
 //定义命令行参数类型
 var args = argv({
     init: {
@@ -27,9 +24,8 @@ var args = argv({
     }
 });
 
-defEnv.argStart = args;
+defEnv.argsInit = args.init;
 
-console.log(defEnv);
 
 start_base.initStart(defEnv);
 
