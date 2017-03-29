@@ -20,9 +20,23 @@ class Mexport {
 
         oLocalConfig = this.autoConfig(oLocalConfig);
 
-        CommonRoot.logDebug(972001002, JSON.stringify(oLocalConfig));
+        
+
+        this._saveConfigInfo(oLocalConfig);
 
         return oLocalConfig;
+
+    }
+    /**
+     * 保存配置到文件中存储
+     * @param oEnv 
+     */
+    _saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig){
+
+
+        CommonRoot.logDebug(972001002, oLocalConfig.file.diskConfigFile);
+
+        CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile,oLocalConfig);
 
     }
 

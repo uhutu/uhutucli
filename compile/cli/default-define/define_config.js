@@ -16,7 +16,9 @@ var currentConfig = {
     define: {
         workSpace: "[@config:env.pathCwd]",
         cliSpace: "[@config:env.pathCli]",
-        resourcePath: "[@config:define.cliSpace]/resources"
+        resourcePath: "[@config:define.cliSpace]/resources",
+        devPath: "[@config:env.pathCwd]/dev",
+        diskPath: "[@config:env.pathCwd]/disk"
     },
     appReact: {
         appType: "react",
@@ -24,6 +26,7 @@ var currentConfig = {
         workPath: "[@config:define.workSpace]/[@config:appReact.workName]"
     },
     file: {
+        diskConfigFile: "[@config:define.diskPath]/disk_config.json",
         reactPackage: "[@config:appReact.workPath]/package.json",
         reactPlugPath: "[@config:define.resourcePath]/files-local/react-plug",
         reactIosWork: "[@config:appReact.workPath]/ios",
@@ -31,7 +34,6 @@ var currentConfig = {
         reactAndroidWork: "[@config:appReact.workPath]/android",
         reactAndroidStringXml: "[@config:file.reactAndroidWork]/app/src/main/res/values/strings.xml"
     },
-    //react插件相关配置
     plugs: {
         "uhutu_version": {
             "name": "uhutu-version",

@@ -117,6 +117,14 @@ export interface IaimLocalNexusDefine {
      * 资源文件所在根目录
      */
     resourcePath: string
+    /**
+     * 开发代码目录
+     */
+    devPath:string
+    /**
+     * 工程输出目录
+     */
+    diskPath:string
 
 }
 
@@ -148,6 +156,11 @@ export interface IaimLocalNexusFile {
      * ios项目目录
      */
     reactIosWork: string
+
+    /**
+     * 工程配置文件输出
+     */
+    diskConfigFile:string
 
 }
 
