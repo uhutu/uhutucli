@@ -2,14 +2,14 @@ import Log = require("log");
 
 import UtilsJson = require("../../base/utils/json");
 import UtilsIo = require("../../base/utils/io");
-
+import UtilsString = require("../../base/utils/string");
 let log = new Log();
 
 class McommonRoot {
 
-    logDebug(iLogCode: number, ...as) {
+    logDebug(iLogCode: number, ...aArgs: string[]) {
 
-        log.debug(logLoad.upLogInfoByCode(iLogCode), as);
+        log.debug(iLogCode+' '+logLoad.upLogInfo(iLogCode, aArgs));
     }
 }
 
@@ -26,6 +26,14 @@ class LogLoad {
         for (var p in aJson) {
             this._currentMap.set(p, aJson[p]);
         }
+
+    }
+
+    upLogInfo(iLogCode: number, ...aArgs) {
+
+
+
+        return UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
 
     }
 

@@ -12,7 +12,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
         this._initFormatEnv(envs);
 
         
-        CommonRoot.logDebug(972001001,envs);
+        CommonRoot.logDebug(972001001,JSON.stringify(envs));
 
         if (envs.argsInit) {
             InitProject.initStart(envs);
