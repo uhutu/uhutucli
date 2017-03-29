@@ -10,7 +10,6 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         codepushKeyIos:"",
         codepushKeyAndroid:""
     },
-
     project: {
 
         projectName: "demo",
@@ -20,7 +19,6 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         displayName: "demodisplay"
     },
     define: {
-
         workSpace: "[@config:env.pathCwd]",
         cliSpace: "[@config:env.pathCli]",
         resourcePath: "[@config:define.cliSpace]/resources"
@@ -39,7 +37,7 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         reactAndroidWork: "[@config:appReact.workPath]/android",
         reactAndroidStringXml: "[@config:file.reactAndroidWork]/app/src/main/res/values/strings.xml"
     },
-    //react插件相关配置
+    
     plugs: {
         "uhutu_version": {
             "name": "uhutu-version",
