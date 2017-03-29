@@ -1,0 +1,75 @@
+{
+
+  "ios":
+  [
+
+    {
+      "exec":"addPlist",
+      "set":{
+        "key":"CFBundleIdentifier",
+        "value":"[@config:project.domain_space]"
+      }
+    },
+    {
+      "exec":"addPlist",
+      "set":{
+        "key":"CFBundleShortVersionString",
+        "value":"[@config:project.version_name]"
+      }
+    },
+    {
+      "exec":"addPlist",
+      "set":{
+        "key":"CFBundleVersion",
+        "value":"[@config:project.version_build]"
+      }
+    },
+    {
+      "exec":"addPlist",
+      "set":{
+        "key":"CFBundleDisplayName",
+        "value":"[@config:project.display_name]"
+      }
+    }
+
+
+  ],
+  "android":
+  [
+    {
+      "exec":"addStrings",
+      "set":{
+        "key":"string",
+        "name":"app_name",
+        "value":"[@config:project.display_name]",
+        "attr":[
+        ]
+      }
+    },
+    {
+      "exec":"flowContentReplace",
+      "set":{
+        "filePath":"[@config:files.android.app_build]",
+        "replaceText":"\\sversionCode\\s\\d*",
+        "withText":" versionCode [@config:project.version_build]"
+      }
+    },
+    {
+      "exec":"flowContentReplace",
+      "set":{
+        "filePath":"[@config:files.android.app_build]",
+        "replaceText":"\\sversionName\\s\\\".*?\\\"",
+        "withText":" versionName \"[@config:project.version_name]\""
+      }
+    },
+    {
+      "exec":"flowContentReplace",
+      "set":{
+        "filePath":"[@config:files.android.app_build]",
+        "replaceText":"\\sapplicationId\\s\\\".*?\\\"",
+        "withText":" applicationId \"[@config:project.domain_space]\""
+      }
+    }
+  ]
+
+}

@@ -1,9 +1,13 @@
 
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
-import UtilsHelper = require("../../base/utils/helper");
-import UtilsIo = require("../../base/utils/io");
+
 import CommonRoot = require("../../base/common/root");
+
+import CommonUtil = require("../../base/common/util");
+
+import LoadPlug = require("../../cli/exec-load/load_plug");
+
 
 class MmoduleInstall {
 
@@ -11,16 +15,79 @@ class MmoduleInstall {
     installProject(oLocalConfig: AimLocal.IAimLocalConfig) {
 
 
-        if (!UtilsIo.flagExist(oLocalConfig.appReact.workName)) {
-            UtilsHelper.spawnSync("react-native", ["init", oLocalConfig.appReact.workName], { cwd: oLocalConfig.env.pathCwd });
-        }
-        else{
-            CommonRoot.logDebug(972001003,oLocalConfig.appReact.workName);
-        }
+
+        this.checkWork(oLocalConfig);
+
+        this.checkPackage(oLocalConfig);
+
+        LoadPlug.processPlus(oLocalConfig, ["react", "ios", "android"]);
 
 
 
     }
+
+    /**
+     * 判断应用是否存在 
+     * @param oLocalConfig 
+     */
+    checkWork(oLocalConfig: AimLocal.IAimLocalConfig) {
+        if (!CommonUtil.utilsIo.flagExist(oLocalConfig.appReact.workName)) {
+            CommonUtil.utilsHelper.spawnSync("react-native", ["init", oLocalConfig.appReact.workName], { cwd: oLocalConfig.define.workSpace });
+        }
+        else {
+            CommonRoot.logDebug(972001003, oLocalConfig.appReact.workName);
+        }
+    }
+
+
+    /**
+     * 检查包的配置
+     * @param oLocalConfig 
+     */
+    checkPackage(oLocalConfig: AimLocal.IAimLocalConfig) {
+
+        var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
+
+        var aPlugs = [];
+
+        for (var p in oLocalConfig.plugs) {
+            var f = oLocalConfig.plugs[p];
+
+            if (!CommonUtil.utilsString.isEmpty(f.version)) {
+                if (!oPackage.dependencies.hasOwnProperty(f.name) || oPackage.dependencies[f.name] != f.version) {
+                    oPackage.dependencies[f.name] = f.version;
+                    aPlugs.push(f.name);
+                }
+            }
+
+        }
+
+
+        if (aPlugs.length > 0) {
+
+            if (!oPackage.hasOwnProperty("links")) {
+                oPackage.links = {};
+            }
+
+            CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
+            CommonUtil.utilsHelper.spawnSync('npm', ['install'], { cwd: oLocalConfig.appReact.workPath });
+
+
+        }
+
+
+
+
+    }
+
+
+
+    checkPlug(oLocalConfig: AimLocal.IAimLocalConfig) {
+
+    }
+
+
+
 
 
 }

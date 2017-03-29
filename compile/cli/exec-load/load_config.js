@@ -1,8 +1,6 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
-var UtilsIo = require("../../base/utils/io");
-var UtilsObject = require("../../base/utils/object");
-var UtilsHelper = require("../../base/utils/helper");
+var CommonUtil = require("../../base/common/util");
 var DefineConfig = require("../../cli/default-define/define_config");
 var RegexStrBegin = "[@";
 var RegexStrEnd = "]";
@@ -11,10 +9,10 @@ var Mexport = (function () {
     }
     Mexport.prototype.upConfig = function (oEnv) {
         //加载app的配置
-        var appConfig = UtilsIo.upConfigByFile(UtilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
+        var appConfig = CommonUtil.utilsIo.upConfigByFile(CommonUtil.utilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
         //console.log(oEnv);
         //深度克隆配置
-        var oLocalConfig = UtilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
+        var oLocalConfig = CommonUtil.utilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
         oLocalConfig = this.autoConfig(oLocalConfig);
         CommonRoot.logDebug(972001002, JSON.stringify(oLocalConfig));
         return oLocalConfig;
@@ -36,12 +34,12 @@ var Mexport = (function () {
         var r = [];
         while (r = reg.exec(sStr)) {
             if (r[1] === "config") {
-                var sValue = UtilsObject.readProp(oConfig, r[2]);
+                var sValue = CommonUtil.utilsObject.readProp(oConfig, r[2]);
                 if (sValue == undefined) {
                     CommonRoot.logWarn(932001002, r[2]);
                 }
                 else if (sValue.indexOf(RegexStrBegin) === -1) {
-                    sReturn = sReturn.replace(r[0], UtilsObject.readProp(oConfig, r[2]));
+                    sReturn = sReturn.replace(r[0], CommonUtil.utilsObject.readProp(oConfig, r[2]));
                 }
             }
         }

@@ -1,0 +1,41 @@
+{
+  "react": [
+
+    {
+      "exec": "addLink",
+      "set": {
+        "link": "react-native-mipush"
+      }
+    }
+  ],
+
+  "ios": [
+
+    {
+      "exec": "addPlist",
+      "set": {
+        "key": "MiSDKAppID",
+        "value": "[@config:params.mipush_id_ios]"
+      }
+    },
+    {
+      "exec": "addPlist",
+      "set": {
+        "key": "MiSDKAppKey",
+        "value": "[@config:params.mipush_key_ios]"
+      }
+    },
+    {
+      "exec": "addPlist",
+      "set": {
+        "key": "MiSDKRun",
+        "value": "Online"
+      }
+    }
+  ],
+  "android": [
+
+    
+  ]
+
+}

@@ -39,35 +39,99 @@ export interface IAimLocalNexusEnv {
 
 export interface IAimLocalConfig {
 
-
+    /**
+     * 环境变量  该配置项一般不要引用 请引用define下的定义路径等参数
+     */
     env: IAimLocalNexusEnv | null
 
-    project:IAimLocalNexusProject
+    /**
+     * 系统定义  该配置由系统自动生成  请勿赋值 供各种读取使用
+     */
+    define: IaimLocalNexusDefine
 
+    /**
+     * 项目的配置
+     */
+    project: IAimLocalNexusProject
 
+    /**
+     * react的应用定义
+     */
     appReact: IAimLocalNexusApp
 
 
+    file: IaimLocalNexusFile
 
-
-
+    plugs: any
 }
 
 
 export interface IAimLocalNexusProject {
 
+    /**
+     * 项目名称
+     */
     projectName: string
+
+}
+
+export interface IaimLocalNexusDefine {
+
+    /**
+     * 当前所在工作目录
+     */
+    workSpace: string
+    /**
+     * Cli所在目录
+     */
+    cliSpace: string
+    /**
+     * 资源文件所在根目录
+     */
+    resourcePath: string
+
+}
+
+export interface IaimLocalNexusFile {
+
+    /**
+     * react的package.json文件的路径
+     */
+    reactPackage: string
+    /**
+     * react插件配置目录
+     */
+    reactPlugPath: string
+    /**
+     * ios项目的配置文件
+     */
+    reactIosInfoPlist: string
+    /**
+     * android项目的资源文件
+     */
+    reactAndroidStringXml: string
 
 }
 
 
 
 
-
-
+/**
+ * 应用的定义
+ */
 export interface IAimLocalNexusApp {
-
+    /**
+     * 应用的类型
+     */
+    appType: string
+    /**
+     * 应用的名称
+     */
     workName: string
+    /**
+     * 应用所在目录
+     */
+    workPath: string
 
 }
 

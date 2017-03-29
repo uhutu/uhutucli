@@ -1,0 +1,16 @@
+{
+
+  "android":
+  [
+    
+    {
+      "exec":"flowContentReplace",
+      "set":{
+        "filePath":"[@config:files.android.project_build]",
+        "replaceText":"\\sjcenter\\(\\)",
+        "withText":" maven{ url 'http://maven.aliyun.com/nexus/content/groups/public'} "
+      }
+    }
+  ]
+
+}

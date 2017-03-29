@@ -1,9 +1,5 @@
 import CommonRoot = require("../../base/common/root");
-
-
-import UtilsIo = require("../../base/utils/io");
-import UtilsObject = require("../../base/utils/object");
-import UtilsHelper = require("../../base/utils/helper");
+import CommonUtil = require("../../base/common/util");
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
 import DefineConfig = require("../../cli/default-define/define_config");
@@ -17,10 +13,10 @@ class Mexport {
 
 
         //加载app的配置
-        var appConfig = UtilsIo.upConfigByFile(UtilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
+        var appConfig = CommonUtil.utilsIo.upConfigByFile(CommonUtil.utilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
         //console.log(oEnv);
         //深度克隆配置
-        let oLocalConfig = UtilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
+        let oLocalConfig = CommonUtil.utilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
 
         oLocalConfig = this.autoConfig(oLocalConfig);
 
@@ -52,13 +48,13 @@ class Mexport {
         let r = [];
         while (r = reg.exec(sStr)) {
             if (r[1] === "config") {
-                var sValue = UtilsObject.readProp(oConfig, r[2]);
+                var sValue = CommonUtil.utilsObject.readProp(oConfig, r[2]);
                 if (sValue == undefined) {
 
                     CommonRoot.logWarn(932001002, r[2]);
                 }
                 else if (sValue.indexOf(RegexStrBegin) === -1) {
-                    sReturn = sReturn.replace(r[0], UtilsObject.readProp(oConfig, r[2]));
+                    sReturn = sReturn.replace(r[0], CommonUtil.utilsObject.readProp(oConfig, r[2]));
                 }
             }
         }
