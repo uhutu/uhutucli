@@ -4,6 +4,7 @@ var DefineEnv = (function () {
         this.fileConfig = "config.json";
         this.dirTemplateInit = "resources/files-template/project-init";
         this.argsInit = false;
+        this.argsForce = false;
     }
     return DefineEnv;
 }());

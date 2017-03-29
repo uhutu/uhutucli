@@ -15,12 +15,14 @@ class DefineEnv implements AimLocal.IAimLocalEnv {
 
     dirTemplateInit = "resources/files-template/project-init"
 
-    argsInit: boolean = false
+    argsInit = false
+
+    argsForce = false
 
 }
 
 class MAimLocalEnv {
-    upEnv():AimLocal.IAimLocalEnv {
+    upEnv(): AimLocal.IAimLocalEnv {
         return new DefineEnv();
     }
 }

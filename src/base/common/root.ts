@@ -3,13 +3,27 @@ import Log = require("log");
 import UtilsJson = require("../../base/utils/json");
 import UtilsIo = require("../../base/utils/io");
 import UtilsString = require("../../base/utils/string");
-let log = new Log();
+let log = new Log("info");
 
 class McommonRoot {
 
     logDebug(iLogCode: number, ...aArgs: string[]) {
 
-        log.debug(iLogCode+' '+logLoad.upLogInfo(iLogCode, aArgs));
+        log.debug(logLoad.upLogInfo(iLogCode, aArgs));
+    }
+
+    logInfo(iLogCode: number, ...aArgs: string[]) {
+
+        log.info(logLoad.upLogInfo(iLogCode, aArgs));
+    }
+
+    logWarn(iLogCode: number, ...aArgs: string[]) {
+
+        log.warn(logLoad.upLogInfo(iLogCode, aArgs));
+    }
+    logError(iLogCode: number, ...aArgs: string[]) {
+
+        log.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
 }
 
@@ -33,7 +47,7 @@ class LogLoad {
 
 
 
-        return UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
+        return iLogCode + ' ' + UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
 
     }
 

@@ -17,7 +17,13 @@ var args = argv.option([
         name: 'install',
         type: 'boolean',
         description: 'install npm files ,exec after init'
+    },
+    {
+        name: 'force',
+        type: 'boolean',
+        description: 'force overwrite'
     }
 ]).run();
 defEnv.argsInit = args.options.init;
+defEnv.argsForce = args.options.force;
 start_base.initStart(defEnv);

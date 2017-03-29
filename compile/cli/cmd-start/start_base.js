@@ -12,6 +12,11 @@ var MstartBase = (function () {
             InitProject.initStart(envs);
         }
         else {
+            if (InitProject.flagExistConfig(envs)) {
+            }
+            else {
+                CommonRoot.logError(932001001);
+            }
         }
     };
     /**
