@@ -72,8 +72,12 @@ export interface IAimLocalConfig {
      */
     appReact: IAimLocalNexusApp
 
+    /**
+     * 各种的路径
+     */
+    file: IAimLocalNexusFile
 
-    file: IaimLocalNexusFile
+    inc:IAimLocalNexusInc
 
     plugs: any
 }
@@ -133,7 +137,7 @@ export interface IaimLocalNexusDefine {
 
 }
 
-export interface IaimLocalNexusFile {
+export interface IAimLocalNexusFile {
 
     /**
      * react的package.json文件的路径
@@ -189,7 +193,24 @@ export interface IAimLocalNexusApp {
      */
     workPath: string
 
+    /**
+     * 应用编译目录
+     */
+    buildPath:string
+
 }
+
+/**
+ * 应用的定义
+ */
+export interface IAimLocalNexusInc {
+    /**
+     * 项目页面目录
+     */
+    projectPage:string
+
+}
+
 
 
 

@@ -20,10 +20,14 @@ var currentConfig = {
         devPath: "[@config:env.pathCwd]/dev",
         diskPath: "[@config:env.pathCwd]/disk"
     },
+    inc: {
+        projectPage: "pages"
+    },
     appReact: {
         appType: "react",
         workName: "[@config:appReact.appType][@config:project.projectName]",
-        workPath: "[@config:define.workSpace]/[@config:appReact.workName]"
+        workPath: "[@config:define.workSpace]/[@config:appReact.workName]",
+        buildPath: "[@config:appReact.workPath]/project/"
     },
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
