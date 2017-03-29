@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin":"cli-local/start.js",
   "scripts": {
-    "ts": "./node_modules/gulp/bin/gulp.js ts  --gulpfile files-dev/gulp-config/gulp_ts.js",
+    "ts": "./node_modules/gulp/bin/gulp.js ts  --gulpfile resources/files-local/gulp-config/gulp_ts.js",
     "debug":"rsync -avq ./ /usr/local/lib/node_modules/uhutu-cli/ --exclude node_modules --exclude .git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -15,7 +15,7 @@ export class MAimLocalEnv {
 
     fileConfig="config.json"
 
-    dirTemplateInit="files-template/project-init"
+    dirTemplateInit="resources/files-template/project-init"
 
     /**
      * 参数 是否初始化
