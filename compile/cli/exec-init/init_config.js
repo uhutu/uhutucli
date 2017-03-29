@@ -1,22 +1,22 @@
 "use strict";
 var UtilsIo = require("../../base/utils/io");
-var MinitProject = (function () {
-    function MinitProject() {
+var MinitConfig = (function () {
+    function MinitConfig() {
     }
-    MinitProject.prototype.initStart = function (envs) {
+    MinitConfig.prototype.initStart = function (envs) {
         if (!this.flagExistConfig(envs)) {
             UtilsIo.copyFileAsync(this._upSourceFile(envs), this._upTargetFile(envs));
         }
     };
-    MinitProject.prototype._upSourceFile = function (envs) {
+    MinitConfig.prototype._upSourceFile = function (envs) {
         return UtilsIo.pathJoin(envs.pathCli, envs.dirTemplateInit, envs.fileConfig);
     };
-    MinitProject.prototype._upTargetFile = function (envs) {
+    MinitConfig.prototype._upTargetFile = function (envs) {
         return UtilsIo.pathJoin(envs.pathCwd, envs.fileConfig);
     };
-    MinitProject.prototype.flagExistConfig = function (envs) {
+    MinitConfig.prototype.flagExistConfig = function (envs) {
         return UtilsIo.flagExist(this._upTargetFile(envs));
     };
-    return MinitProject;
+    return MinitConfig;
 }());
-module.exports = new MinitProject();
+module.exports = new MinitConfig();

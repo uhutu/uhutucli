@@ -4,6 +4,7 @@ import CommonRoot = require("../../base/common/root");
 
 import InitConfig = require("../../cli/exec-init/init_config");
 import InitInstall = require("../../cli/exec-init/init_install");
+import LoadConfig = require("../../cli/exec-load/load_config");
 
 import UtilsIo = require("../../base/utils/io");
 
@@ -25,8 +26,11 @@ class MstartBase implements AimLocal.IAimLocalInit {
             if (InitConfig.flagExistConfig(envs)) {
 
 
+                let localConfig = LoadConfig.upConfig(envs);
+
+
                 if (envs.argsInstall) {
-                    InitInstall.initStart(envs);
+                    InitInstall.initStart(localConfig);
                 }
 
 

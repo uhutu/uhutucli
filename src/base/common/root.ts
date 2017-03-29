@@ -3,7 +3,7 @@ import Log = require("log");
 import UtilsJson = require("../../base/utils/json");
 import UtilsIo = require("../../base/utils/io");
 import UtilsString = require("../../base/utils/string");
-let log = new Log("info");
+let log = new Log("debug");
 
 class McommonRoot {
 

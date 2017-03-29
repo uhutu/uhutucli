@@ -40,7 +40,7 @@ export interface IAimLocalEnv {
 export interface IAimLocalConfig{
 
 
-    env:IAimLocalEnv
+    envs:IAimLocalEnv
 
 
 }

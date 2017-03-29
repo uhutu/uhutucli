@@ -3,7 +3,7 @@ var Log = require("log");
 var UtilsJson = require("../../base/utils/json");
 var UtilsIo = require("../../base/utils/io");
 var UtilsString = require("../../base/utils/string");
-var log = new Log("info");
+var log = new Log("debug");
 var McommonRoot = (function () {
     function McommonRoot() {
     }
