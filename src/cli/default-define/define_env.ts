@@ -15,7 +15,9 @@ class DefineEnv implements AimLocal.IAimLocalEnv {
 
     dirTemplateInit = "resources/files-template/project-init"
 
-    argsInit = false
+    argsConfig = false
+
+    argsInstall = false
 
     argsForce = false
 

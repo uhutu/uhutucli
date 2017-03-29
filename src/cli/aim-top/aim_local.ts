@@ -20,7 +20,12 @@ export interface IAimLocalEnv {
     /**
      * 参数 是否初始化
      */
-    argsInit:boolean
+    argsConfig:boolean
+
+    /**
+     * 安装初始化
+     */
+    argsInstall:boolean
 
     /**
      * 是否强制操作  该操作执行会强制覆盖

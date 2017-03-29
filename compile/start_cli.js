@@ -9,7 +9,7 @@ defEnv.pathStart = __dirname;
 defEnv.pathCwd = process.cwd();
 var args = argv.option([
     {
-        name: 'init',
+        name: 'config',
         type: 'boolean',
         description: 'init project with one config.json file'
     },
@@ -24,6 +24,7 @@ var args = argv.option([
         description: 'force overwrite'
     }
 ]).run();
-defEnv.argsInit = args.options.init;
+defEnv.argsConfig = args.options.init;
+defEnv.argsInstall = args.options.install;
 defEnv.argsForce = args.options.force;
 start_base.initStart(defEnv);

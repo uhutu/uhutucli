@@ -2,7 +2,7 @@
 import * as AimLocal from "../../cli/aim-top/aim_local";
 import CommonRoot =require("../../base/common/root");
 
-import InitProject =require("../../cli/exec-init/init_project");
+import InitConfig =require("../../cli/exec-init/init_config");
 import UtilsIo = require("../../base/utils/io");
 
 class MstartBase implements AimLocal.IAimLocalInit {
@@ -14,11 +14,15 @@ class MstartBase implements AimLocal.IAimLocalInit {
         
         CommonRoot.logDebug(972001001,JSON.stringify(envs));
 
-        if (envs.argsInit) {
-            InitProject.initStart(envs);
+        if (envs.argsConfig) {
+            InitConfig.initStart(envs);
         } else {
 
-            if(InitProject.flagExistConfig(envs)){
+            if(InitConfig.flagExistConfig(envs)){
+
+
+               
+
 
                 
             }else{

@@ -1,6 +1,6 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
-var InitProject = require("../../cli/exec-init/init_project");
+var InitConfig = require("../../cli/exec-init/init_config");
 var UtilsIo = require("../../base/utils/io");
 var MstartBase = (function () {
     function MstartBase() {
@@ -8,11 +8,11 @@ var MstartBase = (function () {
     MstartBase.prototype.initStart = function (envs) {
         this._initFormatEnv(envs);
         CommonRoot.logDebug(972001001, JSON.stringify(envs));
-        if (envs.argsInit) {
-            InitProject.initStart(envs);
+        if (envs.argsConfig) {
+            InitConfig.initStart(envs);
         }
         else {
-            if (InitProject.flagExistConfig(envs)) {
+            if (InitConfig.flagExistConfig(envs)) {
             }
             else {
                 CommonRoot.logError(932001001);
