@@ -1,35 +1,36 @@
 import * as AimLocal from "../../cli/aim-top/aim_local";
 
 
-class DefineConfig implements AimLocal.IAimLocalConfig {
 
-    envs: AimLocal.IAimLocalNexusEnv
-    queues = []
+let currentConfig: AimLocal.IAimLocalConfig = {
+    env: null,
+
+    project: {
+
+        projectName: "demo"
+    },
+
+    appReact: {
+        workName: "react[@config:project.projectName]"
+    }
 }
-
-
-
 
 
 class MAimLocalEnv {
     upConfig(oEnv: AimLocal.IAimLocalNexusEnv): AimLocal.IAimLocalConfig {
 
 
-        let defineConfig: AimLocal.IAimLocalConfig = new DefineConfig();
+        let defineConfig: AimLocal.IAimLocalConfig = currentConfig;
 
-        defineConfig.envs = oEnv;
+        defineConfig.env = oEnv;
 
-        defineConfig.queues.push(new NexusQueueReact());
+
 
         return defineConfig;
     }
 }
 
 
-class NexusQueueReact implements AimLocal.IAimLocalNexusQueue {
-    workType = "react"
-    workName = "react[@config:projects.projectName]"
-}
 
 
 

@@ -1,5 +1,5 @@
 {
-  "projects":{
+  "project":{
       "projectName":"demo",
       "displayName": "示例项目",
       "versionName": "1.0.1",

@@ -1,9 +1,17 @@
 "use strict";
+var UtilsHelper = require("../../base/utils/helper");
+var UtilsIo = require("../../base/utils/io");
+var CommonRoot = require("../../base/common/root");
 var MmoduleInstall = (function () {
     function MmoduleInstall() {
     }
     MmoduleInstall.prototype.installProject = function (oLocalConfig) {
-        //UtilsHelper.spawnSync("react-native",["init",oConfig.apps.react.work_name],{cwd:oConfig.project.out_path});
+        if (!UtilsIo.flagExist(oLocalConfig.appReact.workName)) {
+            UtilsHelper.spawnSync("react-native", ["init", oLocalConfig.appReact.workName], { cwd: oLocalConfig.env.pathCwd });
+        }
+        else {
+            CommonRoot.logDebug(972001003, oLocalConfig.appReact.workName);
+        }
     };
     return MmoduleInstall;
 }());

@@ -3,7 +3,7 @@ export interface IAimLocalNexusEnv {
     /**
      * start文件所在的路径
      */
-    pathStart:string
+    pathStart: string
     /**
      * uhutu-cli目录
      */
@@ -11,46 +11,63 @@ export interface IAimLocalNexusEnv {
     /**
      * 项目路径
      */
-    pathCwd:string
+    pathCwd: string
 
-    fileConfig:string
+    fileConfig: string
 
-    dirTemplateInit:string
+    dirTemplateInit: string
 
     /**
      * 参数 是否初始化
      */
-    argsConfig:boolean
+    argsConfig: boolean
 
     /**
      * 安装初始化
      */
-    argsInstall:boolean
+    argsInstall: boolean
 
     /**
      * 是否强制操作  该操作执行会强制覆盖
      */
-    argsForce:boolean
+    argsForce: boolean
 
 }
 
 
 
 
-export interface IAimLocalConfig{
+export interface IAimLocalConfig {
 
 
-    envs:IAimLocalNexusEnv
+    env: IAimLocalNexusEnv | null
 
-    queues:IAimLocalNexusQueue[]
+    project:IAimLocalNexusProject
+
+
+    appReact: IAimLocalNexusApp
+
+
+
 
 
 }
 
 
-export interface IAimLocalNexusQueue{
+export interface IAimLocalNexusProject {
 
-    workName:string
+    projectName: string
+
+}
+
+
+
+
+
+
+export interface IAimLocalNexusApp {
+
+    workName: string
 
 }
 
@@ -64,16 +81,16 @@ export interface IAimLocalNexusQueue{
 /**
  * 定义初始化类
  */
-export interface IAimLocalInit{
+export interface IAimLocalInit {
 
-    initStart(envs:IAimLocalNexusEnv)
+    initStart(envs: IAimLocalNexusEnv)
 
 }
 
 
 
-export interface IInitProject extends IAimLocalInit{
+export interface IInitProject extends IAimLocalInit {
 
-    flagExistConfig(envs:IAimLocalNexusEnv):boolean
+    flagExistConfig(envs: IAimLocalNexusEnv): boolean
 
 }

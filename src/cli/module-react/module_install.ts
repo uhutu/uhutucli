@@ -1,14 +1,23 @@
 
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
-import UtilsHelper =require("../../base/utils/helper");
-class MmoduleInstall{
+import UtilsHelper = require("../../base/utils/helper");
+import UtilsIo = require("../../base/utils/io");
+import CommonRoot = require("../../base/common/root");
+
+class MmoduleInstall {
 
 
-    installProject(oLocalConfig: AimLocal.IAimLocalConfig){
+    installProject(oLocalConfig: AimLocal.IAimLocalConfig) {
 
 
-        //UtilsHelper.spawnSync("react-native",["init",oConfig.apps.react.work_name],{cwd:oConfig.project.out_path});
+        if (!UtilsIo.flagExist(oLocalConfig.appReact.workName)) {
+            UtilsHelper.spawnSync("react-native", ["init", oLocalConfig.appReact.workName], { cwd: oLocalConfig.env.pathCwd });
+        }
+        else{
+            CommonRoot.logDebug(972001003,oLocalConfig.appReact.workName);
+        }
+
 
 
     }
@@ -16,4 +25,4 @@ class MmoduleInstall{
 
 }
 
-export=new MmoduleInstall();
+export =new MmoduleInstall();
