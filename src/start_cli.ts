@@ -32,7 +32,7 @@ let args = argv.option(
         {
             name: 'log',
             type: 'string',
-            description: 'show log type'
+            description: 'show log type value of:debug info warn error'
         }
     ]
 ).run();
