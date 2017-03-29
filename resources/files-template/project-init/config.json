@@ -1,12 +1,12 @@
 {
-  "project":{
-      "project_name":"demo",
-      "display_name": "示例项目",
-      "version_name": "1.0.1",
-      "version_build": "1"
+  "projects":{
+      "projectName":"demo",
+      "displayName": "示例项目",
+      "versionName": "1.0.1",
+      "versionBuild": "1"
     },
     "params":{
-      "codepush_android":"123",
-      "codepush_ios":"123"
+      "codepushAndroid":"123",
+      "codepushIos":"123"
     }
 }

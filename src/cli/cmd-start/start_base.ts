@@ -10,7 +10,7 @@ import UtilsIo = require("../../base/utils/io");
 
 class MstartBase implements AimLocal.IAimLocalInit {
 
-    initStart(envs: AimLocal.IAimLocalEnv) {
+    initStart(envs: AimLocal.IAimLocalNexusEnv) {
 
         this._initFormatEnv(envs);
 
@@ -50,7 +50,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
      * 本地重新初始化格式变量
      * @param envs 
      */
-    _initFormatEnv(envs: AimLocal.IAimLocalEnv) {
+    _initFormatEnv(envs: AimLocal.IAimLocalNexusEnv) {
 
         envs.pathCli = UtilsIo.parentPath(envs.pathStart);
 

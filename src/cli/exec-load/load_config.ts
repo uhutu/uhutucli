@@ -13,7 +13,7 @@ let RegexStrEnd = "]";
 
 class Mexport {
 
-    upConfig(oEnv: AimLocal.IAimLocalEnv): AimLocal.IAimLocalConfig {
+    upConfig(oEnv: AimLocal.IAimLocalNexusEnv): AimLocal.IAimLocalConfig {
 
 
         //加载app的配置

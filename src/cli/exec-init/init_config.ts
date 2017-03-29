@@ -7,22 +7,22 @@ import * as AimLocal from "../../cli/aim-top/aim_local";
 
 class MinitConfig implements AimLocal.IInitProject {
 
-    initStart(envs: AimLocal.IAimLocalEnv) {
+    initStart(envs: AimLocal.IAimLocalNexusEnv) {
         if(!this.flagExistConfig(envs)){
             UtilsIo.copyFileAsync(this._upSourceFile(envs),this._upTargetFile(envs));
         }
     }
 
-    _upSourceFile(envs: AimLocal.IAimLocalEnv){
+    _upSourceFile(envs: AimLocal.IAimLocalNexusEnv){
         return UtilsIo.pathJoin(envs.pathCli,envs.dirTemplateInit,envs.fileConfig );
     }
 
-    _upTargetFile(envs: AimLocal.IAimLocalEnv){
+    _upTargetFile(envs: AimLocal.IAimLocalNexusEnv){
         return UtilsIo.pathJoin(envs.pathCwd,envs.fileConfig);
     }
 
 
-    flagExistConfig(envs: AimLocal.IAimLocalEnv){
+    flagExistConfig(envs: AimLocal.IAimLocalNexusEnv){
 
         return UtilsIo.flagExist(this._upTargetFile(envs));
 

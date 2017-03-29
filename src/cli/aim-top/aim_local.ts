@@ -1,4 +1,4 @@
-export interface IAimLocalEnv {
+export interface IAimLocalNexusEnv {
 
     /**
      * start文件所在的路径
@@ -40,10 +40,21 @@ export interface IAimLocalEnv {
 export interface IAimLocalConfig{
 
 
-    envs:IAimLocalEnv
+    envs:IAimLocalNexusEnv
+
+    queues:IAimLocalNexusQueue[]
 
 
 }
+
+
+export interface IAimLocalNexusQueue{
+
+    workName:string
+
+}
+
+
 
 
 
@@ -55,7 +66,7 @@ export interface IAimLocalConfig{
  */
 export interface IAimLocalInit{
 
-    initStart(envs:IAimLocalEnv)
+    initStart(envs:IAimLocalNexusEnv)
 
 }
 
@@ -63,6 +74,6 @@ export interface IAimLocalInit{
 
 export interface IInitProject extends IAimLocalInit{
 
-    flagExistConfig(envs:IAimLocalEnv):boolean
+    flagExistConfig(envs:IAimLocalNexusEnv):boolean
 
 }

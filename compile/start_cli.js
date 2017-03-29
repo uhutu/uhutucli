@@ -24,7 +24,7 @@ var args = argv.option([
         description: 'force overwrite'
     }
 ]).run();
-defEnv.argsConfig = args.options.init;
+defEnv.argsConfig = args.options.config;
 defEnv.argsInstall = args.options.install;
 defEnv.argsForce = args.options.force;
 start_base.initStart(defEnv);

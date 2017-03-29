@@ -33,7 +33,7 @@ let args = argv.option(
 ).run();
 
 
-defEnv.argsConfig = args.options.init;
+defEnv.argsConfig = args.options.config;
 defEnv.argsInstall = args.options.install;
 defEnv.argsForce = args.options.force;
 

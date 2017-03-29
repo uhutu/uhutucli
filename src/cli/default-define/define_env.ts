@@ -2,7 +2,7 @@
 import * as AimLocal from "../../cli/aim-top/aim_local";
 
 
-class DefineEnv implements AimLocal.IAimLocalEnv {
+class DefineEnv implements AimLocal.IAimLocalNexusEnv {
 
 
     pathStart: string
@@ -24,7 +24,7 @@ class DefineEnv implements AimLocal.IAimLocalEnv {
 }
 
 class MAimLocalEnv {
-    upEnv(): AimLocal.IAimLocalEnv {
+    upEnv(): AimLocal.IAimLocalNexusEnv {
         return new DefineEnv();
     }
 }
