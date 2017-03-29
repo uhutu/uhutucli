@@ -72,7 +72,8 @@ var Mexport = (function () {
                         var aJsonStep = oJsonConfig[sStep];
                         aJsonStep.forEach(function (oCurrent) {
                             if (oProcess[oCurrent.exec]) {
-                                oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent);
+                                CommonRoot.logDebug(972001004, oPlug.name, oCurrent.exec);
+                                oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
                             }
                             else {
                                 CommonRoot.logError(932001003, oCurrent.exec);

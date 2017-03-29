@@ -55,7 +55,7 @@
     {
       "exec": "baseContentReplace",
       "set": {
-        "filePath": "[@config:file.reactAndroidWork]/node_modules/react-native-code-push/android/app/src/main/java/com/microsoft/codepush/react/CodePush.java",
+        "filePath": "[@config:appReact.workPath]/node_modules/react-native-code-push/android/app/src/main/java/com/microsoft/codepush/react/CodePush.java",
         "replaceText": "https://codepush.azurewebsites.net/",
         "withText": "[@config:params.codepushServer]"
       }

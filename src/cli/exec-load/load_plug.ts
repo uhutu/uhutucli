@@ -94,7 +94,9 @@ class Mexport {
                             aJsonStep.forEach((oCurrent) => {
                                 if (oProcess[oCurrent.exec]) {
 
-                                    oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent);
+                                    CommonRoot.logDebug(972001004,oPlug.name,oCurrent.exec);
+
+                                    oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
 
                                 }
                                 else {
