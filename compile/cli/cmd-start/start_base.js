@@ -10,6 +10,8 @@ var StartBase = (function () {
         if (envs.argsInit) {
             init_project.initStart(envs);
         }
+        else {
+        }
     };
     /**
      * 本地重新初始化格式变量

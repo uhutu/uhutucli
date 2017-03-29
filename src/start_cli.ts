@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import start_base = require("./cmd-start/start_base");
-import { MAimLocalEnv } from "./aim-top/aim_local";
+import start_base = require("./cli/cmd-start/start_base");
+import { MAimLocalEnv } from "./cli/aim-top/aim_local";
 
 
 

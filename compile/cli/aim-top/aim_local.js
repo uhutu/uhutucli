@@ -12,3 +12,9 @@ var MAimLocalEnv = (function () {
     return MAimLocalEnv;
 }());
 exports.MAimLocalEnv = MAimLocalEnv;
+var MAimLocalConfig = (function () {
+    function MAimLocalConfig() {
+    }
+    return MAimLocalConfig;
+}());
+exports.MAimLocalConfig = MAimLocalConfig;

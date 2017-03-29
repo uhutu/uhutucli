@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./cli-local",
+        "outDir": "./compile",
         "rootDir": "./src",
         "allowJs": true,
         "target": "es5",
