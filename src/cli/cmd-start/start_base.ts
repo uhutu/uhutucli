@@ -11,8 +11,8 @@ class MstartBase implements AimLocal.IAimLocalInit {
 
         this._initFormatEnv(envs);
 
-        console.log(envs);
-        CommonRoot.logDebug(0,envs);
+        
+        CommonRoot.logDebug(972001001,envs);
 
         if (envs.argsInit) {
             InitProject.initStart(envs);

@@ -107,6 +107,13 @@ var MUtilsIo = (function () {
     MUtilsIo.prototype.parentPath = function (sPath) {
         return path.dirname(sPath);
     };
+    MUtilsIo.prototype.parentTop = function (sPath, iLevel) {
+        var sReturn = sPath;
+        for (var i = 0; i < iLevel; i++) {
+            sReturn = this.parentPath(sReturn);
+        }
+        return sReturn;
+    };
     MUtilsIo.prototype.pathJoin = function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {

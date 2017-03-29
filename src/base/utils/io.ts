@@ -141,6 +141,16 @@ class MUtilsIo {
     parentPath(sPath) {
         return path.dirname(sPath);
     }
+
+
+    parentTop(sPath: string, iLevel: number) {
+        var sReturn = sPath;
+        for (var i = 0; i < iLevel; i++) {
+            sReturn = this.parentPath(sReturn);
+        }
+        return sReturn;
+    }
+
     pathJoin(...args) {
 
         var sReturn = '';

@@ -7,8 +7,7 @@ var MstartBase = (function () {
     }
     MstartBase.prototype.initStart = function (envs) {
         this._initFormatEnv(envs);
-        console.log(envs);
-        CommonRoot.logDebug(0, envs);
+        CommonRoot.logDebug(972001001, envs);
         if (envs.argsInit) {
             InitProject.initStart(envs);
         }
