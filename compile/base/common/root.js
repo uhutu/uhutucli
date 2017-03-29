@@ -4,6 +4,7 @@ var UtilsJson = require("../../base/utils/json");
 var UtilsIo = require("../../base/utils/io");
 var UtilsString = require("../../base/utils/string");
 var logger = Log4js.getLogger("u");
+logger.setLevel('info');
 var McommonRoot = (function () {
     function McommonRoot() {
     }
@@ -34,6 +35,9 @@ var McommonRoot = (function () {
             aArgs[_i - 1] = arguments[_i];
         }
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
+    };
+    McommonRoot.prototype.setLogLevel = function (sLogType) {
+        logger.setLevel(sLogType);
     };
     return McommonRoot;
 }());

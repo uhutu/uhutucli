@@ -4,6 +4,7 @@ import UtilsJson = require("../../base/utils/json");
 import UtilsIo = require("../../base/utils/io");
 import UtilsString = require("../../base/utils/string");
 let logger =  Log4js.getLogger("u");
+logger.setLevel('info');
 
 class McommonRoot {
 
@@ -24,6 +25,11 @@ class McommonRoot {
     logError(iLogCode: number, ...aArgs: string[]) {
 
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
+    }
+
+
+    setLogLevel(sLogType:string){
+        logger.setLevel(sLogType);
     }
 }
 

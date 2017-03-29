@@ -21,6 +21,8 @@ class DefineEnv implements AimLocal.IAimLocalNexusEnv {
 
     argsForce = false
 
+    argsLog="info"
+
 }
 
 class MAimLocalEnv {

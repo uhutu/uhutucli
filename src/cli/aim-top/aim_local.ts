@@ -32,6 +32,11 @@ export interface IAimLocalNexusEnv {
      */
     argsForce: boolean
 
+    /**
+     * 是否强制操作  该操作执行会强制覆盖
+     */
+    argsLog: string
+
 }
 
 

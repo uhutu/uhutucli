@@ -22,9 +22,15 @@ var args = argv.option([
         name: 'force',
         type: 'boolean',
         description: 'force overwrite'
+    },
+    {
+        name: 'log',
+        type: 'string',
+        description: 'show log type'
     }
 ]).run();
 defEnv.argsConfig = args.options.config;
 defEnv.argsInstall = args.options.install;
 defEnv.argsForce = args.options.force;
+defEnv.argsLog = args.options.log;
 start_base.initStart(defEnv);
