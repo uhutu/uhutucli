@@ -5,7 +5,7 @@ var LoadConfig = require("../../cli/exec-load/load_config");
 var PlugProcess = (function () {
     function PlugProcess() {
     }
-    PlugProcess.prototype.addLink = function (oLocalConfig, oPlugin, oSet) {
+    PlugProcess.prototype.reactAddLink = function (oLocalConfig, oPlugin, oSet) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
         if (!oPackage.links.hasOwnProperty(oPlugin.name)) {
             CommonUtil.utilsHelper.spawnSync('react-native', ['link', oPlugin.name], { cwd: oLocalConfig.appReact.workPath });
@@ -13,7 +13,7 @@ var PlugProcess = (function () {
             CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
         }
     };
-    PlugProcess.prototype.addPlist = function (oLocalConfig, oPlugin, oSet) {
+    PlugProcess.prototype.iosAddPlist = function (oLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactIosInfoPlist);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//plist/dict", doc)[0];
@@ -32,7 +32,7 @@ var PlugProcess = (function () {
         //console.log(doc.toString());
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactIosInfoPlist);
     };
-    PlugProcess.prototype.addStrings = function (oLocalConfig, oPlugin, oSet) {
+    PlugProcess.prototype.androidAddStrings = function (oLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactAndroidStringXml);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//resources", doc)[0];
@@ -50,6 +50,9 @@ var PlugProcess = (function () {
         eMeta.setAttribute("name", oSet.name);
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
+    };
+    PlugProcess.prototype.baseContentReplace = function (oLocalConfig, oPlugin, oSet) {
+        CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
     };
     return PlugProcess;
 }());

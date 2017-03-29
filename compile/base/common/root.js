@@ -1,9 +1,9 @@
 "use strict";
-var Log = require("log");
+var Log4js = require("log4js");
 var UtilsJson = require("../../base/utils/json");
 var UtilsIo = require("../../base/utils/io");
 var UtilsString = require("../../base/utils/string");
-var log = new Log("debug");
+var logger = Log4js.getLogger("u");
 var McommonRoot = (function () {
     function McommonRoot() {
     }
@@ -12,28 +12,28 @@ var McommonRoot = (function () {
         for (var _i = 1; _i < arguments.length; _i++) {
             aArgs[_i - 1] = arguments[_i];
         }
-        log.debug(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     };
     McommonRoot.prototype.logInfo = function (iLogCode) {
         var aArgs = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             aArgs[_i - 1] = arguments[_i];
         }
-        log.info(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     };
     McommonRoot.prototype.logWarn = function (iLogCode) {
         var aArgs = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             aArgs[_i - 1] = arguments[_i];
         }
-        log.warn(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     };
     McommonRoot.prototype.logError = function (iLogCode) {
         var aArgs = [];
         for (var _i = 1; _i < arguments.length; _i++) {
             aArgs[_i - 1] = arguments[_i];
         }
-        log.error(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     };
     return McommonRoot;
 }());

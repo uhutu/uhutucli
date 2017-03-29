@@ -5,14 +5,20 @@ import * as AimLocal from "../../cli/aim-top/aim_local";
 let currentConfig: AimLocal.IAimLocalConfig = {
     env: null,
 
+    params: null,
+
     project: {
 
-        projectName: "demo"
+        projectName: "demo",
+        domainSpace: "com.uhutu.react.[@config:project.projectName]",
+        versionName: "1.0.0",
+        versionBuild: 1,
+        displayName: "demodisplay"
     },
     define: {
 
         workSpace: "[@config:env.pathCwd]",
-        cliSpace:"[@config:env.pathCli]",
+        cliSpace: "[@config:env.pathCli]",
         resourcePath: "[@config:define.cliSpace]/resources"
     },
 
@@ -24,8 +30,10 @@ let currentConfig: AimLocal.IAimLocalConfig = {
     file: {
         reactPackage: "[@config:appReact.workPath]/package.json",
         reactPlugPath: "[@config:define.resourcePath]/files-local/react-plug",
-        reactIosInfoPlist:"[@config:appReact.workPath]/ios/[@config:appReact.workName]/Info.plist",
-        reactAndroidStringXml:"[@config:appReact.workPath]/android/app/src/main/res/values/strings.xml"
+        reactIosWork: "[@config:appReact.workPath]/ios",
+        reactIosInfoPlist: "[@config:file.reactIosWork]/[@config:appReact.workName]/Info.plist",
+        reactAndroidWork: "[@config:appReact.workPath]/android",
+        reactAndroidStringXml: "[@config:file.reactAndroidWork]/app/src/main/res/values/strings.xml"
     },
     //react插件相关配置
     plugs: {

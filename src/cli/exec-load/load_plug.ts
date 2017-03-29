@@ -5,7 +5,7 @@ import LoadConfig = require("../../cli/exec-load/load_config");
 
 class PlugProcess {
 
-    addLink(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    reactAddLink(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
         if (!oPackage.links.hasOwnProperty(oPlugin.name)) {
             CommonUtil.utilsHelper.spawnSync('react-native', ['link', oPlugin.name], { cwd: oLocalConfig.appReact.workPath });
@@ -15,7 +15,7 @@ class PlugProcess {
 
     }
 
-    addPlist(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    iosAddPlist(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactIosInfoPlist);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//plist/dict", doc)[0];
@@ -36,7 +36,7 @@ class PlugProcess {
     }
 
 
-    addStrings(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    androidAddStrings(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactAndroidStringXml);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//resources", doc)[0];
@@ -54,6 +54,11 @@ class PlugProcess {
         eMeta.setAttribute("name", oSet.name);
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
+    }
+
+
+    baseContentReplace(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+        CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
     }
 
 

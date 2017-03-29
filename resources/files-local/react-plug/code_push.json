@@ -2,7 +2,7 @@
   "react": [
 
     {
-      "exec": "addLink",
+      "exec": "reactAddLink",
       "set": {
         "link": "react-native-code-push"
       }
@@ -12,28 +12,28 @@
   "ios": [
 
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "CodePushServerURL",
-        "value": "[@config:params.codepush_server]"
+        "value": "[@config:params.codepushServer]"
       }
     },
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "CodePushDeploymentKey",
-        "value": "[@config:params.codepush_ios]"
+        "value": "[@config:params.codepushKeyIos]"
       }
     }
   ],
   "android": [
 
     {
-      "exec": "addStrings",
+      "exec": "androidAddStrings",
       "set": {
         "key": "string",
         "name": "reactNativeCodePush_androidDeploymentKey",
-        "value": "[@config:params.codepush_android]",
+        "value": "[@config:params.codepushKeyAndroid]",
         "attr": [{
           "key": "moduleConfig",
           "value": "true"
@@ -41,11 +41,11 @@
       }
     },
     {
-      "exec": "addStrings",
+      "exec": "androidAddStrings",
       "set": {
         "key": "string",
         "name": "reactNativeCodePush_CodePushServerURL",
-        "value": "[@config:params.codepush_server]",
+        "value": "[@config:params.codepushServer]",
         "attr": [{
           "key": "moduleConfig",
           "value": "true"
@@ -53,11 +53,11 @@
       }
     },
     {
-      "exec": "flowContentReplace",
+      "exec": "baseContentReplace",
       "set": {
-        "filePath": "[@config:apps.react.build_path]/node_modules/react-native-code-push/android/app/src/main/java/com/microsoft/codepush/react/CodePush.java",
+        "filePath": "[@config:file.reactAndroidWork]/node_modules/react-native-code-push/android/app/src/main/java/com/microsoft/codepush/react/CodePush.java",
         "replaceText": "https://codepush.azurewebsites.net/",
-        "withText": "[@config:params.codepush_server]"
+        "withText": "[@config:params.codepushServer]"
       }
     }
   ]

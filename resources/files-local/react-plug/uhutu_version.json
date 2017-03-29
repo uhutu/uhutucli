@@ -1,73 +1,69 @@
 {
 
-  "ios":
-  [
+  "ios": [
 
     {
-      "exec":"addPlist",
-      "set":{
-        "key":"CFBundleIdentifier",
-        "value":"[@config:project.domain_space]"
+      "exec": "iosAddPlist",
+      "set": {
+        "key": "CFBundleIdentifier",
+        "value": "[@config:project.domainSpace]"
       }
     },
     {
-      "exec":"addPlist",
-      "set":{
-        "key":"CFBundleShortVersionString",
-        "value":"[@config:project.version_name]"
+      "exec": "iosAddPlist",
+      "set": {
+        "key": "CFBundleShortVersionString",
+        "value": "[@config:project.versionName]"
       }
     },
     {
-      "exec":"addPlist",
-      "set":{
-        "key":"CFBundleVersion",
-        "value":"[@config:project.version_build]"
+      "exec": "iosAddPlist",
+      "set": {
+        "key": "CFBundleVersion",
+        "value": "[@config:project.versionBuild]"
       }
     },
     {
-      "exec":"addPlist",
-      "set":{
-        "key":"CFBundleDisplayName",
-        "value":"[@config:project.display_name]"
+      "exec": "iosAddPlist",
+      "set": {
+        "key": "CFBundleDisplayName",
+        "value": "[@config:project.displayName]"
       }
     }
 
 
   ],
-  "android":
-  [
-    {
-      "exec":"addStrings",
-      "set":{
-        "key":"string",
-        "name":"app_name",
-        "value":"[@config:project.display_name]",
-        "attr":[
-        ]
+  "android": [{
+      "exec": "androidAddStrings",
+      "set": {
+        "key": "string",
+        "name": "app_name",
+        "value": "[@config:project.displayName]",
+        "attr": []
       }
     },
     {
-      "exec":"flowContentReplace",
-      "set":{
-        "filePath":"[@config:files.android.app_build]",
-        "replaceText":"\\sversionCode\\s\\d*",
-        "withText":" versionCode [@config:project.version_build]"
+      "exec": "baseContentReplace",
+      "set": {
+        "filePath": "[@config:file.reactAndroidWork]/app/build.gradle",
+        "replaceText": "\\sversionCode\\s\\d*",
+        "withText": " versionCode [@config:project.versionBuild]"
       }
     },
     {
-      "exec":"flowContentReplace",
-      "set":{
-        "filePath":"[@config:files.android.app_build]",
-        "replaceText":"\\sversionName\\s\\\".*?\\\"",
-        "withText":" versionName \"[@config:project.version_name]\""
+      "exec": "baseContentReplace",
+      "set": {
+        "filePath": "[@config:file.reactAndroidWork]/app/build.gradle",
+        "replaceText": "\\sversionName\\s\\\".*?\\\"",
+        "withText": " versionName \"[@config:project.versionName]\""
       }
     },
     {
-      "exec":"flowContentReplace",
-      "set":{
-        "filePath":"[@config:files.android.app_build]",
-        "replaceText":"\\sapplicationId\\s\\\".*?\\\"",
-        "withText":" applicationId \"[@config:project.domain_space]\""
+      "exec": "baseContentReplace",
+      "set": {
+        "filePath": "[@config:file.reactAndroidWork]/app/build.gradle",
+        "replaceText": "\\sapplicationId\\s\\\".*?\\\"",
+        "withText": " applicationId \"[@config:project.domainSpace]\""
       }
     }
   ]

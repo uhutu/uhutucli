@@ -2,7 +2,7 @@
   "react": [
 
     {
-      "exec": "addLink",
+      "exec": "reactAddLink",
       "set": {
         "link": "react-native-mipush"
       }
@@ -12,21 +12,21 @@
   "ios": [
 
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "MiSDKAppID",
-        "value": "[@config:params.mipush_id_ios]"
+        "value": "[@config:params.mipushIdIos]"
       }
     },
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "MiSDKAppKey",
-        "value": "[@config:params.mipush_key_ios]"
+        "value": "[@config:params.mipushKeyIos]"
       }
     },
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "MiSDKRun",
         "value": "Online"

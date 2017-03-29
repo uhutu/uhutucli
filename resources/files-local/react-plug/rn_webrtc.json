@@ -3,14 +3,14 @@
   "ios": [
 
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "NSMicrophoneUsageDescription",
         "value": "NSMicrophoneUsageDescription"
       }
     },
     {
-      "exec": "addPlist",
+      "exec": "iosAddPlist",
       "set": {
         "key": "NSCameraUsageDescription",
         "value": "NSCameraUsageDescription"

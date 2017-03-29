@@ -44,6 +44,9 @@ export interface IAimLocalConfig {
      */
     env: IAimLocalNexusEnv | null
 
+
+    params: null
+
     /**
      * 系统定义  该配置由系统自动生成  请勿赋值 供各种读取使用
      */
@@ -72,6 +75,26 @@ export interface IAimLocalNexusProject {
      * 项目名称
      */
     projectName: string
+
+    /**
+     * 命名空间
+     */
+    domainSpace: string
+
+
+    /**
+     * 项目版本号
+     */
+    versionName: string
+    /**
+     * 版本编译号 每次更新需加1
+     */
+
+    versionBuild: number
+    /**
+     * 中文显示名称
+     */
+    displayName: string
 
 }
 
@@ -110,6 +133,16 @@ export interface IaimLocalNexusFile {
      * android项目的资源文件
      */
     reactAndroidStringXml: string
+
+    /**
+     * android项目目录
+     */
+    reactAndroidWork: string
+
+    /**
+     * ios项目目录
+     */
+    reactIosWork: string
 
 }
 

@@ -2,7 +2,7 @@
   "react":[
 
     {
-      "exec":"addLink",
+      "exec":"reactAddLink",
       "set":{
 
         "link":"realm"

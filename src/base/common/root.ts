@@ -1,29 +1,29 @@
-import Log = require("log");
+import Log4js = require("log4js");
 
 import UtilsJson = require("../../base/utils/json");
 import UtilsIo = require("../../base/utils/io");
 import UtilsString = require("../../base/utils/string");
-let log = new Log("debug");
+let logger =  Log4js.getLogger("u");
 
 class McommonRoot {
 
     logDebug(iLogCode: number, ...aArgs: string[]) {
 
-        log.debug(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
     logInfo(iLogCode: number, ...aArgs: string[]) {
 
-        log.info(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
     logWarn(iLogCode: number, ...aArgs: string[]) {
 
-        log.warn(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     }
     logError(iLogCode: number, ...aArgs: string[]) {
 
-        log.error(logLoad.upLogInfo(iLogCode, aArgs));
+        logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
 }
 
