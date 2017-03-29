@@ -1,7 +1,11 @@
 "use strict";
 var currentConfig = {
     env: null,
-    params: null,
+    params: {
+        codepushServer: "https://code-push.srnpr.com/",
+        codepushKeyIos: "",
+        codepushKeyAndroid: ""
+    },
     project: {
         projectName: "demo",
         domainSpace: "com.uhutu.react.[@config:project.projectName]",

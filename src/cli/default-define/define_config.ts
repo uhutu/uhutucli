@@ -5,7 +5,11 @@ import * as AimLocal from "../../cli/aim-top/aim_local";
 let currentConfig: AimLocal.IAimLocalConfig = {
     env: null,
 
-    params: null,
+    params: {
+        codepushServer:"https://code-push.srnpr.com/",
+        codepushKeyIos:"",
+        codepushKeyAndroid:""
+    },
 
     project: {
 

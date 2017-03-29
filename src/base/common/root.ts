@@ -43,7 +43,7 @@ class LogLoad {
 
     }
 
-    upLogInfo(iLogCode: number, ...aArgs) {
+    upLogInfo(iLogCode: number,aArgs) {
 
 
 

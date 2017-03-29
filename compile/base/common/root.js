@@ -48,11 +48,7 @@ var LogLoad = (function () {
             this._currentMap.set(p, aJson[p]);
         }
     }
-    LogLoad.prototype.upLogInfo = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    LogLoad.prototype.upLogInfo = function (iLogCode, aArgs) {
         return iLogCode + ' ' + UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
     };
     LogLoad.prototype.upLogInfoByCode = function (iLogCode) {

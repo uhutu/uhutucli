@@ -45,7 +45,7 @@ export interface IAimLocalConfig {
     env: IAimLocalNexusEnv | null
 
 
-    params: null
+    params: any
 
     /**
      * 系统定义  该配置由系统自动生成  请勿赋值 供各种读取使用
