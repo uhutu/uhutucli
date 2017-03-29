@@ -1,21 +1,21 @@
 "use strict";
-var utils_io = require("../utils/io");
+var UtilsIo = require("../../base/utils/io");
 var InitProject = (function () {
     function InitProject() {
     }
     InitProject.prototype.initStart = function (envs) {
         if (!this.flagExistConfig(envs)) {
-            utils_io.copyFileAsync(this._upSourceFile, this._upTargetFile);
+            UtilsIo.copyFileAsync(this._upSourceFile(envs), this._upTargetFile(envs));
         }
     };
     InitProject.prototype._upSourceFile = function (envs) {
-        return utils_io.pathJoin(envs.pathCli, envs.dirTemplateInit, envs.fileConfig);
+        return UtilsIo.pathJoin(envs.pathCli, envs.dirTemplateInit, envs.fileConfig);
     };
     InitProject.prototype._upTargetFile = function (envs) {
-        return utils_io.pathJoin(envs.pathCwd, envs.fileConfig);
+        return UtilsIo.pathJoin(envs.pathCwd, envs.fileConfig);
     };
     InitProject.prototype.flagExistConfig = function (envs) {
-        return utils_io.flagExist(this._upTargetFile(envs));
+        return UtilsIo.flagExist(this._upTargetFile(envs));
     };
     return InitProject;
 }());

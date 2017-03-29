@@ -1,7 +1,7 @@
 {
   "name": "uhutu-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "uthu-cli",
   "main": "index.js",
   "bin":"cli-local/start.js",
   "scripts": {
@@ -17,13 +17,12 @@
   "dependencies": {
     "argv": "^0.0.2",
     "assign-deep": "^0.4.5",
-    "beautify": "^0.0.8",
     "gradlejs": "^1.0.0",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.23",
+    "log":"^1.4.0",
     "glob": "^7.1.1",
-    "htmlparser2": "^3.9.2",
-    "ejs": "^2.5.5"
+    "htmlparser2": "^3.9.2"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
@@ -32,6 +31,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-typescript": "^3.1.4",
+    "ejs": "^2.5.5",
+    "beautify": "^0.0.8",
+
     "typescript": "^2.1.5",
     "@types/node": "^7.0.12",
     "istanbul": "^0.4.5",

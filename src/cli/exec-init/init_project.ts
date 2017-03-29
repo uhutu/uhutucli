@@ -1,40 +1,34 @@
 
 
-import utils_io = require("../utils/io");
-import init_project = require("../exec-init/init_project");
+import UtilsIo = require("../../base/utils/io");
 
-import * as AimLocal from "../aim-top/aim_local";
-
-
-class InitProject implements AimLocal.IInitProject {
+import * as AimLocal from "../../cli/aim-top/aim_local";
 
 
-    initStart(envs: AimLocal.MAimLocalEnv) {
+class MinitProject implements AimLocal.IInitProject {
 
+    initStart(envs: AimLocal.IAimLocalEnv) {
         if(!this.flagExistConfig(envs)){
-
-            utils_io.copyFileAsync(this._upSourceFile,this._upTargetFile);
+            UtilsIo.copyFileAsync(this._upSourceFile(envs),this._upTargetFile(envs));
         }
-
-
     }
 
-    _upSourceFile(envs: AimLocal.MAimLocalEnv){
-        return utils_io.pathJoin(envs.pathCli,envs.dirTemplateInit,envs.fileConfig );
+    _upSourceFile(envs: AimLocal.IAimLocalEnv){
+        return UtilsIo.pathJoin(envs.pathCli,envs.dirTemplateInit,envs.fileConfig );
     }
 
-    _upTargetFile(envs: AimLocal.MAimLocalEnv){
-        return utils_io.pathJoin(envs.pathCwd,envs.fileConfig);
+    _upTargetFile(envs: AimLocal.IAimLocalEnv){
+        return UtilsIo.pathJoin(envs.pathCwd,envs.fileConfig);
     }
 
 
-    flagExistConfig(envs: AimLocal.MAimLocalEnv){
+    flagExistConfig(envs: AimLocal.IAimLocalEnv){
 
-        return utils_io.flagExist(this._upTargetFile(envs));
+        return UtilsIo.flagExist(this._upTargetFile(envs));
 
     }
 
 }
 
 
-export =new InitProject();
+export =new MinitProject();

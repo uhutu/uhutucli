@@ -2,9 +2,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var start_base = require("./cli/cmd-start/start_base");
-var aim_local_1 = require("./cli/aim-top/aim_local");
+var DefineEnv = require("./cli/default-define/define_env");
 var argv = require("argv");
-var defEnv = new aim_local_1.MAimLocalEnv();
+var defEnv = DefineEnv.upEnv();
 defEnv.pathStart = __dirname;
 defEnv.pathCwd = process.cwd();
 var args = argv.option([

@@ -1,24 +1,22 @@
 
-import * as AimLocal from "../aim-top/aim_local";
+import * as AimLocal from "../../cli/aim-top/aim_local";
+import CommonRoot =require("../../base/common/root");
 
-import init_project = require("../exec-init/init_project");
-import utils_io = require("../utils/io");
+import InitProject =require("../../cli/exec-init/init_project");
+import UtilsIo = require("../../base/utils/io");
 
-class StartBase implements AimLocal.IAimLocalInit {
+class MstartBase implements AimLocal.IAimLocalInit {
 
-
-
-    initStart(envs: AimLocal.MAimLocalEnv) {
+    initStart(envs: AimLocal.IAimLocalEnv) {
 
         this._initFormatEnv(envs);
 
         console.log(envs);
+        CommonRoot.logDebug(0,envs);
 
         if (envs.argsInit) {
-            init_project.initStart(envs);
+            InitProject.initStart(envs);
         } else {
-
-
 
 
         }
@@ -30,9 +28,9 @@ class StartBase implements AimLocal.IAimLocalInit {
      * 本地重新初始化格式变量
      * @param envs 
      */
-    _initFormatEnv(envs: AimLocal.MAimLocalEnv) {
+    _initFormatEnv(envs: AimLocal.IAimLocalEnv) {
 
-        envs.pathCli = utils_io.parentPath(envs.pathStart);
+        envs.pathCli = UtilsIo.parentPath(envs.pathStart);
 
 
     }
@@ -43,5 +41,5 @@ class StartBase implements AimLocal.IAimLocalInit {
 }
 
 
-export =new StartBase();
+export =new MstartBase();
 

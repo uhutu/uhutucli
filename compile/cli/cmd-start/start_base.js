@@ -1,14 +1,16 @@
 "use strict";
-var init_project = require("../exec-init/init_project");
-var utils_io = require("../utils/io");
-var StartBase = (function () {
-    function StartBase() {
+var CommonRoot = require("../../base/common/root");
+var InitProject = require("../../cli/exec-init/init_project");
+var UtilsIo = require("../../base/utils/io");
+var MstartBase = (function () {
+    function MstartBase() {
     }
-    StartBase.prototype.initStart = function (envs) {
+    MstartBase.prototype.initStart = function (envs) {
         this._initFormatEnv(envs);
         console.log(envs);
+        CommonRoot.logDebug(0, envs);
         if (envs.argsInit) {
-            init_project.initStart(envs);
+            InitProject.initStart(envs);
         }
         else {
         }
@@ -17,9 +19,9 @@ var StartBase = (function () {
      * 本地重新初始化格式变量
      * @param envs
      */
-    StartBase.prototype._initFormatEnv = function (envs) {
-        envs.pathCli = utils_io.parentPath(envs.pathStart);
+    MstartBase.prototype._initFormatEnv = function (envs) {
+        envs.pathCli = UtilsIo.parentPath(envs.pathStart);
     };
-    return StartBase;
+    return MstartBase;
 }());
-module.exports = new StartBase();
+module.exports = new MstartBase();
