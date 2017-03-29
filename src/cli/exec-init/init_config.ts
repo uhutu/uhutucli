@@ -5,7 +5,7 @@ import UtilsIo = require("../../base/utils/io");
 import * as AimLocal from "../../cli/aim-top/aim_local";
 
 
-class MinitProject implements AimLocal.IInitProject {
+class MinitConfig implements AimLocal.IInitProject {
 
     initStart(envs: AimLocal.IAimLocalEnv) {
         if(!this.flagExistConfig(envs)){
@@ -31,4 +31,4 @@ class MinitProject implements AimLocal.IInitProject {
 }
 
 
-export =new MinitProject();
+export =new MinitConfig();
