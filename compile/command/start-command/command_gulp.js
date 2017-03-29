@@ -15,5 +15,6 @@ var args = argv.option([
     }
 ]).run();
 var sDiskConfig = args.options.diskconfig;
+console.log(sDiskConfig);
 gulp.task('default', function () {
 });

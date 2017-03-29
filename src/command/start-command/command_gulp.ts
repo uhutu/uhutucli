@@ -20,7 +20,7 @@ let args = argv.option(
 let sDiskConfig=args.options.diskconfig;
 
 
-
+console.log(sDiskConfig);
 
 
 gulp.task('default', function () {
