@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import start_base = require("./cli/cmd-start/start_base");
-import DefineEnv = require("./cli/default-define/define_env");
+import start_base = require("../../cli/cmd-start/start_base");
+import DefineEnv = require("../../cli/default-define/define_env");
 import argv = require('argv');
 
 
@@ -11,8 +11,13 @@ defEnv.pathStart = __dirname;
 defEnv.pathCwd = process.cwd();
 
 
-let args = argv.option(
+let oArgs = argv.option(
     [
+        {
+            name: 'build',
+            type: 'boolean',
+            description: 'build workspace'
+        },
         {
             name: 'config',
             type: 'boolean',
@@ -38,10 +43,11 @@ let args = argv.option(
 ).run();
 
 
-defEnv.argsConfig = args.options.config;
-defEnv.argsInstall = args.options.install;
-defEnv.argsForce = args.options.force;
-defEnv.argsLog = args.options.log;
+defEnv.argsConfig = oArgs.options.config;
+defEnv.argsInstall = oArgs.options.install;
+defEnv.argsForce = oArgs.options.force;
+defEnv.argsLog = oArgs.options.log;
+defEnv.argsBuild = oArgs.options.build;
 
 
 start_base.initStart(defEnv);

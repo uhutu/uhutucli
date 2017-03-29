@@ -1,13 +1,18 @@
 #!/usr/bin/env node
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var start_base = require("./cli/cmd-start/start_base");
-var DefineEnv = require("./cli/default-define/define_env");
+var start_base = require("../../cli/cmd-start/start_base");
+var DefineEnv = require("../../cli/default-define/define_env");
 var argv = require("argv");
 var defEnv = DefineEnv.upEnv();
 defEnv.pathStart = __dirname;
 defEnv.pathCwd = process.cwd();
-var args = argv.option([
+var oArgs = argv.option([
+    {
+        name: 'build',
+        type: 'boolean',
+        description: 'build workspace'
+    },
     {
         name: 'config',
         type: 'boolean',
@@ -26,11 +31,12 @@ var args = argv.option([
     {
         name: 'log',
         type: 'string',
-        description: 'show log type'
+        description: 'show log type value of:debug info warn error'
     }
 ]).run();
-defEnv.argsConfig = args.options.config;
-defEnv.argsInstall = args.options.install;
-defEnv.argsForce = args.options.force;
-defEnv.argsLog = args.options.log;
+defEnv.argsConfig = oArgs.options.config;
+defEnv.argsInstall = oArgs.options.install;
+defEnv.argsForce = oArgs.options.force;
+defEnv.argsLog = oArgs.options.log;
+defEnv.argsBuild = oArgs.options.build;
 start_base.initStart(defEnv);

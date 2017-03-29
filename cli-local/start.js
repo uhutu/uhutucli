@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require("../compile/start_cli");
+require("../compile/command/start-command/command_cli");

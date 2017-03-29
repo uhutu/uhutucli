@@ -2,6 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var InitConfig = require("../../cli/exec-init/init_config");
 var InitInstall = require("../../cli/exec-init/init_install");
+var InitBuild = require("../../cli/exec-init/init_build");
 var LoadConfig = require("../../cli/exec-load/load_config");
 var UtilsIo = require("../../base/utils/io");
 var MstartBase = (function () {
@@ -23,6 +24,9 @@ var MstartBase = (function () {
                 if (oEnv.argsInstall) {
                     InitInstall.initStart(localConfig);
                 }
+                if (oEnv.argsBuild) {
+                    InitBuild.initStart(localConfig);
+                }
             }
             else {
                 CommonRoot.logError(932001001);
@@ -40,7 +44,7 @@ var MstartBase = (function () {
      * @param envs
      */
     MstartBase.prototype._initFormatEnv = function (oEnv) {
-        oEnv.pathCli = UtilsIo.parentPath(oEnv.pathStart);
+        oEnv.pathCli = UtilsIo.parentTop(oEnv.pathStart, 3);
     };
     return MstartBase;
 }());
