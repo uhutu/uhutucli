@@ -272,7 +272,31 @@ export interface IAimLocalNexusSystem {
 
 
 
+/**
+ * 插件的设置值 该接口仅用于命名的标记  无实际用途
+ */
+export interface IAimLocalPlugSet {
+    
+    key:string
+    value:string
+    name:string
+    attr:any[]
+    filePath:string
+    replaceText:string
+    withText:string
+    contentInfo:string[]
 
+}
+
+/**
+ * 插件的设置
+ */
+export interface IAimLocalPlugExec {
+    
+    exec:string
+    set:IAimLocalPlugSet
+
+}
 
 
 

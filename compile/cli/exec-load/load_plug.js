@@ -5,6 +5,12 @@ var LoadConfig = require("../../cli/exec-load/load_config");
 var PlugProcess = (function () {
     function PlugProcess() {
     }
+    /**
+     * react添加内容
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
     PlugProcess.prototype.reactAddLink = function (oLocalConfig, oPlugin, oSet) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
         if (!oPackage.links.hasOwnProperty(oPlugin.name)) {
@@ -29,7 +35,6 @@ var PlugProcess = (function () {
         var eString = doc.createElement('string');
         eString.textContent = oSet.value;
         dict.appendChild(eString);
-        //console.log(doc.toString());
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactIosInfoPlist);
     };
     PlugProcess.prototype.androidAddStrings = function (oLocalConfig, oPlugin, oSet) {
@@ -53,6 +58,15 @@ var PlugProcess = (function () {
     };
     PlugProcess.prototype.baseContentReplace = function (oLocalConfig, oPlugin, oSet) {
         CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+    };
+    /**
+     * 设置文件内容
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
+    PlugProcess.prototype.baseFileContent = function (oLocalConfig, oPlugin, oSet) {
+        CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
     };
     return PlugProcess;
 }());

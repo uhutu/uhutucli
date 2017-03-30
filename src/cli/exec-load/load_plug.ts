@@ -5,7 +5,13 @@ import LoadConfig = require("../../cli/exec-load/load_config");
 
 class PlugProcess {
 
-    reactAddLink(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    /**
+     * react添加内容
+     * @param oLocalConfig 
+     * @param oPlugin 
+     * @param oSet 
+     */
+    reactAddLink(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet:AimLocal.IAimLocalPlugSet) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
         if (!oPackage.links.hasOwnProperty(oPlugin.name)) {
             CommonUtil.utilsHelper.spawnSync('react-native', ['link', oPlugin.name], { cwd: oLocalConfig.appReact.workPath });
@@ -15,7 +21,7 @@ class PlugProcess {
 
     }
 
-    iosAddPlist(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    iosAddPlist(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet:AimLocal.IAimLocalPlugSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactIosInfoPlist);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//plist/dict", doc)[0];
@@ -31,12 +37,12 @@ class PlugProcess {
         var eString = doc.createElement('string');
         eString.textContent = oSet.value;
         dict.appendChild(eString);
-        //console.log(doc.toString());
+        
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactIosInfoPlist);
     }
 
 
-    androidAddStrings(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    androidAddStrings(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet:AimLocal.IAimLocalPlugSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactAndroidStringXml);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
         var dict = select("//resources", doc)[0];
@@ -57,8 +63,18 @@ class PlugProcess {
     }
 
 
-    baseContentReplace(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin, oSet) {
+    baseContentReplace(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet:AimLocal.IAimLocalPlugSet) {
         CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+    }
+
+    /**
+     * 设置文件内容
+     * @param oLocalConfig 
+     * @param oPlugin 
+     * @param oSet 
+     */
+    baseFileContent(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet:AimLocal.IAimLocalPlugSet){
+        CommonUtil.utilsIo.writeFile(oSet.filePath,oSet.contentInfo.join(''));
     }
 
 
@@ -91,7 +107,7 @@ class Mexport {
                             if (oJsonConfig.hasOwnProperty(sStep)) {
                                 var aJsonStep: any[] = oJsonConfig[sStep];
 
-                                aJsonStep.forEach((oCurrent) => {
+                                aJsonStep.forEach((oCurrent:AimLocal.IAimLocalPlugExec) => {
                                     if (oProcess[oCurrent.exec]) {
 
                                         CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);

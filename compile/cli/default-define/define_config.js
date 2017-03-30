@@ -54,13 +54,17 @@ var currentConfig = {
         reactAndroidStringXml: "[@config:file.reactAndroidWork]/app/src/main/res/values/strings.xml"
     },
     plugReact: {
-        "uhutu_version": {
-            "name": "uhutu-version",
-            "json": "[@config:file.reactPlugPath]/uhutu_version.json"
+        "top_version": {
+            "name": "top-version",
+            "json": "[@config:file.reactPlugPath]/top_version.json"
         },
-        "uhutu_speed": {
-            "name": "uhutu-speed",
-            "json": "[@config:file.reactPlugPath]/uhutu_speed.json"
+        "top_speed": {
+            "name": "top-speed",
+            "json": "[@config:file.reactPlugPath]/top_speed.json"
+        },
+        "top_file": {
+            "name": "top-file",
+            "json": "[@config:file.reactPlugPath]/top_file.json"
         },
         "socket_io": {
             "name": "socket.io",

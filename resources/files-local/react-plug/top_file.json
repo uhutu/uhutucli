@@ -1,0 +1,39 @@
+{
+
+  "react":
+  [
+    
+    {
+      "exec":"baseFileContent",
+      "set":{
+        "filePath":"[@config:appReact.workPath]/uhutu_main.js",
+        "contentInfo":["import { AppRegistry } from 'react-native';\n",
+        "import MainPage from './project/pages/air/layout/index';\n",
+        "AppRegistry.registerComponent('[@config:appReact.workName]', () => MainPage);"]
+      }
+    }
+  ],
+  "android":
+  [
+    
+    {
+      "exec":"baseFileContent",
+      "set":{
+        "filePath":"[@config:appReact.workPath]/index.android.js",
+        "contentInfo":["require(\"./uhutu_main\");"]
+      }
+    }
+  ],
+  "ios":
+  [
+    
+    {
+      "exec":"baseFileContent",
+      "set":{
+        "filePath":"[@config:appReact.workPath]/index.ios.js",
+        "contentInfo":["require(\"./uhutu_main\");"]
+      }
+    }
+  ]
+
+}
