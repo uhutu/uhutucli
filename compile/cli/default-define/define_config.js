@@ -105,6 +105,9 @@ var currentConfig = {
             "version": "0.9.0",
             "json": "[@config:file.reactPlugPath]/rn_sound.json"
         },
+    },
+    system: {
+        editionCode: 1001
     }
 };
 var MAimLocalEnv = (function () {

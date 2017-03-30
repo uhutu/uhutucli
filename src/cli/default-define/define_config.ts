@@ -123,6 +123,9 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         }
         */
 
+    },
+    system:{
+        editionCode:1001
     }
 }
 

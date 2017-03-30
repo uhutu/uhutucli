@@ -95,6 +95,8 @@ export interface IAimLocalConfig {
      * react的模块功能
      */
     plugs: any
+
+    system:IAimLocalNexusSystem
 }
 
 
@@ -230,6 +232,18 @@ export interface IAimLocalNexusInc {
 
 }
 
+
+
+/**
+ * 系统的定义
+ */
+export interface IAimLocalNexusSystem {
+    /**
+     * 系统当前版本 该参数用于代码升级兼容历史版本使用 
+     */
+    editionCode: 1
+
+}
 
 
 

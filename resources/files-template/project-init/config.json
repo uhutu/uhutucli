@@ -6,7 +6,10 @@
       "versionBuild": "1"
     },
     "params":{
-      "codepushAndroid":"123",
-      "codepushIos":"123"
+      "codepushKeyAndroid":"key_for_android",
+      "codepushKeyIos":"key_for_ios"
+    },
+    "system":{
+      "editionCode":"1002"
     }
 }
