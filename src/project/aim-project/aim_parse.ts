@@ -16,3 +16,13 @@ export class MtransformPageOut {
     //pageConfig: AB.IbasePageConfig
     sourceFile: MprocessParseFile
 }
+
+
+/**
+ * 处理转换接口
+ */
+export interface IparseProcessWork{
+
+
+
+}
