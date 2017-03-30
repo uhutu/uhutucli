@@ -1,7 +1,7 @@
 {
   "name": "uhutu-cli",
   "version": "1.0.0",
-  "description": "uthu-cli",
+  "description": "uhutu-cli",
   "main": "index.js",
   "bin": "cli-local/start.js",
   "scripts": {
@@ -43,5 +43,5 @@
     "typescript": "^2.1.5"
   },
   "author": "",
-  "license": "ISC"
+  "license": "BSD-3-Clause"
 }
