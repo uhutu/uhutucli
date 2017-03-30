@@ -8,6 +8,7 @@ var sass = require("gulp-sass");
 var connect = require("gulp-connect");
 var nativeCss = require("gulp-react-native-css");
 var rename = require("gulp-rename");
+var GulpPlus = require("../../project/gulp-use/gulp_plus");
 var oGulpDefine = {
     pathSass: [],
     pathHtml: [],
@@ -86,13 +87,13 @@ var CommandGulp = (function () {
         var oTask = new GulpTask("main_html");
         oTask.inSubTask("react", function () {
             return gulp.src(oGulpDefine.pathHtml)
+                .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
                 .pipe(rename({
                 extname: ".js"
             }))
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
         oTask.inTopTask();
-        console.log('cdessgfg');
     };
     CommandGulp.prototype.taskSass = function () {
         var oTask = new GulpTask("main_sass");

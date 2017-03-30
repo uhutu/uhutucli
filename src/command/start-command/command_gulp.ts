@@ -126,7 +126,7 @@ class CommandGulp {
         var oTask = new GulpTask("main_html");
         oTask.inSubTask("react", function () {
             return gulp.src(oGulpDefine.pathHtml)
-                //.pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
+                .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
                 .pipe(rename({
                     extname: ".js"
                 }))
@@ -134,7 +134,7 @@ class CommandGulp {
         });
         oTask.inTopTask();
 
-        console.log('cdessgfg');
+        
 
 
     }

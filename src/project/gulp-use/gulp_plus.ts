@@ -2,7 +2,7 @@ import CommonRoot = require("../../base/common/root");
 import CommonUtil = require("../../base/common/util");
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
-
+import * as AimParse from "../../project/aim-project/aim_parse";
 
 import through = require('through2');
 import gutil = require('gulp-util');
@@ -33,7 +33,7 @@ class Mexport {
 
 
 
-            var oParseFile ;
+            var oParseFile = new AimParse.MparseFile();
             oParseFile.parseType = sType;
             oParseFile.fileContent = file.contents;
 
@@ -41,7 +41,7 @@ class Mexport {
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
 
             //var content = initWork.parseContent(oConfig, oParseFile);
-            var content='nn';
+            var content = 'nnf';
             file.contents = new Buffer(content);
 
 

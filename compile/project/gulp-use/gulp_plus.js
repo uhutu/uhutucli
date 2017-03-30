@@ -1,5 +1,6 @@
 "use strict";
 var CommonUtil = require("../../base/common/util");
+var AimParse = require("../../project/aim-project/aim_parse");
 var through = require("through2");
 var gutil = require("gulp-util");
 var Mexport = (function () {
@@ -19,12 +20,12 @@ var Mexport = (function () {
             }
             // 将文件内容转成字符串，并调用 preprocess 组件进行预处理
             // 然后将处理后的字符串，再转成Buffer形式
-            var oParseFile;
+            var oParseFile = new AimParse.MparseFile();
             oParseFile.parseType = sType;
             oParseFile.fileContent = file.contents;
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
             //var content = initWork.parseContent(oConfig, oParseFile);
-            var content = 'nn';
+            var content = 'nnf';
             file.contents = new Buffer(content);
             // 下面这两句基本是标配啦，可以参考下 through2 的API
             this.push(file);
