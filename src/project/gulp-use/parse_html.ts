@@ -6,7 +6,7 @@ import * as AimParse from "../../project/aim-project/aim_parse";
 
 import ParseSupport = require("../../project/support-operate/parse_support");
 
-import ReactParse = require("../../project/process-react/react_parse");
+import ReactParse = require("../../project/process-app/react_parse");
 import ejs = require("ejs");
 
 class Mexport {

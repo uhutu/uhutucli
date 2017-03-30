@@ -2,7 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var ParseSupport = require("../../project/support-operate/parse_support");
-var ReactParse = require("../../project/process-react/react_parse");
+var ReactParse = require("../../project/process-app/react_parse");
 var ejs = require("ejs");
 var Mexport = (function () {
     function Mexport() {
