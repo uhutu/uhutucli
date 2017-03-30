@@ -8,7 +8,7 @@ var MmoduleInstall = (function () {
     MmoduleInstall.prototype.installProject = function (oLocalConfig) {
         this.checkWork(oLocalConfig);
         this.checkPackage(oLocalConfig);
-        LoadPlug.processPlus(oLocalConfig, ["react", "ios", "android"]);
+        LoadPlug.processPlus(oLocalConfig, oLocalConfig.plugReact, ["react", "ios", "android"]);
     };
     /**
      * 判断应用是否存在

@@ -59,10 +59,10 @@ var PlugProcess = (function () {
 var Mexport = (function () {
     function Mexport() {
     }
-    Mexport.prototype.processPlus = function (oLocalConfig, aStep) {
+    Mexport.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
         var oProcess = new PlugProcess();
         var _loop_1 = function () {
-            var oPlug = oLocalConfig.plugReact[p];
+            var oPlug = oPlugConfig[p];
             if (!oPlug.disable) {
                 if (oPlug.hasOwnProperty('json')) {
                     sFileContent = CommonUtil.utilsIo.readFile(oPlug.json);
@@ -86,7 +86,7 @@ var Mexport = (function () {
             }
         };
         var sFileContent, oJsonConfig;
-        for (var p in oLocalConfig.plugReact) {
+        for (var p in oPlugConfig) {
             _loop_1();
         }
     };

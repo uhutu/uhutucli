@@ -70,13 +70,13 @@ class PlugProcess {
 class Mexport {
 
 
-    processPlus(oLocalConfig: AimLocal.IAimLocalConfig, aStep: string[]) {
+    processPlus(oLocalConfig: AimLocal.IAimLocalConfig, oPlugConfig:AimLocal.IAimLocalNexusPlug ,aStep: string[]) {
 
 
         var oProcess = new PlugProcess();
 
-        for (var p in oLocalConfig.plugReact) {
-            let oPlug: AimLocal.IAimLocalNexusPlugDefine = oLocalConfig.plugReact[p];
+        for (var p in oPlugConfig) {
+            let oPlug: AimLocal.IAimLocalNexusPlugDefine = oPlugConfig[p];
 
             if (!oPlug.disable) {
                 if (oPlug.hasOwnProperty('json')) {

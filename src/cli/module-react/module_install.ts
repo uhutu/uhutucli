@@ -20,7 +20,7 @@ class MmoduleInstall {
 
         this.checkPackage(oLocalConfig);
 
-        LoadPlug.processPlus(oLocalConfig, ["react", "ios", "android"]);
+        LoadPlug.processPlus(oLocalConfig,oLocalConfig.plugReact, ["react", "ios", "android"]);
 
 
 
