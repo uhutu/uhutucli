@@ -1,8 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var MparseFile = (function () {
-    function MparseFile() {
+var MprocessParseFile = (function () {
+    function MprocessParseFile() {
     }
-    return MparseFile;
+    return MprocessParseFile;
 }());
-exports.MparseFile = MparseFile;
+exports.MprocessParseFile = MprocessParseFile;
+var MtransformPageOut = (function () {
+    function MtransformPageOut() {
+        this.content = [];
+    }
+    return MtransformPageOut;
+}());
+exports.MtransformPageOut = MtransformPageOut;

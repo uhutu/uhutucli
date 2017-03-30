@@ -1,6 +1,6 @@
 
 
-export class MparseFile {
+export class MprocessParseFile {
 
     parseType: string
 
@@ -8,4 +8,11 @@ export class MparseFile {
 
     fileBasename: string
 
+}
+
+
+export class MtransformPageOut {
+    content: string[] = []
+    //pageConfig: AB.IbasePageConfig
+    sourceFile: MprocessParseFile
 }

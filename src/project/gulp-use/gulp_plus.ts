@@ -7,6 +7,8 @@ import * as AimParse from "../../project/aim-project/aim_parse";
 import through = require('through2');
 import gutil = require('gulp-util');
 
+import ParseHtml = require("../../project/gulp-use/parse_html");
+
 class Mexport {
 
 
@@ -33,7 +35,7 @@ class Mexport {
 
 
 
-            var oParseFile = new AimParse.MparseFile();
+            var oParseFile = new AimParse.MprocessParseFile();
             oParseFile.parseType = sType;
             oParseFile.fileContent = file.contents;
 
@@ -41,7 +43,8 @@ class Mexport {
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
 
             //var content = initWork.parseContent(oConfig, oParseFile);
-            var content = 'nnf';
+            let content = ParseHtml.contentParse(oLocalConfig, oParseFile);
+
             file.contents = new Buffer(content);
 
 

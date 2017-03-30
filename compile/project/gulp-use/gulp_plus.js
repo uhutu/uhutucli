@@ -3,6 +3,7 @@ var CommonUtil = require("../../base/common/util");
 var AimParse = require("../../project/aim-project/aim_parse");
 var through = require("through2");
 var gutil = require("gulp-util");
+var ParseHtml = require("../../project/gulp-use/parse_html");
 var Mexport = (function () {
     function Mexport() {
     }
@@ -20,12 +21,12 @@ var Mexport = (function () {
             }
             // 将文件内容转成字符串，并调用 preprocess 组件进行预处理
             // 然后将处理后的字符串，再转成Buffer形式
-            var oParseFile = new AimParse.MparseFile();
+            var oParseFile = new AimParse.MprocessParseFile();
             oParseFile.parseType = sType;
             oParseFile.fileContent = file.contents;
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
             //var content = initWork.parseContent(oConfig, oParseFile);
-            var content = 'nnf';
+            var content = ParseHtml.contentParse(oLocalConfig, oParseFile);
             file.contents = new Buffer(content);
             // 下面这两句基本是标配啦，可以参考下 through2 的API
             this.push(file);
