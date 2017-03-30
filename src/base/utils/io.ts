@@ -18,6 +18,17 @@ class MUtilsIo {
         return glob.sync(this.pathNormalize(sPath));
     }
 
+    upBaseName(sFile, sExt) {
+        if (sExt == undefined) {
+            sExt = this.upExtName(sFile);
+        }
+
+        return path.basename(sFile, sExt);
+    }
+    upExtName(sFile) {
+        return path.extname(sFile);
+    }
+
 
     flagExist(sPath) {
         return fs.existsSync(sPath);

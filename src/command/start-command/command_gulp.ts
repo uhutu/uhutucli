@@ -8,17 +8,52 @@ import sass = require('gulp-sass');
 import connect = require('gulp-connect');
 import nativeCss = require('gulp-react-native-css');
 import rename = require('gulp-rename');
-
+import GulpPlus = require("../../project/gulp-use/gulp_plus");
 
 
 let oGulpDefine = {
-    path_scss: [],
-    path_html: [],
-    task_scss: [],
-    task_html: []
+    pathSass: [],
+    pathHtml: [],
+    task_default: []
 };
 
 let oLocalConfig: AimLocal.IAimLocalConfig;
+
+
+
+
+class GulpTask {
+
+
+    taskName: string = ""
+
+    subTask: string[] = []
+
+    constructor(sTaskName: string) {
+        this.taskName = sTaskName;
+
+    }
+    inSubTask(sSubTaskName: string, fTaskFunction: Function): string {
+
+        var sSubName = this.taskName + ":" + sSubTaskName;
+        this.subTask.push(sSubName);
+
+        gulp.task(sSubName, fTaskFunction);
+
+        return sSubName;
+
+    }
+    inTopTask() {
+
+        gulp.task(this.taskName, this.subTask);
+        oGulpDefine.task_default.push(this.taskName);
+
+    }
+
+
+}
+
+
 
 class CommandGulp {
 
@@ -46,41 +81,68 @@ class CommandGulp {
 
         this.initGulp();
         //this.taskConnect();
+        this.taskHtml();
         this.taskSass();
         this.taskWatch();
         this.taskDefault();
     }
 
     initGulp() {
-        oGulpDefine.path_scss = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
-        oGulpDefine.path_html = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
+        oGulpDefine.pathSass = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
+        oGulpDefine.pathHtml = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
     }
 
 
     taskWatch() {
-        gulp.task('watch:sass', function () {
-            gulp.watch(oGulpDefine.path_scss, ['sass']);
+
+        var oTask = new GulpTask("main_watch");
+
+        oTask.inSubTask("sass", function () {
+            gulp.watch(oGulpDefine.pathSass, ['main_sass']);
         });
 
-        gulp.task('watch:html', function () {
-            gulp.watch(oGulpDefine.path_html, ['html']);
+        oTask.inSubTask("html", function () {
+            gulp.watch(oGulpDefine.pathHtml, ['main_html']);
         });
-        gulp.task('watch', ['watch:html', 'watch:sass']);
+
+        oTask.inTopTask();
     }
 
     taskConnect() {
-        gulp.task('connect', function () {
+
+        var oTask = new GulpTask("main_connect");
+        oTask.inSubTask("server", function () {
             connect.server({
                 root: oLocalConfig.define.devPath,
                 livereload: true
             });
         });
+        oTask.inTopTask();
+    }
+
+    taskHtml() {
+
+
+        var oTask = new GulpTask("main_html");
+        oTask.inSubTask("react", function () {
+            return gulp.src(oGulpDefine.pathHtml)
+                //.pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
+                .pipe(rename({
+                    extname: ".js"
+                }))
+                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
+        });
+        oTask.inTopTask();
+
+
     }
 
     taskSass() {
 
-        gulp.task('sass:react', function () {
-            return gulp.src(oGulpDefine.path_scss)
+
+        var oTask = new GulpTask("main_sass");
+        oTask.inSubTask("react", function () {
+            return gulp.src(oGulpDefine.pathSass)
                 .pipe(sass().on('error', sass.logError))
                 .pipe(nativeCss())
                 .pipe(rename({
@@ -89,13 +151,12 @@ class CommandGulp {
                 }))
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
-
-        gulp.task('sass', ['sass:react']);
+        oTask.inTopTask();
 
     }
 
     taskDefault() {
-        gulp.task('default', ["sass", "watch"]);
+        gulp.task('default', oGulpDefine.task_default);
     }
 
 

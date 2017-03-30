@@ -9,12 +9,32 @@ var connect = require("gulp-connect");
 var nativeCss = require("gulp-react-native-css");
 var rename = require("gulp-rename");
 var oGulpDefine = {
-    path_scss: [],
-    path_html: [],
+    pathSass: [],
+    pathHtml: [],
     task_scss: [],
-    task_html: []
+    task_html: [],
+    task_watch: [],
+    task_default: []
 };
 var oLocalConfig;
+var GulpTask = (function () {
+    function GulpTask(sTaskName) {
+        this.taskName = "";
+        this.subTask = [];
+        this.taskName = sTaskName;
+    }
+    GulpTask.prototype.inSubTask = function (sSubTaskName, fTaskFunction) {
+        var sSubName = this.taskName + ":" + sSubTaskName;
+        this.subTask.push(sSubName);
+        gulp.task(sSubName, fTaskFunction);
+        return sSubName;
+    };
+    GulpTask.prototype.inTopTask = function () {
+        gulp.task(this.taskName, this.subTask);
+        oGulpDefine.task_default.push(this.taskName);
+    };
+    return GulpTask;
+}());
 var CommandGulp = (function () {
     function CommandGulp() {
     }
@@ -36,34 +56,50 @@ var CommandGulp = (function () {
         oLocalConfig = JSON.parse(CommonUtil.utilsIo.readFile(sDiskConfig));
         this.initGulp();
         //this.taskConnect();
+        this.taskHtml();
         this.taskSass();
         this.taskWatch();
         this.taskDefault();
     };
     CommandGulp.prototype.initGulp = function () {
-        oGulpDefine.path_scss = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
-        oGulpDefine.path_html = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
+        oGulpDefine.pathSass = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
+        oGulpDefine.pathHtml = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
     };
     CommandGulp.prototype.taskWatch = function () {
-        gulp.task('watch:sass', function () {
-            gulp.watch(oGulpDefine.path_scss, ['sass']);
+        var oTask = new GulpTask("main_watch");
+        oTask.inSubTask("sass", function () {
+            gulp.watch(oGulpDefine.pathSass, ['main_sass']);
         });
-        gulp.task('watch:html', function () {
-            gulp.watch(oGulpDefine.path_html, ['html']);
+        oTask.inSubTask("html", function () {
+            gulp.watch(oGulpDefine.pathHtml, ['main_html']);
         });
-        gulp.task('watch', ['watch:html', 'watch:sass']);
+        oTask.inTopTask();
     };
     CommandGulp.prototype.taskConnect = function () {
-        gulp.task('connect', function () {
+        var oTask = new GulpTask("main_connect");
+        oTask.inSubTask("server", function () {
             connect.server({
                 root: oLocalConfig.define.devPath,
                 livereload: true
             });
         });
+        oTask.inTopTask();
+    };
+    CommandGulp.prototype.taskHtml = function () {
+        var oTask = new GulpTask("main_html");
+        oTask.inSubTask("react", function () {
+            return gulp.src(oGulpDefine.pathHtml)
+                .pipe(rename({
+                extname: ".js"
+            }))
+                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
+        });
+        oTask.inTopTask();
     };
     CommandGulp.prototype.taskSass = function () {
-        gulp.task('sass:react', function () {
-            return gulp.src(oGulpDefine.path_scss)
+        var oTask = new GulpTask("main_sass");
+        oTask.inSubTask("react", function () {
+            return gulp.src(oGulpDefine.pathSass)
                 .pipe(sass().on('error', sass.logError))
                 .pipe(nativeCss())
                 .pipe(rename({
@@ -72,10 +108,10 @@ var CommandGulp = (function () {
             }))
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
-        gulp.task('sass', ['sass:react']);
+        oTask.inTopTask();
     };
     CommandGulp.prototype.taskDefault = function () {
-        gulp.task('default', ["sass", "watch"]);
+        gulp.task('default', oGulpDefine.task_default);
     };
     return CommandGulp;
 }());

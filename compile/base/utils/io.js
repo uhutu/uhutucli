@@ -15,6 +15,15 @@ var MUtilsIo = (function () {
     MUtilsIo.prototype.upFilePath = function (sPath) {
         return glob.sync(this.pathNormalize(sPath));
     };
+    MUtilsIo.prototype.upBaseName = function (sFile, sExt) {
+        if (sExt == undefined) {
+            sExt = this.upExtName(sFile);
+        }
+        return path.basename(sFile, sExt);
+    };
+    MUtilsIo.prototype.upExtName = function (sFile) {
+        return path.extname(sFile);
+    };
     MUtilsIo.prototype.flagExist = function (sPath) {
         return fs.existsSync(sPath);
     };
