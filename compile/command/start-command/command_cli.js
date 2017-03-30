@@ -11,27 +11,27 @@ var oArgs = argv.option([
     {
         name: 'build',
         type: 'boolean',
-        description: 'build workspace'
+        description: '编译项目文件'
     },
     {
         name: 'config',
         type: 'boolean',
-        description: 'init project with one config.json file'
+        description: '初始化配置文件'
     },
     {
         name: 'install',
         type: 'boolean',
-        description: 'install npm files ,exec after init'
+        description: '安装并初始化各种插件'
     },
     {
         name: 'force',
         type: 'boolean',
-        description: 'force overwrite'
+        description: '强制覆盖'
     },
     {
         name: 'log',
         type: 'string',
-        description: 'show log type value of:debug info warn error'
+        description: '日志级别:debug info warn error'
     }
 ]).run();
 defEnv.argsConfig = oArgs.options.config;

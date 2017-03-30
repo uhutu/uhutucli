@@ -53,7 +53,7 @@ var CommandGulp = (function () {
         CommonRoot.logInfo(960312003, sDiskConfig);
         oLocalConfig = JSON.parse(CommonUtil.utilsIo.readFile(sDiskConfig));
         this.initGulp();
-        //this.taskConnect();
+        this.taskConnect();
         this.taskHtml();
         this.taskSass();
         this.taskWatch();
@@ -77,7 +77,7 @@ var CommandGulp = (function () {
         var oTask = new GulpTask("main_connect");
         oTask.inSubTask("server", function () {
             connect.server({
-                root: oLocalConfig.define.devPath,
+                root: oLocalConfig.appVue.buildPath,
                 livereload: true
             });
         });
@@ -93,6 +93,20 @@ var CommandGulp = (function () {
             }))
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
+        oTask.inSubTask("vue", function () {
+            return gulp.src(oGulpDefine.pathHtml)
+                .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
+                .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
+                .pipe(connect.reload());
+        });
+        oTask.inSubTask("weapp", function () {
+            return gulp.src(oGulpDefine.pathHtml)
+                .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
+                .pipe(rename({
+                extname: ".wxml"
+            }))
+                .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
+        });
         oTask.inTopTask();
     };
     CommandGulp.prototype.taskSass = function () {
@@ -106,6 +120,19 @@ var CommandGulp = (function () {
                 extname: ".js"
             }))
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
+        });
+        oTask.inSubTask("vue", function () {
+            return gulp.src(oGulpDefine.pathSass)
+                .pipe(sass().on('error', sass.logError))
+                .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
+        });
+        oTask.inSubTask("weapp", function () {
+            return gulp.src(oGulpDefine.pathSass)
+                .pipe(sass().on('error', sass.logError))
+                .pipe(rename({
+                extname: ".wxss"
+            }))
+                .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
         oTask.inTopTask();
     };

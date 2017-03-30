@@ -3,6 +3,8 @@ var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var ParseSupport = require("../../project/support-operate/parse_support");
 var ReactParse = require("../../project/process-app/react_parse");
+var VueParse = require("../../project/process-app/vue_parse");
+var WeappParse = require("../../project/process-app/weapp_parse");
 var ejs = require("ejs");
 var Mexport = (function () {
     function Mexport() {
@@ -15,9 +17,17 @@ var Mexport = (function () {
         if (oParseFile.parseType === "react") {
             oTrans = ReactParse;
             oApp = oLocalConfig.appReact;
-            oTrans.mould = CommonUtil.utilsJson.parse(CommonUtil.utilsIo.readFile(oApp.mouldPath));
-            oTrans.pageConfig.masterPath = oLocalConfig.define.devPath + "/master/react";
         }
+        else if (oParseFile.parseType === "vue") {
+            oTrans = VueParse;
+            oApp = oLocalConfig.appVue;
+        }
+        else if (oParseFile.parseType === "weapp") {
+            oTrans = WeappParse;
+            oApp = oLocalConfig.appWeapp;
+        }
+        oTrans.mould = CommonUtil.utilsJson.parse(CommonUtil.utilsIo.readFile(oApp.mouldPath));
+        oTrans.pageConfig.masterPath = oLocalConfig.define.devPath + "/master/" + oApp.appType;
         oOutContent = ParseSupport.parseHtml(oLocalConfig, oTrans, oParseFile);
         if (oOutContent != null) {
             //如果输出的页面配置不存在  则加载默认配置项
@@ -26,7 +36,7 @@ var Mexport = (function () {
             }
             var sTemplate = CommonUtil.utilsIo.readFile(CommonUtil.utilsIo.pathJoin(oOutContent.pageConfig.masterPath, oOutContent.pageConfig.tplFile));
             var sOut = ejs.render(sTemplate, oOutContent);
-            sReturn = sTemplate;
+            sReturn = sOut;
         }
         else {
             CommonRoot.logError(931612001, oParseFile.parseType, oParseFile.fileBasename);

@@ -7,6 +7,13 @@ import * as AimParse from "../../project/aim-project/aim_parse";
 import ParseSupport = require("../../project/support-operate/parse_support");
 
 import ReactParse = require("../../project/process-app/react_parse");
+
+import VueParse = require("../../project/process-app/vue_parse");
+
+
+import WeappParse = require("../../project/process-app/weapp_parse");
+
+
 import ejs = require("ejs");
 
 class Mexport {
@@ -24,11 +31,21 @@ class Mexport {
         if (oParseFile.parseType === "react") {
             oTrans = ReactParse;
             oApp = oLocalConfig.appReact;
-            oTrans.mould = CommonUtil.utilsJson.parse(CommonUtil.utilsIo.readFile(oApp.mouldPath));
-            oTrans.pageConfig.masterPath = oLocalConfig.define.devPath + "/master/react";
+
+        } else if (oParseFile.parseType === "vue") {
+            oTrans = VueParse;
+            oApp = oLocalConfig.appVue;
+
+        } else if (oParseFile.parseType === "weapp") {
+            oTrans = WeappParse;
+            oApp = oLocalConfig.appWeapp;
+
         }
 
-        
+        oTrans.mould = CommonUtil.utilsJson.parse(CommonUtil.utilsIo.readFile(oApp.mouldPath));
+        oTrans.pageConfig.masterPath = oLocalConfig.define.devPath + "/master/" + oApp.appType;
+
+
 
         oOutContent = ParseSupport.parseHtml(oLocalConfig, oTrans, oParseFile);
 
@@ -40,7 +57,7 @@ class Mexport {
                 oOutContent.pageConfig = oTrans.pageConfig;
             }
 
-            
+
 
 
 
@@ -50,7 +67,7 @@ class Mexport {
 
             var sOut = ejs.render(sTemplate, oOutContent);
 
-            sReturn = sTemplate;
+            sReturn = sOut;
 
         } else {
             CommonRoot.logError(931612001, oParseFile.parseType, oParseFile.fileBasename);

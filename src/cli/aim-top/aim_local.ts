@@ -40,7 +40,7 @@ export interface IAimLocalNexusEnv {
     /**
      * 是否编译操作  该操作会执行编译
      */
-    argsBuild:boolean
+    argsBuild: boolean
 
 }
 
@@ -73,12 +73,27 @@ export interface IAimLocalConfig {
     appReact: IAimLocalNexusApp
 
     /**
+     * react的应用定义
+     */
+    appVue: IAimLocalNexusApp
+
+    /**
+     * 小程序的应用定义
+     */
+    appWeapp: IAimLocalNexusApp
+
+    /**
      * 各种的路径
      */
     file: IAimLocalNexusFile
+    /**
+     * 应用的常量定义  该配置项不应修改
+     */
+    inc: IAimLocalNexusInc
 
-    inc:IAimLocalNexusInc
-
+    /**
+     * react的模块功能
+     */
     plugs: any
 }
 
@@ -129,11 +144,11 @@ export interface IaimLocalNexusDefine {
     /**
      * 开发代码目录
      */
-    devPath:string
+    devPath: string
     /**
      * 工程输出目录
      */
-    diskPath:string
+    diskPath: string
 
 }
 
@@ -169,7 +184,7 @@ export interface IAimLocalNexusFile {
     /**
      * 工程配置文件输出
      */
-    diskConfigFile:string
+    diskConfigFile: string
 
 }
 
@@ -196,11 +211,11 @@ export interface IAimLocalNexusApp {
     /**
      * 应用编译目录
      */
-    buildPath:string
+    buildPath: string
     /**
      * 加载的处理逻辑文件
      */
-    mouldPath:string
+    mouldPath: string
 
 }
 
@@ -211,7 +226,7 @@ export interface IAimLocalNexusInc {
     /**
      * 项目页面目录
      */
-    projectPage:string
+    projectPage: string
 
 }
 
