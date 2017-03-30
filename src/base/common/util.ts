@@ -5,7 +5,9 @@ import UtilsIo = require("../../base/utils/io");
 import UtilsObject = require("../../base/utils/object");
 import UtilsXml = require("../../base/utils/xml");
 
-
+/**
+ * 注意该类为原始方法  里面无任何业务相关逻辑
+ */
 class McommonUtil {
 
     utilsString = UtilsString
