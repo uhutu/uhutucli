@@ -35,7 +35,7 @@ class MmoduleInstall {
             CommonUtil.utilsHelper.spawnSync("react-native", ["init", oLocalConfig.appReact.workName], { cwd: oLocalConfig.define.workSpace });
         }
         else {
-            CommonRoot.logDebug(972001003, oLocalConfig.appReact.workName);
+            CommonRoot.logDebug(970312003, oLocalConfig.appReact.workName);
         }
     }
 

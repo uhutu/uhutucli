@@ -1,8 +1,6 @@
 "use strict";
 var Log4js = require("log4js");
-var UtilsJson = require("../../base/utils/json");
-var UtilsIo = require("../../base/utils/io");
-var UtilsString = require("../../base/utils/string");
+var CommonUtil = require("../../base/common/util");
 var logger = Log4js.getLogger("u");
 logger.setLevel('info');
 var McommonRoot = (function () {
@@ -43,17 +41,22 @@ var McommonRoot = (function () {
 }());
 var LogLoad = (function () {
     function LogLoad() {
+        var _this = this;
         this._currentMap = new Map();
         this._flagInitMap = false;
-        var sCliRoot = UtilsIo.parentTop(__dirname, 3);
-        var sContent = UtilsIo.readFile(UtilsIo.pathJoin(sCliRoot, "resources/files-local/log-info/cli_log.json"));
-        var aJson = UtilsJson.parse(sContent);
-        for (var p in aJson) {
-            this._currentMap.set(p, aJson[p]);
-        }
+        var sCliRoot = CommonUtil.utilsIo.parentTop(__dirname, 3);
+        var slogPath = CommonUtil.utilsIo.pathJoin(sCliRoot, "resources/files-local/log-info");
+        var aFiles = CommonUtil.utilsIo.listDir(slogPath);
+        aFiles.forEach(function (sFile) {
+            var sContent = CommonUtil.utilsIo.readFile(sFile);
+            var aJson = CommonUtil.utilsJson.parse(sContent);
+            for (var p in aJson) {
+                _this._currentMap.set(p, aJson[p]);
+            }
+        });
     }
     LogLoad.prototype.upLogInfo = function (iLogCode, aArgs) {
-        return iLogCode + ' ' + UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
+        return iLogCode + ' ' + CommonUtil.utilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
     };
     LogLoad.prototype.upLogInfoByCode = function (iLogCode) {
         return this._currentMap.get(iLogCode.toString());

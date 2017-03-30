@@ -94,13 +94,13 @@ class Mexport {
                             aJsonStep.forEach((oCurrent) => {
                                 if (oProcess[oCurrent.exec]) {
 
-                                    CommonRoot.logDebug(972001004,oPlug.name,oCurrent.exec);
+                                    CommonRoot.logDebug(970312004,oPlug.name,oCurrent.exec);
 
                                     oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
 
                                 }
                                 else {
-                                    CommonRoot.logError(932001003, oCurrent.exec);
+                                    CommonRoot.logError(930312003, oCurrent.exec);
                                 }
 
                             })

@@ -20,7 +20,7 @@ var args = argv.option([
     }
 ]).run();
 var sDiskConfig = args.options.diskconfig;
-CommonRoot.logInfo(962001003, sDiskConfig);
+CommonRoot.logInfo(960312003, sDiskConfig);
 var oLocalConfig = JSON.parse(CommonUtil.utilsIo.readFile(sDiskConfig));
 var oGulp = {
     path_scss: [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"],

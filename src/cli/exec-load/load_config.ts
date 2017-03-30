@@ -34,7 +34,7 @@ class Mexport {
     _saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig){
 
 
-        CommonRoot.logDebug(972001002, oLocalConfig.file.diskConfigFile);
+        CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);
 
         CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile,oLocalConfig);
 
@@ -65,7 +65,7 @@ class Mexport {
                 var sValue = CommonUtil.utilsObject.readProp(oConfig, r[2]);
                 if (sValue == undefined) {
 
-                    CommonRoot.logWarn(932001002, r[2]);
+                    CommonRoot.logWarn(930312002, r[2]);
                 }
                 else if (sValue.indexOf(RegexStrBegin) === -1) {
                     sReturn = sReturn.replace(r[0], CommonUtil.utilsObject.readProp(oConfig, r[2]));

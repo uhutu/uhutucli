@@ -1,9 +1,8 @@
 import Log4js = require("log4js");
 
-import UtilsJson = require("../../base/utils/json");
-import UtilsIo = require("../../base/utils/io");
-import UtilsString = require("../../base/utils/string");
-let logger =  Log4js.getLogger("u");
+import CommonUtil = require("../../base/common/util");
+
+let logger = Log4js.getLogger("u");
 logger.setLevel('info');
 
 class McommonRoot {
@@ -28,7 +27,7 @@ class McommonRoot {
     }
 
 
-    setLogLevel(sLogType:string){
+    setLogLevel(sLogType: string) {
         logger.setLevel(sLogType);
     }
 }
@@ -40,20 +39,30 @@ class LogLoad {
     _flagInitMap = false;
 
     constructor() {
-        var sCliRoot = UtilsIo.parentTop(__dirname, 3);
-        let sContent = UtilsIo.readFile(UtilsIo.pathJoin(sCliRoot, "resources/files-local/log-info/cli_log.json"));
-        let aJson = UtilsJson.parse(sContent);
-        for (var p in aJson) {
-            this._currentMap.set(p, aJson[p]);
-        }
+        var sCliRoot = CommonUtil.utilsIo.parentTop(__dirname, 3);
+
+        var slogPath = CommonUtil.utilsIo.pathJoin(sCliRoot, "resources/files-local/log-info");
+        var aFiles = CommonUtil.utilsIo.listDir(slogPath);
+
+        aFiles.forEach(
+            sFile => {
+                let sContent = CommonUtil.utilsIo.readFile(sFile);
+                let aJson = CommonUtil.utilsJson.parse(sContent);
+                for (var p in aJson) {
+                    this._currentMap.set(p, aJson[p]);
+                }
+            }
+        );
+
+
 
     }
 
-    upLogInfo(iLogCode: number,aArgs) {
+    upLogInfo(iLogCode: number, aArgs) {
 
 
 
-        return iLogCode + ' ' + UtilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
+        return iLogCode + ' ' + CommonUtil.utilsString.formatString(this.upLogInfoByCode(iLogCode), aArgs);
 
     }
 

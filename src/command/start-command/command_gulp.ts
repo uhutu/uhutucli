@@ -25,7 +25,7 @@ let args = argv.option(
 ).run();
 
 let sDiskConfig = args.options.diskconfig;
-CommonRoot.logInfo(962001003, sDiskConfig);
+CommonRoot.logInfo(960312003, sDiskConfig);
 let oLocalConfig: AimLocal.IAimLocalConfig = JSON.parse(CommonUtil.utilsIo.readFile(sDiskConfig));
 
 

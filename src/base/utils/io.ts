@@ -49,7 +49,7 @@ class MUtilsIo {
             var readDir = fs.readdirSync(sPath);
             fs.readdirSync(sPath).forEach(
                 function (file) {
-                    var aFiles = this.listDir(path.join(sPath, file));
+                    var aFiles = new MUtilsIo().listDir(path.join(sPath, file));
                     if (aFiles.length > 0) {
                         aFiles.forEach(
                             function (sName) {

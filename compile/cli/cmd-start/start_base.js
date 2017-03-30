@@ -10,9 +10,9 @@ var MstartBase = (function () {
     }
     MstartBase.prototype.initStart = function (oEnv) {
         this._initSystem(oEnv);
-        CommonRoot.logInfo(962001001);
+        CommonRoot.logInfo(960312001);
         this._initFormatEnv(oEnv);
-        CommonRoot.logDebug(972001001, JSON.stringify(oEnv));
+        CommonRoot.logDebug(970312001, JSON.stringify(oEnv));
         //判断如果是初始化配置文件
         if (oEnv.argsConfig) {
             InitConfig.initStart(oEnv);
@@ -29,10 +29,10 @@ var MstartBase = (function () {
                 }
             }
             else {
-                CommonRoot.logError(932001001);
+                CommonRoot.logError(930312001);
             }
         }
-        CommonRoot.logInfo(962001002);
+        CommonRoot.logInfo(960312002);
     };
     MstartBase.prototype._initSystem = function (oEnv) {
         if (oEnv.argsLog) {

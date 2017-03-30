@@ -22,7 +22,7 @@ var Mexport = (function () {
      * @param oEnv
      */
     Mexport.prototype._saveConfigInfo = function (oLocalConfig) {
-        CommonRoot.logDebug(972001002, oLocalConfig.file.diskConfigFile);
+        CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);
         CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile, oLocalConfig);
     };
     //循环递归处理配置文件
@@ -44,7 +44,7 @@ var Mexport = (function () {
             if (r[1] === "config") {
                 var sValue = CommonUtil.utilsObject.readProp(oConfig, r[2]);
                 if (sValue == undefined) {
-                    CommonRoot.logWarn(932001002, r[2]);
+                    CommonRoot.logWarn(930312002, r[2]);
                 }
                 else if (sValue.indexOf(RegexStrBegin) === -1) {
                     sReturn = sReturn.replace(r[0], CommonUtil.utilsObject.readProp(oConfig, r[2]));
