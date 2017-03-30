@@ -75,45 +75,40 @@ class Mexport {
 
         var oProcess = new PlugProcess();
 
-        for (var p in oLocalConfig.plugs) {
-            var oPlug = oLocalConfig.plugs[p];
-            if (oPlug.hasOwnProperty('json')) {
+        for (var p in oLocalConfig.plugReact) {
+            let oPlug: AimLocal.IAimLocalNexusPlugDefine = oLocalConfig.plugReact[p];
+
+            if (!oPlug.disable) {
+                if (oPlug.hasOwnProperty('json')) {
 
 
-                var sFileContent = CommonUtil.utilsIo.readFile(oPlug.json);
-                sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
-                var oJsonConfig = JSON.parse(sFileContent);
+                    var sFileContent = CommonUtil.utilsIo.readFile(oPlug.json);
+                    sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
+                    var oJsonConfig = JSON.parse(sFileContent);
+                    aStep.forEach(
+                        function (sStep) {
 
+                            if (oJsonConfig.hasOwnProperty(sStep)) {
+                                var aJsonStep: any[] = oJsonConfig[sStep];
 
-                aStep.forEach(
-                    function (sStep) {
+                                aJsonStep.forEach((oCurrent) => {
+                                    if (oProcess[oCurrent.exec]) {
 
-                        if (oJsonConfig.hasOwnProperty(sStep)) {
-                            var aJsonStep: any[] = oJsonConfig[sStep];
+                                        CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);
 
-                            aJsonStep.forEach((oCurrent) => {
-                                if (oProcess[oCurrent.exec]) {
+                                        oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
 
-                                    CommonRoot.logDebug(970312004,oPlug.name,oCurrent.exec);
-
-                                    oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
-
-                                }
-                                else {
-                                    CommonRoot.logError(930312003, oCurrent.exec);
-                                }
-
-                            })
-
-
-
+                                    }
+                                    else {
+                                        CommonRoot.logError(930312003, oCurrent.exec);
+                                    }
+                                })
+                            }
                         }
-
-                    }
-
-                );
+                    );
 
 
+                }
             }
         }
 

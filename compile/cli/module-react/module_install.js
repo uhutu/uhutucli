@@ -29,12 +29,14 @@ var MmoduleInstall = (function () {
     MmoduleInstall.prototype.checkPackage = function (oLocalConfig) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
         var aPlugs = [];
-        for (var p in oLocalConfig.plugs) {
-            var f = oLocalConfig.plugs[p];
-            if (!CommonUtil.utilsString.isEmpty(f.version)) {
-                if (!oPackage.dependencies.hasOwnProperty(f.name) || oPackage.dependencies[f.name] != f.version) {
-                    oPackage.dependencies[f.name] = f.version;
-                    aPlugs.push(f.name);
+        for (var p in oLocalConfig.plugReact) {
+            var f = oLocalConfig.plugReact[p];
+            if (!f.disable) {
+                if (!CommonUtil.utilsString.isEmpty(f.version)) {
+                    if (!oPackage.dependencies.hasOwnProperty(f.name) || oPackage.dependencies[f.name] != f.version) {
+                        oPackage.dependencies[f.name] = f.version;
+                        aPlugs.push(f.name);
+                    }
                 }
             }
         }

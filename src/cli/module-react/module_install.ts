@@ -50,15 +50,18 @@ class MmoduleInstall {
 
         var aPlugs = [];
 
-        for (var p in oLocalConfig.plugs) {
-            var f = oLocalConfig.plugs[p];
+        for (var p in oLocalConfig.plugReact) {
+            let f: AimLocal.IAimLocalNexusPlugDefine = oLocalConfig.plugReact[p];
 
-            if (!CommonUtil.utilsString.isEmpty(f.version)) {
-                if (!oPackage.dependencies.hasOwnProperty(f.name) || oPackage.dependencies[f.name] != f.version) {
-                    oPackage.dependencies[f.name] = f.version;
-                    aPlugs.push(f.name);
+            if (!f.disable) {
+                if (!CommonUtil.utilsString.isEmpty(f.version)) {
+                    if (!oPackage.dependencies.hasOwnProperty(f.name) || oPackage.dependencies[f.name] != f.version) {
+                        oPackage.dependencies[f.name] = f.version;
+                        aPlugs.push(f.name);
+                    }
                 }
             }
+
 
         }
 

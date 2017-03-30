@@ -61,27 +61,33 @@ var Mexport = (function () {
     }
     Mexport.prototype.processPlus = function (oLocalConfig, aStep) {
         var oProcess = new PlugProcess();
-        for (var p in oLocalConfig.plugs) {
-            var oPlug = oLocalConfig.plugs[p];
-            if (oPlug.hasOwnProperty('json')) {
-                var sFileContent = CommonUtil.utilsIo.readFile(oPlug.json);
-                sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
-                var oJsonConfig = JSON.parse(sFileContent);
-                aStep.forEach(function (sStep) {
-                    if (oJsonConfig.hasOwnProperty(sStep)) {
-                        var aJsonStep = oJsonConfig[sStep];
-                        aJsonStep.forEach(function (oCurrent) {
-                            if (oProcess[oCurrent.exec]) {
-                                CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);
-                                oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
-                            }
-                            else {
-                                CommonRoot.logError(930312003, oCurrent.exec);
-                            }
-                        });
-                    }
-                });
+        var _loop_1 = function () {
+            var oPlug = oLocalConfig.plugReact[p];
+            if (!oPlug.disable) {
+                if (oPlug.hasOwnProperty('json')) {
+                    sFileContent = CommonUtil.utilsIo.readFile(oPlug.json);
+                    sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
+                    oJsonConfig = JSON.parse(sFileContent);
+                    aStep.forEach(function (sStep) {
+                        if (oJsonConfig.hasOwnProperty(sStep)) {
+                            var aJsonStep = oJsonConfig[sStep];
+                            aJsonStep.forEach(function (oCurrent) {
+                                if (oProcess[oCurrent.exec]) {
+                                    CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);
+                                    oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
+                                }
+                                else {
+                                    CommonRoot.logError(930312003, oCurrent.exec);
+                                }
+                            });
+                        }
+                    });
+                }
             }
+        };
+        var sFileContent, oJsonConfig;
+        for (var p in oLocalConfig.plugReact) {
+            _loop_1();
         }
     };
     return Mexport;

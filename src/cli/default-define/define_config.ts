@@ -62,7 +62,7 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         reactAndroidStringXml: "[@config:file.reactAndroidWork]/app/src/main/res/values/strings.xml"
     },
     
-    plugs: {
+    plugReact: {
         "uhutu_version": {
             "name": "uhutu-version",
             "json": "[@config:file.reactPlugPath]/uhutu_version.json"
@@ -103,25 +103,27 @@ let currentConfig: AimLocal.IAimLocalConfig = {
             "name": "react-native-storage",
             "version": "0.1.5"
         },
-        /*
+        
          "rn_realm": {
           "name": "realm",
           "version": "1.0.2",
-          "json": "[@config:file.reactPlugPath]/rn_realm.json"
+          "json": "[@config:file.reactPlugPath]/rn_realm.json",
+          "disable":true
         },
-        */
+        
         "rn_sound": {
             "name": "react-native-sound",
             "version": "0.9.0",
             "json": "[@config:file.reactPlugPath]/rn_sound.json"
         },
-        /*
+        
         "rn_mipush": {
           "name": "react-native-mipush",
           "version": "0.2.0",
-          "json": "[@config:file.reactPlugPath]/rn_mipush.json"
+          "json": "[@config:file.reactPlugPath]/rn_mipush.json",
+          "disable":true
         }
-        */
+        
 
     },
     system:{

@@ -94,10 +94,35 @@ export interface IAimLocalConfig {
     /**
      * react的模块功能
      */
-    plugs: any
+    plugReact: IAimLocalNexusPlug
 
-    system:IAimLocalNexusSystem
+    system: IAimLocalNexusSystem
 }
+
+
+
+/**
+ * 系统的定义
+ */
+export interface IAimLocalNexusPlug {
+
+
+}
+
+/**
+ * 插件的定义标记
+ */
+export interface IAimLocalNexusPlugDefine {
+    name: string
+    version: string
+    json: string
+    disable: boolean
+
+
+}
+
+
+
 
 
 export interface IAimLocalNexusProject {
@@ -241,7 +266,7 @@ export interface IAimLocalNexusSystem {
     /**
      * 系统当前版本 该参数用于代码升级兼容历史版本使用 
      */
-    editionCode: 1
+    editionCode: number
 
 }
 
