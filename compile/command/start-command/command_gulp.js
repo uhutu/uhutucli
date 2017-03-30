@@ -11,9 +11,6 @@ var rename = require("gulp-rename");
 var oGulpDefine = {
     pathSass: [],
     pathHtml: [],
-    task_scss: [],
-    task_html: [],
-    task_watch: [],
     task_default: []
 };
 var oLocalConfig;
@@ -95,6 +92,7 @@ var CommandGulp = (function () {
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
         oTask.inTopTask();
+        console.log('cdessgfg');
     };
     CommandGulp.prototype.taskSass = function () {
         var oTask = new GulpTask("main_sass");

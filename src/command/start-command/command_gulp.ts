@@ -134,6 +134,8 @@ class CommandGulp {
         });
         oTask.inTopTask();
 
+        console.log('cdessgfg');
+
 
     }
 

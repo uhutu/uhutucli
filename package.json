@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "uthu-cli",
   "main": "index.js",
-  "bin":"cli-local/start.js",
+  "bin": "cli-local/start.js",
   "scripts": {
-    "dev":"npm run dev-ts && npm run dev-install",
+    "dev": "npm run dev-ts && npm run dev-install",
     "dev-ts": "./node_modules/gulp/bin/gulp.js ts  --gulpfile resources/files-local/gulp-config/gulp_ts.js",
-    "dev-install":"rsync -avq ./ /usr/local/lib/node_modules/uhutu-cli/ --exclude node_modules --exclude .git",
+    "dev-watch": "./node_modules/gulp/bin/gulp.js watch  --gulpfile resources/files-local/gulp-config/gulp_ts.js",
+    "dev-install": "rsync -avq ./ /usr/local/lib/node_modules/uhutu-cli/ --exclude node_modules --exclude .git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +21,7 @@
     "gradlejs": "^1.0.0",
     "xmldom": "^0.1.27",
     "xpath": "^0.0.23",
-    "log4js":"^1.1.1",
+    "log4js": "^1.1.1",
     "glob": "^7.1.1",
     "beautify": "^0.0.8",
     "htmlparser2": "^3.9.2",
@@ -29,20 +30,17 @@
     "gulp-react-native-css": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    
     "ejs": "^2.5.5"
   },
   "devDependencies": {
-    
-    
-    
-    "gulp-typescript": "^3.1.4",
-    "typescript": "^2.1.5",
     "@types/node": "^7.0.12",
+    "gulp-typescript": "^3.1.4",
+    "gulp-watch": "^4.3.11",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "should": "^11.1.2",
-    "supertest": "^2.0.1"
+    "supertest": "^2.0.1",
+    "typescript": "^2.1.5"
   },
   "author": "",
   "license": "ISC"
