@@ -1,0 +1,22 @@
+{
+    "elms": {
+        "upage": {
+            "tagName": "div"
+        },
+        "uview": {
+            "tagName": "div"
+        },
+        "utext": {
+            "tagName": "div"
+        },
+        "ulistview": {
+            "tagName": "div"
+        },
+        "uinput": {
+            "tagName": "input",
+            "primeAttr":{
+                "type":"text"
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "elms": {
+        "upage": {
+            "tagName": "ScrollView"
+        },
+        "uview": {
+            "tagName": "View"
+        },
+        "utext": {
+            "tagName": "Text"
+        },
+        "ulistview": {
+            "tagName": "ListView"
+        },
+        "uinput": {
+            "tagName": "TextInput",
+            "expandFile": "../expand-elm/react_uinput"
+        },
+        "ubutton": {
+            "tagName": "Button",
+            "expandFile": "../expand-elm/react_ubutton"
+        },
+        "uimage": {
+            "tagName": "Image",
+            "expandFile": "../expand-elm/react_uimage"
+        },
+        "uicon": {
+            "tagName": "Icon",
+            "expandFile": "../expand-elm/react_uicon"
+        },
+        "ulink": {
+            "tagName": "TouchableOpacity"
+        },
+        "uswitch": {
+            "tagName": "Switch"
+        }
+    }
+}

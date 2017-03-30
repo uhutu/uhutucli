@@ -1,0 +1,16 @@
+{
+    "elms": {
+        "upage": {
+            "tagName": "view"
+        },
+        "uview": {
+            "tagName": "view"
+        },
+        "utext": {
+            "tagName": "text"
+        },
+        "ulistview": {
+            "tagName": "view"
+        }
+    }
+}

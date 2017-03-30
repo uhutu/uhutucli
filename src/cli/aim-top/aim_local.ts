@@ -197,6 +197,10 @@ export interface IAimLocalNexusApp {
      * 应用编译目录
      */
     buildPath:string
+    /**
+     * 加载的处理逻辑文件
+     */
+    mouldPath:string
 
 }
 

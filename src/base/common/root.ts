@@ -5,6 +5,16 @@ import CommonUtil = require("../../base/common/util");
 let logger = Log4js.getLogger("u");
 logger.setLevel('info');
 
+var cProperty = {
+
+    regexOutBegin: "[#",
+    regexOutEnd: "]",
+
+    regexBaseString: "(.*?):(.*?)"
+
+
+}
+
 class McommonRoot {
 
     logDebug(iLogCode: number, ...aArgs: string[]) {
@@ -25,7 +35,10 @@ class McommonRoot {
 
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
-
+    
+    upProperty() {
+        return cProperty;
+    }
 
     setLogLevel(sLogType: string) {
         logger.setLevel(sLogType);

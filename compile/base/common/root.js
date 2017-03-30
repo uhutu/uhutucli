@@ -3,6 +3,11 @@ var Log4js = require("log4js");
 var CommonUtil = require("../../base/common/util");
 var logger = Log4js.getLogger("u");
 logger.setLevel('info');
+var cProperty = {
+    regexOutBegin: "[#",
+    regexOutEnd: "]",
+    regexBaseString: "(.*?):(.*?)"
+};
 var McommonRoot = (function () {
     function McommonRoot() {
     }
@@ -33,6 +38,9 @@ var McommonRoot = (function () {
             aArgs[_i - 1] = arguments[_i];
         }
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
+    };
+    McommonRoot.prototype.upProperty = function () {
+        return cProperty;
     };
     McommonRoot.prototype.setLogLevel = function (sLogType) {
         logger.setLevel(sLogType);

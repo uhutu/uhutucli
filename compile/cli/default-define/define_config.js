@@ -27,7 +27,8 @@ var currentConfig = {
         appType: "react",
         workName: "[@config:appReact.appType][@config:project.projectName]",
         workPath: "[@config:define.workSpace]/[@config:appReact.workName]",
-        buildPath: "[@config:appReact.workPath]/project/"
+        buildPath: "[@config:appReact.workPath]/project/",
+        mouldPath: "[@config:define.resourcePath]/files-local/mould-file/react.json"
     },
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
