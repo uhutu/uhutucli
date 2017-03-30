@@ -14,8 +14,7 @@ class MmoduleInstall {
 
     installProject(oLocalConfig: AimLocal.IAimLocalConfig) {
 
-
-
+        oLocalConfig.plugReact=LoadPlug.refreshPlug(oLocalConfig,oLocalConfig.appReact,oLocalConfig.plugReact);
         this.checkWork(oLocalConfig);
 
         this.checkPackage(oLocalConfig);

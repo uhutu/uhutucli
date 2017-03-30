@@ -13,6 +13,7 @@ var MstartBase = (function () {
         CommonRoot.logInfo(960312001);
         this._initFormatEnv(oEnv);
         CommonRoot.logDebug(970312001, JSON.stringify(oEnv));
+        var localConfig = null;
         //判断如果是初始化配置文件
         if (oEnv.argsConfig) {
             InitConfig.initStart(oEnv);
@@ -20,7 +21,7 @@ var MstartBase = (function () {
         else {
             //判断是否存在配置文件  如果不存在则报错
             if (InitConfig.flagExistConfig(oEnv)) {
-                var localConfig = LoadConfig.upConfig(oEnv);
+                localConfig = LoadConfig.upConfig(oEnv);
                 if (oEnv.argsInstall) {
                     InitInstall.initStart(localConfig);
                 }
@@ -31,6 +32,9 @@ var MstartBase = (function () {
             else {
                 CommonRoot.logError(930312001);
             }
+        }
+        if (localConfig != null) {
+            LoadConfig.saveConfigInfo(localConfig);
         }
         CommonRoot.logInfo(960312002);
     };

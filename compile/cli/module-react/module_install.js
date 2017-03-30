@@ -6,6 +6,7 @@ var MmoduleInstall = (function () {
     function MmoduleInstall() {
     }
     MmoduleInstall.prototype.installProject = function (oLocalConfig) {
+        oLocalConfig.plugReact = LoadPlug.refreshPlug(oLocalConfig, oLocalConfig.appReact, oLocalConfig.plugReact);
         this.checkWork(oLocalConfig);
         this.checkPackage(oLocalConfig);
         LoadPlug.processPlus(oLocalConfig, oLocalConfig.plugReact, ["react", "ios", "android"]);

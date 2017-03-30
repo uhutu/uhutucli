@@ -244,6 +244,11 @@ export interface IAimLocalNexusApp {
      */
     mouldPath: string
 
+    /**
+     * 加载的插件配置文件
+     */
+    plugInfo:string
+
 }
 
 /**

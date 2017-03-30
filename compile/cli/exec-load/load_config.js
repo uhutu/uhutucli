@@ -14,14 +14,14 @@ var Mexport = (function () {
         //深度克隆配置
         var oLocalConfig = CommonUtil.utilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
         oLocalConfig = this.autoConfig(oLocalConfig);
-        this._saveConfigInfo(oLocalConfig);
+        this.saveConfigInfo(oLocalConfig);
         return oLocalConfig;
     };
     /**
      * 保存配置到文件中存储
      * @param oEnv
      */
-    Mexport.prototype._saveConfigInfo = function (oLocalConfig) {
+    Mexport.prototype.saveConfigInfo = function (oLocalConfig) {
         CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);
         CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile, oLocalConfig);
     };

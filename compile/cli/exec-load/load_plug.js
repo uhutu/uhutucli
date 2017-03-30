@@ -73,6 +73,11 @@ var PlugProcess = (function () {
 var Mexport = (function () {
     function Mexport() {
     }
+    Mexport.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
+        var sFileContent = CommonUtil.utilsIo.readFile(oApp.plugInfo);
+        sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
+        return CommonUtil.utilsHelper.deepAssign(CommonUtil.utilsJson.parse(sFileContent), oPlug);
+    };
     Mexport.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
         var oProcess = new PlugProcess();
         var _loop_1 = function () {

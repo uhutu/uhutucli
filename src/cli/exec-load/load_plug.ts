@@ -86,6 +86,21 @@ class PlugProcess {
 class Mexport {
 
 
+    refreshPlug( oLocalConfig: AimLocal.IAimLocalConfig, oApp:AimLocal.IAimLocalNexusApp,oPlug:AimLocal.IAimLocalNexusPlug):AimLocal.IAimLocalNexusPlug{
+
+
+        let sFileContent = CommonUtil.utilsIo.readFile(oApp.plugInfo);
+        sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
+
+
+       return CommonUtil.utilsHelper.deepAssign(CommonUtil.utilsJson.parse(sFileContent), oPlug);
+
+
+    }
+
+
+
+
     processPlus(oLocalConfig: AimLocal.IAimLocalConfig, oPlugConfig:AimLocal.IAimLocalNexusPlug ,aStep: string[]) {
 
 

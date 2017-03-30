@@ -22,7 +22,7 @@ class Mexport {
 
         
 
-        this._saveConfigInfo(oLocalConfig);
+        this.saveConfigInfo(oLocalConfig);
 
         return oLocalConfig;
 
@@ -31,7 +31,7 @@ class Mexport {
      * 保存配置到文件中存储
      * @param oEnv 
      */
-    _saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig){
+    saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig){
 
 
         CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);

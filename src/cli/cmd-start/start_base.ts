@@ -24,6 +24,8 @@ class MstartBase implements AimLocal.IAimLocalInit {
 
         CommonRoot.logDebug(970312001, JSON.stringify(oEnv));
 
+         let localConfig:AimLocal.IAimLocalConfig=null;
+
         //判断如果是初始化配置文件
         if (oEnv.argsConfig) {
             InitConfig.initStart(oEnv);
@@ -33,7 +35,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
             if (InitConfig.flagExistConfig(oEnv)) {
 
 
-                let localConfig = LoadConfig.upConfig(oEnv);
+                 localConfig = LoadConfig.upConfig(oEnv);
 
 
                 if (oEnv.argsInstall) {
@@ -54,8 +56,10 @@ class MstartBase implements AimLocal.IAimLocalInit {
 
 
         }
-
-
+        if(localConfig!=null){
+            LoadConfig.saveConfigInfo(localConfig);
+        }
+        
         CommonRoot.logInfo(960312002);
 
     }
