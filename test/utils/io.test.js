@@ -1,9 +1,9 @@
-let should = require('should');
+var should = require('should');
 
 
-const TestTarget="../../compile/base/utils/io";
+var TestTarget="../../compile/base/utils/io";
 
-let utilsTest = require(TestTarget);
+var utilsTest = require(TestTarget);
 
 describe(TestTarget, function () {
 

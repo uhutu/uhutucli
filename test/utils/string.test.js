@@ -1,18 +1,18 @@
-let should = require('should');
+var should = require('should');
 
 
-const TestTarget="../../compile/base/utils/string";
+var TestTarget="../../compile/base/utils/string";
 
-let utilsString = require(TestTarget);
+var utilsString = require(TestTarget);
 
 describe(TestTarget, function () {
 
   describe('#replaceBetween',function(){
 
-    let sInString="abcdefg\nhijklmn";
-    let sStart="bc";
-    let sEnd="lm";
-    let sWith="x";
+    var sInString="abcdefg\nhijklmn";
+    var sStart="bc";
+    var sEnd="lm";
+    var sWith="x";
 
     it('test string replace with false', function () {
 

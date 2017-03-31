@@ -1,6 +1,6 @@
-let should = require('should');
-const TestTarget="../../compile/base/utils/xml";
-let utilsTest = require(TestTarget);
+var should = require('should');
+var TestTarget="../../compile/base/utils/xml";
+var utilsTest = require(TestTarget);
 
 describe(TestTarget, function () {
 
