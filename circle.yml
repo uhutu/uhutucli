@@ -24,8 +24,11 @@ test:
     - npm test 
 
 deployment:
-  override:
-    - npm publish
+  stable:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+      - npm publish
+  
 
 experimental:
   notify:
