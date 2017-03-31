@@ -9,6 +9,7 @@ import connect = require('gulp-connect');
 import nativeCss = require('gulp-react-native-css');
 import rename = require('gulp-rename');
 import GulpPlus = require("../../project/gulp-use/gulp_plus");
+import watch=require('gulp-watch');
 
 
 let oGulpDefine = {
@@ -85,7 +86,7 @@ class CommandGulp {
         this.taskHtml();
         this.taskSass();
         this.taskStatic();
-        this.taskWatch();
+        //this.taskWatch();
         this.taskDefault();
     }
 
@@ -97,7 +98,9 @@ class CommandGulp {
 
     }
 
-
+    /**
+     * 监听任务  该任务已删除 替换为gulp-watch插件进行监听修改
+     */
     taskWatch() {
 
         var oTask = new GulpTask("main_watch");
@@ -134,7 +137,8 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_html");
         oTask.inSubTask("react", function () {
-            return gulp.src(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml)
+                
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
                 .pipe(rename({
                     extname: ".js"
@@ -143,14 +147,15 @@ class CommandGulp {
         });
 
         oTask.inSubTask("vue", function () {
-            return gulp.src(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml)
+                
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
                 .pipe(connect.reload());
         });
 
         oTask.inSubTask("weapp", function () {
-            return gulp.src(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml)
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
                 .pipe(rename({
                     extname: ".wxml"
@@ -170,7 +175,8 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_static");
         oTask.inSubTask("react", function () {
-            return gulp.src(oGulpDefine.pathStatic)
+            return watch(oGulpDefine.pathStatic)
+                
                 .pipe(rename(function (sPath) {
                     //将资源文件的一级目录修改为对应的工程的名字 以方便拷贝
 
@@ -194,7 +200,8 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_sass");
         oTask.inSubTask("react", function () {
-            return gulp.src(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass)
+               
                 .pipe(sass().on('error', sass.logError))
                 .pipe(nativeCss())
                 .pipe(rename({
@@ -206,13 +213,15 @@ class CommandGulp {
 
 
         oTask.inSubTask("vue", function () {
-            return gulp.src(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass)
+                
                 .pipe(sass().on('error', sass.logError))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
         });
 
         oTask.inSubTask("weapp", function () {
-            return gulp.src(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass)
+                
                 .pipe(sass().on('error', sass.logError))
                 .pipe(rename({
                     extname: ".wxss"
