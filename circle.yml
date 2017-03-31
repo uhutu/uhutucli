@@ -2,6 +2,9 @@
 machine:
   node:
     version: 6.2.0
+dependencies:
+  override:
+    - npm install
 deployment:
   pre:
     - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
