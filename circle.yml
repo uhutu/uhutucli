@@ -1,11 +1,8 @@
 
-
-
-
 general:
   branches:
-    ignore:
-      - gh-pages # list of branches to ignore
+    only:
+      - master
 machine:
   node:
     version: 6.2.0
