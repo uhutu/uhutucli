@@ -175,6 +175,13 @@ class MUtilsIo {
         return path.normalize(sPath);
     }
 
+    /**
+     * 平台的文件路径分隔符，'\\' 或 '/'。
+     */
+    upPathSeq() {
+        return path.sep;
+    }
+
 
 
 };

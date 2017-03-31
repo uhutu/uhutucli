@@ -259,6 +259,10 @@ export interface IAimLocalNexusInc {
      * 项目页面目录
      */
     projectPage: string
+    /**
+     * 静态资源目录
+     */
+    projectStatic:string
 
 }
 

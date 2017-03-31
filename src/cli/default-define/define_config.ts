@@ -28,7 +28,8 @@ let currentConfig: AimLocal.IAimLocalConfig = {
     },
 
     inc:{
-        projectPage:"pages"
+        projectPage:"pages",
+        projectStatic:"statics"
     },
 
     appReact: {

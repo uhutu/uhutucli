@@ -21,7 +21,8 @@ var currentConfig = {
         diskPath: "[@config:env.pathCwd]/disk"
     },
     inc: {
-        projectPage: "pages"
+        projectPage: "pages",
+        projectStatic: "statics"
     },
     appReact: {
         appType: "react",

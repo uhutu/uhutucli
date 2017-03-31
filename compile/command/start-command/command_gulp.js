@@ -12,6 +12,7 @@ var GulpPlus = require("../../project/gulp-use/gulp_plus");
 var oGulpDefine = {
     pathSass: [],
     pathHtml: [],
+    pathStatic: [],
     task_default: []
 };
 var oLocalConfig;
@@ -56,12 +57,14 @@ var CommandGulp = (function () {
         this.taskConnect();
         this.taskHtml();
         this.taskSass();
+        this.taskStatic();
         this.taskWatch();
         this.taskDefault();
     };
     CommandGulp.prototype.initGulp = function () {
         oGulpDefine.pathSass = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
         oGulpDefine.pathHtml = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
+        oGulpDefine.pathStatic = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectStatic + '/**/*.*'];
     };
     CommandGulp.prototype.taskWatch = function () {
         var oTask = new GulpTask("main_watch");
@@ -70,6 +73,9 @@ var CommandGulp = (function () {
         });
         oTask.inSubTask("html", function () {
             gulp.watch(oGulpDefine.pathHtml, ['main_html']);
+        });
+        oTask.inSubTask("static", function () {
+            gulp.watch(oGulpDefine.pathHtml, ['main_static']);
         });
         oTask.inTopTask();
     };
@@ -106,6 +112,24 @@ var CommandGulp = (function () {
                 extname: ".wxml"
             }))
                 .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
+        });
+        oTask.inTopTask();
+    };
+    CommandGulp.prototype.taskStatic = function () {
+        var oTask = new GulpTask("main_static");
+        oTask.inSubTask("react", function () {
+            return gulp.src(oGulpDefine.pathStatic)
+                .pipe(rename(function (sPath) {
+                //将资源文件的一级目录修改为对应的工程的名字 以方便拷贝
+                var sPathName = sPath.dirname;
+                var aPathSplit = sPathName.split(CommonUtil.utilsIo.upPathSeq());
+                if (aPathSplit.length > 0) {
+                    aPathSplit[0] = aPathSplit[0] + oLocalConfig.project.projectName;
+                    sPathName = aPathSplit.join(CommonUtil.utilsIo.upPathSeq());
+                }
+                sPath.dirname = sPathName;
+            }))
+                .pipe(gulp.dest(oLocalConfig.define.workSpace));
         });
         oTask.inTopTask();
     };

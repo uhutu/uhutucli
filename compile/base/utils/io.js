@@ -137,6 +137,12 @@ var MUtilsIo = (function () {
     MUtilsIo.prototype.pathNormalize = function (sPath) {
         return path.normalize(sPath);
     };
+    /**
+     * 平台的文件路径分隔符，'\\' 或 '/'。
+     */
+    MUtilsIo.prototype.upPathSeq = function () {
+        return path.sep;
+    };
     return MUtilsIo;
 }());
 ;
