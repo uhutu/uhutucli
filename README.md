@@ -4,6 +4,7 @@
 ## 安装  
 * 安装 [Node.js](https://nodejs.org/)  
 * 然后执行：  
+
 ```bash
 npm install -g uhutu-cli
 ```
@@ -16,11 +17,16 @@ npm install -g uhutu-cli
 
 ## 项目文件夹目录
 >dev    开发代码文件夹  
+
 >>pages 页面相关目录  
->>master 模板文件夹 
+
+>>master 模板文件夹  
+
 >disk   cli生成的文件夹目录  
+
 >config.json    配置文件  
->reactdemo  React项目文件夹
+
+>reactdemo  React项目文件夹  
 
 
 ## 编写代码
