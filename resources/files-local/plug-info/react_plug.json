@@ -11,6 +11,11 @@
             "name": "top-file",
             "json": "[@config:file.reactPlugPath]/top_file.json"
         },
+        "rn_voip": {
+            "name": "rn-voip",
+            "json": "[@config:file.reactPlugPath]/rn_voip.json",
+            "disable":true
+        },
         "socket_io": {
             "name": "socket.io",
             "version": "1.5.1"

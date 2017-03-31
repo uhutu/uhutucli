@@ -19,6 +19,24 @@ var PlugProcess = (function () {
             CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
         }
     };
+    /**
+     * ios项目初始化pod
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
+    PlugProcess.prototype.reactInitPod = function (oLocalConfig, oPlugin, oSet) {
+        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile"))) {
+            CommonUtil.utilsHelper.spawnSync("pod", ['init'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
+            CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
+        }
+    };
+    /**
+     * ios修改配置项
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
     PlugProcess.prototype.iosAddPlist = function (oLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactIosInfoPlist);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
@@ -37,6 +55,12 @@ var PlugProcess = (function () {
         dict.appendChild(eString);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactIosInfoPlist);
     };
+    /**
+     * android项目修改配置项
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
     PlugProcess.prototype.androidAddStrings = function (oLocalConfig, oPlugin, oSet) {
         var doc = CommonUtil.utilsXml.parseFromFile(oLocalConfig.file.reactAndroidStringXml);
         var select = CommonUtil.utilsXml.upXpathUseAndroid();
@@ -56,6 +80,12 @@ var PlugProcess = (function () {
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
     };
+    /**
+     * 文本内容替换
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
     PlugProcess.prototype.baseContentReplace = function (oLocalConfig, oPlugin, oSet) {
         CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
     };
