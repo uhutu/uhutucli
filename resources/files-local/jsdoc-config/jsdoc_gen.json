@@ -1,0 +1,36 @@
+{   "back-exec":"./node_modules/.bin/jsdoc  -c resources/files-local/jsdoc-config/jsdoc_gen.json  -R README.md -r .",
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc"]
+    },
+    "source": {
+        "include": ["src"],
+        "includePattern": ".ts$",
+        "excludePattern": "(node_modules/|docs)"
+    },
+    
+    "templates": {
+        "systemName": "uhutu-cli",
+        "footer": "www.uhutu.com",
+        "copyright":  "uhutu",
+        "includeDate": true,
+        "navType": "vertical",
+        "theme": "cerulean",
+        "linenums": true,
+        "collapseSymbols": true,
+        "inverseNav": true,
+        "outputSourceFiles": true ,
+        "outputSourcePath": true,
+        "dateFormat": false,
+        "syntaxTheme": "default",
+        "sort": true,
+        "search": true
+    },
+    "opts": {
+        "destination": "./webdoc/jsdocs/",
+        "encoding": "utf8",
+        "private": true,
+        "recurse": true,
+        "template": "./node_modules/ink-docstrap/template"
+    }
+}
