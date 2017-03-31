@@ -12,21 +12,26 @@ npm install -g uhutu-cli
 ## 使用方法  
 * 在一个空文件夹，执行`uhutu-cli --config`,该操作将在当前目录创建一个config.json文件。编译该config.json文件，修改对应的值。
 * 执行`uhutu-cli --install`,该操作会初始化的各个项目。分别为react,vue,weapp项目。
-
+* 命令行参数参考`uhutu-cli --help`
 
 
 ## 项目文件夹目录
->dev    开发代码文件夹  
 
->>pages 页面相关目录  
+> *config.json*    配置文件  
 
->>master 模板文件夹  
+> *dev*    开发代码文件夹  
 
->disk   cli生成的文件夹目录  
+>> *pages* 页面相关目录  
 
->config.json    配置文件  
+>> *master* 模板文件夹  
 
->reactdemo  React项目文件夹  
+> *disk*   cli生成的文件夹目录  
+
+>> *disk_config.json* 系统生成的配置文件的最终版
+
+>> *logs* 文件夹
+
+> *reactdemo*  React项目文件夹  
 
 
 ## 编写代码
