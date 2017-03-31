@@ -17,9 +17,9 @@ npm install -g uhutu-cli
 
 ## 项目文件夹目录
 
-> *config.json*    配置文件  
+> **config.json**    配置文件  
 
-> *dev*    开发代码文件夹  
+> **dev**    开发代码文件夹  
 
 >> *pages* 页面相关目录  
 
