@@ -65,7 +65,7 @@ var CommandGulp = (function () {
     CommandGulp.prototype.initGulp = function () {
         oGulpDefine.pathSass = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
         oGulpDefine.pathHtml = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
-        oGulpDefine.pathStatic = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectStatic + '/**/*.*'];
+        oGulpDefine.pathStatic = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectStatic + '/**/*'];
     };
     /**
      * 监听任务  该任务已删除 替换为gulp-watch插件进行监听修改
@@ -96,7 +96,7 @@ var CommandGulp = (function () {
     CommandGulp.prototype.taskHtml = function () {
         var oTask = new GulpTask("main_html");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
                 .pipe(rename({
                 extname: ".js"
@@ -104,13 +104,13 @@ var CommandGulp = (function () {
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
         oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
                 .pipe(connect.reload());
         });
         oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
                 .pipe(rename({
                 extname: ".wxml"
@@ -122,7 +122,7 @@ var CommandGulp = (function () {
     CommandGulp.prototype.taskStatic = function () {
         var oTask = new GulpTask("main_static");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathStatic)
+            return watch(oGulpDefine.pathStatic, { ignoreInitial: false })
                 .pipe(rename(function (sPath) {
                 //将资源文件的一级目录修改为对应的工程的名字 以方便拷贝
                 var sPathName = sPath.dirname;
@@ -140,7 +140,7 @@ var CommandGulp = (function () {
     CommandGulp.prototype.taskSass = function () {
         var oTask = new GulpTask("main_sass");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                 .pipe(sass().on('error', sass.logError))
                 .pipe(nativeCss())
                 .pipe(rename({
@@ -150,12 +150,12 @@ var CommandGulp = (function () {
                 .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
         });
         oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                 .pipe(sass().on('error', sass.logError))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
         });
         oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                 .pipe(sass().on('error', sass.logError))
                 .pipe(rename({
                 extname: ".wxss"

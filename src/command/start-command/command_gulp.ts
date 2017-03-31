@@ -94,7 +94,7 @@ class CommandGulp {
         oGulpDefine.pathSass = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + "/**/*.scss"];
         oGulpDefine.pathHtml = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectPage + '/**/*.html'];
 
-        oGulpDefine.pathStatic = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectStatic + '/**/*.*'];
+        oGulpDefine.pathStatic = [oLocalConfig.define.devPath + "/" + oLocalConfig.inc.projectStatic + '/**/*'];
 
     }
 
@@ -137,7 +137,7 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_html");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
                 .pipe(rename({
@@ -147,7 +147,7 @@ class CommandGulp {
         });
 
         oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
@@ -155,7 +155,7 @@ class CommandGulp {
         });
 
         oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathHtml)
+            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
                 .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
                 .pipe(rename({
                     extname: ".wxml"
@@ -175,7 +175,7 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_static");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathStatic)
+            return watch(oGulpDefine.pathStatic, { ignoreInitial: false })
                 
                 .pipe(rename(function (sPath) {
                     //将资源文件的一级目录修改为对应的工程的名字 以方便拷贝
@@ -200,7 +200,7 @@ class CommandGulp {
 
         var oTask = new GulpTask("main_sass");
         oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                
                 .pipe(sass().on('error', sass.logError))
                 .pipe(nativeCss())
@@ -213,14 +213,14 @@ class CommandGulp {
 
 
         oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                 
                 .pipe(sass().on('error', sass.logError))
                 .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
         });
 
         oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathSass)
+            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
                 
                 .pipe(sass().on('error', sass.logError))
                 .pipe(rename({
