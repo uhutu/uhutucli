@@ -23,9 +23,9 @@ npm install -g uhutu-cli
 >> *master* 模板文件夹  
 >
 > *disk*   cli生成的文件夹目录  
->> *disk_config.json* 系统生成的配置文件的最终版
+>> *disk_config.json* 系统生成的配置文件的最终版  
 >
-> *logs* 文件夹
+> *logs* 文件夹  
 > *reactdemo*  React项目文件夹  
 
 
