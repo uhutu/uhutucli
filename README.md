@@ -1,6 +1,6 @@
 # 项目使用  
 
-标记：[![Circle CI](https://circleci.com/gh/uhutu/uhutucli.svg?style=shield)](https://circleci.com/gh/uhutu/uhutucli) [![npm version](https://badge.fury.io/js/uhutu-cli.svg)](https://badge.fury.io/js/uhutu-cli)
+[![Circle CI](https://circleci.com/gh/uhutu/uhutucli.svg?style=shield)](https://circleci.com/gh/uhutu/uhutucli){:target="_blank"} [![npm version](https://badge.fury.io/js/uhutu-cli.svg)](https://badge.fury.io/js/uhutu-cli){:target="_blank"}
 
 这是一个命令行项目，用于生成react-native代码。
 
