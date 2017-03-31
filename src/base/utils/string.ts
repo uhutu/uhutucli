@@ -119,7 +119,7 @@ class Mexport {
      * 
      * @memberOf Mexport
      */
-    replaceAll(sInString, sReplace, sWith) {
+    replaceAll(sInString, sReplace, sWith):string {
         var sReturn = sInString.replace(new RegExp(sReplace, 'gm'), sWith);
         return sReturn;
     }
