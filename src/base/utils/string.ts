@@ -1,12 +1,12 @@
-var M = {
-    temp: {
+class Mexport {
+    temp = {
         EMPTY: "",
         INDEX_NOT_FOUND: -1
-    },
-    isEmpty: function (cs) {
+    }
+    isEmpty(cs) {
         return cs == undefined || cs == null || cs.length == 0;
-    },
-    formatString: function (sString, oArgs) {
+    }
+    formatString(sString, oArgs) {
         var result = sString;
         if (oArgs != undefined) {
             if (oArgs instanceof Array) {
@@ -31,8 +31,15 @@ var M = {
             }
         }
         return result;
-    },
-    substringAfterLast: function (str, separator) {
+    }
+    /**
+     * 
+     * 
+     * @param str 
+     * @param separator 
+     * @returns 
+     */
+    substringAfterLast(str, separator) {
         if (this.isEmpty(str)) {
             return str;
         }
@@ -45,29 +52,76 @@ var M = {
             return this.temp.EMPTY;
         }
         return str.substring(pos + separator.length);
-    },
-    contains: function (seq, searchSeq) {
+    }
+    contains(seq, searchSeq) {
         return seq.indexOf(searchSeq) > this.temp.INDEX_NOT_FOUND;
-    },
-    //替换内容中间的   fRemove标记是否将Start和end去掉
-    replaceBetween: function (sInString, sStart, sEnd, sWith, fRemove) {
+    }
+    /**
+     * 
+     * @param sInString 
+     * @param sStart 
+     * @param sEnd 
+     * @param sWith 
+     * @param fRemove 标记是否将Start和end去掉
+     */
+    replaceBetween(sInString, sStart, sEnd, sWith, fRemove) {
         //var reg=new RegExp("("+sStart.replace('/','\/')+")[\s\S]*?("+sEnd.replace('/','\/')+")","gm");
         //console.log(/(\/\/UhutuIncCodeClassAutoBegin)*?(\/\/UhutuIncCodeClassAutoEnd)/gm.test(sInString));
         //console.log(reg.test("//UhutuIncCodeClassAutoBegin//UhutuIncCodeClassAutoEnd"));
         var reg = new RegExp('(' + sStart + ')(.|\s|\S|\n)*?(' + sEnd + ')', 'gm');
         //console.log(reg.test(sInString));
         return sInString.replace(reg, (fRemove ? '' : sStart) + sWith + (fRemove ? '' : sEnd));
-    },
-    upSpace: function (iNumber) {
+    }
+
+    /**
+     * 
+     * 
+     * @param sInString 输入字符串
+     * @param sStart 开始标记
+     * @param sEnd 结束标记
+     * @param sWith 中间文本内容
+     * @param sAfter 如果不存在则插入 插入在该字符串之后  如果为空 则添加到末尾
+     */
+    reaplaceBig(sInString: string, sStart: string, sEnd: string, sWith: string, sAfter: string) {
+
+
+        var sReturn = sInString;
+
+        if (sReturn.indexOf(sStart) > -1) {
+            sReturn = this.replaceBetween(sInString, sStart, sEnd, sWith, false);
+        }
+        else{
+
+
+
+        }
+         
+
+        return sReturn;
+
+    }
+
+
+    upSpace(iNumber) {
         var aStr = [];
         for (var i = 0; i < iNumber; i++) {
             aStr.push(' ');
         }
         return aStr.join('');
-    },
-    replaceAll: function (sInString, sReplace, sWith) {
+    }
+    /**
+     * 
+     * 
+     * @param {any} sInString 输入字符串
+     * @param {any} sReplace 替换源字符串
+     * @param {any} sWith 替换为字符串
+     * @returns 
+     * 
+     * @memberOf Mexport
+     */
+    replaceAll(sInString, sReplace, sWith) {
         var sReturn = sInString.replace(new RegExp(sReplace, 'gm'), sWith);
         return sReturn;
     }
 };
-export=M;
+export =new Mexport();

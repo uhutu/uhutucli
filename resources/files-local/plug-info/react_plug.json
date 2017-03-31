@@ -23,7 +23,7 @@
 
         "code_push": {
             "name": "react-native-code-push",
-            "version": "1.17.0-beta",
+            "version": "1.17.3-beta",
             "json": "[@config:file.reactPlugPath]/code_push.json"
         },
         "rn_elements": {

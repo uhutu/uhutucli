@@ -65,6 +65,13 @@ class MstartBase implements AimLocal.IAimLocalInit {
     }
 
 
+    /**
+     * 初始化代码
+     * 
+     * @param {AimLocal.IAimLocalNexusEnv} oEnv 
+     * 
+     * @memberOf MstartBase
+     */
     _initSystem(oEnv: AimLocal.IAimLocalNexusEnv) {
 
         if(oEnv.argsLog){
