@@ -23,7 +23,8 @@ npm install -g uhutu-cli
 > *config.json*    配置文件  
 > *dev*    开发代码文件夹  
 >> *pages* 页面相关目录  
->> *master* 模板文件夹  
+>> *master* 模板文件夹,子文件夹按照不同项目命名，如react,vue,weapp
+>> *statics* 静态资源，子文件夹按不同项目命名，里面的文件会在执行build命令时拷贝到对应的实际项目目录下。
 >
 > *disk*   cli生成的文件夹目录  
 >> *disk_config.json* 系统生成的配置文件的最终版  
