@@ -7,6 +7,11 @@
             "name": "top-speed",
             "json": "[@config:file.reactPlugPath]/top_speed.json"
         },
+        
+        "top_gitig": {
+            "name": "top-gitig",
+            "json": "[@config:file.reactPlugPath]/top_gitig.json"
+        },
         "top_file": {
             "name": "top-file",
             "json": "[@config:file.reactPlugPath]/top_file.json"
