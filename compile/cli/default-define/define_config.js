@@ -29,29 +29,29 @@ var currentConfig = {
         workName: "[@config:appReact.appType][@config:project.projectName]",
         workPath: "[@config:define.workSpace]/[@config:appReact.workName]",
         buildPath: "[@config:appReact.workPath]/project/",
-        mouldPath: "[@config:define.resourcePath]/files-local/mould-file/[@config:appReact.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-local/plug-info/[@config:appReact.appType]_plug.json"
+        mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appReact.appType].json",
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appReact.appType]_plug.json"
     },
     appVue: {
         appType: "vue",
         workName: "[@config:appVue.appType][@config:project.projectName]",
         workPath: "[@config:define.workSpace]/[@config:appVue.workName]",
         buildPath: "[@config:appVue.workPath]",
-        mouldPath: "[@config:define.resourcePath]/files-local/mould-file/[@config:appVue.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-local/plug-info/[@config:appVue.appType]_plug.json"
+        mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appVue.appType].json",
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appVue.appType]_plug.json"
     },
     appWeapp: {
         appType: "weapp",
         workName: "[@config:appWeapp.appType][@config:project.projectName]",
         workPath: "[@config:define.workSpace]/[@config:appWeapp.workName]",
         buildPath: "[@config:appWeapp.workPath]",
-        mouldPath: "[@config:define.resourcePath]/files-local/mould-file/[@config:appWeapp.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-local/plug-info/[@config:appWeapp.appType]_plug.json"
+        mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appWeapp.appType].json",
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appWeapp.appType]_plug.json"
     },
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
         reactPackage: "[@config:appReact.workPath]/package.json",
-        reactPlugPath: "[@config:define.resourcePath]/files-local/react-plug",
+        reactPlugPath: "[@config:define.resourcePath]/files-project/react-plug",
         reactIosWork: "[@config:appReact.workPath]/ios",
         reactIosInfoPlist: "[@config:file.reactIosWork]/[@config:appReact.workName]/Info.plist",
         reactAndroidWork: "[@config:appReact.workPath]/android",
