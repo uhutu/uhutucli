@@ -186,6 +186,13 @@ export interface IAimLocalNexusFile {
      */
     reactPackage: string
     /**
+     * react的启动页
+     * 
+     * @type {string}
+     * @memberOf IAimLocalNexusFile
+     */
+    reactStartPage:string
+    /**
      * react插件配置目录
      */
     reactPlugPath: string

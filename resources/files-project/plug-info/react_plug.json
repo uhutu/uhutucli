@@ -65,7 +65,8 @@
         "rn_sound": {
             "name": "react-native-sound",
             "version": "0.9.0",
-            "json": "[@config:file.reactPlugPath]/rn_sound.json"
+            "json": "[@config:file.reactPlugPath]/rn_sound.json",
+            "disable":true
         },
         "rn_camera": {
             "name": "react-native-camera",
