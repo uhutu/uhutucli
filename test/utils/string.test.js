@@ -49,3 +49,25 @@ describe(TestTarget, function () {
 
   });
 });
+
+
+
+describe(TestTarget, function () {
+
+  describe('#reaplaceBig',function(){
+
+    it('test a', function () {
+
+      utilsString.reaplaceBig("abcdefg","//h","//i","jkl","c").should.equal('abc//hjkl//idefg');
+    });
+    it('test b ', function () {
+
+      utilsString.reaplaceBig("abc//hxyzxyzxyz//idefg","//h","//i","jkl","c").should.equal('abc//hjkl//idefg');
+    });
+    it('test when the last string is empty', function () {
+
+      utilsString.reaplaceBig("abcdefg","//h","//i","jkl","").should.equal('abcdefg//hjkl//i');
+    });
+
+  });
+});
