@@ -7,6 +7,11 @@
             "name": "top-speed",
             "json": "[@config:file.reactPlugPath]/top_speed.json"
         },
+        
+        "top_gitig": {
+            "name": "top-gitig",
+            "json": "[@config:file.reactPlugPath]/top_gitig.json"
+        },
         "top_file": {
             "name": "top-file",
             "json": "[@config:file.reactPlugPath]/top_file.json"
@@ -42,7 +47,8 @@
         "rn_webrtc": {
             "name": "react-native-webrtc",
             "version": "github:liudongpu/react-native-webrtc",
-            "json": "[@config:file.reactPlugPath]/rn_webrtc.json"
+            "json": "[@config:file.reactPlugPath]/rn_webrtc.json",
+            "disable":true
         },
         "rn_storage": {
             "name": "react-native-storage",
@@ -59,7 +65,18 @@
         "rn_sound": {
             "name": "react-native-sound",
             "version": "0.9.0",
-            "json": "[@config:file.reactPlugPath]/rn_sound.json"
+            "json": "[@config:file.reactPlugPath]/rn_sound.json",
+            "disable":true
+        },
+        "rn_camera": {
+            "name": "react-native-camera",
+            "version": "0.6.0",
+            "json": "[@config:file.reactPlugPath]/rn_camera.json"
+        },
+         "rn_image_picker": {
+            "name": "react-native-image-picker",
+            "version": "0.26.2",
+            "json": "[@config:file.reactPlugPath]/rn_image_picker.json"
         },
         
         "rn_mipush": {

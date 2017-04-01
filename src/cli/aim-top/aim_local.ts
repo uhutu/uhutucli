@@ -186,6 +186,13 @@ export interface IAimLocalNexusFile {
      */
     reactPackage: string
     /**
+     * react的启动页
+     * 
+     * @type {string}
+     * @memberOf IAimLocalNexusFile
+     */
+    reactStartPage:string
+    /**
      * react插件配置目录
      */
     reactPlugPath: string
@@ -288,12 +295,76 @@ export interface IAimLocalPlugSet {
     
     key:string
     value:string
+    /**
+     * 名称
+     * 
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
     name:string
+    /**
+     * 属性
+     * 
+     * @type {any[]}
+     * @memberOf IAimLocalPlugSet
+     */
     attr:any[]
+    /**
+     * 文件路径
+     * 
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
     filePath:string
+    /**
+     * 替换源文本
+     * 
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
     replaceText:string
+    /**
+     * 替换后内容
+     * 
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
     withText:string
+    /**
+     * 内容
+     * 
+     * @type {string[]}
+     * @memberOf IAimLocalPlugSet
+     */
     contentInfo:string[]
+    /**
+     * 
+     * 开始标记
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
+    begin:string
+    /**
+     * 结束标记
+     * 
+     * @type {string}
+     * @memberOf IAimLocalPlugSet
+     */
+    end:string
+    /**
+     * 注释的类型
+     * 
+     * @type {number}
+     * @memberOf IAimLocalPlugSet
+     */
+    noteType:number
+    /**
+     * 操作类型
+     * 
+     * @type {number}
+     * @memberOf IAimLocalPlugSet
+     */
+    optType:number
 
 }
 

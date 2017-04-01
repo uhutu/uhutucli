@@ -51,6 +51,7 @@ var currentConfig = {
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
         reactPackage: "[@config:appReact.workPath]/package.json",
+        reactStartPage: "./project/pages/air/layout/index",
         reactPlugPath: "[@config:define.resourcePath]/files-project/react-plug",
         reactIosWork: "[@config:appReact.workPath]/ios",
         reactIosInfoPlist: "[@config:file.reactIosWork]/[@config:appReact.workName]/Info.plist",

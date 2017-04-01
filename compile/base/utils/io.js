@@ -143,6 +143,9 @@ var MUtilsIo = (function () {
     MUtilsIo.prototype.upPathSeq = function () {
         return path.sep;
     };
+    MUtilsIo.prototype.upRowSeq = function () {
+        return "\n";
+    };
     return MUtilsIo;
 }());
 ;

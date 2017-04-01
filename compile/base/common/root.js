@@ -6,7 +6,9 @@ logger.setLevel('info');
 var cProperty = {
     regexOutBegin: "[#",
     regexOutEnd: "]",
-    regexBaseString: "(.*?):(.*?)"
+    regexBaseString: "(.*?):(.*?)",
+    noteMessageBegin: "uhutu_autonotebegin_",
+    noteMessageEnd: "uhutu_autonoteend_"
 };
 var McommonRoot = (function () {
     function McommonRoot() {
@@ -41,6 +43,38 @@ var McommonRoot = (function () {
     };
     McommonRoot.prototype.upProperty = function () {
         return cProperty;
+    };
+    /**
+     * 获取注释标记
+     *
+     * @param {number} iStep 开始为1  结束为2
+     * @param {string} sMessage 标记内容
+     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号
+     * @returns
+     *
+     * @memberOf McommonRoot
+     */
+    McommonRoot.prototype.upNoteMessage = function (iStep, sMessage, iNoteType) {
+        var sAddMsg = iStep == 1 ? this.upProperty().noteMessageBegin : this.upProperty().noteMessageEnd;
+        var sReturn = "";
+        sReturn = sAddMsg + sMessage;
+        switch (iNoteType) {
+            case 1:
+                sReturn = "// " + sReturn;
+                break;
+            case 2:
+                sReturn = "# " + sReturn;
+                break;
+            case 3:
+                if (iStep == 1) {
+                    sReturn = "/" + "* " + sReturn;
+                }
+                else {
+                    sReturn = sReturn + " *" + "/";
+                }
+                break;
+        }
+        return sReturn;
     };
     McommonRoot.prototype.setLogLevel = function (sLogType) {
         logger.setLevel(sLogType);

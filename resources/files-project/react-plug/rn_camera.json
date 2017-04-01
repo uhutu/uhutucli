@@ -1,0 +1,32 @@
+{
+    "react": [
+
+        {
+            "exec": "reactAddLink",
+            "set": {
+
+                "link": "react-native-camera"
+
+            }
+        }
+
+    ],
+    "ios": [
+
+        {
+            "exec": "iosAddPlist",
+            "set": {
+                "key": "NSMicrophoneUsageDescription",
+                "value": "NSMicrophoneUsageDescription"
+            }
+        },
+        {
+            "exec": "iosAddPlist",
+            "set": {
+                "key": "NSCameraUsageDescription",
+                "value": "NSCameraUsageDescription"
+            }
+        }
+    ]
+
+}

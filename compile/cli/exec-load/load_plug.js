@@ -25,9 +25,21 @@ var PlugProcess = (function () {
      * @param oPlugin
      * @param oSet
      */
-    PlugProcess.prototype.reactInitPod = function (oLocalConfig, oPlugin, oSet) {
-        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile"))) {
+    PlugProcess.prototype.iosInitPod = function (oLocalConfig, oPlugin, oSet) {
+        var sPodFilePath = CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile");
+        if (!CommonUtil.utilsIo.flagExist(sPodFilePath)) {
             CommonUtil.utilsHelper.spawnSync("pod", ['init'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
+        }
+        var bFlagInstall = false;
+        if (oSet.contentInfo.length > 0) {
+            var sContent = CommonUtil.utilsIo.readFile(sPodFilePath);
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, 2), CommonRoot.upNoteMessage(2, oSet.name, 2), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "target '" + oLocalConfig.appReact.workName + "' do");
+            if (sContent != sNewContent) {
+                CommonUtil.utilsIo.writeFile(sPodFilePath, sNewContent);
+                bFlagInstall = true;
+            }
+        }
+        if (bFlagInstall) {
             CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
         }
     };
@@ -87,28 +99,55 @@ var PlugProcess = (function () {
      * @param oSet
      */
     PlugProcess.prototype.baseContentReplace = function (oLocalConfig, oPlugin, oSet) {
-        CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+        var sAfterText = '';
+        if (oSet.withText != undefined) {
+            sAfterText = oSet.withText;
+        }
+        else {
+            sAfterText = oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq());
+        }
+        //判断如果replaceText字段为空 则直接写入
+        if (CommonUtil.utilsString.isEmpty(oSet.replaceText)) {
+            CommonUtil.utilsIo.writeFile(oSet.filePath, sAfterText);
+        }
+        else {
+            CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+        }
     };
     /**
-     * 设置文件内容
-     * @param oLocalConfig
-     * @param oPlugin
-     * @param oSet
+     * 设置文件内容并进行替换操作
+     *
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig
+     * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
+     * @param {AimLocal.IAimLocalPlugSet} oSet
+     * 其中：name 调换标记 noteType注释类型
+     *
+     * @memberOf PlugProcess
      */
     PlugProcess.prototype.baseFileContent = function (oLocalConfig, oPlugin, oSet) {
-        CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
+        //CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
+        if (oSet.contentInfo.length > 0) {
+            if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
+                CommonUtil.utilsIo.writeFile(oSet.filePath, '');
+            }
+            var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
+            if (sContent != sNewContent) {
+                CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
+            }
+        }
     };
     return PlugProcess;
 }());
-var Mexport = (function () {
-    function Mexport() {
+var MloadPlug = (function () {
+    function MloadPlug() {
     }
-    Mexport.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
+    MloadPlug.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
         var sFileContent = CommonUtil.utilsIo.readFile(oApp.plugInfo);
         sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
         return CommonUtil.utilsHelper.deepAssign(CommonUtil.utilsJson.parse(sFileContent), oPlug);
     };
-    Mexport.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
+    MloadPlug.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
         var oProcess = new PlugProcess();
         var _loop_1 = function () {
             var oPlug = oPlugConfig[p];
@@ -139,6 +178,6 @@ var Mexport = (function () {
             _loop_1();
         }
     };
-    return Mexport;
+    return MloadPlug;
 }());
-module.exports = new Mexport();
+module.exports = new MloadPlug();

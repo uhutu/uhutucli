@@ -1,22 +1,17 @@
 {
-  "react":[
-
-    {
-      "exec":"reactInitPod",
-      "set":{
-
-        
-
-      }
-    }
-
-  ],
+  
   "ios":[
     {
-      "exec":"reactInitPod",
+      "exec":"iosInitPod",
       "set":{
 
-        
+        "contentInfo":[
+          "pod 'RongCloudIM/IMLib', '2.8.0'",
+          "pod 'RongCloudIM/IMKit', '2.8.0'",
+          "pod 'RongCloudIM/CallLib', '2.8.0'",
+          "pod 'RongCloudIM/CallKit', '2.8.0'"
+        ],
+        "name":"react_note_plug_rn_voip"
 
       }
     }

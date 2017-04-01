@@ -27,20 +27,39 @@ class PlugProcess {
      * @param oPlugin 
      * @param oSet 
      */
-    reactInitPod(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
+    iosInitPod(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
 
 
+        var sPodFilePath = CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile");
 
-
-        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile"))) {
-
-
+        if (!CommonUtil.utilsIo.flagExist(sPodFilePath)) {
             CommonUtil.utilsHelper.spawnSync("pod", ['init'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
-
-             CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
         }
 
+        let bFlagInstall = false;
+
+
+        if (oSet.contentInfo.length > 0) {
+            var sContent = CommonUtil.utilsIo.readFile(sPodFilePath);
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent,
+                CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, 2),
+                CommonRoot.upNoteMessage(2, oSet.name, 2),
+                CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(),
+                "target '" + oLocalConfig.appReact.workName + "' do");
+
+            if (sContent != sNewContent) {
+                CommonUtil.utilsIo.writeFile(sPodFilePath, sNewContent);
+
+                bFlagInstall = true;
+            }
+        }
+        if (bFlagInstall) {
+            CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
+        }
     }
+
+
+
 
     /**
      * ios修改配置项
@@ -101,17 +120,59 @@ class PlugProcess {
      * @param oSet 
      */
     baseContentReplace(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
-        CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+
+        var sAfterText = '';
+        if (oSet.withText != undefined) {
+            sAfterText = oSet.withText;
+        }
+        else {
+            sAfterText = oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq());
+        }
+
+        //判断如果replaceText字段为空 则直接写入
+        if (CommonUtil.utilsString.isEmpty(oSet.replaceText)) {
+
+            CommonUtil.utilsIo.writeFile(oSet.filePath, sAfterText);
+
+        } else {
+            CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+        }
+
+
+
     }
 
+
     /**
-     * 设置文件内容
-     * @param oLocalConfig 
-     * @param oPlugin 
-     * @param oSet 
+     * 设置文件内容并进行替换操作
+     * 
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig 
+     * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin 
+     * @param {AimLocal.IAimLocalPlugSet} oSet 
+     * 其中：name 调换标记 noteType注释类型 
+     * 
+     * @memberOf PlugProcess
      */
     baseFileContent(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
-        CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
+        //CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
+
+        if (oSet.contentInfo.length > 0) {
+            if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
+                CommonUtil.utilsIo.writeFile(oSet.filePath, '');
+            }
+
+            var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent,
+                CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType),
+                CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType),
+                CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(),
+                "");
+            if (sContent != sNewContent) {
+                CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
+            }
+        }
+
+
     }
 
 
@@ -120,7 +181,7 @@ class PlugProcess {
 
 
 
-class Mexport {
+class MloadPlug {
 
 
     refreshPlug(oLocalConfig: AimLocal.IAimLocalConfig, oApp: AimLocal.IAimLocalNexusApp, oPlug: AimLocal.IAimLocalNexusPlug): AimLocal.IAimLocalNexusPlug {
@@ -191,4 +252,4 @@ class Mexport {
 
 
 
-export =new Mexport();
+export =new MloadPlug();
