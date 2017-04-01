@@ -149,7 +149,7 @@ class PlugProcess {
      * @param {AimLocal.IAimLocalConfig} oLocalConfig 
      * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin 
      * @param {AimLocal.IAimLocalPlugSet} oSet 
-     * 其中：name 调换标记
+     * 其中：name 调换标记 noteType注释类型 
      * 
      * @memberOf PlugProcess
      */
@@ -181,7 +181,7 @@ class PlugProcess {
 
 
 
-class Mexport {
+class MloadPlug {
 
 
     refreshPlug(oLocalConfig: AimLocal.IAimLocalConfig, oApp: AimLocal.IAimLocalNexusApp, oPlug: AimLocal.IAimLocalNexusPlug): AimLocal.IAimLocalNexusPlug {
@@ -252,4 +252,4 @@ class Mexport {
 
 
 
-export =new Mexport();
+export =new MloadPlug();

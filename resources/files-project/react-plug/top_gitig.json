@@ -9,7 +9,8 @@
         "filePath":"[@config:define.workSpace]/.gitignore",
         "name":"plug_top_gitig",
         "noteType":2,
-        "contentInfo":[".DS_Store"
+        "contentInfo":[".DS_Store",
+        "/disk/"
         ]
       }
     }

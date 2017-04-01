@@ -120,7 +120,7 @@ var PlugProcess = (function () {
      * @param {AimLocal.IAimLocalConfig} oLocalConfig
      * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
      * @param {AimLocal.IAimLocalPlugSet} oSet
-     * 其中：name 调换标记
+     * 其中：name 调换标记 noteType注释类型
      *
      * @memberOf PlugProcess
      */
@@ -139,15 +139,15 @@ var PlugProcess = (function () {
     };
     return PlugProcess;
 }());
-var Mexport = (function () {
-    function Mexport() {
+var MloadPlug = (function () {
+    function MloadPlug() {
     }
-    Mexport.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
+    MloadPlug.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
         var sFileContent = CommonUtil.utilsIo.readFile(oApp.plugInfo);
         sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);
         return CommonUtil.utilsHelper.deepAssign(CommonUtil.utilsJson.parse(sFileContent), oPlug);
     };
-    Mexport.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
+    MloadPlug.prototype.processPlus = function (oLocalConfig, oPlugConfig, aStep) {
         var oProcess = new PlugProcess();
         var _loop_1 = function () {
             var oPlug = oPlugConfig[p];
@@ -178,6 +178,6 @@ var Mexport = (function () {
             _loop_1();
         }
     };
-    return Mexport;
+    return MloadPlug;
 }());
-module.exports = new Mexport();
+module.exports = new MloadPlug();
