@@ -1,6 +1,6 @@
 {
   "name": "uhutu-cli",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "uhutu-cli",
   "main": "index.js",
   "bin": "cli-local/start.js",

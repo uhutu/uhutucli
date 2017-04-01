@@ -33,4 +33,9 @@
 * `npm run dev-watch` 编写src文件夹下代码时的辅助命令，该命令会监听并实时更新uhutu-cli
 * `npm run dev-test` 编译测试代码并且执行test
 
+## github开发
+
+* 开发代码使用分支，master不只接受合并请求，不直接修改代码
+* 只有master进ci操作
+
 ## 其他
