@@ -92,6 +92,15 @@ class Mexport {
         }
         else{
 
+            if(this.isEmpty(sAfter))
+            {
+                sReturn=sReturn+sStart+sWith+sEnd;
+            }
+            else{
+                var reg = new RegExp('(' + sAfter+ ')', 'gm');
+                sReturn=sReturn.replace(reg,"$1"+sStart+sWith+sEnd);
+
+            }
 
 
         }

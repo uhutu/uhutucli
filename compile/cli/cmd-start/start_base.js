@@ -38,6 +38,13 @@ var MstartBase = (function () {
         }
         CommonRoot.logInfo(960312002);
     };
+    /**
+     * 初始化代码
+     *
+     * @param {AimLocal.IAimLocalNexusEnv} oEnv
+     *
+     * @memberOf MstartBase
+     */
     MstartBase.prototype._initSystem = function (oEnv) {
         if (oEnv.argsLog) {
             CommonRoot.setLogLevel(oEnv.argsLog);
