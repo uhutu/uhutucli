@@ -182,6 +182,10 @@ class MUtilsIo {
         return path.sep;
     }
 
+    upRowSeq(){
+        return "\n";
+    }
+
 
 
 };

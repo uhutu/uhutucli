@@ -294,6 +294,8 @@ export interface IAimLocalPlugSet {
     replaceText:string
     withText:string
     contentInfo:string[]
+    begin:string
+    end:string
 
 }
 

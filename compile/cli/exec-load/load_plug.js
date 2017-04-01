@@ -25,9 +25,21 @@ var PlugProcess = (function () {
      * @param oPlugin
      * @param oSet
      */
-    PlugProcess.prototype.reactInitPod = function (oLocalConfig, oPlugin, oSet) {
-        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile"))) {
+    PlugProcess.prototype.iosInitPod = function (oLocalConfig, oPlugin, oSet) {
+        var sPodFilePath = CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile");
+        if (!CommonUtil.utilsIo.flagExist(sPodFilePath)) {
             CommonUtil.utilsHelper.spawnSync("pod", ['init'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
+        }
+        var bFlagInstall = false;
+        if (oSet.contentInfo.length > 0) {
+            var sContent = CommonUtil.utilsIo.readFile(sPodFilePath);
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, 2), CommonRoot.upNoteMessage(2, oSet.name, 2), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "target '" + oLocalConfig.appReact.workName + "' do");
+            if (sContent != sNewContent) {
+                CommonUtil.utilsIo.writeFile(sPodFilePath, sNewContent);
+                bFlagInstall = true;
+            }
+        }
+        if (bFlagInstall) {
             CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
         }
     };
