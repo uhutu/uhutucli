@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "../../../test/target",
+        "rootDir": "../../../",
+        "allowJs": true,
+        "target": "es5",
+        "types": ["node"],
+        "lib": [
+            "es2015"
+        ],
+        "moduleResolution": "Node"
+    },
+    "include": [
+        "../../../test/source/**/*.ts"
+    ]
+}

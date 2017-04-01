@@ -1,9 +1,9 @@
-var should = require('should');
+import chai = require('chai');
+var should=chai.should();
 
-
-var TestTarget="../../compile/base/utils/string";
-
-var utilsString = require(TestTarget);
+var TestTarget="base/utils/string";
+import 'mocha';
+import utilsString = require("../../../src/base/utils/string");
 
 describe(TestTarget, function () {
 

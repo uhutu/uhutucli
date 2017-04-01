@@ -10,6 +10,8 @@
     "dev-watch": "./node_modules/gulp/bin/gulp.js watch  --gulpfile resources/files-local/gulp-config/gulp_ts.js",
     "dev-install": "rsync -avq ./ /usr/local/lib/node_modules/uhutu-cli/ --exclude node_modules --exclude .git",
     "dev-typedoc": "./node_modules/gulp/bin/gulp.js typedoc  --gulpfile resources/files-local/gulp-config/gulp_typedoc.js",
+    "dev-mochatest": "./node_modules/gulp/bin/gulp.js mochatest  --gulpfile resources/files-local/gulp-config/gule_mochatest.js",
+    "dev-test":"npm run dev-mochatest && npm run test",
     "test": "mocha --recursive"
   },
   "repository": {
@@ -30,18 +32,20 @@
     "gulp-connect": "^5.0.0",
     "gulp-react-native-css": "^0.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-replace":"^0.5.4",
     "gulp-sass": "^3.1.0",
     "gulp-watch": "^4.3.11",
     "ejs": "^2.5.5"
   },
   "devDependencies": {
+    "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
+    "chai": "^3.5.0",
     "gulp-typedoc": "^2.0.2",
     "gulp-typescript": "^3.1.4",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
-    "should": "^11.1.2",
     "supertest": "^2.0.1",
     "typedoc": "^0.5.9",
     "typescript": "^2.1.5"
