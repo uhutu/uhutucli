@@ -29,14 +29,20 @@ class PlugProcess {
      */
     iosInitPod(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
 
-
+    let bFlagInstall = false;
         var sPodFilePath = CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Podfile");
 
         if (!CommonUtil.utilsIo.flagExist(sPodFilePath)) {
             CommonUtil.utilsHelper.spawnSync("pod", ['init'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
         }
+        else{
+            //判断如果不存在Pods文件夹 则初始化之
+            if(!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios", "Pods"))){
+                bFlagInstall=true;
+            }
+        }
 
-        let bFlagInstall = false;
+        
 
 
         if (oSet.contentInfo.length > 0) {

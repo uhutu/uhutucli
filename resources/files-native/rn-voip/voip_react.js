@@ -4,7 +4,7 @@ var CalendarManager = NativeModules.VoipReact;
 
 
 
-export default class MvoipReact
+export default class PlugVoipReact
 {
 
 

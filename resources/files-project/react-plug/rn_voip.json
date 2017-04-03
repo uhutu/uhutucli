@@ -21,7 +21,7 @@
       "set":{
         "optType":3,
         "key":"[@config:define.resourcePath]/files-native/rn-voip/voip_react.js",
-        "value":"[config:appReact.buildPath]/native-plug/voip/voip_react.js"
+        "value":"[@config:appReact.buildPath]/native-plug/voip/voip_react.js"
 
       }
     },
@@ -30,7 +30,7 @@
       "set":{
         "optType":3,
         "key":"[@config:define.resourcePath]/files-native/rn-voip/VoipReact.h",
-        "value":"[config:appReact.workPath]/VoipReact.h"
+        "value":"[@config:appReact.workPath]/ios/VoipReact.h"
 
       }
     },
@@ -39,7 +39,7 @@
       "set":{
         "optType":3,
         "key":"[@config:define.resourcePath]/files-native/rn-voip/VoipReact.m",
-        "value":"[config:appReact.workPath]/VoipReact.m"
+        "value":"[@config:appReact.workPath]/ios/VoipReact.m"
 
       }
     }
