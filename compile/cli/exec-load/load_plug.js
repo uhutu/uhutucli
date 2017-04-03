@@ -92,6 +92,12 @@ var PlugProcess = (function () {
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
     };
+    /**
+     * 日志描述输出
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
     PlugProcess.prototype.baseLogDescript = function (oLocalConfig, oPlugin, oSet) {
         //日志编号  如果未定义则不输出
         var sLogType = oSet.optType;
@@ -121,6 +127,24 @@ var PlugProcess = (function () {
         }
         else {
             CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
+        }
+    };
+    /**
+     * 文件操作
+     *
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig
+     * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
+     * @param {AimLocal.IAimLocalPlugSet} oSet
+     *
+     * @memberOf PlugProcess
+     */
+    PlugProcess.prototype.baseFileOption = function (oLocalConfig, oPlugin, oSet) {
+        if (oSet.optType != undefined) {
+            switch (oSet.optType) {
+                case 3:
+                    CommonUtil.utilsIo.copyFileAsync(oSet.key, oSet.value);
+                    break;
+            }
         }
     };
     /**

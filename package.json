@@ -28,6 +28,7 @@
     "glob": "^7.1.1",
     "beautify": "^0.0.8",
     "htmlparser2": "^3.9.2",
+    "inquirer":"^3.0.6",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-react-native-css": "^0.1.0",

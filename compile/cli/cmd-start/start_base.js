@@ -1,10 +1,10 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
+var CommonUtil = require("../../base/common/util");
 var InitConfig = require("../../cli/exec-init/init_config");
 var InitInstall = require("../../cli/exec-init/init_install");
 var InitBuild = require("../../cli/exec-init/init_build");
 var LoadConfig = require("../../cli/exec-load/load_config");
-var UtilsIo = require("../../base/utils/io");
 var MstartBase = (function () {
     function MstartBase() {
     }
@@ -55,7 +55,7 @@ var MstartBase = (function () {
      * @param envs
      */
     MstartBase.prototype._initFormatEnv = function (oEnv) {
-        oEnv.pathCli = UtilsIo.parentTop(oEnv.pathStart, 3);
+        oEnv.pathCli = CommonUtil.utilsIo.parentTop(oEnv.pathStart, 3);
     };
     return MstartBase;
 }());

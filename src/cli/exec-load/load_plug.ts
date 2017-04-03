@@ -113,16 +113,21 @@ class PlugProcess {
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
     }
 
-
-    baseLogDescript(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet){
+    /**
+     * 日志描述输出
+     * @param oLocalConfig 
+     * @param oPlugin 
+     * @param oSet 
+     */
+    baseLogDescript(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
 
         //日志编号  如果未定义则不输出
-        var sLogType=oSet.optType;
+        var sLogType = oSet.optType;
 
-        if(sLogType!=undefined){
+        if (sLogType != undefined) {
 
-            if(oSet.desc){
-                CommonRoot.logAuto(oSet.optType,oSet.desc);
+            if (oSet.desc) {
+                CommonRoot.logAuto(oSet.optType, oSet.desc);
             }
 
         }
@@ -155,6 +160,30 @@ class PlugProcess {
         }
 
 
+
+    }
+
+    /**
+     * 文件操作
+     * 
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig 
+     * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin 
+     * @param {AimLocal.IAimLocalPlugSet} oSet 
+     * 
+     * @memberOf PlugProcess
+     */
+    baseFileOption(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet) {
+
+        if (oSet.optType != undefined) {
+
+            switch (oSet.optType) {
+                case 3:
+                    CommonUtil.utilsIo.copyFileAsync(oSet.key, oSet.value);
+                    break;
+
+            }
+
+        }
 
     }
 
