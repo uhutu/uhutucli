@@ -13,32 +13,42 @@ var cProperty = {
 var McommonRoot = (function () {
     function McommonRoot() {
     }
-    McommonRoot.prototype.logDebug = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
+    /**
+     * 自动日志输出  一般不要调用该方法 调用debug/info等日志类型
+     *
+     * @param {number} iLogCode  日志格式为：9+级别编号+4位分类标识+3位流水号，级别编号:0:EMERGENCY,1:ALERT,2:CRITICAL,3:ERROR,4:WARNING,5:NOTICE,6:INFO,7:DEBUG
+     * @param {...string[]} aArgs
+     *
+     * @memberOf McommonRoot
+     */
+    McommonRoot.prototype.logAuto = function (iLogCode, aArgs) {
+        if (iLogCode > 9) {
+            switch (iLogCode.toString().substr(1, 1)) {
+                case "3":
+                    this.logError(iLogCode, aArgs);
+                    break;
+                case "4":
+                    this.logWarn(iLogCode, aArgs);
+                    break;
+                case "6":
+                    this.logInfo(iLogCode, aArgs);
+                    break;
+                case "7":
+                    this.logDebug(iLogCode, aArgs);
+                    break;
+            }
         }
+    };
+    McommonRoot.prototype.logDebug = function (iLogCode, aArgs) {
         logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logInfo = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logInfo = function (iLogCode, aArgs) {
         logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logWarn = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logWarn = function (iLogCode, aArgs) {
         logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logError = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logError = function (iLogCode, aArgs) {
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     };
     McommonRoot.prototype.upProperty = function () {

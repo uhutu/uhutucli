@@ -92,6 +92,15 @@ var PlugProcess = (function () {
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
     };
+    PlugProcess.prototype.baseLogDescript = function (oLocalConfig, oPlugin, oSet) {
+        //日志编号  如果未定义则不输出
+        var sLogType = oSet.optType;
+        if (sLogType != undefined) {
+            if (oSet.desc) {
+                CommonRoot.logAuto(oSet.optType, oSet.desc);
+            }
+        }
+    };
     /**
      * 文本内容替换
      * @param oLocalConfig
@@ -161,7 +170,7 @@ var MloadPlug = (function () {
                             var aJsonStep = oJsonConfig[sStep];
                             aJsonStep.forEach(function (oCurrent) {
                                 if (oProcess[oCurrent.exec]) {
-                                    CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);
+                                    CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
                                     oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
                                 }
                                 else {

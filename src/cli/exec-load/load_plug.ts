@@ -113,6 +113,22 @@ class PlugProcess {
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
     }
 
+
+    baseLogDescript(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet){
+
+        //日志编号  如果未定义则不输出
+        var sLogType=oSet.optType;
+
+        if(sLogType!=undefined){
+
+            if(oSet.desc){
+                CommonRoot.logAuto(oSet.optType,oSet.desc);
+            }
+
+        }
+
+    }
+
     /**
      * 文本内容替换
      * @param oLocalConfig 
@@ -223,7 +239,7 @@ class MloadPlug {
                                 aJsonStep.forEach((oCurrent: AimLocal.IAimLocalPlugExec) => {
                                     if (oProcess[oCurrent.exec]) {
 
-                                        CommonRoot.logDebug(970312004, oPlug.name, oCurrent.exec);
+                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
 
                                         oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
 

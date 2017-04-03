@@ -292,6 +292,10 @@ export interface IAimLocalNexusSystem {
  * 插件的设置值 该接口仅用于命名的标记  无实际用途
  */
 export interface IAimLocalPlugSet {
+    /**
+     * 描述信息
+     */
+    desc:string[]
     
     key:string
     value:string

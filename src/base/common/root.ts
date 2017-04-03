@@ -20,21 +20,57 @@ var cProperty = {
 
 class McommonRoot {
 
-    logDebug(iLogCode: number, ...aArgs: string[]) {
+    /**
+     * 自动日志输出  一般不要调用该方法 调用debug/info等日志类型
+     * 
+     * @param {number} iLogCode  日志格式为：9+级别编号+4位分类标识+3位流水号，级别编号:0:EMERGENCY,1:ALERT,2:CRITICAL,3:ERROR,4:WARNING,5:NOTICE,6:INFO,7:DEBUG
+     * @param {...string[]} aArgs 
+     * 
+     * @memberOf McommonRoot
+     */
+    logAuto(iLogCode: number, aArgs: string[]) {
+
+        if (iLogCode > 9) {
+
+            switch (iLogCode.toString().substr(1, 1)) {
+                case "3":
+                    this.logError(iLogCode, aArgs);
+                    break;
+                case "4":
+                    this.logWarn(iLogCode, aArgs);
+                    break;
+                case "6":
+                    this.logInfo(iLogCode, aArgs);
+                    break;
+                case "7":
+                    this.logDebug(iLogCode, aArgs);
+                    break;
+            }
+
+
+
+
+        }
+
+
+
+    }
+
+    logDebug(iLogCode: number, aArgs?: string | string[]) {
 
         logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
-    logInfo(iLogCode: number, ...aArgs: string[]) {
+    logInfo(iLogCode: number, aArgs?: string | string[]) {
 
         logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
-    logWarn(iLogCode: number, ...aArgs: string[]) {
+    logWarn(iLogCode: number, aArgs?: string | string[]) {
 
         logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     }
-    logError(iLogCode: number, ...aArgs: string[]) {
+    logError(iLogCode: number, aArgs?: string | string[]) {
 
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
