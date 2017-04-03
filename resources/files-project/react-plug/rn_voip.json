@@ -15,6 +15,33 @@
         "name":"react_note_plug_rn_voip"
 
       }
+    },
+    {
+      "exec":"baseFileOption",
+      "set":{
+        "optType":3,
+        "key":"[@config:define.resourcePath]/files-native/rn-voip/voip_react.js",
+        "value":"[config:appReact.buildPath]/native-plug/voip/voip_react.js"
+
+      }
+    },
+    {
+      "exec":"baseFileOption",
+      "set":{
+        "optType":3,
+        "key":"[@config:define.resourcePath]/files-native/rn-voip/VoipReact.h",
+        "value":"[config:appReact.workPath]/VoipReact.h"
+
+      }
+    },
+    {
+      "exec":"baseFileOption",
+      "set":{
+        "optType":3,
+        "key":"[@config:define.resourcePath]/files-native/rn-voip/VoipReact.m",
+        "value":"[config:appReact.workPath]/VoipReact.m"
+
+      }
     }
   ]
 
