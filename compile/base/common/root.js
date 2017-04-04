@@ -10,6 +10,20 @@ var cProperty = {
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_"
 };
+var RootResult = (function () {
+    function RootResult() {
+        this.resultCode = 1;
+        this.resultMessage = "";
+    }
+    RootResult.prototype.upFlagOk = function () {
+        return this.resultCode === 1;
+    };
+    RootResult.prototype.inError = function (iLogCode, aArgs) {
+        this.resultCode = iLogCode;
+        mcommonRoot.logAuto(iLogCode, aArgs);
+    };
+    return RootResult;
+}());
 var McommonRoot = (function () {
     function McommonRoot() {
     }
@@ -50,6 +64,9 @@ var McommonRoot = (function () {
     };
     McommonRoot.prototype.logError = function (iLogCode, aArgs) {
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
+    };
+    McommonRoot.prototype.upResult = function () {
+        return new RootResult();
     };
     McommonRoot.prototype.upProperty = function () {
         return cProperty;
@@ -116,4 +133,5 @@ var LogLoad = (function () {
     return LogLoad;
 }());
 var logLoad = new LogLoad();
-module.exports = new McommonRoot();
+var mcommonRoot = new McommonRoot();
+module.exports = mcommonRoot;

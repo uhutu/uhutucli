@@ -5,6 +5,11 @@ var LoadConfig = require("../../cli/exec-load/load_config");
 var PlugProcess = (function () {
     function PlugProcess() {
     }
+    PlugProcess.prototype._logShow = function (oSet) {
+        if (oSet.logCode != undefined) {
+            CommonRoot.logAuto(oSet.logCode, oSet.logParams);
+        }
+    };
     /**
      * react添加内容
      * @param oLocalConfig
@@ -18,6 +23,7 @@ var PlugProcess = (function () {
             oPackage.links[oPlugin.name] = oPlugin.version;
             CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
         }
+        return true;
     };
     /**
      * ios项目初始化pod
@@ -48,6 +54,7 @@ var PlugProcess = (function () {
         if (bFlagInstall) {
             CommonUtil.utilsHelper.spawnSync("pod", ['install'], { cwd: CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "ios") });
         }
+        return true;
     };
     /**
      * ios修改配置项
@@ -72,6 +79,7 @@ var PlugProcess = (function () {
         eString.textContent = oSet.value;
         dict.appendChild(eString);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactIosInfoPlist);
+        return true;
     };
     /**
      * android项目修改配置项
@@ -97,6 +105,7 @@ var PlugProcess = (function () {
         eMeta.setAttribute("name", oSet.name);
         dict.appendChild(eMeta);
         CommonUtil.utilsXml.saveXmlFile(doc, oLocalConfig.file.reactAndroidStringXml);
+        return true;
     };
     /**
      * 日志描述输出
@@ -112,6 +121,7 @@ var PlugProcess = (function () {
                 CommonRoot.logAuto(oSet.optType, oSet.desc);
             }
         }
+        return true;
     };
     /**
      * 文本内容替换
@@ -134,6 +144,7 @@ var PlugProcess = (function () {
         else {
             CommonUtil.utilsIo.contentReplaceWith(oSet.filePath, oSet.replaceText, oSet.withText);
         }
+        return true;
     };
     /**
      * 文件操作
@@ -145,13 +156,22 @@ var PlugProcess = (function () {
      * @memberOf PlugProcess
      */
     PlugProcess.prototype.baseFileOption = function (oLocalConfig, oPlugin, oSet) {
+        var bFlagSuccess = true;
         if (oSet.optType != undefined) {
             switch (oSet.optType) {
                 case 3:
-                    CommonUtil.utilsIo.copyFileAsync(oSet.key, oSet.value);
+                    CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                    break;
+                case 2:
+                    bFlagSuccess = CommonUtil.utilsIo.flagExist(oSet.filePath);
+                    if (!bFlagSuccess) {
+                        CommonRoot.logError(930312006, oSet.filePath);
+                        this._logShow(oSet);
+                    }
                     break;
             }
         }
+        return bFlagSuccess;
     };
     /**
      * 设置文件内容并进行替换操作
@@ -159,7 +179,7 @@ var PlugProcess = (function () {
      * @param {AimLocal.IAimLocalConfig} oLocalConfig
      * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
      * @param {AimLocal.IAimLocalPlugSet} oSet
-     * 其中：name 调换标记 noteType注释类型
+     * 其中：name 调换标记 noteType注释类型  filePath文件路径  contentInfo内容  withText附加在该内容之后，为空则文本内容之后
      *
      * @memberOf PlugProcess
      */
@@ -169,12 +189,17 @@ var PlugProcess = (function () {
             if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
                 CommonUtil.utilsIo.writeFile(oSet.filePath, '');
             }
+            var sAfterText = "";
+            if (oSet.withText != undefined) {
+                sAfterText = oSet.withText;
+            }
             var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
-            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
+            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), sAfterText);
             if (sContent != sNewContent) {
                 CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
             }
         }
+        return true;
     };
     return PlugProcess;
 }());
@@ -201,7 +226,10 @@ var MloadPlug = (function () {
                             aJsonStep.forEach(function (oCurrent) {
                                 if (oProcess[oCurrent.exec]) {
                                     CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
-                                    oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
+                                    var bFlagSuccess = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
+                                    if (!bFlagSuccess) {
+                                        CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
+                                    }
                                 }
                                 else {
                                     CommonRoot.logError(930312003, oCurrent.exec);

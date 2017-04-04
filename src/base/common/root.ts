@@ -18,6 +18,22 @@ var cProperty = {
 
 }
 
+
+class RootResult{
+    resultCode:number=1
+    resultMessage:string=""
+    upFlagOk():boolean{
+        return this.resultCode===1;
+    }
+    inError(iLogCode: number, aArgs: string[]){
+        this.resultCode=iLogCode;
+        mcommonRoot.logAuto(iLogCode,aArgs);
+
+    }
+}
+
+
+
 class McommonRoot {
 
     /**
@@ -74,6 +90,13 @@ class McommonRoot {
 
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
+
+
+
+    upResult(){
+        return new RootResult();
+    }
+
 
     upProperty() {
         return cProperty;
@@ -162,4 +185,6 @@ class LogLoad {
 const logLoad = new LogLoad();
 
 
-export =new McommonRoot();
+const mcommonRoot=new McommonRoot();
+
+export =mcommonRoot;
