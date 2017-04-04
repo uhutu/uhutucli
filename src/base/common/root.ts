@@ -106,7 +106,7 @@ class McommonRoot {
      * 
      * @param {number} iStep 开始为1  结束为2
      * @param {string} sMessage 标记内容
-     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号
+     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号 4:xml注释
      * @returns 
      * 
      * @memberOf McommonRoot
@@ -131,6 +131,9 @@ class McommonRoot {
                 } else {
                     sReturn = sReturn + " *" + "/";
                 }
+                break;
+                case 4:
+                sReturn="<!-- "+sReturn+" -->";
                 break;
         }
 

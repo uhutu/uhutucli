@@ -159,15 +159,26 @@ var PlugProcess = (function () {
         var bFlagSuccess = true;
         if (oSet.optType != undefined) {
             switch (oSet.optType) {
-                case 3:
+                //复制文件 
+                case 150306:
                     CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
                     break;
-                case 2:
+                //判断文件是否存在
+                case 150206:
                     bFlagSuccess = CommonUtil.utilsIo.flagExist(oSet.filePath);
                     if (!bFlagSuccess) {
                         CommonRoot.logError(930312006, oSet.filePath);
                         this._logShow(oSet);
                     }
+                    break;
+                //复制文件 并且进行config的替换
+                case 153303:
+                    var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+                    var sNewContent = LoadConfig.formatConfigString(sContent, oLocalConfig);
+                    CommonUtil.utilsIo.writeFile(oSet.targetPath, sNewContent);
+                    break;
+                default:
+                    CommonRoot.logError(930312008, oSet.optType.toString());
                     break;
             }
         }

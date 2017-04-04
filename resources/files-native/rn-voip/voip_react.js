@@ -11,7 +11,7 @@ export default class PlugVoipReact
      static initVoip(sAppKey)
      {
 
-       CalendarManager.initVoip(sAppKey);
+       CalendarManager.initVoip("[@config:params.voipAppKey]");
 
      }
 
