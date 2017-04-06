@@ -74,6 +74,7 @@
     },
     {
       "exec": "baseFileContent",
+      "disable":true,
       "set": {
         "name": "react_note_plug_rn_voip_android_app_file_provider",
         "filePath": "[@config:file.reactAndroidWork]/app/src/main/AndroidManifest.xml",

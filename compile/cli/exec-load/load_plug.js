@@ -235,15 +235,20 @@ var MloadPlug = (function () {
                         if (oJsonConfig.hasOwnProperty(sStep)) {
                             var aJsonStep = oJsonConfig[sStep];
                             aJsonStep.forEach(function (oCurrent) {
-                                if (oProcess[oCurrent.exec]) {
-                                    CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
-                                    var bFlagSuccess = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
-                                    if (!bFlagSuccess) {
-                                        CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
+                                if (!oCurrent.disable) {
+                                    if (oProcess[oCurrent.exec]) {
+                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
+                                        var bFlagSuccess = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
+                                        if (!bFlagSuccess) {
+                                            CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
+                                        }
+                                    }
+                                    else {
+                                        CommonRoot.logError(930312003, oCurrent.exec);
                                     }
                                 }
                                 else {
-                                    CommonRoot.logError(930312003, oCurrent.exec);
+                                    CommonRoot.logDebug(970312005, [oPlug.name, oCurrent.exec]);
                                 }
                             });
                         }

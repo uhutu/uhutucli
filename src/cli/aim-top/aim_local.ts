@@ -401,6 +401,7 @@ export interface IAimLocalPlugSet {
 export interface IAimLocalPlugExec {
     
     exec:string
+    disable:boolean
     set:IAimLocalPlugSet
 
 }

@@ -320,18 +320,26 @@ class MloadPlug {
                                 var aJsonStep: any[] = oJsonConfig[sStep];
 
                                 aJsonStep.forEach((oCurrent: AimLocal.IAimLocalPlugExec) => {
-                                    if (oProcess[oCurrent.exec]) {
 
-                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
+                                    if (!oCurrent.disable) {
 
-                                        let bFlagSuccess: boolean = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
-                                        if (!bFlagSuccess) {
-                                            CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
+
+                                        if (oProcess[oCurrent.exec]) {
+
+                                            CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
+
+                                            let bFlagSuccess: boolean = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
+                                            if (!bFlagSuccess) {
+                                                CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
+                                            }
+
                                         }
-
+                                        else {
+                                            CommonRoot.logError(930312003, oCurrent.exec);
+                                        }
                                     }
-                                    else {
-                                        CommonRoot.logError(930312003, oCurrent.exec);
+                                    else{
+                                        CommonRoot.logDebug(970312005, [oPlug.name, oCurrent.exec]);
                                     }
                                 })
                             }

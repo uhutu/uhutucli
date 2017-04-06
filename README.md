@@ -6,11 +6,14 @@
 
 ## 安装  
 * 安装 [Node.js](https://nodejs.org/)  
+* 安装react-native `npm install -g react-native`
 * 然后执行：  
 
 ```bash
 npm install -g uhutu-cli
 ```
+
+* 如果启用voip等额外功能需要安装pod
 
 ## 使用方法  
 * 在一个空文件夹，执行`uhutu-cli --config`,该操作将在当前目录创建一个config.json文件。编译该config.json文件，修改对应的值。

@@ -20,6 +20,7 @@ import java.util.Map;
 
 import io.rong.calllib.RongCallClient;
 import io.rong.callkit.RongCallKit;
+import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 
 public class VoipReactModule extends ReactContextBaseJavaModule  {
@@ -40,7 +41,9 @@ public class VoipReactModule extends ReactContextBaseJavaModule  {
 
   @ReactMethod
   public void initVoip(String sAppKey) {
-    RongIMClient.init(getReactApplicationContext());
+    //RongIMClient.init(getReactApplicationContext());
+
+     RongIM.init(getReactApplicationContext());
   }
 
 
