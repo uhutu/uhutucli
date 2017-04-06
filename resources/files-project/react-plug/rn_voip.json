@@ -1,5 +1,8 @@
 {
-  "desc": "调用融云的相关代码，调用之前需要确保本地装了pod",
+  "desc": ["调用融云的相关代码，调用之前需要确保本地装了pod",
+    "注意android被呼叫如果没有list页面参考http://support.rongcloud.cn/kb/NTA4",
+    "如果开发者没有会话或者会话列表界面，只需要将下面的 mViewLoaded 在 onCreate 时设置为 true 即可。"
+  ],
   "ios": [{
       "exec": "iosInitPod",
       "set": {
