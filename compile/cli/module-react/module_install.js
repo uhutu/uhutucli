@@ -29,6 +29,7 @@ var MmoduleInstall = (function () {
      */
     MmoduleInstall.prototype.checkPackage = function (oLocalConfig) {
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
+        var bFlagInstallNpm = false;
         var aPlugs = [];
         for (var p in oLocalConfig.plugReact) {
             var f = oLocalConfig.plugReact[p];
@@ -46,6 +47,13 @@ var MmoduleInstall = (function () {
                 oPackage.links = {};
             }
             CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
+            bFlagInstallNpm = true;
+        }
+        //判断npm文件夹是否存在
+        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "node_modules"))) {
+            bFlagInstallNpm = true;
+        }
+        if (bFlagInstallNpm) {
             CommonUtil.utilsHelper.spawnSync('npm', ['install'], { cwd: oLocalConfig.appReact.workPath });
         }
     };

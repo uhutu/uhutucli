@@ -292,6 +292,27 @@ export interface IAimLocalNexusSystem {
  * 插件的设置值 该接口仅用于命名的标记  无实际用途
  */
 export interface IAimLocalPlugSet {
+    /**
+     * 描述信息
+     */
+    desc:string[]
+
+    /**
+     * 日志编号
+     * 
+     * @type {number}
+     * @memberOf IAimLocalPlugSet
+     */
+    logCode:number
+
+    /**
+     * 日志参数
+     * 
+     * @type {string[]}
+     * @memberOf IAimLocalPlugSet
+     */
+    logParams:string[]
+
     
     key:string
     value:string
@@ -316,6 +337,12 @@ export interface IAimLocalPlugSet {
      * @memberOf IAimLocalPlugSet
      */
     filePath:string
+
+    /**
+     * 目标路径
+     */
+    targetPath:string
+
     /**
      * 替换源文本
      * 
@@ -374,6 +401,7 @@ export interface IAimLocalPlugSet {
 export interface IAimLocalPlugExec {
     
     exec:string
+    disable:boolean
     set:IAimLocalPlugSet
 
 }

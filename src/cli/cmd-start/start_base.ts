@@ -1,6 +1,7 @@
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
 import CommonRoot = require("../../base/common/root");
+import CommonUtil = require("../../base/common/util");
 
 import InitConfig = require("../../cli/exec-init/init_config");
 import InitInstall = require("../../cli/exec-init/init_install");
@@ -8,7 +9,6 @@ import InitBuild= require("../../cli/exec-init/init_build");
 
 import LoadConfig = require("../../cli/exec-load/load_config");
 
-import UtilsIo = require("../../base/utils/io");
 
 class MstartBase implements AimLocal.IAimLocalInit {
 
@@ -18,7 +18,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
 
         CommonRoot.logInfo(960312001);
 
-
+        
         this._initFormatEnv(oEnv);
 
 
@@ -90,7 +90,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
      */
     _initFormatEnv(oEnv: AimLocal.IAimLocalNexusEnv) {
 
-        oEnv.pathCli = UtilsIo.parentTop(oEnv.pathStart,3);
+        oEnv.pathCli = CommonUtil.utilsIo.parentTop(oEnv.pathStart,3);
 
 
     }

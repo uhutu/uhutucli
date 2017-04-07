@@ -10,36 +10,63 @@ var cProperty = {
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_"
 };
+var RootResult = (function () {
+    function RootResult() {
+        this.resultCode = 1;
+        this.resultMessage = "";
+    }
+    RootResult.prototype.upFlagOk = function () {
+        return this.resultCode === 1;
+    };
+    RootResult.prototype.inError = function (iLogCode, aArgs) {
+        this.resultCode = iLogCode;
+        mcommonRoot.logAuto(iLogCode, aArgs);
+    };
+    return RootResult;
+}());
 var McommonRoot = (function () {
     function McommonRoot() {
     }
-    McommonRoot.prototype.logDebug = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
+    /**
+     * 自动日志输出  一般不要调用该方法 调用debug/info等日志类型
+     *
+     * @param {number} iLogCode  日志格式为：9+级别编号+4位分类标识+3位流水号，级别编号:0:EMERGENCY,1:ALERT,2:CRITICAL,3:ERROR,4:WARNING,5:NOTICE,6:INFO,7:DEBUG
+     * @param {...string[]} aArgs
+     *
+     * @memberOf McommonRoot
+     */
+    McommonRoot.prototype.logAuto = function (iLogCode, aArgs) {
+        if (iLogCode > 9) {
+            switch (iLogCode.toString().substr(1, 1)) {
+                case "3":
+                    this.logError(iLogCode, aArgs);
+                    break;
+                case "4":
+                    this.logWarn(iLogCode, aArgs);
+                    break;
+                case "6":
+                    this.logInfo(iLogCode, aArgs);
+                    break;
+                case "7":
+                    this.logDebug(iLogCode, aArgs);
+                    break;
+            }
         }
+    };
+    McommonRoot.prototype.logDebug = function (iLogCode, aArgs) {
         logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logInfo = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logInfo = function (iLogCode, aArgs) {
         logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logWarn = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logWarn = function (iLogCode, aArgs) {
         logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     };
-    McommonRoot.prototype.logError = function (iLogCode) {
-        var aArgs = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            aArgs[_i - 1] = arguments[_i];
-        }
+    McommonRoot.prototype.logError = function (iLogCode, aArgs) {
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
+    };
+    McommonRoot.prototype.upResult = function () {
+        return new RootResult();
     };
     McommonRoot.prototype.upProperty = function () {
         return cProperty;
@@ -49,7 +76,7 @@ var McommonRoot = (function () {
      *
      * @param {number} iStep 开始为1  结束为2
      * @param {string} sMessage 标记内容
-     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号
+     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号 4:xml注释
      * @returns
      *
      * @memberOf McommonRoot
@@ -72,6 +99,9 @@ var McommonRoot = (function () {
                 else {
                     sReturn = sReturn + " *" + "/";
                 }
+                break;
+            case 4:
+                sReturn = "<!-- " + sReturn + " -->";
                 break;
         }
         return sReturn;
@@ -106,4 +136,5 @@ var LogLoad = (function () {
     return LogLoad;
 }());
 var logLoad = new LogLoad();
-module.exports = new McommonRoot();
+var mcommonRoot = new McommonRoot();
+module.exports = mcommonRoot;

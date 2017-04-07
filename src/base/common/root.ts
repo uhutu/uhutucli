@@ -18,26 +18,85 @@ var cProperty = {
 
 }
 
+
+class RootResult{
+    resultCode:number=1
+    resultMessage:string=""
+    upFlagOk():boolean{
+        return this.resultCode===1;
+    }
+    inError(iLogCode: number, aArgs: string[]){
+        this.resultCode=iLogCode;
+        mcommonRoot.logAuto(iLogCode,aArgs);
+
+    }
+}
+
+
+
 class McommonRoot {
 
-    logDebug(iLogCode: number, ...aArgs: string[]) {
+    /**
+     * 自动日志输出  一般不要调用该方法 调用debug/info等日志类型
+     * 
+     * @param {number} iLogCode  日志格式为：9+级别编号+4位分类标识+3位流水号，级别编号:0:EMERGENCY,1:ALERT,2:CRITICAL,3:ERROR,4:WARNING,5:NOTICE,6:INFO,7:DEBUG
+     * @param {...string[]} aArgs 
+     * 
+     * @memberOf McommonRoot
+     */
+    logAuto(iLogCode: number, aArgs: string[]) {
+
+        if (iLogCode > 9) {
+
+            switch (iLogCode.toString().substr(1, 1)) {
+                case "3":
+                    this.logError(iLogCode, aArgs);
+                    break;
+                case "4":
+                    this.logWarn(iLogCode, aArgs);
+                    break;
+                case "6":
+                    this.logInfo(iLogCode, aArgs);
+                    break;
+                case "7":
+                    this.logDebug(iLogCode, aArgs);
+                    break;
+            }
+
+
+
+
+        }
+
+
+
+    }
+
+    logDebug(iLogCode: number, aArgs?: string | string[]) {
 
         logger.debug(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
-    logInfo(iLogCode: number, ...aArgs: string[]) {
+    logInfo(iLogCode: number, aArgs?: string | string[]) {
 
         logger.info(logLoad.upLogInfo(iLogCode, aArgs));
     }
 
-    logWarn(iLogCode: number, ...aArgs: string[]) {
+    logWarn(iLogCode: number, aArgs?: string | string[]) {
 
         logger.warn(logLoad.upLogInfo(iLogCode, aArgs));
     }
-    logError(iLogCode: number, ...aArgs: string[]) {
+    logError(iLogCode: number, aArgs?: string | string[]) {
 
         logger.error(logLoad.upLogInfo(iLogCode, aArgs));
     }
+
+
+
+    upResult(){
+        return new RootResult();
+    }
+
 
     upProperty() {
         return cProperty;
@@ -47,7 +106,7 @@ class McommonRoot {
      * 
      * @param {number} iStep 开始为1  结束为2
      * @param {string} sMessage 标记内容
-     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号
+     * @param {number} iNoteType 注释类型 1:双斜杠 2:井号 3:斜杠加星号 4:xml注释
      * @returns 
      * 
      * @memberOf McommonRoot
@@ -72,6 +131,9 @@ class McommonRoot {
                 } else {
                     sReturn = sReturn + " *" + "/";
                 }
+                break;
+                case 4:
+                sReturn="<!-- "+sReturn+" -->";
                 break;
         }
 
@@ -126,4 +188,6 @@ class LogLoad {
 const logLoad = new LogLoad();
 
 
-export =new McommonRoot();
+const mcommonRoot=new McommonRoot();
+
+export =mcommonRoot;

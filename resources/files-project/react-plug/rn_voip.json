@@ -1,18 +1,125 @@
 {
-  
-  "ios":[
-    {
-      "exec":"iosInitPod",
-      "set":{
+  "desc": ["调用融云的相关代码，调用之前需要确保本地装了pod",
+    "注意android被呼叫如果没有list页面参考http://support.rongcloud.cn/kb/NTA4",
+    "如果开发者没有会话或者会话列表界面，只需要将下面的 mViewLoaded 在 onCreate 时设置为 true 即可。"
+  ],
+  "ios": [{
+      "exec": "iosInitPod",
+      "set": {
 
-        "contentInfo":[
-          "pod 'RongCloudIM/IMLib', '2.8.0'",
-          "pod 'RongCloudIM/IMKit', '2.8.0'",
-          "pod 'RongCloudIM/CallLib', '2.8.0'",
-          "pod 'RongCloudIM/CallKit', '2.8.0'"
+        "contentInfo": [
+          "pod 'RongCloudIM/IMLib', '2.8.8'",
+          "pod 'RongCloudIM/IMKit', '2.8.8'",
+          "pod 'RongCloudIM/CallLib', '2.8.8'",
+          "pod 'RongCloudIM/CallKit', '2.8.8'"
         ],
-        "name":"react_note_plug_rn_voip"
+        "name": "react_note_plug_rn_voip"
 
+      }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 153303,
+        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/voip_react.js",
+        "targetPath": "[@config:appReact.buildPath]/native-plug/voip/voip_react.js"
+
+      }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 150306,
+        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/VoipReact.h",
+        "targetPath": "[@config:appReact.workPath]/ios/VoipReact.h"
+
+      }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 150306,
+        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/VoipReact.m",
+        "targetPath": "[@config:appReact.workPath]/ios/VoipReact.m"
+
+      }
+    }
+  ],
+  "android": [
+
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 150206,
+        "filePath": "[@config:file.reactAndroidWork]/CallKit",
+        "logCode": "930312007",
+        "logParams": ["请参考官网http://www.rongcloud.cn/docs/android.html 导入Android对应的SDK"]
+      }
+    },
+    {
+      "exec": "baseFileContent",
+      "set": {
+        "name": "react_note_plug_rn_voip_android_build",
+        "filePath": "[@config:file.reactAndroidWork]/app/build.gradle",
+        "noteType": 1,
+        "withText": "dependencies {",
+        "contentInfo": ["compile project(':CallKit')"]
+      }
+    },
+    {
+      "exec": "baseContentReplace",
+      "set": {
+       
+        "filePath": "[@config:file.reactAndroidWork]/IMLib/AndroidManifest.xml",
+        "withText": "android:value=\"[@config:params.voipAppKey]\" />",
+        "replaceText": ["android:value=\".*?\" />"]
+      }
+    },
+    {
+      "exec": "baseFileContent",
+      "disable":true,
+      "set": {
+        "name": "react_note_plug_rn_voip_android_app_file_provider",
+        "filePath": "[@config:file.reactAndroidWork]/app/src/main/AndroidManifest.xml",
+        "noteType": 4,
+        "withText": "</application>",
+        "contentInfo": ["<provider",
+        "android:name=\"android.support.v4.content.FileProvider\"",
+        "android:authorities=\"[@config:project.domainSpace].FileProvider\"",
+        "android:exported=\"false\" android:grantUriPermissions=\"true\">",
+        
+        "<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/rc_file_path\" />",
+        "</provider>"
+        ]
+      }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 153303,
+        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/VoipReactModule.java",
+        "targetPath": "[@config:file.reactAndroidWork]/app/src/main/java/com/[@config:appReact.workName]/VoipReactModule.java"
+
+      }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 153303,
+        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/VoipReactPackage.java",
+        "targetPath": "[@config:file.reactAndroidWork]/app/src/main/java/com/[@config:appReact.workName]/VoipReactPackage.java"
+
+      }
+    },
+    {
+      "exec": "baseFileContent",
+      "set": {
+        "name": "react_note_plug_rn_voip_android_application_package",
+        "filePath": "[@config:file.reactAndroidWork]/app/src/main/java/com/[@config:appReact.workName]/MainApplication.java",
+        "noteType": 1,
+        "withText": "new MainReactPackage\\(\\),",
+        "contentInfo": ["            new VoipReactPackage(),"
+        ]
       }
     }
   ]

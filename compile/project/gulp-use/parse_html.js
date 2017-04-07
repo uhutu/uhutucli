@@ -39,7 +39,7 @@ var Mexport = (function () {
             sReturn = sOut;
         }
         else {
-            CommonRoot.logError(931612001, oParseFile.parseType, oParseFile.fileBasename);
+            CommonRoot.logError(931612001, [oParseFile.parseType, oParseFile.fileBasename]);
         }
         return sReturn;
     };

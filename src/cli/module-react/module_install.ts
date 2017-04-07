@@ -14,12 +14,12 @@ class MmoduleInstall {
 
     installProject(oLocalConfig: AimLocal.IAimLocalConfig) {
 
-        oLocalConfig.plugReact=LoadPlug.refreshPlug(oLocalConfig,oLocalConfig.appReact,oLocalConfig.plugReact);
+        oLocalConfig.plugReact = LoadPlug.refreshPlug(oLocalConfig, oLocalConfig.appReact, oLocalConfig.plugReact);
         this.checkWork(oLocalConfig);
 
         this.checkPackage(oLocalConfig);
 
-        LoadPlug.processPlus(oLocalConfig,oLocalConfig.plugReact, ["react", "ios", "android"]);
+        LoadPlug.processPlus(oLocalConfig, oLocalConfig.plugReact, ["react", "ios", "android"]);
 
 
 
@@ -47,6 +47,8 @@ class MmoduleInstall {
 
         var oPackage = CommonUtil.utilsIo.upConfigByFile(oLocalConfig.file.reactPackage);
 
+        let bFlagInstallNpm = false;
+
         var aPlugs = [];
 
         for (var p in oLocalConfig.plugReact) {
@@ -72,9 +74,23 @@ class MmoduleInstall {
             }
 
             CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.reactPackage, oPackage);
+
+
+            bFlagInstallNpm = true;
+
+
+        }
+
+
+        //判断npm文件夹是否存在
+        if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "node_modules"))) {
+            bFlagInstallNpm = true;
+        }
+
+
+
+        if (bFlagInstallNpm) {
             CommonUtil.utilsHelper.spawnSync('npm', ['install'], { cwd: oLocalConfig.appReact.workPath });
-
-
         }
 
 
