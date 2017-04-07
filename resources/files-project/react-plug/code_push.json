@@ -15,6 +15,15 @@
         "targetPath": "[@config:appReact.buildPath]/native-plug/code-push/version_check.js"
 
       }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 153303,
+        "filePath": "[@config:define.resourcePath]/files-native/code-push/release_package.md",
+        "targetPath": "[@config:define.diskPath]/release_package.md"
+
+      }
     }
   ],
 
