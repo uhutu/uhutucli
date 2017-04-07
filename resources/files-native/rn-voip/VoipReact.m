@@ -25,7 +25,7 @@ RCT_EXPORT_METHOD(connectServer:(NSString *)userToken findEvents:(RCTResponseSen
   
   [[RCIM sharedRCIM] connectWithToken:userToken   success:^(NSString *userId) {
     NSLog(@"登陆成功。当前登录的用户ID：%@", userId);
-    
+    [[RCCallClient sharedRCCallClient] setVideoProfile:RC_VIDEO_PROFILE_720P];
     NSArray *events = @[userId];
     callback(@[[NSNull null], events]);
     

@@ -20,8 +20,10 @@ import java.util.Map;
 
 import io.rong.calllib.RongCallClient;
 import io.rong.callkit.RongCallKit;
+import io.rong.calllib.RongCallCommon;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
+
 
 public class VoipReactModule extends ReactContextBaseJavaModule  {
 
@@ -77,7 +79,7 @@ public class VoipReactModule extends ReactContextBaseJavaModule  {
 
           Log.d("LoginActivity", "--onSuccess---" + userid);
 
-
+          RongCallClient.getInstance().setVideoProfile(RongCallCommon.CallVideoProfile.VIDEO_PROFILE_720P);
 
         }
 
