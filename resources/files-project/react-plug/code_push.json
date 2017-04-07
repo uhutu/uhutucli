@@ -6,6 +6,15 @@
       "set": {
         "link": "react-native-code-push"
       }
+    },
+    {
+      "exec": "baseFileOption",
+      "set": {
+        "optType": 153303,
+        "filePath": "[@config:define.resourcePath]/files-native/code-push/version_check.js",
+        "targetPath": "[@config:appReact.buildPath]/native-plug/code-push/version_check.js"
+
+      }
     }
   ],
 
