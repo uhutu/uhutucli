@@ -30,6 +30,13 @@ class MutilsHelper {
         //console.log(free.stdout.toString());
         //free.stdout.pipe(process.stdout);
     }
+
+
+    spawn(sCommand: string, aArgs: string[], oOption: IHelperSpawSyncOption){
+        oOption.stdio = 'inherit';
+        childProcess.spawn(sCommand, aArgs, oOption);
+    }
+
     deepAssign(oTarget, oSource) {
         return assignDeep({}, oTarget, oSource);
     }

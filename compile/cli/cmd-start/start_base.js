@@ -46,8 +46,12 @@ var MstartBase = (function () {
      * @memberOf MstartBase
      */
     MstartBase.prototype._initSystem = function (oEnv) {
+        //设置日志级别
         if (oEnv.argsLog) {
-            CommonRoot.setLogLevel(oEnv.argsLog);
+            CommonRoot.inLogLevel(oEnv.argsLog);
+        }
+        if (oEnv.argsBuild != undefined && CommonUtil.utilsString.isEmpty(oEnv.argsBuild)) {
+            oEnv.argsBuild = "default";
         }
     };
     /**

@@ -15,7 +15,7 @@ let oArgs = argv.option(
     [
         {
             name: 'build',
-            type: 'boolean',
+            type: 'string',
             description: '编译项目文件'
         },
         {

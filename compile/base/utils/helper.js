@@ -21,6 +21,10 @@ var MutilsHelper = (function () {
         //console.log(free.stdout.toString());
         //free.stdout.pipe(process.stdout);
     };
+    MutilsHelper.prototype.spawn = function (sCommand, aArgs, oOption) {
+        oOption.stdio = 'inherit';
+        childProcess.spawn(sCommand, aArgs, oOption);
+    };
     MutilsHelper.prototype.deepAssign = function (oTarget, oSource) {
         return assignDeep({}, oTarget, oSource);
     };

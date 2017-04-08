@@ -106,7 +106,7 @@ var McommonRoot = (function () {
         }
         return sReturn;
     };
-    McommonRoot.prototype.setLogLevel = function (sLogType) {
+    McommonRoot.prototype.inLogLevel = function (sLogType) {
         logger.setLevel(sLogType);
     };
     return McommonRoot;
