@@ -6,7 +6,7 @@ var DefineEnv = (function () {
         this.argsConfig = false;
         this.argsInstall = false;
         this.argsForce = false;
-        this.argsBuild = false;
+        this.argsBuild = "default";
         this.argsLog = "info";
     }
     return DefineEnv;

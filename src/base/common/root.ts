@@ -140,7 +140,7 @@ class McommonRoot {
         return sReturn;
     }
 
-    setLogLevel(sLogType: string) {
+    inLogLevel(sLogType: string) {
         logger.setLevel(sLogType);
     }
 }

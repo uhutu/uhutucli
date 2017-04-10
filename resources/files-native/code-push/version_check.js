@@ -48,6 +48,14 @@ export default class VersionCheck {
   }
 
 
+  static upCurrentVersion() {
+    return {
+      versionCode: "[@config:project.versionName]",
+      versionNumber: "[@config:project.versionBuild]"
+    };
+  }
+
+
   static upVersionInfo(fCallBack) {
 
 
