@@ -35,7 +35,7 @@ var Mexport = (function () {
                 oOutContent.pageConfig = oTrans.pageConfig;
             }
             var sTemplate = CommonUtil.utilsIo.readFile(CommonUtil.utilsIo.pathJoin(oOutContent.pageConfig.masterPath, oOutContent.pageConfig.tplFile));
-            var sOut = ejs.render(sTemplate, oOutContent);
+            var sOut = ejs.render(sTemplate, { out: oOutContent });
             sReturn = sOut;
         }
         else {

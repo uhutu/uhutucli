@@ -65,7 +65,7 @@ class Mexport {
 
 
 
-            var sOut = ejs.render(sTemplate, oOutContent);
+            var sOut = ejs.render(sTemplate, {out:oOutContent});
 
             sReturn = sOut;
 
