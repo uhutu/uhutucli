@@ -64,8 +64,12 @@ class Mexport {
             var sTemplate = CommonUtil.utilsIo.readFile(CommonUtil.utilsIo.pathJoin(oOutContent.pageConfig.masterPath, oOutContent.pageConfig.tplFile));
 
 
+            try {
+                var sOut = ejs.render(sTemplate, { out: oOutContent });
+            }catch (e) {
+                console.warn(e);
+            }
 
-            var sOut = ejs.render(sTemplate, {out:oOutContent});
 
             sReturn = sOut;
 

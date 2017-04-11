@@ -1,0 +1,45 @@
+import React, { Component } from 'react';
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Image,
+  ListView,
+  ScrollView,
+  TextInput,
+  Dimensions,
+  Switch,
+  View
+} from 'react-native';
+import { Button } from 'react-native-elements';
+
+
+
+import MainStype from "./<%- out.sourceFile.fileBasename %>-style";
+
+import RootSuperPage from "../../../root/super/page";
+
+
+
+var styles = StyleSheet.create(MainStype);
+export default class  extends RootSuperPage {
+
+
+  <% if (out.pageConfig.execReact !=undefined ){ %>
+  <%- out.pageConfig.execReact.join('\n') %>
+<% } %>
+
+  static navigationOptions = {
+    title: '<%- out.pageConfig.pageTitle %>',
+  };
+
+  componentDidMount() {
+    <%- out.pageConfig.scriptInit %>
+  }
+
+  rootRender() {
+    return (
+      <%- out.content.join('') %>
+    );
+  }
+};

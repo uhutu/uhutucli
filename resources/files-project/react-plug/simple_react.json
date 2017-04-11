@@ -1,18 +1,35 @@
 {
 
-  "react":
-  [
-    
-    {
-      "exec":"listFileProcess",
-      "set":{
-        "filePath":"[@config:appReact.workPath]/uhutu_main.js",
-        "replaceText":""
-        
-      },
-      "expand":"../../expand/expand-plus/simple_react"
-    }
-  ]
-  
+    "react": [{
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/react_tpl.ejs",
+                "targetPath": "[@config:define.devPath]/master/react/tpl/default.ejs"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150302,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js"
+
+            }
+        },
+
+
+        {
+            "exec": "listFileProcess",
+            "set": {
+                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "replaceText": ""
+
+            },
+            "expand": "../../expand/expand-plus/simple_react"
+        }
+    ]
+
 
 }

@@ -143,7 +143,9 @@ class CommandGulp {
                 .pipe(rename({
                     extname: ".js"
                 }))
-                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
+                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage))
+                //.pipe(function(cb){console.log('aa');})
+                ;
         });
 
         oTask.inSubTask("vue", function () {

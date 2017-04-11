@@ -171,6 +171,13 @@ var PlugProcess = (function () {
                         this._logShow(oSet);
                     }
                     break;
+                //文件不存在则拷贝 否则不处理
+                case 150302:
+                    bFlagSuccess = CommonUtil.utilsIo.flagExist(oSet.targetPath);
+                    if (!bFlagSuccess) {
+                        CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                    }
+                    break;
                 //复制文件 并且进行config的替换
                 case 153303:
                     var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
