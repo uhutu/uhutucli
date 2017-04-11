@@ -322,7 +322,7 @@ class MloadPlug {
                                 aJsonStep.forEach((oCurrent: AimLocal.IAimLocalPlugExec) => {
 
                                     if (!oCurrent.disable) {
-
+                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
                                         //判断如果有扩展处理类
                                         if (!CommonUtil.utilsString.isEmpty(oCurrent.expand)) {
                                             var oExpand: AimLocal.IexpandPlusProcess = require(oCurrent.expand);
@@ -332,7 +332,6 @@ class MloadPlug {
                                         }
                                         else if (oProcess[oCurrent.exec]) {
 
-                                            CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
 
                                             let bFlagSuccess: boolean = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
                                             if (!bFlagSuccess) {

@@ -4,7 +4,7 @@
   [
     
     {
-      "exec":"baseContentReplace",
+      "exec":"listFileProcess",
       "set":{
         "filePath":"[@config:appReact.workPath]/uhutu_main.js",
         "replaceText":""

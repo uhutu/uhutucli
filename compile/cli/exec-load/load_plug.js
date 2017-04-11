@@ -236,13 +236,13 @@ var MloadPlug = (function () {
                             var aJsonStep = oJsonConfig[sStep];
                             aJsonStep.forEach(function (oCurrent) {
                                 if (!oCurrent.disable) {
+                                    CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
                                     //判断如果有扩展处理类
                                     if (!CommonUtil.utilsString.isEmpty(oCurrent.expand)) {
                                         var oExpand = require(oCurrent.expand);
                                         var bFlagSuccess = oExpand.exec(oLocalConfig, oPlug, oCurrent.set);
                                     }
                                     else if (oProcess[oCurrent.exec]) {
-                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
                                         var bFlagSuccess = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
                                         if (!bFlagSuccess) {
                                             CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);
