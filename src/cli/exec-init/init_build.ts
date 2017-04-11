@@ -19,8 +19,10 @@ class MinitConfig {
 
 
 
+            if (CommonUtil.utilsString.contains(oLocalConfig.env.argsBuild, 'start')) {
+                CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
+            }
 
-            CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
 
 
 

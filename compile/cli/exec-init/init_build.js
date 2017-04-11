@@ -6,7 +6,9 @@ var MinitConfig = (function () {
     MinitConfig.prototype.initStart = function (oLocalConfig) {
         if (!CommonUtil.utilsString.isEmpty(oLocalConfig.env.argsBuild)) {
             CommonUtil.utilsHelper.spawn("./node_modules/gulp/bin/gulp.js", ["--diskconfig=" + oLocalConfig.file.diskConfigFile], { cwd: oLocalConfig.define.cliSpace });
-            CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
+            if (CommonUtil.utilsString.contains(oLocalConfig.env.argsBuild, 'start')) {
+                CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
+            }
         }
     };
     return MinitConfig;
