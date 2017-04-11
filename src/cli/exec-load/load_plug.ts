@@ -218,8 +218,7 @@ class PlugProcess {
                     break;
                 //文件不存在则拷贝 否则不处理
                 case 150302:
-                    bFlagSuccess = CommonUtil.utilsIo.flagExist(oSet.targetPath);
-                    if (!bFlagSuccess) {
+                    if (!CommonUtil.utilsIo.flagExist(oSet.targetPath)) {
                         CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
                     }
                     break;

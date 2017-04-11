@@ -64,7 +64,7 @@ class SimpleReact implements AimLocal.IexpandPlusProcess {
             CommonUtil.utilsIo.upRowSeq() + aImport.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(),
             "");
 
-            sNewContent = CommonUtil.utilsString.reaplaceBig(sContent,
+            sNewContent = CommonUtil.utilsString.reaplaceBig(sNewContent,
             CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_screen_begin",
             "//auto_code_simple_index_screen_begin",
             CommonUtil.utilsIo.upRowSeq() + aScreen.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(),

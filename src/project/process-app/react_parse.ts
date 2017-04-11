@@ -51,7 +51,7 @@ class CappSub implements CTF.ItransformSubExtend {
 
             processItem.checkEventFull(oItem, "value-change", "onValueChange", "(value)=>{", "}");
 
-            processItem.checkEventFull(oItem, "link", "onPress", "()=>{", "}");
+            processItem.checkEventFull(oItem, "link", "onPress", "()=>{top_support.pageNav('", "',this)}");
 
 
             processItem.checkStateFull(oItem, "value", "value", "", "");

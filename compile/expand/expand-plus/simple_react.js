@@ -31,7 +31,7 @@ var SimpleReact = (function () {
         });
         var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
         var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_import_begin", "//auto_code_simple_index_import_end", CommonUtil.utilsIo.upRowSeq() + aImport.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
-        sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_screen_begin", "//auto_code_simple_index_screen_begin", CommonUtil.utilsIo.upRowSeq() + aScreen.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
+        sNewContent = CommonUtil.utilsString.reaplaceBig(sNewContent, CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_screen_begin", "//auto_code_simple_index_screen_begin", CommonUtil.utilsIo.upRowSeq() + aScreen.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
         if (sContent != sNewContent) {
             CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
         }

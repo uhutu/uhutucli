@@ -12,6 +12,24 @@
         {
             "exec": "baseFileOption",
             "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/top_support.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/code/top/support/top_support.js"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150302,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/current_support.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/code/current/support/current_support.js"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
                 "optType": 150302,
                 "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.js",
                 "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js"
