@@ -21,6 +21,11 @@
             "json": "[@config:file.reactPlugPath]/rn_voip.json",
             "disable":true
         },
+        "simple_react": {
+            "name": "simple-react",
+            "json": "[@config:file.reactPlugPath]/simple_react.json",
+            "disable":true
+        },
         "socket_io": {
             "name": "socket.io",
             "version": "1.5.1"

@@ -1,0 +1,18 @@
+{
+
+  "react":
+  [
+    
+    {
+      "exec":"baseContentReplace",
+      "set":{
+        "filePath":"[@config:appReact.workPath]/uhutu_main.js",
+        "replaceText":""
+        
+      },
+      "expand":"../../expand/expand-plus/simple_react"
+    }
+  ]
+  
+
+}

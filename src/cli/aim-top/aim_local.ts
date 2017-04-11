@@ -403,6 +403,10 @@ export interface IAimLocalPlugExec {
     exec:string
     disable:boolean
     set:IAimLocalPlugSet
+    /**
+     * 扩展处理类 特殊定义的处理 有一个函数exec
+     */
+    expand:string
 
 }
 
@@ -423,5 +427,18 @@ export interface IAimLocalInit {
 export interface IInitProject extends IAimLocalInit {
 
     flagExistConfig(envs: IAimLocalNexusEnv): boolean
+
+}
+
+
+export interface IexpandPlusProcess{
+
+
+    exec(oLocalConfig: IAimLocalConfig, oPlugin: IAimLocalNexusPlugDefine, oSet:IAimLocalPlugSet): boolean 
+
+
+       
+
+    
 
 }

@@ -323,8 +323,14 @@ class MloadPlug {
 
                                     if (!oCurrent.disable) {
 
+                                        //判断如果有扩展处理类
+                                        if (!CommonUtil.utilsString.isEmpty(oCurrent.expand)) {
+                                            var oExpand: AimLocal.IexpandPlusProcess = require(oCurrent.expand);
 
-                                        if (oProcess[oCurrent.exec]) {
+                                            let bFlagSuccess: boolean = oExpand.exec(oLocalConfig, oPlug, oCurrent.set);
+
+                                        }
+                                        else if (oProcess[oCurrent.exec]) {
 
                                             CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
 
@@ -338,7 +344,7 @@ class MloadPlug {
                                             CommonRoot.logError(930312003, oCurrent.exec);
                                         }
                                     }
-                                    else{
+                                    else {
                                         CommonRoot.logDebug(970312005, [oPlug.name, oCurrent.exec]);
                                     }
                                 })
