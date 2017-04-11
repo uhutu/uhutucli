@@ -42,7 +42,8 @@
         },
         "router_flux": {
             "name": "react-native-router-flux",
-            "version": "3.38.0"
+            "version": "3.38.0",
+            "disable":true
         },
         "rn_webrtc": {
             "name": "react-native-webrtc",
@@ -52,7 +53,8 @@
         },
         "rn_storage": {
             "name": "react-native-storage",
-            "version": "0.1.5"
+            "version": "0.1.5",
+            "disable":true
         },
         
          "rn_realm": {
