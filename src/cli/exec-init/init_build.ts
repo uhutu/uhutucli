@@ -15,7 +15,7 @@ class MinitConfig {
 
 
 
-            CommonUtil.utilsHelper.spawnSync("./node_modules/.bin/gulp", ["--diskconfig=" + oLocalConfig.file.diskConfigFile], { cwd: oLocalConfig.define.cliSpace });
+            CommonUtil.utilsHelper.spawn("./node_modules/.bin/gulp", ["--diskconfig=" + oLocalConfig.file.diskConfigFile], { cwd: oLocalConfig.define.cliSpace });
 
 
 
