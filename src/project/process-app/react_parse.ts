@@ -38,7 +38,7 @@ class CappSub implements CTF.ItransformSubExtend {
 
     formNameParse(sName:string)
     {
-        return ""+sName+"";
+        return "\""+sName+"\"";
     }
 
     attrParse(oItem: CTF.ItransformItemInfo) {
