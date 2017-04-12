@@ -36,6 +36,17 @@
 
             }
         },
+        {
+            "exec": "baseFileContent",
+            "set": {
+                "name": "react_note_plug_simple_react_style",
+                "filePath": "[@config:define.devPath]/pages/air/resource/define.scss",
+                "sourcePath":"[@config:define.resourcePath]/files-template/simple-react/style_define.scss",
+                "noteType": 1,
+                "withText": ""
+                
+            }
+        },
 
 
         {

@@ -338,6 +338,12 @@ export interface IAimLocalPlugSet {
      */
     filePath:string
 
+
+    /**
+     * 源路径
+     */
+    sourcePath:string
+
     /**
      * 目标路径
      */

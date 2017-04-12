@@ -196,25 +196,30 @@ var PlugProcess = (function () {
      * @param {AimLocal.IAimLocalConfig} oLocalConfig
      * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
      * @param {AimLocal.IAimLocalPlugSet} oSet
-     * 其中：name 调换标记 noteType注释类型  filePath文件路径  contentInfo内容  withText附加在该内容之后，为空则文本内容之后
+     * 其中：name 调换标记 noteType注释类型  filePath文件路径  sourcePath源文件内容|contentInfo内容  withText附加在该内容之后，为空则文本内容之后
      *
      * @memberOf PlugProcess
      */
     PlugProcess.prototype.baseFileContent = function (oLocalConfig, oPlugin, oSet) {
         //CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
-        if (oSet.contentInfo.length > 0) {
-            if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
-                CommonUtil.utilsIo.writeFile(oSet.filePath, '');
-            }
-            var sAfterText = "";
-            if (oSet.withText != undefined) {
-                sAfterText = oSet.withText;
-            }
-            var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
-            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), sAfterText);
-            if (sContent != sNewContent) {
-                CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
-            }
+        var sContentInfo = '';
+        if (!CommonUtil.utilsString.isEmpty(oSet.sourcePath)) {
+            sContentInfo = CommonUtil.utilsIo.readFile(oSet.sourcePath);
+        }
+        if (oSet.contentInfo != undefined && oSet.contentInfo.length > 0) {
+            sContentInfo = oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq());
+        }
+        if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
+            CommonUtil.utilsIo.writeFile(oSet.filePath, '');
+        }
+        var sAfterText = "";
+        if (oSet.withText != undefined) {
+            sAfterText = oSet.withText;
+        }
+        var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+        var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + sContentInfo + CommonUtil.utilsIo.upRowSeq(), sAfterText);
+        if (sContent != sNewContent) {
+            CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
         }
         return true;
     };
