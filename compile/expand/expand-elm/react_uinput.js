@@ -7,6 +7,7 @@ var MexpandReactUicon = (function () {
         processItem.checkPropWithQuotes(oItem, "placeholder", "placeholder");
         processItem.checkPropWithEmpty(oItem, "secure", "secureTextEntry");
         processItem.checkPropWithQuotes(oItem, "keyboard", "keyboardType");
+        processItem.checkPropWithEmpty(oItem, "multiline", "multiline");
         oItem.targetAttr.set('underlineColorAndroid', '"transparent"');
         return oItem;
     };

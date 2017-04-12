@@ -157,6 +157,8 @@ class Mexport {
         //定义本轮循环元素中间的字符串
         let aTextContent: string[] = [];
 
+        let sFormName = '';
+
         //定义转换函数对象
         var parser = new htmlparser.Parser({
             onopentag: function (sName: string, oAttr) {
@@ -185,6 +187,26 @@ class Mexport {
                         oItem = oExpand.expandOpen(oItem, oOut);
 
                     }
+
+
+                    //form的处理逻辑
+                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            sFormName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName));
+
+
+                        }
+                        else {
+                            CommonRoot.logWarn(941612001, oParseFile.fileBasename);
+                        }
+                    }
+                    else if (!CommonUtil.utilsString.isEmpty(sFormName)) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr)));
+                        }
+                    }
+
 
 
                     oOut.content.push('<' + oItem.elmName);
@@ -231,6 +253,12 @@ class Mexport {
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
+
+
+                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
+                        sFormName = '';
+
+                    }
 
                     oOut.content.push(oItem.sourceContent);
                     oOut.content.push('</' + oItem.elmName);

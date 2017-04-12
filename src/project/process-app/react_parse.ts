@@ -36,6 +36,11 @@ class CappSub implements CTF.ItransformSubExtend {
 
     }
 
+    formNameParse(sName:string)
+    {
+        return ""+sName+"";
+    }
+
     attrParse(oItem: CTF.ItransformItemInfo) {
         oItem.sourceAttr.forEach(function (value, key) {
             if (key === "class") {

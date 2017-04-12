@@ -20,6 +20,9 @@ var CappSub = (function () {
         });
         return aStyle.length > 1 ? ("[" + aStyle.join(',') + "]") : aStyle[0];
     };
+    CappSub.prototype.formNameParse = function (sName) {
+        return "" + sName + "";
+    };
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
             if (key === "class") {
