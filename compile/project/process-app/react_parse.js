@@ -18,7 +18,7 @@ var CappSub = (function () {
         sClassStyle.split(' ').forEach(function (f) {
             aStyle.push("styles." + f);
         });
-        return "[" + aStyle.join(',') + "]";
+        return aStyle.length > 1 ? ("[" + aStyle.join(',') + "]") : aStyle[0];
     };
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {

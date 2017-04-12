@@ -32,7 +32,7 @@ class CappSub implements CTF.ItransformSubExtend {
                 aStyle.push("styles." + f);
             }
         );
-        return "[" + aStyle.join(',') + "]";
+        return aStyle.length>1?("[" + aStyle.join(',') + "]"):aStyle[0];
 
     }
 
