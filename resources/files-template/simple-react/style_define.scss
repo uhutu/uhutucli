@@ -2,5 +2,11 @@
 
 
 //颜色：白色
-$sd_color_white:#ffffff;
+$base_color_white:#ffffff;
+
+
+//定义普通字体大小
+@mixin top_font_normal{
+    font-size: 12;
+}
 
