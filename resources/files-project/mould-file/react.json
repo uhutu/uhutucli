@@ -36,6 +36,9 @@
         },
         "fform": {
             "tagName": "View"
+        },
+        "fselect": {
+            "tagName": "PlusItemSelect"
         }
     }
 }
