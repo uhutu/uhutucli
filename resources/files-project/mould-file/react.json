@@ -1,10 +1,20 @@
 {
     "elms": {
         "upage": {
-            "tagName": "ScrollView"
+            "tagName": "View"
         },
         "uview": {
             "tagName": "View"
+        },
+        "uscroll": {
+            "tagName": "ScrollView"
+        },
+        "utabgroup": {
+            "tagName": "Tabs"
+        },
+        "utabitem": {
+            "tagName": "Tab",
+            "expandFile": "../../expand/expand-elm/react_utabitem"
         },
         "utext": {
             "tagName": "Text"
