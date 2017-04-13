@@ -87,6 +87,11 @@ class MmoduleInstall {
             bFlagInstallNpm = true;
         }
 
+        //判断如果有强制标记 则执行install
+        if(oLocalConfig.env.argsForce){
+            bFlagInstallNpm=true;
+        }
+
 
 
         if (bFlagInstallNpm) {
