@@ -30,7 +30,8 @@ var currentConfig = {
         workPath: "[@config:define.workSpace]/[@config:appReact.workName]",
         buildPath: "[@config:appReact.workPath]/project/",
         mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appReact.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appReact.appType]_plug.json"
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appReact.appType]_plug.json",
+        disable: false
     },
     appVue: {
         appType: "vue",
@@ -38,7 +39,8 @@ var currentConfig = {
         workPath: "[@config:define.workSpace]/[@config:appVue.workName]",
         buildPath: "[@config:appVue.workPath]",
         mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appVue.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appVue.appType]_plug.json"
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appVue.appType]_plug.json",
+        disable: false
     },
     appWeapp: {
         appType: "weapp",
@@ -46,7 +48,8 @@ var currentConfig = {
         workPath: "[@config:define.workSpace]/[@config:appWeapp.workName]",
         buildPath: "[@config:appWeapp.workPath]",
         mouldPath: "[@config:define.resourcePath]/files-project/mould-file/[@config:appWeapp.appType].json",
-        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appWeapp.appType]_plug.json"
+        plugInfo: "[@config:define.resourcePath]/files-project/plug-info/[@config:appWeapp.appType]_plug.json",
+        disable: false
     },
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
