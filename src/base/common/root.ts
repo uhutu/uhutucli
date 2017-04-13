@@ -13,7 +13,11 @@ var cProperty = {
     regexBaseString: "(.*?):(.*?)",
 
     noteMessageBegin: "uhutu_autonotebegin_",
-    noteMessageEnd: "uhutu_autonoteend_"
+    noteMessageEnd: "uhutu_autonoteend_",
+
+    formElementName:'fform',
+    formNameSplit:'---',
+    formBaseAttr:'name'
 
 
 }

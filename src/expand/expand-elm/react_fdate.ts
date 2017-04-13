@@ -10,9 +10,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
 
-        processItem.checkPropWithQuotes(oItem,"placeholder","placeholder");
-        processItem.checkPropWithEmpty(oItem,"secure","secureTextEntry");
-        processItem.checkPropWithQuotes(oItem,"keyboard","keyboardType");
+        
 
         return oItem;
     }

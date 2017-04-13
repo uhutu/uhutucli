@@ -1,0 +1,73 @@
+{
+
+    "react": [{
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/react_tpl.ejs",
+                "targetPath": "[@config:define.devPath]/master/react/tpl/default.ejs"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/super_page.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/simple/root/super/super_page.js"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/top_support.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/code/top/support/top_support.js"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150302,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/current_support.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/code/current/support/current_support.js"
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150302,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js"
+
+            }
+        },
+        {
+            "exec": "baseFileContent",
+            "set": {
+                "name": "react_note_plug_simple_react_style",
+                "filePath": "[@config:define.devPath]/pages/air/resource/define.scss",
+                "sourcePath": "[@config:define.resourcePath]/files-template/simple-react/style_define.scss",
+                "noteType": 1,
+                "withText": ""
+
+            }
+        },
+
+
+        {
+            "exec": "listFileProcess",
+            "set": {
+                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "replaceText": ""
+
+            },
+            "expand": "../../expand/expand-plus/simple_react"
+        }
+    ]
+
+
+}

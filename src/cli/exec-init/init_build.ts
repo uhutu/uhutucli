@@ -15,12 +15,14 @@ class MinitConfig {
 
 
 
-            CommonUtil.utilsHelper.spawn("./node_modules/gulp/bin/gulp.js", ["--diskconfig=" + oLocalConfig.file.diskConfigFile], { cwd: oLocalConfig.define.cliSpace });
+            CommonUtil.utilsHelper.spawn("./node_modules/.bin/gulp", ["--diskconfig=" + oLocalConfig.file.diskConfigFile], { cwd: oLocalConfig.define.cliSpace });
 
 
 
+            //if (CommonUtil.utilsString.contains(oLocalConfig.env.argsBuild, 'start')) {
+                CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
+            //}
 
-            CommonUtil.utilsHelper.spawn("npm", ["start"], { cwd: oLocalConfig.appReact.workPath });
 
 
 

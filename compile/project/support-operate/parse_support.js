@@ -1,4 +1,5 @@
 "use strict";
+var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var AimParse = require("../../project/aim-project/aim_parse");
 var htmlparser = require("htmlparser2");
@@ -104,6 +105,7 @@ var Mexport = (function () {
         var aElmArray = [];
         //定义本轮循环元素中间的字符串
         var aTextContent = [];
+        var sFormName = '';
         //定义转换函数对象
         var parser = new htmlparser.Parser({
             onopentag: function (sName, oAttr) {
@@ -120,6 +122,21 @@ var Mexport = (function () {
                     if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
                         var oExpand = require(oItem.elmentInfo.expandFile);
                         oItem = oExpand.expandOpen(oItem, oOut);
+                    }
+                    //form的处理逻辑
+                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            sFormName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName));
+                        }
+                        else {
+                            CommonRoot.logWarn(941612001, oParseFile.fileBasename);
+                        }
+                    }
+                    else if (!CommonUtil.utilsString.isEmpty(sFormName)) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr)));
+                        }
                     }
                     oOut.content.push('<' + oItem.elmName);
                     //循环生成的目标属性
@@ -153,6 +170,9 @@ var Mexport = (function () {
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
+                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
+                        sFormName = '';
+                    }
                     oOut.content.push(oItem.sourceContent);
                     oOut.content.push('</' + oItem.elmName);
                     oOut.content.push('>');

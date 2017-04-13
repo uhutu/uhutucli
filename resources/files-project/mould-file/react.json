@@ -1,10 +1,20 @@
 {
     "elms": {
         "upage": {
-            "tagName": "ScrollView"
+            "tagName": "View"
         },
         "uview": {
             "tagName": "View"
+        },
+        "uscroll": {
+            "tagName": "ScrollView"
+        },
+        "utabgroup": {
+            "tagName": "Tabs"
+        },
+        "utabitem": {
+            "tagName": "Tab",
+            "expandFile": "../../expand/expand-elm/react_utabitem"
         },
         "utext": {
             "tagName": "Text"
@@ -14,25 +24,44 @@
         },
         "uinput": {
             "tagName": "TextInput",
-            "expandFile": "../expand-elm/react_uinput"
+            "expandFile": "../../expand/expand-elm/react_uinput"
         },
         "ubutton": {
             "tagName": "Button",
-            "expandFile": "../expand-elm/react_ubutton"
+            "expandFile": "../../expand/expand-elm/react_ubutton"
         },
         "uimage": {
             "tagName": "Image",
-            "expandFile": "../expand-elm/react_uimage"
+            "expandFile": "../../expand/expand-elm/react_uimage"
         },
         "uicon": {
             "tagName": "Icon",
-            "expandFile": "../expand-elm/react_uicon"
+            "expandFile": "../../expand/expand-elm/react_uicon"
         },
         "ulink": {
             "tagName": "TouchableOpacity"
         },
         "uswitch": {
             "tagName": "Switch"
+        },
+        "fform": {
+            "tagName": "View"
+        },
+        "finput": {
+            "tagName": "PlusFormInput",
+            "expandFile": "../../expand/expand-elm/react_finput"
+        },
+        "fselect": {
+            "tagName": "PlusFormSelect",
+            "expandFile": "../../expand/expand-elm/react_fselect"
+        },
+        "fimage": {
+            "tagName": "PlusFormImage",
+            "expandFile": "../../expand/expand-elm/react_fimage"
+        },
+        "fdate": {
+            "tagName": "PlusFormDate",
+            "expandFile": "../../expand/expand-elm/react_fdate"
         }
     }
 }

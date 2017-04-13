@@ -95,7 +95,7 @@ class MUtilsIo {
         fs.writeFileSync(sPath, sContent);
 
     }
-    readFile(sPath) {
+    readFile(sPath:string) {
         return fs.readFileSync(sPath, 'UTF-8');
     }
     copyFile(sSource, sTarget) {

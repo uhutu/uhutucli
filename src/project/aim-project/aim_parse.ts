@@ -121,6 +121,8 @@ export interface ItransformItemInfo {
 export interface ItransformSubExtend {
     attrParse(oElm: ItransformItemInfo)
 
+    formNameParse(sName:string)
+
 }
 
 

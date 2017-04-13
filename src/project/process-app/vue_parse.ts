@@ -18,7 +18,10 @@ class CappElms implements CTF.ItransformElmentProcess {
 
 class CappSub implements CTF.ItransformSubExtend {
 
-
+    formNameParse(sName:string)
+    {
+        return ""+sName+"";
+    }
 
     attrParse(oItem: CTF.ItransformItemInfo) {
 

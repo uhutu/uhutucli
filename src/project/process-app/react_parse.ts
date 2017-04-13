@@ -32,8 +32,13 @@ class CappSub implements CTF.ItransformSubExtend {
                 aStyle.push("styles." + f);
             }
         );
-        return "[" + aStyle.join(',') + "]";
+        return aStyle.length>1?("[" + aStyle.join(',') + "]"):aStyle[0];
 
+    }
+
+    formNameParse(sName:string)
+    {
+        return "\""+sName+"\"";
     }
 
     attrParse(oItem: CTF.ItransformItemInfo) {
@@ -51,7 +56,7 @@ class CappSub implements CTF.ItransformSubExtend {
 
             processItem.checkEventFull(oItem, "value-change", "onValueChange", "(value)=>{", "}");
 
-            processItem.checkEventFull(oItem, "link", "onPress", "()=>{", "}");
+            processItem.checkEventFull(oItem, "link", "onPress", "()=>{top_support.pageNav('", "',this)}");
 
 
             processItem.checkStateFull(oItem, "value", "value", "", "");

@@ -171,6 +171,12 @@ var PlugProcess = (function () {
                         this._logShow(oSet);
                     }
                     break;
+                //文件不存在则拷贝 否则不处理
+                case 150302:
+                    if (!CommonUtil.utilsIo.flagExist(oSet.targetPath)) {
+                        CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                    }
+                    break;
                 //复制文件 并且进行config的替换
                 case 153303:
                     var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
@@ -190,25 +196,30 @@ var PlugProcess = (function () {
      * @param {AimLocal.IAimLocalConfig} oLocalConfig
      * @param {AimLocal.IAimLocalNexusPlugDefine} oPlugin
      * @param {AimLocal.IAimLocalPlugSet} oSet
-     * 其中：name 调换标记 noteType注释类型  filePath文件路径  contentInfo内容  withText附加在该内容之后，为空则文本内容之后
+     * 其中：name 调换标记 noteType注释类型  filePath文件路径  sourcePath源文件内容|contentInfo内容  withText附加在该内容之后，为空则文本内容之后
      *
      * @memberOf PlugProcess
      */
     PlugProcess.prototype.baseFileContent = function (oLocalConfig, oPlugin, oSet) {
         //CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(''));
-        if (oSet.contentInfo.length > 0) {
-            if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
-                CommonUtil.utilsIo.writeFile(oSet.filePath, '');
-            }
-            var sAfterText = "";
-            if (oSet.withText != undefined) {
-                sAfterText = oSet.withText;
-            }
-            var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
-            var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), sAfterText);
-            if (sContent != sNewContent) {
-                CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
-            }
+        var sContentInfo = '';
+        if (!CommonUtil.utilsString.isEmpty(oSet.sourcePath)) {
+            sContentInfo = CommonUtil.utilsIo.readFile(oSet.sourcePath);
+        }
+        if (oSet.contentInfo != undefined && oSet.contentInfo.length > 0) {
+            sContentInfo = oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq());
+        }
+        if (!CommonUtil.utilsIo.flagExist(oSet.filePath)) {
+            CommonUtil.utilsIo.writeFile(oSet.filePath, '');
+        }
+        var sAfterText = "";
+        if (oSet.withText != undefined) {
+            sAfterText = oSet.withText;
+        }
+        var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+        var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType), CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType), CommonUtil.utilsIo.upRowSeq() + sContentInfo + CommonUtil.utilsIo.upRowSeq(), sAfterText);
+        if (sContent != sNewContent) {
+            CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
         }
         return true;
     };
@@ -236,8 +247,13 @@ var MloadPlug = (function () {
                             var aJsonStep = oJsonConfig[sStep];
                             aJsonStep.forEach(function (oCurrent) {
                                 if (!oCurrent.disable) {
-                                    if (oProcess[oCurrent.exec]) {
-                                        CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
+                                    CommonRoot.logDebug(970312004, [oPlug.name, oCurrent.exec]);
+                                    //判断如果有扩展处理类
+                                    if (!CommonUtil.utilsString.isEmpty(oCurrent.expand)) {
+                                        var oExpand = require(oCurrent.expand);
+                                        var bFlagSuccess = oExpand.exec(oLocalConfig, oPlug, oCurrent.set);
+                                    }
+                                    else if (oProcess[oCurrent.exec]) {
                                         var bFlagSuccess = oProcess[oCurrent.exec](oLocalConfig, oPlug, oCurrent.set);
                                         if (!bFlagSuccess) {
                                             CommonRoot.logError(930312005, [oPlug.name, oCurrent.exec]);

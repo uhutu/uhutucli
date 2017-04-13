@@ -18,7 +18,10 @@ var CappSub = (function () {
         sClassStyle.split(' ').forEach(function (f) {
             aStyle.push("styles." + f);
         });
-        return "[" + aStyle.join(',') + "]";
+        return aStyle.length > 1 ? ("[" + aStyle.join(',') + "]") : aStyle[0];
+    };
+    CappSub.prototype.formNameParse = function (sName) {
+        return "\"" + sName + "\"";
     };
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
@@ -29,7 +32,7 @@ var CappSub = (function () {
             processItem.checkEventFull(oItem, "press", "onPress", "()=>{", "}");
             processItem.checkEventFull(oItem, "change-text", "onChangeText", "(text)=>{", "}");
             processItem.checkEventFull(oItem, "value-change", "onValueChange", "(value)=>{", "}");
-            processItem.checkEventFull(oItem, "link", "onPress", "()=>{", "}");
+            processItem.checkEventFull(oItem, "link", "onPress", "()=>{top_support.pageNav('", "',this)}");
             processItem.checkStateFull(oItem, "value", "value", "", "");
         });
         return oItem;

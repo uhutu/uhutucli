@@ -11,6 +11,9 @@ var CappElms = (function () {
 var CappSub = (function () {
     function CappSub() {
     }
+    CappSub.prototype.formNameParse = function (sName) {
+        return "" + sName + "";
+    };
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
             oItem.targetAttr.set(key, value);
