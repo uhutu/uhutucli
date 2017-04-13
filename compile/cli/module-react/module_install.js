@@ -53,6 +53,10 @@ var MmoduleInstall = (function () {
         if (!CommonUtil.utilsIo.flagExist(CommonUtil.utilsIo.pathJoin(oLocalConfig.appReact.workPath, "node_modules"))) {
             bFlagInstallNpm = true;
         }
+        //判断如果有强制标记 则执行install
+        if (oLocalConfig.env.argsForce) {
+            bFlagInstallNpm = true;
+        }
         if (bFlagInstallNpm) {
             CommonUtil.utilsHelper.spawnSync('npm', ['install'], { cwd: oLocalConfig.appReact.workPath });
         }
