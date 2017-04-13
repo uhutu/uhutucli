@@ -37,8 +37,17 @@
         "fform": {
             "tagName": "View"
         },
+        "finput": {
+            "tagName": "PlusFormInput",
+            "expandFile": "../../expand/expand-elm/react_finput"
+        },
         "fselect": {
-            "tagName": "PlusItemSelect"
+            "tagName": "PlusFormSelect",
+            "expandFile": "../../expand/expand-elm/react_fselect"
+        },
+        "fimage": {
+            "tagName": "PlusFormImage",
+            "expandFile": "../../expand/expand-elm/react_fimage"
         }
     }
 }
