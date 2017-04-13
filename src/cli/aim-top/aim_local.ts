@@ -256,6 +256,11 @@ export interface IAimLocalNexusApp {
      */
     plugInfo:string
 
+    /**
+     * 禁用
+     */
+    disable:boolean
+
 }
 
 /**

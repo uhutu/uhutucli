@@ -9,7 +9,7 @@ import connect = require('gulp-connect');
 import nativeCss = require('gulp-react-native-css');
 import rename = require('gulp-rename');
 import GulpPlus = require("../../project/gulp-use/gulp_plus");
-import watch=require('gulp-watch');
+import watch = require('gulp-watch');
 
 
 let oGulpDefine = {
@@ -136,34 +136,44 @@ class CommandGulp {
 
 
         var oTask = new GulpTask("main_html");
-        oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
-                
-                .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
-                .pipe(rename({
-                    extname: ".js"
-                }))
-                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage))
-                //.pipe(function(cb){console.log('aa');})
-                ;
-        });
 
-        oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
-                
-                .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
-                .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
-                .pipe(connect.reload());
-        });
 
-        oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
-                .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
-                .pipe(rename({
-                    extname: ".wxml"
-                }))
-                .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
-        });
+        if (!oLocalConfig.appReact.disable) {
+
+            oTask.inSubTask("react", function () {
+                return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
+
+                    .pipe(GulpPlus.gulpContent(oLocalConfig, "react"))
+                    .pipe(rename({
+                        extname: ".js"
+                    }))
+                    .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage))
+                    //.pipe(function(cb){console.log('aa');})
+                    ;
+            });
+        }
+        if (!oLocalConfig.appVue.disable) {
+            oTask.inSubTask("vue", function () {
+                return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
+
+                    .pipe(GulpPlus.gulpContent(oLocalConfig, "vue"))
+                    .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage))
+                    .pipe(connect.reload());
+            });
+        }
+
+
+
+        if (!oLocalConfig.appWeapp.disable) {
+            oTask.inSubTask("weapp", function () {
+                return watch(oGulpDefine.pathHtml, { ignoreInitial: false })
+                    .pipe(GulpPlus.gulpContent(oLocalConfig, "weapp"))
+                    .pipe(rename({
+                        extname: ".wxml"
+                    }))
+                    .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
+            });
+        }
 
         oTask.inTopTask();
 
@@ -178,7 +188,7 @@ class CommandGulp {
         var oTask = new GulpTask("main_static");
         oTask.inSubTask("react", function () {
             return watch(oGulpDefine.pathStatic, { ignoreInitial: false })
-                
+
                 .pipe(rename(function (sPath) {
                     //将资源文件的一级目录修改为对应的工程的名字 以方便拷贝
 
@@ -201,35 +211,42 @@ class CommandGulp {
 
 
         var oTask = new GulpTask("main_sass");
-        oTask.inSubTask("react", function () {
-            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
-               
-                .pipe(sass().on('error', sass.logError))
-                .pipe(nativeCss())
-                .pipe(rename({
-                    suffix: "-style",
-                    extname: ".js"
-                }))
-                .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
-        });
 
+        if (!oLocalConfig.appReact.disable) {
+            oTask.inSubTask("react", function () {
+                return watch(oGulpDefine.pathSass, { ignoreInitial: false })
 
-        oTask.inSubTask("vue", function () {
-            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
-                
-                .pipe(sass().on('error', sass.logError))
-                .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
-        });
+                    .pipe(sass().on('error', sass.logError))
+                    .pipe(nativeCss())
+                    .pipe(rename({
+                        suffix: "-style",
+                        extname: ".js"
+                    }))
+                    .pipe(gulp.dest(oLocalConfig.appReact.buildPath + "/" + oLocalConfig.inc.projectPage));
+            });
+        }
 
-        oTask.inSubTask("weapp", function () {
-            return watch(oGulpDefine.pathSass, { ignoreInitial: false })
-                
-                .pipe(sass().on('error', sass.logError))
-                .pipe(rename({
-                    extname: ".wxss"
-                }))
-                .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
-        });
+        if (!oLocalConfig.appVue.disable) {
+            oTask.inSubTask("vue", function () {
+                return watch(oGulpDefine.pathSass, { ignoreInitial: false })
+
+                    .pipe(sass().on('error', sass.logError))
+                    .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
+            });
+        }
+
+        if (!oLocalConfig.appWeapp.disable) {
+
+            oTask.inSubTask("weapp", function () {
+                return watch(oGulpDefine.pathSass, { ignoreInitial: false })
+
+                    .pipe(sass().on('error', sass.logError))
+                    .pipe(rename({
+                        extname: ".wxss"
+                    }))
+                    .pipe(gulp.dest(oLocalConfig.appWeapp.buildPath + "/" + oLocalConfig.inc.projectPage));
+            });
+        }
 
         oTask.inTopTask();
 
