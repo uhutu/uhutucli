@@ -3,6 +3,10 @@
         "name": "top-version",
         "json": "[@config:file.reactPlugPath]/top_version.json"
     },
+    "top_uhutu_plus": {
+        "name": "uhutu-plus",
+        "version": "1.0.3"
+    },
     "top_speed": {
         "name": "top-speed",
         "json": "[@config:file.reactPlugPath]/top_speed.json"
@@ -16,10 +20,7 @@
         "name": "top-file",
         "json": "[@config:file.reactPlugPath]/top_file.json"
     },
-    "top_uhutu_plus": {
-        "name": "uhutu-plus",
-        "version": "1.0.2"
-    },
+    
     "rn_voip": {
         "name": "rn-voip",
         "json": "[@config:file.reactPlugPath]/rn_voip.json",
