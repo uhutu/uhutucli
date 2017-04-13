@@ -48,6 +48,10 @@
         "fimage": {
             "tagName": "PlusFormImage",
             "expandFile": "../../expand/expand-elm/react_fimage"
+        },
+        "fdate": {
+            "tagName": "PlusFormDate",
+            "expandFile": "../../expand/expand-elm/react_fdate"
         }
     }
 }
