@@ -19,7 +19,7 @@ const dataItems=
 export default class {
 
 
-    upDataItem() {
+    static upDataItem() {
         return dataItems;
     }
 
