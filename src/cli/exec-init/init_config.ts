@@ -6,6 +6,13 @@ import * as AimLocal from "../../cli/aim-top/aim_local";
 
 class MinitConfig implements AimLocal.IInitProject {
 
+    /**
+     * 初始化一个配置文件
+     * 
+     * @param {AimLocal.IAimLocalNexusEnv} envs 
+     * 
+     * @memberOf MinitConfig
+     */
     initStart(envs: AimLocal.IAimLocalNexusEnv) {
         if(!this.flagExistConfig(envs)){
             CommonUtil.utilsIo.copyFileAsync(this._upSourceFile(envs),this._upTargetFile(envs));
@@ -23,8 +30,15 @@ class MinitConfig implements AimLocal.IInitProject {
         return CommonUtil.utilsIo.pathJoin(envs.pathCwd,envs.fileConfig);
     }
 
-
-    flagExistConfig(envs: AimLocal.IAimLocalNexusEnv){
+   /**
+    * 判断是否存在配置文件
+    * 
+    * @param {AimLocal.IAimLocalNexusEnv} envs 
+    * @returns {boolean} 
+    * 
+    * @memberOf MinitConfig
+    */
+    flagExistConfig(envs: AimLocal.IAimLocalNexusEnv):boolean{
 
         return CommonUtil.utilsIo.flagExist(this._upTargetFile(envs));
 

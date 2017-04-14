@@ -7,6 +7,14 @@ var RegexStrEnd = "]";
 var Mexport = (function () {
     function Mexport() {
     }
+    /**
+     * 获取配置项 根据环境变量标记
+     *
+     * @param {AimLocal.IAimLocalNexusEnv} oEnv
+     * @returns {AimLocal.IAimLocalConfig}
+     *
+     * @memberOf Mexport
+     */
     Mexport.prototype.upConfig = function (oEnv) {
         //加载app的配置
         var appConfig = CommonUtil.utilsIo.upConfigByFile(CommonUtil.utilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
@@ -19,11 +27,29 @@ var Mexport = (function () {
     };
     /**
      * 保存配置到文件中存储
-     * @param oEnv
+     *
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig
+     *
+     * @memberOf Mexport
      */
     Mexport.prototype.saveConfigInfo = function (oLocalConfig) {
         CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);
         CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile, oLocalConfig);
+    };
+    Mexport.prototype.upCliVersion = function (oLocalConfig) {
+        var bReturn = true;
+        CommonRoot.logDebug(970312006, oLocalConfig.system.cliVersion);
+        if (oLocalConfig.system.cliVersion != undefined && !CommonUtil.utilsString.isEmpty(oLocalConfig.system.cliVersion)) {
+            var oJson = CommonUtil.utilsJson.readJsonFile(CommonUtil.utilsIo.pathJoin(oLocalConfig.define.cliSpace, "package.json"));
+            if (oJson != undefined && oJson.verion != undefined && oJson.verion != oLocalConfig.system.cliVersion) {
+                var sVersion = oJson.version;
+                CommonRoot.logWarn(940312001, [oLocalConfig.system.cliVersion, sVersion]);
+                CommonUtil.utilsHelper.spawnSync("npm", ["install", "-g", oJson.name + "@" + oLocalConfig.system.cliVersion], { cwd: oLocalConfig.define.workSpace });
+                CommonRoot.logWarn(940312002);
+                bReturn = false;
+            }
+        }
+        return bReturn;
     };
     //循环递归处理配置文件
     Mexport.prototype.autoConfig = function (oConfig) {

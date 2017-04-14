@@ -9,6 +9,14 @@ let RegexStrEnd = "]";
 
 class Mexport {
 
+    /**
+     * 获取配置项 根据环境变量标记
+     * 
+     * @param {AimLocal.IAimLocalNexusEnv} oEnv 
+     * @returns {AimLocal.IAimLocalConfig} 
+     * 
+     * @memberOf Mexport
+     */
     upConfig(oEnv: AimLocal.IAimLocalNexusEnv): AimLocal.IAimLocalConfig {
 
 
@@ -20,7 +28,7 @@ class Mexport {
 
         oLocalConfig = this.autoConfig(oLocalConfig);
 
-        
+
 
         this.saveConfigInfo(oLocalConfig);
 
@@ -29,16 +37,57 @@ class Mexport {
     }
     /**
      * 保存配置到文件中存储
-     * @param oEnv 
+     * 
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig 
+     * 
+     * @memberOf Mexport
      */
-    saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig){
+    saveConfigInfo(oLocalConfig: AimLocal.IAimLocalConfig) {
 
 
         CommonRoot.logDebug(970312002, oLocalConfig.file.diskConfigFile);
 
-        CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile,oLocalConfig);
+        CommonUtil.utilsJson.saveJsonFile(oLocalConfig.file.diskConfigFile, oLocalConfig);
 
     }
+
+
+    upCliVersion(oLocalConfig: AimLocal.IAimLocalConfig): boolean {
+
+
+
+        let bReturn = true;
+
+        CommonRoot.logDebug(970312006, oLocalConfig.system.cliVersion);
+
+        if (oLocalConfig.system.cliVersion != undefined && !CommonUtil.utilsString.isEmpty(oLocalConfig.system.cliVersion)) {
+
+
+
+            let oJson = CommonUtil.utilsJson.readJsonFile(CommonUtil.utilsIo.pathJoin(oLocalConfig.define.cliSpace, "package.json"));
+
+            if (oJson != undefined && oJson.verion != undefined && oJson.verion != oLocalConfig.system.cliVersion) {
+
+                let sVersion = oJson.version;
+
+                CommonRoot.logWarn(940312001, [oLocalConfig.system.cliVersion, sVersion]);
+
+
+                CommonUtil.utilsHelper.spawnSync("npm", ["install", "-g", oJson.name + "@" + oLocalConfig.system.cliVersion], { cwd: oLocalConfig.define.workSpace });
+
+                CommonRoot.logWarn(940312002);
+                bReturn = false;
+            }
+
+        }
+
+
+
+
+        return bReturn;
+    }
+
+
 
     //循环递归处理配置文件
     autoConfig(oConfig) {

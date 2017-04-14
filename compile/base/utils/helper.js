@@ -5,6 +5,15 @@ var MutilsHelper = (function () {
     function MutilsHelper() {
         this._flagSpeepEnd = false;
     }
+    /**
+     * 同步执行命令
+     *
+     * @param {string} sCommand
+     * @param {string[]} aArgs
+     * @param {IHelperSpawSyncOption} oOption
+     *
+     * @memberOf MutilsHelper
+     */
     MutilsHelper.prototype.spawnSync = function (sCommand, aArgs, oOption) {
         oOption.stdio = 'inherit';
         var result = childProcess.spawnSync(sCommand, aArgs, oOption);
@@ -21,6 +30,15 @@ var MutilsHelper = (function () {
         //console.log(free.stdout.toString());
         //free.stdout.pipe(process.stdout);
     };
+    /**
+     * 异步执行命令
+     *
+     * @param {string} sCommand
+     * @param {string[]} aArgs
+     * @param {IHelperSpawSyncOption} oOption
+     *
+     * @memberOf MutilsHelper
+     */
     MutilsHelper.prototype.spawn = function (sCommand, aArgs, oOption) {
         oOption.stdio = 'inherit';
         childProcess.spawn(sCommand, aArgs, oOption);

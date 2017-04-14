@@ -66,7 +66,8 @@ var currentConfig = {
      */
     plugReact: {},
     system: {
-        editionCode: 1001
+        editionCode: 1001,
+        cliVersion: ''
     }
 };
 var MAimLocalEnv = (function () {

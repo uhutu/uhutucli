@@ -289,6 +289,14 @@ export interface IAimLocalNexusSystem {
      */
     editionCode: number
 
+    /**
+     * 当前需要cli的版本号
+     * 
+     * @type {string}
+     * @memberOf IAimLocalNexusSystem
+     */
+    cliVersion:string
+
 }
 
 
