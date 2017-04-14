@@ -66,7 +66,9 @@ class Mexport {
 
             let oJson = CommonUtil.utilsJson.readJsonFile(CommonUtil.utilsIo.pathJoin(oLocalConfig.define.cliSpace, "package.json"));
 
-            if (oJson != undefined && oJson.verion != undefined && oJson.verion != oLocalConfig.system.cliVersion) {
+            
+
+            if (oJson != undefined && oJson.version != undefined && oJson.version != oLocalConfig.system.cliVersion) {
 
                 let sVersion = oJson.version;
 

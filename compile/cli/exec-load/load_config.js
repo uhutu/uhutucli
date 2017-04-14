@@ -41,7 +41,7 @@ var Mexport = (function () {
         CommonRoot.logDebug(970312006, oLocalConfig.system.cliVersion);
         if (oLocalConfig.system.cliVersion != undefined && !CommonUtil.utilsString.isEmpty(oLocalConfig.system.cliVersion)) {
             var oJson = CommonUtil.utilsJson.readJsonFile(CommonUtil.utilsIo.pathJoin(oLocalConfig.define.cliSpace, "package.json"));
-            if (oJson != undefined && oJson.verion != undefined && oJson.verion != oLocalConfig.system.cliVersion) {
+            if (oJson != undefined && oJson.version != undefined && oJson.version != oLocalConfig.system.cliVersion) {
                 var sVersion = oJson.version;
                 CommonRoot.logWarn(940312001, [oLocalConfig.system.cliVersion, sVersion]);
                 CommonUtil.utilsHelper.spawnSync("npm", ["install", "-g", oJson.name + "@" + oLocalConfig.system.cliVersion], { cwd: oLocalConfig.define.workSpace });
