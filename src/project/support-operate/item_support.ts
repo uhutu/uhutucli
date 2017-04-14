@@ -66,6 +66,30 @@ class MprocessItem {
     }
 
 
+
+    formBaseAuto(oItem: CTF.ItransformItemInfo){
+
+
+        //数据列表源编号
+        this.checkPropWithQuotes(oItem, "form-source-items", "formSourceItems");
+
+        //默认值
+        this.checkPropWithQuotes(oItem, "form-default-value", "formDefaultValue");
+
+        //最小长度
+        this.checkPropWithQuotes(oItem, "form-min-size", "formMinSize");
+
+        //最大长度
+        this.checkPropWithQuotes(oItem, "form-max-size", "formMaxSize");
+
+        //正则表达式编号
+        this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+
+    }
+
+
+
+
 }
 
 export = new MprocessItem();

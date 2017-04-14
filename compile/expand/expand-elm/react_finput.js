@@ -4,6 +4,7 @@ var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
+        processItem.formBaseAuto(oItem);
         processItem.checkPropWithQuotes(oItem, "placeholder", "placeholder");
         processItem.checkPropWithEmpty(oItem, "secure", "secureTextEntry");
         processItem.checkPropWithQuotes(oItem, "keyboard", "keyboardType");

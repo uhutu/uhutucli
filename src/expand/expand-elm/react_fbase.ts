@@ -5,12 +5,13 @@ import * as CTF from "../../project/aim-project/aim_parse";
 import processItem = require("../../project/support-operate/item_support");
 
 
-class MexpandReactUicon implements CTF.ItransformExpandItem {
+class MreactFbase implements CTF.ItransformExpandItem {
 
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
 
-        
+        processItem.formBaseAuto(oItem);
+
 
         return oItem;
     }
@@ -20,4 +21,4 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
 
-export =new MexpandReactUicon();
+export =new MreactFbase();

@@ -53,15 +53,15 @@
         },
         "fselect": {
             "tagName": "PlusFormSelect",
-            "expandFile": "../../expand/expand-elm/react_fselect"
+            "expandFile": "../../expand/expand-elm/react_fbase"
         },
         "fimage": {
             "tagName": "PlusFormImage",
-            "expandFile": "../../expand/expand-elm/react_fimage"
+            "expandFile": "../../expand/expand-elm/react_fbase"
         },
         "fdate": {
             "tagName": "PlusFormDate",
-            "expandFile": "../../expand/expand-elm/react_fdate"
+            "expandFile": "../../expand/expand-elm/react_fbase"
         }
     }
 }

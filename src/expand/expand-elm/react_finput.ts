@@ -9,6 +9,8 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
+        processItem.formBaseAuto(oItem);
+
 
         processItem.checkPropWithQuotes(oItem,"placeholder","placeholder");
         processItem.checkPropWithEmpty(oItem,"secure","secureTextEntry");
