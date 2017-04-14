@@ -9,7 +9,7 @@
 
             }
         },
-        
+
         {
             "exec": "baseFileOption",
             "set": {
@@ -58,6 +58,36 @@
             }
         },
 
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150201,
+                "filePath": "[@config:define.devPath]/table/data/data_item.json",
+                "contentInfo": ["//数据文件 44进制标记","{",
+                "\"2004\":\"数据定义结构\",",
+                "\"20041001\":\"示例父编码\",",
+                "\"200410010001\":\"示例子项一\",",
+                "\"200410010002\":\"示例子项二\",",
+                "\"200410010003\":\"示例子项三\",",
+                "\"20041002\":\"示例父2\",",
+                "\"200410020001\":\"示例一\",",
+                "\"200410020002\":\"示例二\",",
+                "\"200410020003\":\"示例三\"",
+                "}"]
+
+            }
+        },
+        {
+            "exec": "baseFileOption",
+            "set": {
+                "optType": 150306,
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/data_items.js",
+                "targetPath": "[@config:define.devPath]/statics/react/project/code/top/data/data_items.js"
+
+            }
+        },
+
+
 
         {
             "exec": "listFileProcess",
@@ -68,7 +98,18 @@
             },
             "expand": "../../expand/expand-plus/simple_react"
         }
-    ]
+    ],
+    "ios": [{
+        "exec": "baseFileContent",
+        "set": {
+            "name": "react_note_plug_simple_react_data_item",
+            "filePath": "[@config:define.devPath]/statics/react/project/code/top/data/data_items.js",
+            "sourcePath": "[@config:define.devPath]/table/data/data_item.json",
+            "noteType": 1,
+            "withText": "const dataItems="
+
+        }
+    }]
 
 
 }

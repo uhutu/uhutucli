@@ -206,7 +206,7 @@ class PlugProcess {
             switch (oSet.optType) {
                 //复制文件 
                 case 150306:
-                    CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                    CommonUtil.utilsIo.copyFile(oSet.filePath, oSet.targetPath);
                     break;
                 //判断文件是否存在
                 case 150206:
@@ -214,6 +214,13 @@ class PlugProcess {
                     if (!bFlagSuccess) {
                         CommonRoot.logError(930312006, oSet.filePath);
                         this._logShow(oSet);
+                    }
+                    break;
+                //判断文件是否存在 如果不存在则将content的内容写入
+                case 150201:
+                    bFlagSuccess = CommonUtil.utilsIo.flagExist(oSet.filePath);
+                    if (!bFlagSuccess) {
+                        CommonUtil.utilsIo.writeFile(oSet.filePath, oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq()));
                     }
                     break;
                 //文件不存在则拷贝 否则不处理
@@ -263,7 +270,7 @@ class PlugProcess {
         }
 
 
-        if (oSet.contentInfo!=undefined&&oSet.contentInfo.length > 0) {
+        if (oSet.contentInfo != undefined && oSet.contentInfo.length > 0) {
             sContentInfo = oSet.contentInfo.join(CommonUtil.utilsIo.upRowSeq());
         }
 
@@ -284,11 +291,14 @@ class PlugProcess {
 
 
         var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
+          
         var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent,
             CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType),
             CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType),
             CommonUtil.utilsIo.upRowSeq() + sContentInfo + CommonUtil.utilsIo.upRowSeq(),
             sAfterText);
+          
+            
         if (sContent != sNewContent) {
             CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
         }
