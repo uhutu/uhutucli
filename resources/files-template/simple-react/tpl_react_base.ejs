@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { Button,Icon,Input,Tabs,Tab} from 'native-base';
 
-import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate} from 'uhutu-plus';
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage} from 'uhutu-plus';
 
 import styles from "./<%- out.sourceFile.fileBasename %>-style";
 
@@ -25,6 +25,11 @@ import current_support from "../../../code/current/support/current_support";
 
 export default class  extends RootSuperPage {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {rootAsyncShow:<%= out.pageConfig.asyncShow=="true"?"true":"false" %>};
+  }
 
   <% if (out.pageConfig.execReact !=undefined ){ %>
   <%- out.pageConfig.execReact.join('\n') %>
@@ -37,10 +42,12 @@ export default class  extends RootSuperPage {
   componentDidMount() {
     <%- out.pageConfig.scriptInit %>
   }
+ 
 
-  rootRender() {
+  rootRender(){
     return (
       <%- out.content.join('') %>
-    );
+    )
   }
+
 };

@@ -4,11 +4,12 @@
             "exec": "baseFileOption",
             "set": {
                 "optType": 150306,
-                "filePath": "[@config:define.resourcePath]/files-template/simple-react/react_tpl.ejs",
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/tpl_react_base.ejs",
                 "targetPath": "[@config:define.devPath]/master/react/tpl/default.ejs"
 
             }
         },
+        
         {
             "exec": "baseFileOption",
             "set": {

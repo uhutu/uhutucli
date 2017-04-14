@@ -165,6 +165,14 @@ export interface IbasePageConfig {
     //页面初始化时加载的脚本
     scriptInit: string
 
+    /**
+     * 延迟加载显示页面
+     * 
+     * @type {string}
+     * @memberOf IbasePageConfig
+     */
+    asyncShow:string
+
 
 
 }
@@ -176,6 +184,7 @@ export class MbasePageConfig implements IbasePageConfig {
     pageTitle = ""
     masterPath = ""
     tplFile = "tpl/default.ejs"
+    asyncShow=""
     scriptInit = ""
 }
 

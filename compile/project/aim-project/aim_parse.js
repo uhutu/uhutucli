@@ -18,6 +18,7 @@ var MbasePageConfig = (function () {
         this.pageTitle = "";
         this.masterPath = "";
         this.tplFile = "tpl/default.ejs";
+        this.asyncShow = "";
         this.scriptInit = "";
     }
     return MbasePageConfig;
