@@ -12,6 +12,20 @@ import LoadConfig = require("../../cli/exec-load/load_config");
 
 class MstartBase implements AimLocal.IAimLocalInit {
 
+
+
+    _execInitStep(oEnv: AimLocal.IAimLocalNexusEnv, localConfig: AimLocal.IAimLocalConfig) {
+        if (oEnv.argsInstall) {
+            InitInstall.initStart(localConfig);
+        }
+
+        if (oEnv.argsBuild) {
+            InitBuild.initStart(localConfig);
+        }
+    }
+
+
+
     initStart(oEnv: AimLocal.IAimLocalNexusEnv) {
 
         this._initSystem(oEnv);
@@ -37,21 +51,11 @@ class MstartBase implements AimLocal.IAimLocalInit {
 
                 localConfig = LoadConfig.upConfig(oEnv);
 
+                let bCliVerionCheck = LoadConfig.upCliVersion(localConfig);
 
-                
-
-
-
-                if (oEnv.argsInstall) {
-                    InitInstall.initStart(localConfig);
+                if (bCliVerionCheck) {
+                    this._execInitStep(oEnv, localConfig);
                 }
-
-
-                if (oEnv.argsBuild) {
-                    InitBuild.initStart(localConfig);
-                }
-
-
 
             } else {
 
