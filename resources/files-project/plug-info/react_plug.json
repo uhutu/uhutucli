@@ -52,7 +52,7 @@
     },
     "vector_icons": {
         "name": "react-native-vector-icons",
-        "version": "4.0.0",
+        "version": "4.0.1",
         "json": "[@config:file.reactPlugPath]/vector_icons.json"
     },
     "router_flux": {
@@ -74,7 +74,7 @@
 
     "rn_realm": {
         "name": "realm",
-        "version": "1.0.2",
+        "version": "1.2.0",
         "json": "[@config:file.reactPlugPath]/rn_realm.json",
         "disable": true
     },
@@ -92,7 +92,7 @@
     },
     "rn_image_picker": {
         "name": "react-native-image-picker",
-        "version": "0.26.2",
+        "version": "0.26.3",
         "json": "[@config:file.reactPlugPath]/rn_image_picker.json"
     },
 
