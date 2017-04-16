@@ -56,8 +56,8 @@ var MstartBase = (function () {
         if (oEnv.argsLog) {
             CommonRoot.inLogLevel(oEnv.argsLog);
         }
-        if (oEnv.argsBuild != undefined && CommonUtil.utilsString.isEmpty(oEnv.argsBuild)) {
-            oEnv.argsBuild = "default";
+        if ((oEnv.argsBuild != undefined && CommonUtil.utilsString.isEmpty(oEnv.argsBuild)) || oEnv.argsBuild == 'true') {
+            oEnv.argsBuild = CommonRoot.upProperty().defaultName;
         }
     };
     /**

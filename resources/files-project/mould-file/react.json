@@ -20,7 +20,8 @@
             "tagName": "Text"
         },
         "ulistview": {
-            "tagName": "ListView"
+            "tagName": "ListView",
+            "expandFile": "../../expand/expand-elm/react_ulistview"
         },
         "uinput": {
             "tagName": "TextInput",

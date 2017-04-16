@@ -6,9 +6,60 @@ var MprocessParseFile = (function () {
     return MprocessParseFile;
 }());
 exports.MprocessParseFile = MprocessParseFile;
+var MtransformTemplateInfo = (function () {
+    function MtransformTemplateInfo() {
+        this.templateName = '';
+        this.templateSource = '';
+        this.templateContent = [];
+    }
+    return MtransformTemplateInfo;
+}());
+exports.MtransformTemplateInfo = MtransformTemplateInfo;
+var MtransformPageProperty = (function () {
+    function MtransformPageProperty() {
+        this.formName = [];
+    }
+    return MtransformPageProperty;
+}());
+exports.MtransformPageProperty = MtransformPageProperty;
+var MtransformCurrentParse = (function () {
+    function MtransformCurrentParse() {
+        /**
+         * 过程中的form名称
+         *
+         * @type {string}
+         * @memberOf MtransformCurrentParse
+         */
+        this.formName = '';
+        /**
+         * 过程中的文本内容
+         *
+         * @type {string[]}
+         * @memberOf MtransformCurrentParse
+         */
+        this.textContents = [];
+        /**
+         * 过程中的元素数据  用于判断当前元素 将元素push或者pop来判断出当前元素的内容
+         *
+         * @type {ItransformItemInfo[]}
+         * @memberOf MtransformCurrentParse
+         */
+        this.elmArrays = [];
+        /**
+         * 模板的名称
+         *
+         * @type {string}
+         * @memberOf MtransformCurrentParse
+         */
+        this.templateName = '';
+    }
+    return MtransformCurrentParse;
+}());
+exports.MtransformCurrentParse = MtransformCurrentParse;
 var MtransformPageOut = (function () {
     function MtransformPageOut() {
         this.content = [];
+        this.templateInfos = [];
     }
     return MtransformPageOut;
 }());

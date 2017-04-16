@@ -9,9 +9,12 @@ var cProperty = {
     regexBaseString: "(.*?):(.*?)",
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_",
-    formElementName: 'fform',
+    pageElmentForm: 'fform',
+    pageElementTemplate: 'template',
     formNameSplit: '---',
-    formBaseAttr: 'name'
+    formBaseAttr: 'name',
+    templateSourceName: 'source',
+    defaultName: 'default'
 };
 var RootResult = (function () {
     function RootResult() {

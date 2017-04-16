@@ -40,7 +40,7 @@ export interface IAimLocalNexusEnv {
     /**
      * 是否编译操作  该操作会执行编译
      */
-    argsBuild: string
+    argsBuild: string|boolean
 
 }
 
