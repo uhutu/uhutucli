@@ -15,7 +15,8 @@ import {
 export default class {
 
     static pageNav(sPage, that) {
-        that.props.navigation.navigate(sPage);
+        //that.props.navigation.navigate(sPage);
+        PlusOperatePage.pageNaviger(that, sPage);
 
     }
 
@@ -27,10 +28,22 @@ export default class {
     static initForm(that, sFormName) {
 
         PlusOperateForm.initPageForm({
-            formName: sFormName
+            formName: sFormName,
+            formPage: PlusOperatePage.upNavigerValue(that, 'url')
         });
         //that.rootAsyncShow();
         PlusOperatePage.asyncShowPage(that);
+    }
+
+
+    static submitForm(that, sFormName) {
+
+
+        PlusOperateForm.submitFormData(sFormName);
+
+        //PlusCommonWidget.msgAlert(JSON.stringify(o));
+
+
     }
 
 
