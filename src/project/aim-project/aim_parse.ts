@@ -21,7 +21,7 @@ export class MtransformTemplateInfo {
 
 
 export class MtransformPageProperty {
-    formName: string[] = []
+    formNames: string[] = []
 }
 
 
@@ -59,6 +59,12 @@ export class MtransformCurrentParse {
 }
 
 
+export class MtransformPageScript {
+    scriptType: string = ''
+    scriptContent: string = ''
+}
+
+
 export class MtransformPageOut {
     content: string[] = []
     pageConfig: IbasePageConfig
@@ -67,6 +73,8 @@ export class MtransformPageOut {
     templateInfos: MtransformTemplateInfo[] = []
 
     pageProperty: MtransformPageProperty
+
+    scriptInfos: MtransformPageScript[] = []
 
 }
 

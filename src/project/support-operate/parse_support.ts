@@ -45,6 +45,8 @@ class ChelperParse {
 
 
         if (sName === "script") {
+
+            oElm.elmType = 5;
             if (oElm.sourceAttr.has("type")) {
                 let sType = oElm.sourceAttr.get("type");
                 if (sType === "text/u-template") {
@@ -224,7 +226,7 @@ class Mexport {
                             oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
 
 
-                            oPageProperty.formName.push(oCurrentParse.formName);
+                            oPageProperty.formNames.push(oCurrentParse.formName);
 
                         }
                         else {
@@ -298,6 +300,19 @@ class Mexport {
                 } else if (oItem.elmType == 1) {
 
                     oItem.sourceContent = oCurrentParse.textContents.join('');
+                } else if (oItem.elmType == 5) {
+
+                    let oScript = new AimParse.MtransformPageScript();
+
+                    oScript.scriptContent = oCurrentParse.textContents.join('');
+                    if (oItem.sourceAttr.has("type")) {
+
+                        oScript.scriptType = oItem.sourceAttr.get('type');
+                    }
+
+                    oOut.scriptInfos.push(oScript);
+
+
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
@@ -337,7 +352,7 @@ class Mexport {
 
         oTransform.outFormat.contentFormat(oOut);
 
-
+        oOut.pageProperty = oPageProperty;
         return oOut;
     }
 

@@ -27,6 +27,7 @@ var ChelperParse = (function () {
         var mAttrMap = CommonUtil.utilsMap.initMap(oAttr);
         oElm.sourceAttr = mAttrMap;
         if (sName === "script") {
+            oElm.elmType = 5;
             if (oElm.sourceAttr.has("type")) {
                 var sType = oElm.sourceAttr.get("type");
                 if (sType === "text/u-template") {
@@ -143,7 +144,7 @@ var Mexport = (function () {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
                             oCurrentParse.formName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
                             oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
-                            oPageProperty.formName.push(oCurrentParse.formName);
+                            oPageProperty.formNames.push(oCurrentParse.formName);
                         }
                         else {
                             CommonRoot.logWarn(941612001, oParseFile.fileBasename);
@@ -196,6 +197,14 @@ var Mexport = (function () {
                 else if (oItem.elmType == 1) {
                     oItem.sourceContent = oCurrentParse.textContents.join('');
                 }
+                else if (oItem.elmType == 5) {
+                    var oScript = new AimParse.MtransformPageScript();
+                    oScript.scriptContent = oCurrentParse.textContents.join('');
+                    if (oItem.sourceAttr.has("type")) {
+                        oScript.scriptType = oItem.sourceAttr.get('type');
+                    }
+                    oOut.scriptInfos.push(oScript);
+                }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
                     if (oItem.sourceName === CommonRoot.upProperty().pageElmentForm) {
@@ -222,6 +231,7 @@ var Mexport = (function () {
         parser.write(oParseFile.fileContent);
         parser.end();
         oTransform.outFormat.contentFormat(oOut);
+        oOut.pageProperty = oPageProperty;
         return oOut;
     };
     return Mexport;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import {
   TouchableOpacity,
   StyleSheet,
@@ -33,10 +34,8 @@ export default class  extends RootSuperPage {
       <% }) %>
 
     this.state = {
-      <% out.templateInfos.forEach((template)=>{ %>
-        template_data_source_<%- template.templateName-%>: template_data_list_<%- template.templateName-%>.cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),
-      <% }) %>
-      rootAsyncShow:<%= out.pageConfig.asyncShow=="true"?"true":"false" %>};
+      <% out.templateInfos.forEach((template)=>{ %>template_data_source_<%- template.templateName-%>: template_data_list_<%- template.templateName-%>.cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),<% }) %>
+      rootAsyncShow:<%= (out.pageConfig.asyncShow=="true"||out.pageProperty.formNames.length>0)?"true":"false" %>};
   }
 
 
@@ -51,6 +50,12 @@ export default class  extends RootSuperPage {
   <% if (out.pageConfig.execReact !=undefined ){ %>
   <%- out.pageConfig.execReact.join('\n') %>
 <% } %>
+
+  <% out.scriptInfos.forEach((scriptInfo)=>{ %>
+        <%- scriptInfo.scriptContent.replace('function ','')-%>
+      <% }) %>
+
+
 
   static navigationOptions = {
     title: '<%- out.pageConfig.pageTitle %>',

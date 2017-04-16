@@ -17,7 +17,7 @@ var MtransformTemplateInfo = (function () {
 exports.MtransformTemplateInfo = MtransformTemplateInfo;
 var MtransformPageProperty = (function () {
     function MtransformPageProperty() {
-        this.formName = [];
+        this.formNames = [];
     }
     return MtransformPageProperty;
 }());
@@ -56,10 +56,19 @@ var MtransformCurrentParse = (function () {
     return MtransformCurrentParse;
 }());
 exports.MtransformCurrentParse = MtransformCurrentParse;
+var MtransformPageScript = (function () {
+    function MtransformPageScript() {
+        this.scriptType = '';
+        this.scriptContent = '';
+    }
+    return MtransformPageScript;
+}());
+exports.MtransformPageScript = MtransformPageScript;
 var MtransformPageOut = (function () {
     function MtransformPageOut() {
         this.content = [];
         this.templateInfos = [];
+        this.scriptInfos = [];
     }
     return MtransformPageOut;
 }());
