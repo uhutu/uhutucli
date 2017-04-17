@@ -25,6 +25,18 @@ export default class {
 
     }
 
+
+
+    static initPage(that, oPageProperty) {
+
+
+        if (oPageProperty.formNames != undefined) {
+            this.initForm(that, oPageProperty.formNames.join(','));
+        }
+
+    }
+
+
     static initForm(that, sFormName) {
 
         PlusOperateForm.initPageForm({
@@ -32,7 +44,7 @@ export default class {
             formPage: PlusOperatePage.upNavigerValue(that, 'url')
         });
         //that.rootAsyncShow();
-        PlusOperatePage.asyncShowPage(that);
+        //PlusOperatePage.asyncShowPage(that);
     }
 
 

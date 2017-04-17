@@ -39,10 +39,11 @@
         },
         {
             "exec": "baseFileOption",
+            "disable": true,
             "set": {
                 "optType": 150302,
-                "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.js",
-                "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js"
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/layout_index.json",
+                "targetPath": "[@config:define.devPath]/table/config/layout_index.json"
 
             }
         },
@@ -60,20 +61,22 @@
 
         {
             "exec": "baseFileOption",
+            "desc": "初始化数据结构的文件",
             "set": {
                 "optType": 150201,
                 "filePath": "[@config:define.devPath]/table/data/data_item.json",
-                "contentInfo": ["//数据文件 44进制标记","{",
-                "\"2004\":\"数据定义结构\",",
-                "\"20041001\":\"示例数据\",",
-                "\"200410010001\":\"示例子项一\",",
-                "\"200410010002\":\"示例子项二\",",
-                "\"200410010003\":\"示例子项三\",",
-                "\"20041002\":\"是否\",",
-                "\"200410020001\":\"是\",",
-                "\"200410020002\":\"否\"",
-                
-                "}"]
+                "contentInfo": ["//数据文件 44进制标记", "{",
+                    "\"2004\":\"数据定义结构\",",
+                    "\"20041001\":\"示例数据\",",
+                    "\"200410010001\":\"示例子项一\",",
+                    "\"200410010002\":\"示例子项二\",",
+                    "\"200410010003\":\"示例子项三\",",
+                    "\"20041002\":\"是否\",",
+                    "\"200410020001\":\"是\",",
+                    "\"200410020002\":\"否\"",
+
+                    "}"
+                ]
 
             }
         },
@@ -86,24 +89,49 @@
 
             }
         },
-
-
-
         {
             "exec": "listFileProcess",
             "set": {
-                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.ejs",
+                "sourcePath": "[@config:define.devPath]/table/config/layout_index.json",
+                "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "extendAfield": "[@config:define.diskPath]/links/import.js",
+                "extendBfield": "[@config:define.diskPath]/links/screen.txt",
+
                 "replaceText": ""
 
             },
             "expand": "../../expand/expand-plus/simple_react"
+        },
+        {
+            "exec": "baseFileContent",
+            "set": {
+                "name": "react_note_plug_simple_react_import",
+                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "sourcePath": "[@config:define.diskPath]/links/import.js",
+                "noteType": 1,
+                "withText": "//#auto-import-pages#"
+
+            }
+        },
+        {
+            "exec": "baseFileContent",
+            "set": {
+                "name": "react_note_plug_simple_react_screen",
+                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "sourcePath": "[@config:define.diskPath]/links/screen.txt",
+                "noteType": 1,
+                "withText": "//#auto-improt-screen#"
+
+            }
         }
     ],
     "ios": [{
         "exec": "baseFileContent",
+        "desc": "将数据结构文件拷贝到生成目录中",
         "set": {
             "name": "react_note_plug_simple_react_data_item",
-            "filePath": "[@config:define.devPath]/statics/react/project/code/top/data/data_items.js",
+            "filePath": "[@config:appReact.buildPath]/code/top/data/data_items.js",
             "sourcePath": "[@config:define.devPath]/table/data/data_item.json",
             "noteType": 1,
             "withText": "const dataItems="

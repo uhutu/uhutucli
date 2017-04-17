@@ -1,0 +1,87 @@
+import React, { Component } from "react"
+import {
+    TextInput,
+    View,
+    DatePickerIOS,
+    TouchableOpacity,
+    Picker,
+    StyleSheet,
+    Image,
+    Text
+
+} from 'react-native';
+
+import { TabNavigator,StackNavigator } from 'react-navigation';
+import {Icon} from 'native-base';
+
+import top_support from "../../../code/top/support/top_support";
+import current_support from "../../../code/current/support/current_support";
+
+
+import MainStype from "../../../pages/air/resource/layout-style";
+var styles = StyleSheet.create(MainStype);
+
+
+//#auto-import-pages#
+
+
+
+
+
+//初始化程序
+
+
+
+const ScreenTab = TabNavigator({
+
+
+  <% out.tabItems.forEach((fTabItem)=>{ %>
+
+
+  <%= fTabItem.tabName %>: {
+    screen: <%= fTabItem.screenName %>,
+    navigationOptions : {
+    tabBar: {
+      icon: ({ bFlagForce,tintColor }) => (
+       <Icon name='<%= fTabItem.iconName %>' style={{color:tintColor}} />
+      ),
+    },
+  }
+  },
+
+  <% }) %>
+  
+}, {
+  tabBarOptions: {
+    <%- out.tabOptions.join('\n') %>
+    
+  },
+  tabBarPosition:'bottom',
+  swipeEnabled:false,
+});
+
+
+const ScreenMain = StackNavigator({
+//#auto-improt-screen#
+
+root_layout_main: { screen: ScreenTab }
+},{initialRouteName:'<%= out.initialRouteName %>'});
+
+
+
+
+export  default class  extends Component{
+
+  constructor(props){
+    super(props);
+    current_support.initApplication();
+  }
+    
+  render() {
+    return (
+      <ScreenMain />
+    );
+  }
+}
+
+

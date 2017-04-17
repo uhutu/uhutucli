@@ -29,13 +29,15 @@ export default class  extends RootSuperPage {
   constructor(props) {
     super(props);
 
+    top_support.initPage(this,<%- JSON.stringify(out.pageProperty) %>);
+
     <% out.templateInfos.forEach((template)=>{ %>
         var template_data_list_<%- template.templateName-%> = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       <% }) %>
 
     this.state = {
       <% out.templateInfos.forEach((template)=>{ %>template_data_source_<%- template.templateName-%>: template_data_list_<%- template.templateName-%>.cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),<% }) %>
-      rootAsyncShow:<%= (out.pageConfig.asyncShow=="true"||out.pageProperty.formNames.length>0)?"true":"false" %>};
+      rootAsyncShow:<%= (out.pageConfig.asyncShow=="true")?"true":"false" %>};
   }
 
 
@@ -62,6 +64,8 @@ export default class  extends RootSuperPage {
   };
 
   componentDidMount() {
+    
+
     <%- out.pageConfig.scriptInit %>
   }
  

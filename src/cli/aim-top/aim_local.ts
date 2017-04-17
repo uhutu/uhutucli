@@ -40,7 +40,7 @@ export interface IAimLocalNexusEnv {
     /**
      * 是否编译操作  该操作会执行编译
      */
-    argsBuild: string|boolean
+    argsBuild: string | boolean
 
 }
 
@@ -191,7 +191,7 @@ export interface IAimLocalNexusFile {
      * @type {string}
      * @memberOf IAimLocalNexusFile
      */
-    reactStartPage:string
+    reactStartPage: string
     /**
      * react插件配置目录
      */
@@ -254,12 +254,12 @@ export interface IAimLocalNexusApp {
     /**
      * 加载的插件配置文件
      */
-    plugInfo:string
+    plugInfo: string
 
     /**
      * 禁用
      */
-    disable:boolean
+    disable: boolean
 
 }
 
@@ -274,7 +274,7 @@ export interface IAimLocalNexusInc {
     /**
      * 静态资源目录
      */
-    projectStatic:string
+    projectStatic: string
 
 }
 
@@ -295,7 +295,7 @@ export interface IAimLocalNexusSystem {
      * @type {string}
      * @memberOf IAimLocalNexusSystem
      */
-    cliVersion:string
+    cliVersion: string
 
 }
 
@@ -308,7 +308,7 @@ export interface IAimLocalPlugSet {
     /**
      * 描述信息
      */
-    desc:string[]
+    desc: string[]
 
     /**
      * 日志编号
@@ -316,7 +316,7 @@ export interface IAimLocalPlugSet {
      * @type {number}
      * @memberOf IAimLocalPlugSet
      */
-    logCode:number
+    logCode: number
 
     /**
      * 日志参数
@@ -324,43 +324,43 @@ export interface IAimLocalPlugSet {
      * @type {string[]}
      * @memberOf IAimLocalPlugSet
      */
-    logParams:string[]
+    logParams: string[]
 
-    
-    key:string
-    value:string
+
+    key: string
+    value: string
     /**
      * 名称
      * 
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    name:string
+    name: string
     /**
      * 属性
      * 
      * @type {any[]}
      * @memberOf IAimLocalPlugSet
      */
-    attr:any[]
+    attr: any[]
     /**
      * 文件路径
      * 
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    filePath:string
+    filePath: string
 
 
     /**
      * 源路径
      */
-    sourcePath:string
+    sourcePath: string
 
     /**
      * 目标路径
      */
-    targetPath:string
+    targetPath: string
 
     /**
      * 替换源文本
@@ -368,49 +368,54 @@ export interface IAimLocalPlugSet {
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    replaceText:string
+    replaceText: string
     /**
      * 替换后内容
      * 
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    withText:string
+    withText: string
     /**
      * 内容
      * 
      * @type {string[]}
      * @memberOf IAimLocalPlugSet
      */
-    contentInfo:string[]
+    contentInfo: string[]
     /**
      * 
      * 开始标记
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    begin:string
+    begin: string
     /**
      * 结束标记
      * 
      * @type {string}
      * @memberOf IAimLocalPlugSet
      */
-    end:string
+    end: string
     /**
      * 注释的类型
      * 
      * @type {number}
      * @memberOf IAimLocalPlugSet
      */
-    noteType:number
+    noteType: number
     /**
      * 操作类型
      * 
      * @type {number}
      * @memberOf IAimLocalPlugSet
      */
-    optType:number
+    optType: number
+
+
+    extendAfield: string
+    extendBfield: string
+    extendCfield: string
 
 }
 
@@ -418,14 +423,14 @@ export interface IAimLocalPlugSet {
  * 插件的设置
  */
 export interface IAimLocalPlugExec {
-    
-    exec:string
-    disable:boolean
-    set:IAimLocalPlugSet
+
+    exec: string
+    disable: boolean
+    set: IAimLocalPlugSet
     /**
      * 扩展处理类 特殊定义的处理 有一个函数exec
      */
-    expand:string
+    expand: string
 
 }
 
@@ -450,14 +455,14 @@ export interface IInitProject extends IAimLocalInit {
 }
 
 
-export interface IexpandPlusProcess{
+export interface IexpandPlusProcess {
 
 
-    exec(oLocalConfig: IAimLocalConfig, oPlugin: IAimLocalNexusPlugDefine, oSet:IAimLocalPlugSet): boolean 
+    exec(oLocalConfig: IAimLocalConfig, oPlugin: IAimLocalNexusPlugDefine, oSet: IAimLocalPlugSet): boolean
 
 
-       
 
-    
+
+
 
 }
