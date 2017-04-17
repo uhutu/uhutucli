@@ -4,14 +4,22 @@ var CommonUtil = require("../../base/common/util");
 var logger = Log4js.getLogger("u");
 logger.setLevel('info');
 var cProperty = {
+    dataAttrProp: 'data-p-',
+    dataAttrEvent: 'data-on-',
+    dataAttrState: 'data-state-',
+    dataAttrXsource: 'data-x-',
     regexOutBegin: "[#",
     regexOutEnd: "]",
     regexBaseString: "(.*?):(.*?)",
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_",
-    formElementName: 'fform',
+    pageElmentForm: 'fform',
+    pageElementMacro: 'xmacro',
     formNameSplit: '---',
-    formBaseAttr: 'name'
+    formBaseAttr: 'name',
+    templateXname: 'x_template_',
+    templateSourceName: 'source',
+    defaultName: 'default'
 };
 var RootResult = (function () {
     function RootResult() {

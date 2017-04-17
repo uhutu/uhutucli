@@ -10,6 +10,16 @@ interface IHelperSpawSyncOption {
 }
 
 class MutilsHelper {
+
+    /**
+     * 同步执行命令
+     * 
+     * @param {string} sCommand 
+     * @param {string[]} aArgs 
+     * @param {IHelperSpawSyncOption} oOption 
+     * 
+     * @memberOf MutilsHelper
+     */
     spawnSync(sCommand: string, aArgs: string[], oOption: IHelperSpawSyncOption) {
         oOption.stdio = 'inherit';
         var result = childProcess.spawnSync(sCommand, aArgs, oOption);
@@ -31,8 +41,16 @@ class MutilsHelper {
         //free.stdout.pipe(process.stdout);
     }
 
-
-    spawn(sCommand: string, aArgs: string[], oOption: IHelperSpawSyncOption){
+    /**
+     * 异步执行命令
+     * 
+     * @param {string} sCommand 
+     * @param {string[]} aArgs 
+     * @param {IHelperSpawSyncOption} oOption 
+     * 
+     * @memberOf MutilsHelper
+     */
+    spawn(sCommand: string, aArgs: string[], oOption: IHelperSpawSyncOption) {
         oOption.stdio = 'inherit';
         childProcess.spawn(sCommand, aArgs, oOption);
     }
@@ -78,14 +96,14 @@ class MutilsHelper {
     }
 
     processSleep(sleepTime: number) {
-        this._flagSpeepEnd=false;
-        if(sleepTime<0){
-            this._flagSpeepEnd=true;
+        this._flagSpeepEnd = false;
+        if (sleepTime < 0) {
+            this._flagSpeepEnd = true;
         }
-        for (var start = +new Date; +new Date - start <= sleepTime;) { if(this._flagSpeepEnd){break;}}
+        for (var start = +new Date; +new Date - start <= sleepTime;) { if (this._flagSpeepEnd) { break; } }
     }
 
-    _flagSpeepEnd=false
+    _flagSpeepEnd = false
 
 };
 

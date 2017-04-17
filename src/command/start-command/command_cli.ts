@@ -15,6 +15,7 @@ let oArgs = argv.option(
     [
         {
             name: 'build',
+            short: 'b',
             type: 'string',
             description: '编译项目文件'
         },
@@ -25,12 +26,14 @@ let oArgs = argv.option(
         },
         {
             name: 'install',
+            short: 'i',
             type: 'boolean',
             description: '安装并初始化各种插件'
         }
         ,
         {
             name: 'force',
+            short: 'f',
             type: 'boolean',
             description: '强制覆盖'
         },

@@ -11,10 +11,71 @@ export class MprocessParseFile {
 }
 
 
+
+export class MtransformTemplateInfo {
+
+    templateName: string = ''
+    templateSource: string = ''
+    templateContent: string[] = []
+}
+
+
+export class MtransformPageProperty {
+    formNames: string[] = []
+}
+
+
+
+export class MtransformCurrentParse {
+    /**
+     * 过程中的form名称
+     * 
+     * @type {string}
+     * @memberOf MtransformCurrentParse
+     */
+    formName: string = ''
+    /**
+     * 过程中的文本内容
+     * 
+     * @type {string[]}
+     * @memberOf MtransformCurrentParse
+     */
+    textContents: string[] = []
+    /**
+     * 过程中的元素数据  用于判断当前元素 将元素push或者pop来判断出当前元素的内容
+     * 
+     * @type {ItransformItemInfo[]}
+     * @memberOf MtransformCurrentParse
+     */
+    elmArrays: ItransformItemInfo[] = []
+
+    /**
+     * 模板的名称
+     * 
+     * @type {string}
+     * @memberOf MtransformCurrentParse
+     */
+    templateName: string = ''
+}
+
+
+export class MtransformPageScript {
+    scriptType: string = ''
+    scriptContent: string = ''
+}
+
+
 export class MtransformPageOut {
     content: string[] = []
     pageConfig: IbasePageConfig
     sourceFile: MprocessParseFile
+
+    templateInfos: MtransformTemplateInfo[] = []
+
+    pageProperty: MtransformPageProperty
+
+    scriptInfos: MtransformPageScript[] = []
+
 }
 
 
@@ -121,7 +182,7 @@ export interface ItransformItemInfo {
 export interface ItransformSubExtend {
     attrParse(oElm: ItransformItemInfo)
 
-    formNameParse(sName:string)
+    formNameParse(sName: string)
 
 }
 
@@ -165,6 +226,14 @@ export interface IbasePageConfig {
     //页面初始化时加载的脚本
     scriptInit: string
 
+    /**
+     * 延迟加载显示页面
+     * 
+     * @type {string}
+     * @memberOf IbasePageConfig
+     */
+    asyncShow: string
+
 
 
 }
@@ -176,6 +245,7 @@ export class MbasePageConfig implements IbasePageConfig {
     pageTitle = ""
     masterPath = ""
     tplFile = "tpl/default.ejs"
+    asyncShow = ""
     scriptInit = ""
 }
 

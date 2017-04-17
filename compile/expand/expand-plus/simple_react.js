@@ -1,5 +1,6 @@
 "use strict";
 var CommonUtil = require("../../base/common/util");
+var ejs = require("ejs");
 var CfileInfo = (function () {
     function CfileInfo() {
     }
@@ -30,11 +31,16 @@ var SimpleReact = (function () {
             aScreen.push(cFile.screenName);
         });
         var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
-        var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent, CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_import_begin", "//auto_code_simple_index_import_end", CommonUtil.utilsIo.upRowSeq() + aImport.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
-        sNewContent = CommonUtil.utilsString.reaplaceBig(sNewContent, CommonUtil.utilsIo.upRowSeq() + "//auto_code_simple_index_screen_begin", "//auto_code_simple_index_screen_begin", CommonUtil.utilsIo.upRowSeq() + aScreen.join(CommonUtil.utilsIo.upRowSeq()) + CommonUtil.utilsIo.upRowSeq(), "");
-        if (sContent != sNewContent) {
-            CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
+        var oSource = CommonUtil.utilsJson.readJsonFile(oSet.sourcePath);
+        try {
+            sContent = ejs.render(sContent, { out: oSource });
         }
+        catch (e) {
+            console.warn(e);
+        }
+        CommonUtil.utilsIo.writeFile(oSet.extendAfield, aImport.join(CommonUtil.utilsIo.upRowSeq()));
+        CommonUtil.utilsIo.writeFile(oSet.extendBfield, aScreen.join(CommonUtil.utilsIo.upRowSeq()));
+        CommonUtil.utilsIo.writeFile(oSet.targetPath, sContent);
         //console.log(aNewName);
         return true;
     };

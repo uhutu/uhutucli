@@ -1,0 +1,79 @@
+import React, { Component } from 'react';
+
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  Image,
+  ListView,
+  ScrollView,
+  TextInput,
+  Dimensions,
+  Switch,
+  View
+} from 'react-native';
+import { Button,Icon,Input,Tabs,Tab} from 'native-base';
+
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage} from 'uhutu-plus';
+
+import styles from "./<%- out.sourceFile.fileBasename %>-style";
+
+import RootSuperPage from "../../../simple/root/super/super_page";
+import top_support from "../../../code/top/support/top_support";
+import current_support from "../../../code/current/support/current_support";
+
+
+
+export default class  extends RootSuperPage {
+
+  constructor(props) {
+    super(props);
+
+    top_support.initPage(this,<%- JSON.stringify(out.pageProperty) %>);
+
+    <% out.templateInfos.forEach((template)=>{ %>
+        //var x_template_list_<%- template.templateName-%> = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+      <% }) %>
+
+    this.state = {
+      <% out.templateInfos.forEach((template)=>{ %>x_template_data_<%- template.templateName-%>: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),<% }) %>
+      rootAsyncShow:<%= (out.pageConfig.asyncShow=="true")?"true":"false" %>};
+  }
+
+
+  <% out.templateInfos.forEach((template)=>{ %>
+  x_template_render_<%- template.templateName %>(item){
+    return (
+    <%- template.templateContent.join('') %>
+    )
+  }
+<% }) %>
+
+  <% if (out.pageConfig.execReact !=undefined ){ %>
+  <%- out.pageConfig.execReact.join('\n') %>
+<% } %>
+
+  <% out.scriptInfos.forEach((scriptInfo)=>{ %>
+        <%- scriptInfo.scriptContent.replace('function ','')-%>
+      <% }) %>
+
+
+
+  static navigationOptions = {
+    title: '<%- out.pageConfig.pageTitle %>',
+  };
+
+  componentDidMount() {
+    
+
+    <%- out.pageConfig.scriptInit %>
+  }
+ 
+
+  rootRender(){
+    return (
+      <%- out.content.join('') %>
+    )
+  }
+
+};

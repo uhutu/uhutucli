@@ -4,6 +4,13 @@ var CommonUtil = require("../../base/common/util");
 var MinitConfig = (function () {
     function MinitConfig() {
     }
+    /**
+     * 初始化一个配置文件
+     *
+     * @param {AimLocal.IAimLocalNexusEnv} envs
+     *
+     * @memberOf MinitConfig
+     */
     MinitConfig.prototype.initStart = function (envs) {
         if (!this.flagExistConfig(envs)) {
             CommonUtil.utilsIo.copyFileAsync(this._upSourceFile(envs), this._upTargetFile(envs));
@@ -18,6 +25,14 @@ var MinitConfig = (function () {
     MinitConfig.prototype._upTargetFile = function (envs) {
         return CommonUtil.utilsIo.pathJoin(envs.pathCwd, envs.fileConfig);
     };
+    /**
+     * 判断是否存在配置文件
+     *
+     * @param {AimLocal.IAimLocalNexusEnv} envs
+     * @returns {boolean}
+     *
+     * @memberOf MinitConfig
+     */
     MinitConfig.prototype.flagExistConfig = function (envs) {
         return CommonUtil.utilsIo.flagExist(this._upTargetFile(envs));
     };

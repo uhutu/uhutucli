@@ -1,0 +1,38 @@
+{
+    "initialRouteName": "pages_demo_list_index",
+    "tabItems": [
+
+        {
+            "tabName": "root_tab_a",
+            "screenName": "pages_main_front_index",
+            "iconName": "ios-home"
+        },
+        {
+            "tabName": "root_tab_b",
+            "screenName": "pages_main_message_index",
+            "iconName": "ios-mail"
+        },
+        {
+            "tabName": "root_tab_c",
+            "screenName": "pages_main_see_index",
+            "iconName": "ios-compass"
+        }, {
+            "tabName": "root_tab_d",
+            "screenName": "pages_main_user_index",
+            "iconName": "ios-contacts"
+        }
+
+    ],
+    "tabOptions":[
+        "activeTintColor: '#01723a',",
+        "tabStyle:top_support.upFLagAndroid()?styles.layout_tab_style:null,",
+        "showIcon:true,",
+        "style:styles.layout_tab_base,",
+        "iconStyle:styles.layout_tab_icon,",
+        "inactiveTintColor:'#707371'"
+    ],
+    "customPage":[
+        
+    ]
+
+}

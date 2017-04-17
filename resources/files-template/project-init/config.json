@@ -10,6 +10,7 @@
       "codepushKeyIos":"key_for_ios"
     },
     "system":{
-      "editionCode":"1002"
+      "editionCode":"1002",
+      "cliVersion":""
     }
 }

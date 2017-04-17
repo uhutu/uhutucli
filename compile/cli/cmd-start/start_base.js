@@ -8,6 +8,14 @@ var LoadConfig = require("../../cli/exec-load/load_config");
 var MstartBase = (function () {
     function MstartBase() {
     }
+    MstartBase.prototype._execInitStep = function (oEnv, localConfig) {
+        if (oEnv.argsInstall) {
+            InitInstall.initStart(localConfig);
+        }
+        if (oEnv.argsBuild) {
+            InitBuild.initStart(localConfig);
+        }
+    };
     MstartBase.prototype.initStart = function (oEnv) {
         this._initSystem(oEnv);
         CommonRoot.logInfo(960312001);
@@ -22,11 +30,9 @@ var MstartBase = (function () {
             //判断是否存在配置文件  如果不存在则报错
             if (InitConfig.flagExistConfig(oEnv)) {
                 localConfig = LoadConfig.upConfig(oEnv);
-                if (oEnv.argsInstall) {
-                    InitInstall.initStart(localConfig);
-                }
-                if (oEnv.argsBuild) {
-                    InitBuild.initStart(localConfig);
+                var bCliVerionCheck = LoadConfig.upCliVersion(localConfig);
+                if (bCliVerionCheck) {
+                    this._execInitStep(oEnv, localConfig);
                 }
             }
             else {
@@ -50,8 +56,8 @@ var MstartBase = (function () {
         if (oEnv.argsLog) {
             CommonRoot.inLogLevel(oEnv.argsLog);
         }
-        if (oEnv.argsBuild != undefined && CommonUtil.utilsString.isEmpty(oEnv.argsBuild)) {
-            oEnv.argsBuild = "default";
+        if ((oEnv.argsBuild != undefined && CommonUtil.utilsString.isEmpty(oEnv.argsBuild)) || oEnv.argsBuild == 'true') {
+            oEnv.argsBuild = CommonRoot.upProperty().defaultName;
         }
     };
     /**

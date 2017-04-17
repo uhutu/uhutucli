@@ -1,18 +1,26 @@
+import CommonRoot = require("../../base/common/root");
 
 import * as CTF from "../../project/aim-project/aim_parse";
 
 
-const dataAttr = {
-    //属性值
-    "prop": "data-p-",
-    //事件
-    "event": 'data-on-',
-    //状态设置
-    "state":'data-state-'
-}
+
 
 
 class MprocessItem {
+
+
+
+    upPropValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
+    }
+
+
+    zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
+        return oItem.sourceAttr.get(sAttr + sPropName);
+
+    }
+
 
     /**
      * 使用引号修改属性
@@ -35,20 +43,20 @@ class MprocessItem {
 
     checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.prop, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight);
     }
 
 
 
     checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.event, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight);
     }
 
 
     checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.state, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight);
     }
 
 
@@ -64,6 +72,30 @@ class MprocessItem {
         }
 
     }
+
+
+
+    formBaseAuto(oItem: CTF.ItransformItemInfo) {
+
+
+        //数据列表源编号
+        this.checkPropWithQuotes(oItem, "form-source-items", "formSourceItems");
+
+        //默认值
+        this.checkPropWithQuotes(oItem, "form-default-value", "formDefaultValue");
+
+        //最小长度
+        this.checkPropWithQuotes(oItem, "form-min-size", "formMinSize");
+
+        //最大长度
+        this.checkPropWithQuotes(oItem, "form-max-size", "formMaxSize");
+
+        //正则表达式编号
+        this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+
+    }
+
+
 
 
 }

@@ -45,6 +45,8 @@ class ChelperParse {
 
 
         if (sName === "script") {
+
+            oElm.elmType = 5;
             if (oElm.sourceAttr.has("type")) {
                 let sType = oElm.sourceAttr.get("type");
                 if (sType === "text/u-template") {
@@ -53,6 +55,8 @@ class ChelperParse {
                     oElm.elmType = 3;
                 }
             }
+        } else if (sName === CommonRoot.upProperty().pageElementMacro) {
+            oElm.elmType = 4;
         } else if (sName === "style") {
             oElm.elmType = 0;
         } else {
@@ -151,13 +155,15 @@ class Mexport {
 
         oOut.sourceFile = oParseFile;
 
-        //元素组 将元素push或者pop来判断出当前元素的内容
-        let aElmArray: AimParse.ItransformItemInfo[] = [];
 
-        //定义本轮循环元素中间的字符串
-        let aTextContent: string[] = [];
 
-        let sFormName = '';
+        let oCurrentParse = new AimParse.MtransformCurrentParse();
+
+
+        let oPageProperty = new AimParse.MtransformPageProperty();
+
+        let oTemplateInfo: AimParse.MtransformTemplateInfo = null;
+
 
         //定义转换函数对象
         var parser = new htmlparser.Parser({
@@ -177,6 +183,30 @@ class Mexport {
                 }
 
 
+                if (oItem.elmType == 4) {
+
+                    if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                        oCurrentParse.templateName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+                        oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
+
+
+
+                        oTemplateInfo = new AimParse.MtransformTemplateInfo();
+                        oTemplateInfo.templateName = oCurrentParse.templateName;
+
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName)) {
+                            oTemplateInfo.templateSource = oItem.sourceAttr.get(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName);
+                        }
+
+
+                    } else {
+                        CommonRoot.logWarn(941612001, oParseFile.fileBasename);
+                    }
+
+
+                }
+
+
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
 
@@ -190,82 +220,126 @@ class Mexport {
 
 
                     //form的处理逻辑
-                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
+                    if (oItem.sourceName === CommonRoot.upProperty().pageElmentForm) {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-                            sFormName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
-                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName));
+                            oCurrentParse.formName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
 
+
+                            oPageProperty.formNames.push(oCurrentParse.formName);
 
                         }
                         else {
                             CommonRoot.logWarn(941612001, oParseFile.fileBasename);
                         }
+
+
                     }
-                    else if (!CommonUtil.utilsString.isEmpty(sFormName)) {
+                    else if (!CommonUtil.utilsString.isEmpty(oCurrentParse.formName)) {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(sFormName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr)));
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr)));
                         }
                     }
 
 
 
-                    oOut.content.push('<' + oItem.elmName);
+                    let aOutInfo = [];
+
+                    aOutInfo.push('<' + oItem.elmName);
                     //循环生成的目标属性
                     oItem.targetAttr.forEach(
                         function (v, k) {
-                            oOut.content.push(
+                            aOutInfo.push(
                                 CommonUtil.utilsString.formatString(oTransform.inc.attr_replace, { key: k, value: v })
                             );
                         }
                     )
-                    oOut.content.push('>');
+                    aOutInfo.push('>');
+
+                    if (CommonUtil.utilsString.isEmpty(oCurrentParse.templateName)) {
+                        oOut.content.push(aOutInfo.join(''));
+                    }
+                    else {
+                        oTemplateInfo.templateContent.push(aOutInfo.join(''));
+                    }
 
 
                 }
 
                 //初始化内容数组
-                aTextContent = [];
-                aElmArray.push(oItem);
+                oCurrentParse.textContents = [];
+                oCurrentParse.elmArrays.push(oItem);
             },
             ontext: function (sText) {
                 //内容数据添加进去
-                aTextContent.push(sText);
+                oCurrentParse.textContents.push(sText);
             },
             onclosetag: function (sName) {
-                let oItem = aElmArray[aElmArray.length - 1];
+                let oItem = oCurrentParse.elmArrays[oCurrentParse.elmArrays.length - 1];
                 //判断如果是模板 则递归调用自己进行输出
                 if (oItem.elmType == 2) {
                     var oNewParse: AimParse.MprocessParseFile = Object.assign(oParseFile);
-                    oNewParse.fileContent = aTextContent.join('');
+                    oNewParse.fileContent = oCurrentParse.textContents.join('');
 
                     var oTextOut = new Mexport().parseHtml(oLocalConfig, oTransform, oNewParse);
 
+                } else if (oItem.elmType == 4) {
+
+                    //oItem.sourceContent = oCurrentParse.textContents.join('');
+
+                    oOut.templateInfos.push(oTemplateInfo);
+
+                    oCurrentParse.templateName = '';
                 }
                 //判断如果是配置数据
                 else if (oItem.elmType === 3) {
 
-                    var sJson = aTextContent.join('');
+                    var sJson = oCurrentParse.textContents.join('');
                     oOut.pageConfig = CommonUtil.utilsHelper.deepAssign(oTransform.pageConfig, CommonUtil.utilsJson.parse(sJson));
 
                 } else if (oItem.elmType == 1) {
 
-                    oItem.sourceContent = aTextContent.join('');
+                    oItem.sourceContent = oCurrentParse.textContents.join('');
+                } else if (oItem.elmType == 5) {
+
+                    let oScript = new AimParse.MtransformPageScript();
+
+                    oScript.scriptContent = oCurrentParse.textContents.join('');
+                    if (oItem.sourceAttr.has("type")) {
+
+                        oScript.scriptType = oItem.sourceAttr.get('type');
+                    }
+
+                    oOut.scriptInfos.push(oScript);
+
+
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
 
 
-                    if (oItem.sourceName === CommonRoot.upProperty().formElementName) {
-                        sFormName = '';
+                    if (oItem.sourceName === CommonRoot.upProperty().pageElmentForm) {
+                        oCurrentParse.formName = '';
 
                     }
 
-                    oOut.content.push(oItem.sourceContent);
-                    oOut.content.push('</' + oItem.elmName);
-                    oOut.content.push('>');
+
+                    let aOutInfo = [];
+
+                    aOutInfo.push(oItem.sourceContent);
+                    aOutInfo.push('</' + oItem.elmName);
+                    aOutInfo.push('>');
+
+
+                    if (CommonUtil.utilsString.isEmpty(oCurrentParse.templateName)) {
+                        oOut.content.push(aOutInfo.join(''));
+                    }
+                    else {
+                        oTemplateInfo.templateContent.push(aOutInfo.join(''));
+                    }
                 }
-                aTextContent = [];
-                aElmArray.pop();
+                oCurrentParse.textContents = [];
+                oCurrentParse.elmArrays.pop();
             }
 
         }, {
@@ -278,7 +352,7 @@ class Mexport {
 
         oTransform.outFormat.contentFormat(oOut);
 
-
+        oOut.pageProperty = oPageProperty;
         return oOut;
     }
 

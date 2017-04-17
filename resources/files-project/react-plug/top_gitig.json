@@ -11,7 +11,8 @@
         "noteType":2,
         "contentInfo":[".DS_Store",
         "/disk/",
-        "react*/ios/Pods/"
+        "react*/ios/Pods/",
+        "react*/project/"
         ]
       }
     }
