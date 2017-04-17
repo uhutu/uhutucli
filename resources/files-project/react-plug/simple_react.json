@@ -85,7 +85,7 @@
             "set": {
                 "optType": 150306,
                 "filePath": "[@config:define.resourcePath]/files-template/simple-react/data_items.js",
-                "targetPath": "[@config:define.devPath]/code/top/data/data_items.js"
+                "targetPath": "[@config:appReact.buildPath]/code/top/data/data_items.js"
 
             }
         },
