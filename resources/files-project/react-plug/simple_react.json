@@ -94,7 +94,7 @@
             "set": {
                 "filePath": "[@config:define.resourcePath]/files-template/simple-react/simple_index.ejs",
                 "sourcePath": "[@config:define.devPath]/table/config/layout_index.json",
-                "targetPath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "targetPath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
                 "extendAfield": "[@config:define.diskPath]/links/import.js",
                 "extendBfield": "[@config:define.diskPath]/links/screen.txt",
 
@@ -107,7 +107,7 @@
             "exec": "baseFileContent",
             "set": {
                 "name": "react_note_plug_simple_react_import",
-                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "filePath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
                 "sourcePath": "[@config:define.diskPath]/links/import.js",
                 "noteType": 1,
                 "withText": "//#auto-import-pages#"
@@ -118,7 +118,7 @@
             "exec": "baseFileContent",
             "set": {
                 "name": "react_note_plug_simple_react_screen",
-                "filePath": "[@config:define.devPath]/statics/react/project/simple/main/layout/index.js",
+                "filePath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
                 "sourcePath": "[@config:define.diskPath]/links/screen.txt",
                 "noteType": 1,
                 "withText": "//#auto-improt-screen#"

@@ -38,7 +38,7 @@ var ChelperParse = (function () {
                 }
             }
         }
-        else if (sName === CommonRoot.upProperty().pageElementTemplate) {
+        else if (sName === CommonRoot.upProperty().pageElementMacro) {
             oElm.elmType = 4;
         }
         else if (sName === "style") {

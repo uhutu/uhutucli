@@ -1,3 +1,4 @@
+import CommonRoot = require("../../base/common/root");
 
 
 import * as CTF from "../../project/aim-project/aim_parse";
@@ -15,10 +16,12 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         //processItem.checkPropFull(oItem, "template", "renderRow", "this.template_", ".bind(this)");
 
+        let macroName = processItem.upPropValue(oItem, 'macro');
 
-        oItem.targetAttr.set('renderRow','this.template_'+oItem.sourceAttr.get('template')+'.bind(this)');
 
-        oItem.targetAttr.set('dataSource','this.state.template_data_source_'+oItem.sourceAttr.get('template'));
+        oItem.targetAttr.set('renderRow', 'this.'+CommonRoot.upProperty().templateXname+'render_' + macroName + '.bind(this)');
+
+        oItem.targetAttr.set('dataSource', 'this.state.'+CommonRoot.upProperty().templateXname+'data_' + macroName);
 
         oItem.targetAttr.set('enableEmptySections', 'true');
 

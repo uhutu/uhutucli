@@ -8,11 +8,26 @@ const dataAttr = {
     //事件
     "event": 'data-on-',
     //状态设置
-    "state":'data-state-'
+    "state": 'data-state-'
 }
 
 
+
 class MprocessItem {
+
+
+
+    upPropValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, dataAttr.prop);
+    }
+
+
+    zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
+        return oItem.sourceAttr.get(sAttr + sPropName);
+
+    }
+
 
     /**
      * 使用引号修改属性
@@ -67,7 +82,7 @@ class MprocessItem {
 
 
 
-    formBaseAuto(oItem: CTF.ItransformItemInfo){
+    formBaseAuto(oItem: CTF.ItransformItemInfo) {
 
 
         //数据列表源编号

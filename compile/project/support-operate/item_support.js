@@ -10,6 +10,12 @@ var dataAttr = {
 var MprocessItem = (function () {
     function MprocessItem() {
     }
+    MprocessItem.prototype.upPropValue = function (oItem, sPropName) {
+        return this.zeroUpPropValue(oItem, sPropName, dataAttr.prop);
+    };
+    MprocessItem.prototype.zeroUpPropValue = function (oItem, sPropName, sAttr) {
+        return oItem.sourceAttr.get(sAttr + sPropName);
+    };
     /**
      * 使用引号修改属性
      */

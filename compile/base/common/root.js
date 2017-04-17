@@ -10,9 +10,10 @@ var cProperty = {
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_",
     pageElmentForm: 'fform',
-    pageElementTemplate: 'template',
+    pageElementMacro: 'xmacro',
     formNameSplit: '---',
     formBaseAttr: 'name',
+    templateXname: 'x_template_',
     templateSourceName: 'source',
     defaultName: 'default'
 };
