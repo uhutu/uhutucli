@@ -125,8 +125,8 @@ var Mexport = (function () {
                         oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
                         oTemplateInfo = new AimParse.MtransformTemplateInfo();
                         oTemplateInfo.templateName = oCurrentParse.templateName;
-                        if (oItem.sourceAttr.has(CommonRoot.upProperty().templateSourceName)) {
-                            oTemplateInfo.templateSource = oItem.sourceAttr.get(CommonRoot.upProperty().templateSourceName);
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName)) {
+                            oTemplateInfo.templateSource = oItem.sourceAttr.get(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName);
                         }
                     }
                     else {

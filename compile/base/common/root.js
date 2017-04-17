@@ -4,6 +4,10 @@ var CommonUtil = require("../../base/common/util");
 var logger = Log4js.getLogger("u");
 logger.setLevel('info');
 var cProperty = {
+    dataAttrProp: 'data-p-',
+    dataAttrEvent: 'data-on-',
+    dataAttrState: 'data-state-',
+    dataAttrXsource: 'data-x-',
     regexOutBegin: "[#",
     regexOutEnd: "]",
     regexBaseString: "(.*?):(.*?)",

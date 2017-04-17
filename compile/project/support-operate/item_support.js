@@ -1,17 +1,10 @@
 "use strict";
-var dataAttr = {
-    //属性值
-    "prop": "data-p-",
-    //事件
-    "event": 'data-on-',
-    //状态设置
-    "state": 'data-state-'
-};
+var CommonRoot = require("../../base/common/root");
 var MprocessItem = (function () {
     function MprocessItem() {
     }
     MprocessItem.prototype.upPropValue = function (oItem, sPropName) {
-        return this.zeroUpPropValue(oItem, sPropName, dataAttr.prop);
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
     };
     MprocessItem.prototype.zeroUpPropValue = function (oItem, sPropName, sAttr) {
         return oItem.sourceAttr.get(sAttr + sPropName);
@@ -29,13 +22,13 @@ var MprocessItem = (function () {
         this.checkPropFull(oItem, sSource, sTarget, "", "");
     };
     MprocessItem.prototype.checkPropFull = function (oItem, sSource, sTarget, sLeft, sRight) {
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.prop, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight);
     };
     MprocessItem.prototype.checkEventFull = function (oItem, sSource, sTarget, sLeft, sRight) {
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.event, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight);
     };
     MprocessItem.prototype.checkStateFull = function (oItem, sSource, sTarget, sLeft, sRight) {
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.state, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight);
     };
     /**
      * 直接属性  不增加标记

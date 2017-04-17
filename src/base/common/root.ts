@@ -7,6 +7,12 @@ logger.setLevel('info');
 
 var cProperty = {
 
+
+    dataAttrProp: 'data-p-',
+    dataAttrEvent: 'data-on-',
+    dataAttrState: 'data-state-',
+    dataAttrXsource: 'data-x-',
+
     regexOutBegin: "[#",
     regexOutEnd: "]",
 
@@ -15,30 +21,30 @@ var cProperty = {
     noteMessageBegin: "uhutu_autonotebegin_",
     noteMessageEnd: "uhutu_autonoteend_",
 
-    pageElmentForm:'fform',
-    pageElementMacro:'xmacro',
-    formNameSplit:'---',
-    formBaseAttr:'name',
+    pageElmentForm: 'fform',
+    pageElementMacro: 'xmacro',
+    formNameSplit: '---',
+    formBaseAttr: 'name',
 
-    templateXname:'x_template_',
+    templateXname: 'x_template_',
 
-    templateSourceName:'source',
+    templateSourceName: 'source',
 
-    defaultName:'default'
+    defaultName: 'default'
 
 
 }
 
 
-class RootResult{
-    resultCode:number=1
-    resultMessage:string=""
-    upFlagOk():boolean{
-        return this.resultCode===1;
+class RootResult {
+    resultCode: number = 1
+    resultMessage: string = ""
+    upFlagOk(): boolean {
+        return this.resultCode === 1;
     }
-    inError(iLogCode: number, aArgs: string[]){
-        this.resultCode=iLogCode;
-        mcommonRoot.logAuto(iLogCode,aArgs);
+    inError(iLogCode: number, aArgs: string[]) {
+        this.resultCode = iLogCode;
+        mcommonRoot.logAuto(iLogCode, aArgs);
 
     }
 }
@@ -104,7 +110,7 @@ class McommonRoot {
 
 
 
-    upResult(){
+    upResult() {
         return new RootResult();
     }
 
@@ -143,8 +149,8 @@ class McommonRoot {
                     sReturn = sReturn + " *" + "/";
                 }
                 break;
-                case 4:
-                sReturn="<!-- "+sReturn+" -->";
+            case 4:
+                sReturn = "<!-- " + sReturn + " -->";
                 break;
         }
 
@@ -199,6 +205,6 @@ class LogLoad {
 const logLoad = new LogLoad();
 
 
-const mcommonRoot=new McommonRoot();
+const mcommonRoot = new McommonRoot();
 
 export =mcommonRoot;

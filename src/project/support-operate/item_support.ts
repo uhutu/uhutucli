@@ -1,15 +1,8 @@
+import CommonRoot = require("../../base/common/root");
 
 import * as CTF from "../../project/aim-project/aim_parse";
 
 
-const dataAttr = {
-    //属性值
-    "prop": "data-p-",
-    //事件
-    "event": 'data-on-',
-    //状态设置
-    "state": 'data-state-'
-}
 
 
 
@@ -19,7 +12,7 @@ class MprocessItem {
 
     upPropValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
-        return this.zeroUpPropValue(oItem, sPropName, dataAttr.prop);
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
     }
 
 
@@ -50,20 +43,20 @@ class MprocessItem {
 
     checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.prop, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight);
     }
 
 
 
     checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.event, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight);
     }
 
 
     checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, dataAttr.state, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight);
     }
 
 
