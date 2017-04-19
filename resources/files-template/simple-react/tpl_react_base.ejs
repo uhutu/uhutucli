@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { Button,Icon,Input,Tabs,Tab} from 'native-base';
 
-import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage} from 'uhutu-plus';
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton} from 'uhutu-plus';
 
 import styles from "./<%- out.sourceFile.fileBasename %>-style";
 
@@ -54,7 +54,7 @@ export default class  extends RootSuperPage {
 <% } %>
 
   <% out.scriptInfos.forEach((scriptInfo)=>{ %>
-        <%- scriptInfo.scriptContent.replace('function ','')-%>
+        <%- scriptInfo.scriptContent.replace(/function/g,'')-%>
       <% }) %>
 
 

@@ -21,6 +21,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
         processItem.checkPropWithEmpty(oItem,"form-max-size","maxLength");
 
         oItem.targetAttr.set('underlineColorAndroid','"transparent"');
+        oItem.targetAttr.set('autoCapitalize','"none"');
 
         return oItem;
     }
