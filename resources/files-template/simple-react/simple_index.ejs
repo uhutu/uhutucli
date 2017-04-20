@@ -22,12 +22,10 @@ import MainStype from "../../../pages/air/resource/layout-style";
 var styles = StyleSheet.create(MainStype);
 
 
-//#auto-import-pages#
 
 
-
-
-
+<% paths.forEach((fItem)=>{%>
+<%- fItem.importName %><% }) %>
 //初始化程序
 
 
@@ -62,8 +60,9 @@ const ScreenTab = TabNavigator({
 
 
 const ScreenMain = StackNavigator({
-//#auto-improt-screen#
 
+<% paths.forEach((fItem)=>{%>
+<%- fItem.screenName %><% }) %>
 root_layout_main: { screen: ScreenTab }
 },{initialRouteName:'<%= out.initialRouteName %>'});
 

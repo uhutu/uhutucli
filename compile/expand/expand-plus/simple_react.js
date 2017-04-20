@@ -28,18 +28,16 @@ var SimpleReact = (function () {
         var aScreen = [];
         aNewName.forEach(function (cFile) {
             aImport.push(cFile.importName);
-            aScreen.push(cFile.screenName);
         });
         var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
         var oSource = CommonUtil.utilsJson.readJsonFile(oSet.sourcePath);
         try {
-            sContent = ejs.render(sContent, { out: oSource });
+            sContent = ejs.render(sContent, { out: oSource, paths: aNewName });
         }
         catch (e) {
             console.warn(e);
         }
         CommonUtil.utilsIo.writeFile(oSet.extendAfield, aImport.join(CommonUtil.utilsIo.upRowSeq()));
-        CommonUtil.utilsIo.writeFile(oSet.extendBfield, aScreen.join(CommonUtil.utilsIo.upRowSeq()));
         CommonUtil.utilsIo.writeFile(oSet.targetPath, sContent);
         //console.log(aNewName);
         return true;
