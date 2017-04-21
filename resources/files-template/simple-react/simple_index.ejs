@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 
+import {PlusOperatePage} from 'uhutu-plus';
 
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
@@ -48,14 +49,9 @@ export  default class  extends Component{
   }
 
   _renderScene(router, navigator) {
-    navigator.navigate=(sPath,oUrl)=>{
-      if(oUrl.baseJump==="reset"){
-navigator.resetTo(RouteStack[sPath]);
-      }else{
-navigator.push(RouteStack[sPath]);
-      }
-      
-      };
+    
+
+      PlusOperatePage.pageNavInit(navigator,RouteStack);
 
     return <router.routeScreen navigation={navigator}  />
 
@@ -77,14 +73,14 @@ navigator.push(RouteStack[sPath]);
                   
                   if (index > 0) {
               return (
-                <Icon style={styles.layout_nav_back} name="ios-arrow-back-outline" onPress={() => {if (index > 0) {navigator.pop()}}}></Icon>
+                <Icon style={styles.w_nav_icon} name="ios-arrow-back-outline" onPress={() => {if (index > 0) {navigator.pop()}}}></Icon>
               );
             } else {
               return null;
             }
                    },
                 RightButton: (route, navigator, index, navState) =>
-                  { return (<Text >Done</Text>); },
+                  { return (route.routeScreen.navigationOptions.navRight); },
                 Title: (route, navigator, index, navState) =>
                   { return (<Text style={styles.layout_nav_title}>{route.routeScreen.navigationOptions.title}</Text>); },
               }}

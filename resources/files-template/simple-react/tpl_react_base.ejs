@@ -61,6 +61,11 @@ export default class  extends RootSuperPage {
 
   static navigationOptions = {
     title: '<%- out.pageConfig.pageTitle %>',
+    <% if(out.pageConfig.navToolOption!='') {%>
+      <% out.templateInfos.forEach((template)=>{ if(template.templateName==out.pageConfig.navToolOption){ %>
+      navRight: <%- template.templateContent.join('') %>
+      <% }}) %>
+    <%} %>
   };
 
   componentDidMount() {
