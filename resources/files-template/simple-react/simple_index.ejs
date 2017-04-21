@@ -14,12 +14,12 @@ import {
 
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
-import {PlusOperatePage,PlusItemNavigator} from 'uhutu-plus';
+import {PlusOperatePage,PlusItemNavigator,PlusItemIcon} from 'uhutu-plus';
 
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
 
-import {Icon} from 'native-base';
+ 
 
 import styles from "../../../pages/air/resource/layout-style";
 
@@ -111,7 +111,7 @@ export  default class  extends Component{
                   
                   if (index > 0) {
               return (
-                <Icon style={styles.w_nav_icon} name="ios-arrow-back-outline" onPress={() => {if (index > 0) {navigator.pop()}}}></Icon>
+                <PlusItemIcon style={styles.w_nav_icon} name="ios-arrow-back-outline" onPress={() => {if (index > 0) {navigator.pop()}}}></PlusItemIcon>
               );
             } else {
               return null;

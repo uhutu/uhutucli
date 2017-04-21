@@ -48,7 +48,8 @@
     },
     "rn_native_base": {
         "name": "native-base",
-        "version": "2.1.0"
+        "version": "2.1.0",
+        "disable": true
     },
     "vector_icons": {
         "name": "react-native-vector-icons",

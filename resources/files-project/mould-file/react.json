@@ -10,10 +10,10 @@
             "tagName": "ScrollView"
         },
         "utabgroup": {
-            "tagName": "Tabs"
+            "tagName": "ScrollableTabView"
         },
         "utabitem": {
-            "tagName": "Tab",
+            "tagName": "View",
             "expandFile": "../../expand/expand-elm/react_utabitem"
         },
         "utext": {
@@ -36,7 +36,7 @@
             "expandFile": "../../expand/expand-elm/react_uimage"
         },
         "uicon": {
-            "tagName": "Icon",
+            "tagName": "PlusItemIcon",
             "expandFile": "../../expand/expand-elm/react_uicon"
         },
         "ulink": {
