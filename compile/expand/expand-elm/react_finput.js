@@ -11,6 +11,7 @@ var MexpandReactUicon = (function () {
         processItem.checkPropWithEmpty(oItem, "multiline", "multiline");
         processItem.checkPropWithEmpty(oItem, "form-max-size", "maxLength");
         oItem.targetAttr.set('underlineColorAndroid', '"transparent"');
+        oItem.targetAttr.set('autoCapitalize', '"none"');
         return oItem;
     };
     return MexpandReactUicon;

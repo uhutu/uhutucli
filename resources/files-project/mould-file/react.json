@@ -28,7 +28,7 @@
             "expandFile": "../../expand/expand-elm/react_uinput"
         },
         "ubutton": {
-            "tagName": "Button",
+            "tagName": "PlusItemButton",
             "expandFile": "../../expand/expand-elm/react_ubutton"
         },
         "uimage": {

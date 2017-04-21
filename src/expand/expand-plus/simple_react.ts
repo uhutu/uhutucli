@@ -53,7 +53,7 @@ class SimpleReact implements AimLocal.IexpandPlusProcess {
         aNewName.forEach((cFile) => {
 
             aImport.push(cFile.importName);
-            aScreen.push(cFile.screenName);
+            
 
         })
 
@@ -65,7 +65,8 @@ class SimpleReact implements AimLocal.IexpandPlusProcess {
 
         try {
 
-            sContent = ejs.render(sContent, { out: oSource });
+            sContent = ejs.render(sContent, { out: oSource, paths: aNewName });
+
         } catch (e) {
             console.warn(e);
         }
@@ -73,8 +74,7 @@ class SimpleReact implements AimLocal.IexpandPlusProcess {
 
         CommonUtil.utilsIo.writeFile(oSet.extendAfield, aImport.join(CommonUtil.utilsIo.upRowSeq()));
 
-        CommonUtil.utilsIo.writeFile(oSet.extendBfield, aScreen.join(CommonUtil.utilsIo.upRowSeq()));
-
+        
 
 
         CommonUtil.utilsIo.writeFile(oSet.targetPath, sContent);

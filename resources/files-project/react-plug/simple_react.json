@@ -85,7 +85,7 @@
             "set": {
                 "optType": 150306,
                 "filePath": "[@config:define.resourcePath]/files-template/simple-react/data_items.js",
-                "targetPath": "[@config:define.devPath]/code/top/data/data_items.js"
+                "targetPath": "[@config:appReact.buildPath]/code/top/data/data_items.js"
 
             }
         },
@@ -96,34 +96,12 @@
                 "sourcePath": "[@config:define.devPath]/table/config/layout_index.json",
                 "targetPath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
                 "extendAfield": "[@config:define.diskPath]/links/import.js",
-                "extendBfield": "[@config:define.diskPath]/links/screen.txt",
+                
 
                 "replaceText": ""
 
             },
             "expand": "../../expand/expand-plus/simple_react"
-        },
-        {
-            "exec": "baseFileContent",
-            "set": {
-                "name": "react_note_plug_simple_react_import",
-                "filePath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
-                "sourcePath": "[@config:define.diskPath]/links/import.js",
-                "noteType": 1,
-                "withText": "//#auto-import-pages#"
-
-            }
-        },
-        {
-            "exec": "baseFileContent",
-            "set": {
-                "name": "react_note_plug_simple_react_screen",
-                "filePath": "[@config:appReact.buildPath]/simple/main/layout/index.js",
-                "sourcePath": "[@config:define.diskPath]/links/screen.txt",
-                "noteType": 1,
-                "withText": "//#auto-improt-screen#"
-
-            }
         }
     ],
     "ios": [{

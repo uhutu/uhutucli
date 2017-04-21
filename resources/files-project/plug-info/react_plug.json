@@ -55,6 +55,10 @@
         "version": "4.0.1",
         "json": "[@config:file.reactPlugPath]/vector_icons.json"
     },
+    "scrollable-tab-view": {
+        "name": "react-native-scrollable-tab-view",
+        "version": "0.7.4"
+    },
     "router_flux": {
         "name": "react-native-router-flux",
         "version": "3.38.0",
