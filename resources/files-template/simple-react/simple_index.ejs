@@ -12,8 +12,9 @@ import {
 
 } from 'react-native';
 
+import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
-import {PlusOperatePage} from 'uhutu-plus';
+import {PlusOperatePage,PlusItemNavigator} from 'uhutu-plus';
 
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
@@ -28,11 +29,48 @@ import styles from "../../../pages/air/resource/layout-style";
 <%- fItem.importName %><% }) %>
 //初始化程序
 
+class ScreenMain  extends Component{
+
+  static navigationOptions = {
+    title: '测试系统',
+
+  }
+  render() {
+    return <ScrollableTabView
+      tabBarPosition="bottom"
+      renderTabBar={() => <PlusItemNavigator 
+
+      styleBaseBox={styles.layout_tab_base_box} 
+      styleNormalIcon={styles.layout_tab_normal_icon} 
+      styleNormalText={styles.layout_tab_normal_text}
+      styleActiveText={styles.layout_tab_active_text}
+      styleActiveIcon={styles.layout_tab_active_icon}
+      
+       />}
+
+      
+    >
+      
+
+<% out.tabItems.forEach((fTabItem)=>{ %>
+
+  <View style={{flex:1}} tabLabel={{iconName:'<%= fTabItem.iconName %>',tabTitle:'<%= fTabItem.tabName %>'}} >
+      <RouteStack.<%= fTabItem.screenName %>.routeScreen  />
+      </View>
+
+  
+  <% }) %>
+
+    </ScrollableTabView>;
+  } 
+
+}
+
 
 const RouteStack={
 <% paths.forEach((fItem)=>{%>
 <%- fItem.uqName %>:{routeScreen:<%- fItem.uqName %>},<% }) %>
-root_layout_main:{routeScreen:<%= out.initialRouteName %>}
+root_layout_main:{routeScreen:ScreenMain}
 };
 
 
