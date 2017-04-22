@@ -20,8 +20,16 @@ class Mexport {
     upConfig(oEnv: AimLocal.IAimLocalNexusEnv): AimLocal.IAimLocalConfig {
 
 
+
+        let sConfigFilePath=CommonUtil.utilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig);
+
         //加载app的配置
-        var appConfig = CommonUtil.utilsIo.upConfigByFile(CommonUtil.utilsIo.pathJoin(oEnv.pathCwd, oEnv.fileConfig));
+        var appConfig = {};
+
+        if(CommonUtil.utilsIo.flagExist(sConfigFilePath)){
+            appConfig=CommonUtil.utilsIo.upConfigByFile(sConfigFilePath);
+        }
+
         //console.log(oEnv);
         //深度克隆配置
         let oLocalConfig = CommonUtil.utilsHelper.deepAssign(DefineConfig.upConfig(oEnv), appConfig);
