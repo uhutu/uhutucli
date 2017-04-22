@@ -16,7 +16,13 @@ var CappSub = (function () {
     CappSub.styleParse = function (sClassStyle) {
         var aStyle = [];
         sClassStyle.split(' ').forEach(function (f) {
-            aStyle.push("styles." + f);
+            //判断如果有点 则是特殊定义操作
+            if (f.indexOf('.') > -1) {
+                aStyle.push(f);
+            }
+            else {
+                aStyle.push("styles." + f);
+            }
         });
         return aStyle.length > 1 ? ("[" + aStyle.join(',') + "]") : aStyle[0];
     };
