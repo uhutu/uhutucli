@@ -19,6 +19,10 @@
         "utext": {
             "tagName": "Text"
         },
+        "xcall": {
+            "tagName": "View",
+            "expandFile": "../../expand/expand-elm/react_xcall"
+        },
         "ulistview": {
             "tagName": "ListView",
             "expandFile": "../../expand/expand-elm/react_ulistview"

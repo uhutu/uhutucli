@@ -16,6 +16,12 @@ class MprocessItem {
     }
 
 
+    upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
+    }
+
+
     zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
         return oItem.sourceAttr.get(sAttr + sPropName);
 
