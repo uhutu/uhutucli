@@ -8,7 +8,16 @@ import DefineEnv = require("../../cli/default-define/define_env");
 import LoadConfig = require("../../cli/exec-load/load_config");
 
 
+import initInstall=require("../../cli/exec-init/init_install");
 
+
+let oLocalConfig = null;
+
+/**
+ * 测试用例加载的脚本文件
+ * 
+ * @class McommandTest
+ */
 class McommandTest {
 
 
@@ -16,18 +25,18 @@ class McommandTest {
 
         let oEnv = DefineEnv.upEnv();
 
-        oEnv.pathCwd = "./test/testdemo/";
-        oEnv.pathCli = "./";
+        oEnv.pathCwd = "./test/testdemo";
+        oEnv.pathCli = ".";
 
 
-        let oLocalConfig = LoadConfig.upConfig(oEnv);
+        oLocalConfig = LoadConfig.upConfig(oEnv);
 
 
     }
 
 
     upTestConfig() {
-
+        return oLocalConfig;
     }
 
 
