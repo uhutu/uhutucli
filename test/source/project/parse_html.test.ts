@@ -24,7 +24,7 @@ let oLocalConfig= CommandTest.upTestConfig();
 
 //console.log(oLocalConfig);
 
-
+/*
 var oParseFile = new AimParse.MprocessParseFile();
             oParseFile.parseType = 'react';
             oParseFile.fileContent = '';
@@ -35,6 +35,6 @@ var oParseFile = new AimParse.MprocessParseFile();
             
             let content = ParseHtml.contentParse(oLocalConfig, oParseFile);
 
-
+*/
 
 });

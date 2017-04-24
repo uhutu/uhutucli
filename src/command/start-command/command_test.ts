@@ -9,9 +9,12 @@ import LoadConfig = require("../../cli/exec-load/load_config");
 
 
 import initInstall=require("../../cli/exec-init/init_install");
+import LoadPlug = require("../../cli/exec-load/load_plug");
+import ModuleInstall = require("../../cli/module-react/module_install");
+import start_base = require("../../cli/cmd-start/start_base");
 
 
-let oLocalConfig = null;
+let oLocalConfig:AimLocal.IAimLocalConfig = null;
 
 /**
  * 测试用例加载的脚本文件
@@ -26,10 +29,17 @@ class McommandTest {
         let oEnv = DefineEnv.upEnv();
 
         oEnv.pathCwd = "./test/testdemo";
-        oEnv.pathCli = ".";
+        //oEnv.pathCli = ".";
+        oEnv.pathStart = __dirname;
 
+        console.log(oEnv);
 
-        oLocalConfig = LoadConfig.upConfig(oEnv);
+        oEnv.argsConfig=true;
+        oEnv.argsInstall=true;
+        
+
+        start_base.initStart(oEnv);
+
 
 
     }
