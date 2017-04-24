@@ -32,12 +32,15 @@ import styles from "../../../pages/air/resource/layout-style";
 class ScreenMain  extends Component{
 
   static navigationOptions = {
-    title: '测试系统',
+    title: '<%=out.tabItems[0].tabName %>',
 
   }
   render() {
     return <ScrollableTabView
       tabBarPosition="bottom"
+      locked={true}
+      scrollWithoutAnimation={true}
+      onChangeTab={(tab)=>{this.props.navigation.setState({title:tab.ref.props.tabLabel.tabTitle})}}
       renderTabBar={() => <PlusItemNavigator 
 
       styleBaseBox={styles.layout_tab_base_box} 
@@ -69,8 +72,8 @@ class ScreenMain  extends Component{
 
 const RouteStack={
 <% paths.forEach((fItem)=>{%>
-<%- fItem.uqName %>:{routeScreen:<%- fItem.uqName %>},<% }) %>
-root_layout_main:{routeScreen:ScreenMain}
+<%- fItem.uqName %>:{name:"<%- fItem.uqName %>",routeScreen:<%- fItem.uqName %>},<% }) %>
+root_layout_main:{name:"root_layout_main",routeScreen:ScreenMain}
 };
 
 
@@ -100,8 +103,8 @@ export  default class  extends Component{
       
       <Navigator
           ref="navigator"
-          style={styles.layout_nav_navigator}
-          initialRoute={RouteStack.root_layout_main}
+          style={[styles.layout_nav_navigator]}
+          initialRoute={RouteStack.<%-out.initialRouteName?out.initialRouteName:'root_layout_main' %>}
           renderScene={this._renderScene}
           navigationBar={
               <Navigator.NavigationBar
@@ -120,7 +123,7 @@ export  default class  extends Component{
                 RightButton: (route, navigator, index, navState) =>
                   { return (route.routeScreen.navigationOptions.navRight); },
                 Title: (route, navigator, index, navState) =>
-                  { return (<Text style={styles.layout_nav_title}>{route.routeScreen.navigationOptions.title}</Text>); },
+                  { return (<Text style={styles.layout_nav_title}>{route.name=="root_layout_main"&&navState.title?navState.title:route.routeScreen.navigationOptions.title}</Text>); },
               }}
               style={styles.layout_nav_header}
             />

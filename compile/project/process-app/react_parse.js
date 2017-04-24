@@ -32,14 +32,14 @@ var CappSub = (function () {
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
             if (key === "class") {
-                oItem.targetAttr.set("style", CappSub.styleParse(oItem.sourceAttr.get("class")));
+                oItem.targetAttr.set("style", "{" + CappSub.styleParse(oItem.sourceAttr.get("class")) + "}");
                 //oItem.elmProcess.styleName.push(value);
             }
-            processItem.checkEventFull(oItem, "press", "onPress", "()=>{", "}");
-            processItem.checkEventFull(oItem, "change-text", "onChangeText", "(text)=>{", "}");
-            processItem.checkEventFull(oItem, "value-change", "onValueChange", "(value)=>{", "}");
-            processItem.checkEventFull(oItem, "link", "onPress", "()=>{top_support.pageNav('", "',this)}");
-            processItem.checkStateFull(oItem, "value", "value", "", "");
+            processItem.checkEventFull(oItem, "press", "onPress", "{()=>{", "}}", "");
+            processItem.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
+            processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
+            processItem.checkEventFull(oItem, "link", "onPress", "{()=>{top_support.pageNav(", ",this)}}", "'");
+            processItem.checkStateFull(oItem, "value", "value", "", "", "");
         });
         return oItem;
     };
@@ -49,6 +49,12 @@ var CappOut = (function () {
     function CappOut() {
     }
     CappOut.prototype.contentFormat = function (oOut) {
+        for (var i = 0, j = oOut.templateInfos.length; i < j; i++) {
+            oOut.content[i] = this.forReplace(oOut.content[i]);
+            for (var n = 0, m = oOut.templateInfos[i].templateContent.length; n < m; n++) {
+                oOut.templateInfos[i].templateContent[n] = this.forReplace(oOut.templateInfos[i].templateContent[n]);
+            }
+        }
         for (var i = 0, j = oOut.content.length; i < j; i++) {
             oOut.content[i] = this.forReplace(oOut.content[i]);
         }
@@ -65,13 +71,19 @@ var CappOut = (function () {
                     case "state":
                         sReplace = '{this.state.' + r[2] + '}';
                         break;
+                    case "item":
+                        sReplace = '{item.' + r[2] + '}';
+                        break;
+                    case "item-param":
+                        sReplace = 'item.' + r[2] + '';
+                        break;
                     default:
                         break;
                 }
                 sReturn = sReturn.replace(r[0], sReplace);
             }
             //这里hack一个bug 属性已经加了双引号
-            sReturn = sReturn.replace("{{", "{").replace("}}", "}");
+            //sReturn = sReturn.replace("{{", "{").replace("}}", "}");
         }
         return sReturn;
     };
@@ -81,7 +93,7 @@ var Mexport = (function () {
     function Mexport() {
         this.elms = new CappElms();
         this.inc = {
-            attr_replace: " {key}={{value}} "
+            attr_replace: " {key}={value} "
         };
         this.parses = new CappSub();
         this.pageConfig = new CTF.MbasePageConfig();

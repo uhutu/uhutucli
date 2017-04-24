@@ -13,6 +13,9 @@ var McommandTest = (function () {
         oEnv.pathCwd = "./test/testdemo";
         //oEnv.pathCli = ".";
         oEnv.pathStart = __dirname;
+        console.log(oEnv);
+        oEnv.argsConfig = true;
+        oEnv.argsInstall = true;
         start_base.initStart(oEnv);
     }
     McommandTest.prototype.upTestConfig = function () {
