@@ -19,7 +19,7 @@ test('test parse html', () => {
 
 
 
-let oLocalConfig= CommandTest.upTestConfig();
+//let oLocalConfig= CommandTest.upTestConfig();
 
 
 //console.log(oLocalConfig);
