@@ -78,7 +78,7 @@ var MbasePageConfig = (function () {
         this.pageTitle = "";
         this.masterPath = "";
         this.tplFile = "tpl/default.ejs";
-        this.styleFile = "index";
+        this.styleFile = "./index";
         this.asyncShow = "";
         this.scriptInit = "";
     }

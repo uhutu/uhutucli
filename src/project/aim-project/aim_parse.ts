@@ -253,7 +253,7 @@ export class MbasePageConfig implements IbasePageConfig {
     pageTitle = ""
     masterPath = ""
     tplFile = "tpl/default.ejs"
-    styleFile="index"
+    styleFile="./index"
     asyncShow = ""
     scriptInit = ""
 }
