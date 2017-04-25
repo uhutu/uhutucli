@@ -223,6 +223,14 @@ export interface IbasePageConfig {
     //模板文件
     tplFile: string
 
+    /**
+     * 样式文件
+     * 
+     * @type {string}
+     * @memberOf IbasePageConfig
+     */
+    styleFile:string
+
     //页面初始化时加载的脚本
     scriptInit: string
 
@@ -245,6 +253,7 @@ export class MbasePageConfig implements IbasePageConfig {
     pageTitle = ""
     masterPath = ""
     tplFile = "tpl/default.ejs"
+    styleFile="./index"
     asyncShow = ""
     scriptInit = ""
 }

@@ -10,7 +10,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
-        processItem.checkPropFull(oItem,"src","source","require('","')");
+        processItem.checkPropFull(oItem,"src","source","require(",")","'");
         processItem.checkPropWithQuotes(oItem,"mode","resizeMode");
         return oItem;
     }

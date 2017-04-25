@@ -1,6 +1,6 @@
 {
   "name": "uhutu-cli",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "uhutu-cli",
   "main": "index.js",
   "bin": "cli-local/start.js",
@@ -12,7 +12,7 @@
     "dev-typedoc": "./node_modules/gulp/bin/gulp.js typedoc  --gulpfile resources/files-local/gulp-config/gulp_typedoc.js",
     "dev-mochatest": "./node_modules/gulp/bin/gulp.js mochatest  --gulpfile resources/files-local/gulp-config/gule_mochatest.js",
     "dev-test":"npm run dev-mochatest && npm run test",
-    "test": "mocha --recursive"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -42,14 +42,27 @@
     "@types/chai": "^3.4.35",
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
+    "@types/jest": "^19.2.2",
     "chai": "^3.5.0",
     "gulp-typedoc": "^2.0.2",
     "gulp-typescript": "^3.1.4",
     "istanbul": "^0.4.5",
+    "jest": "^19.0.2",
     "mocha": "^3.2.0",
-    "supertest": "^2.0.1",
+    "ts-jest": "^19.0.9",
     "typedoc": "^0.5.9",
     "typescript": "^2.1.5"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/test/source/.*\\.ts)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
   },
   "author": "",
   "license": "BSD-3-Clause"

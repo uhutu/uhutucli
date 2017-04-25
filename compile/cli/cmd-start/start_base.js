@@ -26,18 +26,16 @@ var MstartBase = (function () {
         if (oEnv.argsConfig) {
             InitConfig.initStart(oEnv);
         }
+        //判断是否存在配置文件  如果不存在则报错
+        if (InitConfig.flagExistConfig(oEnv)) {
+            localConfig = LoadConfig.upConfig(oEnv);
+            var bCliVerionCheck = LoadConfig.upCliVersion(localConfig);
+            if (bCliVerionCheck) {
+                this._execInitStep(oEnv, localConfig);
+            }
+        }
         else {
-            //判断是否存在配置文件  如果不存在则报错
-            if (InitConfig.flagExistConfig(oEnv)) {
-                localConfig = LoadConfig.upConfig(oEnv);
-                var bCliVerionCheck = LoadConfig.upCliVersion(localConfig);
-                if (bCliVerionCheck) {
-                    this._execInitStep(oEnv, localConfig);
-                }
-            }
-            else {
-                CommonRoot.logError(930312001);
-            }
+            CommonRoot.logError(930312001);
         }
         if (localConfig != null) {
             LoadConfig.saveConfigInfo(localConfig);

@@ -4,7 +4,7 @@ var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        processItem.checkPropWithQuotes(oItem, "heading", "tabLabel");
+        processItem.checkPropWithQuotes(oItem, "heading", "heading");
         return oItem;
     };
     return MexpandReactUicon;

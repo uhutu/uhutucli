@@ -43,7 +43,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
         //判断如果是初始化配置文件
         if (oEnv.argsConfig) {
             InitConfig.initStart(oEnv);
-        } else {
+        } 
 
             //判断是否存在配置文件  如果不存在则报错
             if (InitConfig.flagExistConfig(oEnv)) {
@@ -63,7 +63,7 @@ class MstartBase implements AimLocal.IAimLocalInit {
             }
 
 
-        }
+        
         if (localConfig != null) {
             LoadConfig.saveConfigInfo(localConfig);
         }

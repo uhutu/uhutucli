@@ -11,7 +11,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
         
-        processItem.checkPropWithQuotes(oItem,"heading","tabLabel");
+        processItem.checkPropWithQuotes(oItem,"heading","heading");
         return oItem;
     }
 

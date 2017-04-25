@@ -10,14 +10,18 @@
             "tagName": "ScrollView"
         },
         "utabgroup": {
-            "tagName": "Tabs"
+            "tagName": "ScrollableTabView"
         },
         "utabitem": {
-            "tagName": "Tab",
+            "tagName": "View",
             "expandFile": "../../expand/expand-elm/react_utabitem"
         },
         "utext": {
             "tagName": "Text"
+        },
+        "xcall": {
+            "tagName": "View",
+            "expandFile": "../../expand/expand-elm/react_xcall"
         },
         "ulistview": {
             "tagName": "ListView",
@@ -36,7 +40,7 @@
             "expandFile": "../../expand/expand-elm/react_uimage"
         },
         "uicon": {
-            "tagName": "Icon",
+            "tagName": "PlusItemIcon",
             "expandFile": "../../expand/expand-elm/react_uicon"
         },
         "ulink": {
@@ -62,6 +66,10 @@
         },
         "fdate": {
             "tagName": "PlusFormDate",
+            "expandFile": "../../expand/expand-elm/react_fbase"
+        },
+        "fswitch": {
+            "tagName": "PlusFormSwitch",
             "expandFile": "../../expand/expand-elm/react_fbase"
         }
     }

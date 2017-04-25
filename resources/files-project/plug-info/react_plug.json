@@ -5,7 +5,7 @@
     },
     "top_uhutu_plus": {
         "name": "uhutu-plus",
-        "version": "1.0.4"
+        "version": "1.1.0"
     },
     "top_speed": {
         "name": "top-speed",
@@ -48,7 +48,8 @@
     },
     "rn_native_base": {
         "name": "native-base",
-        "version": "2.1.0"
+        "version": "2.1.0",
+        "disable": true
     },
     "vector_icons": {
         "name": "react-native-vector-icons",

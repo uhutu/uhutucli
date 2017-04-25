@@ -11,10 +11,10 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
         processItem.checkPropWithQuotes(oItem,"placeholder","placeholder");
-        processItem.checkPropWithEmpty(oItem,"secure","secureTextEntry");
+        processItem.checkPropWithQuotes(oItem,"secure","secureTextEntry");
         processItem.checkPropWithQuotes(oItem,"keyboard","keyboardType");
 
-        processItem.checkPropWithEmpty(oItem,"multiline","multiline");
+        processItem.checkPropWithQuotes(oItem,"multiline","multiline");
 
         oItem.targetAttr.set('underlineColorAndroid','"transparent"');
 

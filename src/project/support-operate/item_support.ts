@@ -16,6 +16,12 @@ class MprocessItem {
     }
 
 
+    upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
+    }
+
+
     zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
         return oItem.sourceAttr.get(sAttr + sPropName);
 
@@ -27,7 +33,15 @@ class MprocessItem {
      */
     checkPropWithQuotes(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
-        this.checkPropFull(oItem, sSource, sTarget, "\"", "\"");
+        this.checkPropFull(oItem, sSource, sTarget, "", "", "\"");
+
+    }
+
+
+    checkPropWithBrace(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+
+        this.checkPropFull(oItem, sSource, sTarget, "{", "}", "");
 
     }
 
@@ -37,26 +51,26 @@ class MprocessItem {
     checkPropWithEmpty(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
 
-        this.checkPropFull(oItem, sSource, sTarget, "", "");
+        this.checkPropFull(oItem, sSource, sTarget, "", "", "");
 
     }
 
-    checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
+    checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight, sSign);
     }
 
 
 
-    checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
+    checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight, sSign);
     }
 
 
-    checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string) {
+    checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
-        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight);
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight, sSign);
     }
 
 
@@ -65,10 +79,23 @@ class MprocessItem {
     /**
      * 直接属性  不增加标记
      */
-    zeroFieldCheck(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sAttr: string, sLeft: string, sRight: string) {
+    zeroFieldCheck(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sAttr: string, sLeft: string, sRight: string, sSign: string) {
 
         if (oItem.sourceAttr.has(sAttr + sSource)) {
-            oItem.targetAttr.set(sTarget, sLeft + oItem.sourceAttr.get(sAttr + sSource) + sRight);
+
+            let sVal = oItem.sourceAttr.get(sAttr + sSource);
+
+
+            if (!sVal.startsWith('@')) {
+                sVal = sSign + sVal + sSign;
+            }
+            else{
+                sVal=sVal.substr(1);
+            }
+
+
+
+            oItem.targetAttr.set(sTarget, sLeft + sVal + sRight);
         }
 
     }

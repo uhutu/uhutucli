@@ -194,8 +194,8 @@ class Mexport {
                         oTemplateInfo = new AimParse.MtransformTemplateInfo();
                         oTemplateInfo.templateName = oCurrentParse.templateName;
 
-                        if (oItem.sourceAttr.has(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName)) {
-                            oTemplateInfo.templateSource = oItem.sourceAttr.get(CommonRoot.upProperty().dataAttrXsource + CommonRoot.upProperty().templateSourceName);
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().dataAttrXary + CommonRoot.upProperty().templateSourceName)) {
+                            oTemplateInfo.templateSource = oItem.sourceAttr.get(CommonRoot.upProperty().dataAttrXary + CommonRoot.upProperty().templateSourceName);
                         }
 
 
@@ -299,7 +299,7 @@ class Mexport {
 
                 } else if (oItem.elmType == 1) {
 
-                    oItem.sourceContent = oCurrentParse.textContents.join('');
+                    oItem.sourceContent += oCurrentParse.textContents.join('');
                 } else if (oItem.elmType == 5) {
 
                     let oScript = new AimParse.MtransformPageScript();

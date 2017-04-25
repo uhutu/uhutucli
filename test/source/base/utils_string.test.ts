@@ -1,73 +1,41 @@
-import chai = require('chai');
-var should=chai.should();
 
-var TestTarget="base/utils/string";
-import 'mocha';
 import utilsString = require("../../../src/base/utils/string");
 
-describe(TestTarget, function () {
 
-  describe('#replaceBetween',function(){
 
-    var sInString="abcdefg\nhijklmn";
+var sInString="abcdefg\nhijklmn";
     var sStart="bc";
     var sEnd="lm";
     var sWith="x";
 
-    it('test string replace with false', function () {
 
+test('test string replace with false', () => {
+  expect(utilsString.replaceBetween(sInString,sStart,sEnd,sWith,false)).toBe('abcxlmn');
+});
 
-      utilsString.replaceBetween(sInString,sStart,sEnd,sWith,false).should.equal('abcxlmn');
-    });
+test('test string replace with true', () => {
+  expect(utilsString.replaceBetween(sInString,sStart,sEnd,sWith,true)).toBe('axn');
+});
 
-    it('test string replace with true', function () {
+test('test format array', () => {
+  expect(utilsString.formatString("a{0}c{1}",['b','d'])).toBe('abcd');
+});
+test('test format string', () => {
+  expect(utilsString.formatString("a{0}c",'b')).toBe('abc');
+});
+test('test format array', () => {
+  expect(utilsString.formatString("a{key}c{val}",{key:'b',val:'d'})).toBe('abcd');
+});
 
-      utilsString.replaceBetween(sInString,sStart,sEnd,sWith,true).should.equal('axn');
-    });
-
-  });
+test('test a', () => {
+  expect(utilsString.reaplaceBig("abcdefg","//h","//i","jkl","c")).toBe('abc//hjkl//idefg');
+});
+test('test format array', () => {
+  expect(utilsString.reaplaceBig("abc//hxyzxyzxyz//idefg","//h","//i","jkl","c")).toBe('abc//hjkl//idefg');
+});
+test('test format array', () => {
+  expect(utilsString.reaplaceBig("abcdefg","//h","//i","jkl","")).toBe('abcdefg//hjkl//i');
 });
 
 
 
-describe(TestTarget, function () {
-
-  describe('#formatString',function(){
-
-    it('test format array', function () {
-
-      utilsString.formatString("a{0}c{1}",['b','d']).should.equal('abcd');
-    });
-    it('test format string', function () {
-
-      utilsString.formatString("a{0}c",'b').should.equal('abc');
-    });
-    it('test format object', function () {
-
-      utilsString.formatString("a{key}c{val}",{key:'b',val:'d'}).should.equal('abcd');
-    });
-
-  });
-});
-
-
-
-describe(TestTarget, function () {
-
-  describe('#reaplaceBig',function(){
-
-    it('test a', function () {
-
-      utilsString.reaplaceBig("abcdefg","//h","//i","jkl","c").should.equal('abc//hjkl//idefg');
-    });
-    it('test b ', function () {
-
-      utilsString.reaplaceBig("abc//hxyzxyzxyz//idefg","//h","//i","jkl","c").should.equal('abc//hjkl//idefg');
-    });
-    it('test when the last string is empty', function () {
-
-      utilsString.reaplaceBig("abcdefg","//h","//i","jkl","").should.equal('abcdefg//hjkl//i');
-    });
-
-  });
-});

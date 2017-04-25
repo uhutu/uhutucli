@@ -16,14 +16,12 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         //processItem.checkPropFull(oItem, "template", "renderRow", "this.template_", ".bind(this)");
 
-        let macroName = processItem.upPropValue(oItem, 'macro');
+        //let macroName = processItem.upXaryValue(oItem, 'macro');
 
 
-        oItem.targetAttr.set('renderRow', '{this.'+CommonRoot.upProperty().templateXname+'render_' + macroName + '.bind(this)}');
+        
 
-        oItem.targetAttr.set('dataSource', '{this.state.'+CommonRoot.upProperty().templateXname+'data_' + macroName+"}");
-
-        oItem.targetAttr.set('enableEmptySections', '{true}');
+        oItem.sourceContent='{this.'+CommonRoot.upProperty().templateXname+'render_' + processItem.upXaryValue(oItem, 'macro') +'('+processItem.upXaryValue(oItem, 'source')+')}';
 
         //processItem.checkEventFull(oItem, "change-text", "onChangeText", "(text)=>{", "}");
 
