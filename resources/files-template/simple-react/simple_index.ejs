@@ -89,6 +89,11 @@ export  default class  extends Component{
     current_support.initApplication(this);
   }
 
+  componentDidMount() {
+    //默认检测登录状态
+    current_support.userLoginCheck(this);
+  }
+
   _renderScene(router, navigator) {
     
 
@@ -114,7 +119,7 @@ export  default class  extends Component{
                   
                   if (index > 0) {
               return (
-                <PlusItemIcon style={styles.w_nav_icon} name="chevron-left" onPress={() => {if (index > 0) {navigator.pop()}}}></PlusItemIcon>
+                <PlusItemIcon style={styles.layout_nav_icon} name="chevron-left" onPress={() => {if (index > 0) {navigator.pop()}}}></PlusItemIcon>
               );
             } else {
               return null;
