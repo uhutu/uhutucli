@@ -13,7 +13,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
         processItem.checkPropWithQuotes(oItem,"placeholder","placeholder");
-        processItem.checkPropWithQuotes(oItem,"secure","secureTextEntry");
+        processItem.checkPropWithBrace(oItem,"secure","secureTextEntry");
         processItem.checkPropWithQuotes(oItem,"keyboard","keyboardType");
 
         processItem.checkPropWithBrace(oItem,"multiline","multiline");

@@ -67,6 +67,10 @@
         "fdate": {
             "tagName": "PlusFormDate",
             "expandFile": "../../expand/expand-elm/react_fbase"
+        },
+        "fswitch": {
+            "tagName": "PlusFormSwitch",
+            "expandFile": "../../expand/expand-elm/react_fbase"
         }
     }
 }
