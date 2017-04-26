@@ -6,6 +6,7 @@ import {
   Text,
   Image,
   ListView,
+  FlatList,
   ScrollView,
   TextInput,
   Dimensions,
@@ -31,12 +32,17 @@ export default class  extends RootSuperPage {
 
     top_support.initPage(this,<%- JSON.stringify(out.pageProperty) %>);
 
-    <% out.templateInfos.forEach((template)=>{ %>
-        //var x_template_list_<%- template.templateName-%> = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      <% }) %>
+  
 
     this.state = {
-      <% out.templateInfos.forEach((template)=>{ %>x_template_data_<%- template.templateName-%>: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),<% }) %>
+      <% out.templateInfos.forEach((template)=>{ %>
+      <% if (template.templateSource!=''){%>
+
+      
+      x_template_data_<%- template.templateName-%>:<%if(template.templateSource.startsWith('@')){%><%-template.templateSource.substr(1) %><%}else{%> new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>)<%}%>,
+      
+      <%}%>
+      <% }) %>
       rootAsyncShow:<%= (out.pageConfig.asyncShow=="true")?"true":"false" %>};
   }
 

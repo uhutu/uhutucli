@@ -6,6 +6,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.upPropValue = function (oItem, sPropName) {
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
     };
+    MprocessItem.prototype.upEventValue = function (oItem, sPropName) {
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrEvent);
+    };
     MprocessItem.prototype.upXaryValue = function (oItem, sPropName) {
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
     };

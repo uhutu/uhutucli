@@ -27,6 +27,10 @@
             "tagName": "ListView",
             "expandFile": "../../expand/expand-elm/react_ulistview"
         },
+        "uflatlist": {
+            "tagName": "FlatList",
+            "expandFile": "../../expand/expand-elm/react_uflatlist"
+        },
         "uinput": {
             "tagName": "TextInput",
             "expandFile": "../../expand/expand-elm/react_uinput"

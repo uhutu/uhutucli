@@ -16,6 +16,12 @@ class MprocessItem {
     }
 
 
+    upEventValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrEvent);
+    }
+
+
     upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
