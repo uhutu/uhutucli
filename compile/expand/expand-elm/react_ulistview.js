@@ -12,6 +12,11 @@ var MexpandReactUicon = (function () {
         oItem.targetAttr.set('dataSource', '{this.state.' + CommonRoot.upProperty().templateXname + 'data_' + macroName + "}");
         oItem.targetAttr.set('enableEmptySections', '{true}');
         //processItem.checkEventFull(oItem, "change-text", "onChangeText", "(text)=>{", "}");
+        var sRefreshScript = processItem.upEventValue(oItem, 'refresh');
+        if (sRefreshScript) {
+            var aStr = '{<RefreshControl refreshing={false} onRefresh={()=>{' + sRefreshScript + '}} />}';
+            oItem.targetAttr.set('refreshControl', aStr);
+        }
         return oItem;
     };
     return MexpandReactUicon;
