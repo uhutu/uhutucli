@@ -65,6 +65,8 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-max-size", "formMaxSize");
         //正则表达式编号
         this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+        //展示类型
+        this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
     };
     return MprocessItem;
 }());
