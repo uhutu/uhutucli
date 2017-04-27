@@ -1,5 +1,6 @@
 import {
     PlusOperateForm,
+    PlusCommonWidget,
     PlusOperatePage
 } from 'uhutu-plus';
 
@@ -15,6 +16,10 @@ import {
  */
 export default class {
 
+    static msgAlert(sMessage) {
+        PlusCommonWidget.msgAlert(sMessage);
+    }
+
     static pageNav(sPage, that) {
         //that.props.navigation.navigate(sPage);
         PlusOperatePage.pageNaviger(that, sPage);
@@ -27,9 +32,16 @@ export default class {
     }
 
     static NetConnectDone(fCallBack) {
-
-        NetInfo.isConnected.fetch().then(isConnected => {
+        /*
+        NetInfo.isConnected.fetch().done((isConnected) => {
             fCallBack(isConnected);
+        });
+        */
+        return NetInfo.fetch().then((reach) => {
+            this.msgAlert(reach);
+
+            return reach.toLowerCase() != "none";
+
         });
     }
 
