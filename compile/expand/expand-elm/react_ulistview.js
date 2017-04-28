@@ -17,6 +17,8 @@ var MexpandReactUicon = (function () {
             var aStr = '{<RefreshControl refreshing={false} onRefresh={()=>{' + sRefreshScript + '}} />}';
             oItem.targetAttr.set('refreshControl', aStr);
         }
+        processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
+        processItem.checkPropWithBrace(oItem, "threshold", "onEndReachedThreshold");
         return oItem;
     };
     return MexpandReactUicon;
