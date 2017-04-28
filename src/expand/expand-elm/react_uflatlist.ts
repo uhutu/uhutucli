@@ -32,12 +32,16 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
             oItem.targetAttr.set('refreshing', '{false}');
 
-            oItem.targetAttr.set('onRefresh', '{()=>{this.setState({' + CommonRoot.upProperty().templateXname + 'data_' + macroName + ':' + sRefreshScript + '});}}');
+            oItem.targetAttr.set('onRefresh', '{()=>{' + sRefreshScript+ '}}');
 
         }
 
 
 
+        //let sEndScript = processItem.upEventValue(oItem, 'endReached');
+
+        processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
+        processItem.checkPropWithBrace(oItem,"threshold","onEndReachedThreshold");
         //processItem.checkEventFull(oItem, "change-text", "onChangeText", "(text)=>{", "}");
 
 

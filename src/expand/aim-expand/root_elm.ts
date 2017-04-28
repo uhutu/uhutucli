@@ -20,7 +20,7 @@ export class RootExpandReactElm {
 
         processItem.checkPropWithBrace(oItem,"form-max-size","maxLength");
 
-        
+        processItem.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
 
         oItem.targetAttr.set('underlineColorAndroid','"transparent"');
         oItem.targetAttr.set('autoCapitalize','"none"');
