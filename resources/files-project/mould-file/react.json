@@ -75,6 +75,10 @@
         "fswitch": {
             "tagName": "PlusFormSwitch",
             "expandFile": "../../expand/expand-elm/react_fbase"
+        },
+        "fdisplay": {
+            "tagName": "PlusFormDisplay",
+            "expandFile": "../../expand/expand-elm/react_fbase"
         }
     }
 }

@@ -81,6 +81,7 @@ var MbasePageConfig = (function () {
         this.styleFile = "./index";
         this.asyncShow = "";
         this.scriptInit = "";
+        this.scriptFiles = [];
     }
     return MbasePageConfig;
 }());

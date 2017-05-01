@@ -15,7 +15,7 @@ import {
   View
 } from 'react-native';
 
-import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch} from 'uhutu-plus';
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch,PlusFormDisplay} from 'uhutu-plus';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 import styles from "<%- out.pageConfig.styleFile %>-style";
@@ -23,8 +23,9 @@ import styles from "<%- out.pageConfig.styleFile %>-style";
 import RootSuperPage from "../../../simple/root/super/super_page";
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
-
-
+ <% out.pageConfig.scriptFiles.forEach((scriptFile)=>{ %>
+import <%-scriptFile.fileObject%> from "<%-scriptFile.fileUrl%>";
+ <% })%>
 
 export default class  extends Component {
 

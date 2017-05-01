@@ -212,6 +212,13 @@ export interface ItransformExpandItem {
 }
 
 
+
+export interface IpageFileStruct{
+    fileUrl:string
+    fileObject:string
+}
+
+
 export interface IbasePageConfig {
 
     //页面标题
@@ -230,6 +237,9 @@ export interface IbasePageConfig {
      * @memberOf IbasePageConfig
      */
     styleFile:string
+
+    
+    scriptFiles:IpageFileStruct[]
 
     //页面初始化时加载的脚本
     scriptInit: string
@@ -256,6 +266,8 @@ export class MbasePageConfig implements IbasePageConfig {
     styleFile="./index"
     asyncShow = ""
     scriptInit = ""
+
+    scriptFiles=[]
 }
 
 

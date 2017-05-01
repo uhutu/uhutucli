@@ -39,6 +39,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.checkStateFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight, sSign);
     };
+    MprocessItem.prototype.checkStyle = function (oItem, sSource, sTarget) {
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
+    };
     /**
      * 直接属性  不增加标记
      */
@@ -67,6 +70,9 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
         //展示类型
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+    };
+    MprocessItem.prototype.styleBaseAuto = function (oItem) {
+        this.checkStyle(oItem, "item-touch", "styleItemTouch");
     };
     return MprocessItem;
 }());

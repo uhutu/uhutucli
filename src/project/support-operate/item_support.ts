@@ -81,6 +81,13 @@ class MprocessItem {
 
 
 
+    checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
+
+    }
+
+
 
     /**
      * 直接属性  不增加标记
@@ -128,6 +135,15 @@ class MprocessItem {
 
         //展示类型
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+
+    }
+
+
+    styleBaseAuto(oItem: CTF.ItransformItemInfo){
+
+       
+
+        this.checkStyle(oItem,"item-touch","styleItemTouch");
 
     }
 
