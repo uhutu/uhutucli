@@ -102,8 +102,8 @@ class MprocessItem {
             if (!sVal.startsWith('@')) {
                 sVal = sSign + sVal + sSign;
             }
-            else{
-                sVal=sVal.substr(1);
+            else {
+                sVal = sVal.substr(1);
             }
 
 
@@ -139,11 +139,17 @@ class MprocessItem {
     }
 
 
-    styleBaseAuto(oItem: CTF.ItransformItemInfo){
+    styleBaseAuto(oItem: CTF.ItransformItemInfo) {
 
-       
 
-        this.checkStyle(oItem,"item-touch","styleItemTouch");
+
+        this.checkStyle(oItem, "item-touch", "styleItemTouch");
+        this.checkStyle(oItem, "item-box", "styleItemBox");
+        this.checkStyle(oItem, "item-text", "styleItemText");
+        this.checkStyle(oItem, "item-active", "styleItemActive");
+
+        this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
+        this.checkStyle(oItem, 'main-view', 'styleMainView');
 
     }
 

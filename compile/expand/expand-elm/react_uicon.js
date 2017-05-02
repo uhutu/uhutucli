@@ -8,6 +8,7 @@ var MexpandReactUicon = (function () {
         processItem.checkPropWithEmpty(oItem, "size", "size");
         processItem.checkPropWithQuotes(oItem, "color", "color");
         processItem.checkPropWithQuotes(oItem, "reverse", "reverse");
+        processItem.checkPropWithQuotes(oItem, "family", "family");
         return oItem;
     };
     return MexpandReactUicon;

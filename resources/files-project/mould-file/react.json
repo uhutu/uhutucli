@@ -62,7 +62,7 @@
         },
         "fselect": {
             "tagName": "PlusFormSelect",
-            "expandFile": "../../expand/expand-elm/react_fbase"
+            "expandFile": "../../expand/expand-elm/react_fselect"
         },
         "fimage": {
             "tagName": "PlusFormImage",
