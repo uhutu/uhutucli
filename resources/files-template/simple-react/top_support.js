@@ -26,6 +26,10 @@ export default class {
 
     }
 
+    static pageBack() {
+        this.pageNav('?base_jump=back');
+    }
+
     static upFLagAndroid() {
         return Platform.OS === 'android';
 
