@@ -136,6 +136,9 @@ class MprocessItem {
         //展示类型
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
 
+        //扩展显示字符串
+        this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+
     }
 
 

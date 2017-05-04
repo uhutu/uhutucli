@@ -70,6 +70,8 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
         //展示类型
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+        //扩展显示字符串
+        this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
     };
     MprocessItem.prototype.styleBaseAuto = function (oItem) {
         this.checkStyle(oItem, "item-touch", "styleItemTouch");
