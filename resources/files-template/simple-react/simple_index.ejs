@@ -5,6 +5,7 @@ import {
     View,
     DatePickerIOS,
     TouchableOpacity,
+    BackAndroid,
     Picker,
     StyleSheet,
     Image,
@@ -98,6 +99,20 @@ export  default class  extends Component{
   componentDidMount() {
     //默认检测登录状态
     current_support.userLoginCheck(this);
+
+    //android注册返回事件
+      BackAndroid.addEventListener('hardwareBackPress', ()=> {
+
+          var iLength=this.refs.navigator.getCurrentRoutes().length;
+
+
+           if (iLength>1) {
+             this.refs.navigator.pop();
+             return true;
+           }
+           return false;
+      });
+
   }
 
   _renderScene(router, navigator) {
