@@ -73,6 +73,13 @@ export default class {
 
 
 
+    static topState(that, oState) {
+
+        that.setState(oState);
+    }
+
+
+
 
 
 }
