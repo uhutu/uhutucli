@@ -35,9 +35,9 @@ var CappSub = (function () {
                 oItem.targetAttr.set("style", "{" + CappSub.styleParse(oItem.sourceAttr.get("class")) + "}");
                 //oItem.elmProcess.styleName.push(value);
             }
-            processItem.checkEventFull(oItem, "press", "onPress", "{()=>{", "}}", "");
+            processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
             //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
-            processItem.checkEventFull(oItem, "link", "onPress", "{()=>{top_support.pageNav(", ",this)}}", "'");
+            processItem.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
             //processItem.checkStateFull(oItem, "value", "value", "", "", "");
         });
         return oItem;
