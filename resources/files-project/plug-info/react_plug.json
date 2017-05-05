@@ -20,7 +20,7 @@
         "name": "top-file",
         "json": "[@config:file.reactPlugPath]/top_file.json"
     },
-    
+
     "rn_voip": {
         "name": "rn-voip",
         "json": "[@config:file.reactPlugPath]/rn_voip.json",
@@ -111,6 +111,13 @@
         "version": "0.2.0",
         "json": "[@config:file.reactPlugPath]/rn_mipush.json",
         "disable": true
+    },
+    "rn_fetch_blob": {
+        "name": "react-native-fetch-blob",
+        "version": "0.10.5",
+        "json": "[@config:file.reactPlugPath]/base_link.json",
+        "disable": true
+
     }
 
 
