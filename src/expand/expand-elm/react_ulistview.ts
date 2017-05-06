@@ -48,6 +48,10 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
         processItem.checkPropWithQuotes(oItem, "macro", "plusMacroName");
 
 
+         processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
+        processItem.checkPropWithBrace(oItem, "threshold", "onEndReachedThreshold");
+
+
         return oItem;
     }
 

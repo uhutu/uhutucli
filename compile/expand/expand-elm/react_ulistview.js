@@ -32,6 +32,8 @@ var MexpandReactUicon = (function () {
         oItem.targetAttr.set('renderRow', '{this.' + CommonRoot.upProperty().templateXname + 'render_' + macroName + '.bind(this)}');
         processItem.checkPropFull(oItem, "list-source", "plusListSource", "{(data)=>{return ", "}}", "");
         processItem.checkPropWithQuotes(oItem, "macro", "plusMacroName");
+        processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
+        processItem.checkPropWithBrace(oItem, "threshold", "onEndReachedThreshold");
         return oItem;
     };
     return MexpandReactUicon;
