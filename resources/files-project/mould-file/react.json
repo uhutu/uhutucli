@@ -24,7 +24,7 @@
             "expandFile": "../../expand/expand-elm/react_xcall"
         },
         "ulistview": {
-            "tagName": "ListView",
+            "tagName": "PlusItemListview",
             "expandFile": "../../expand/expand-elm/react_ulistview"
         },
         "uflatlist": {

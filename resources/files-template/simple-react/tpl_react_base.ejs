@@ -15,7 +15,7 @@ import {
   View
 } from 'react-native';
 
-import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch,PlusFormDisplay} from 'uhutu-plus';
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch,PlusFormDisplay,PlusItemListview} from 'uhutu-plus';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 import styles from "<%- out.pageConfig.styleFile %>-style";
@@ -37,14 +37,7 @@ export default class  extends Component {
   
 
     this.state = {
-      <% out.templateInfos.forEach((template)=>{ %>
-      <% if (template.templateSource!=''){%>
-
       
-      x_template_data_<%- template.templateName-%>:<%if(template.templateSource.startsWith('@')){%><%-template.templateSource.substr(1) %><%}else{%> new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>)<%}%>,
-      
-      <%}%>
-      <% }) %>
       rootAsyncShow:<%= (out.pageConfig.asyncShow=="true")?"true":"false" %>};
   }
 

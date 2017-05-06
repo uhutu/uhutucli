@@ -129,7 +129,7 @@ export  default class  extends Component{
       
       <Navigator
           ref="navigator"
-          style={[styles.layout_nav_navigator]}
+          style={[styles.layout_nav_navigator,top_support.upFLagAndroid()?styles.layout_nav_navigator_android:styles.layout_nav_navigator_ios]}
           initialRoute={RouteStack.<%-out.initialRouteName?out.initialRouteName:'root_layout_main' %>}
           renderScene={this._renderScene}
           navigationBar={
