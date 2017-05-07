@@ -54,7 +54,8 @@
         "contentInfo": ["react*/android/IMLib",
           "react*/android/IMKit",
           "react*/android/CallLib",
-          "react*/android/CallKit"
+          "react*/android/CallKit",
+          "react*/ios/Podfile.lock"
         ]
       }
     },
