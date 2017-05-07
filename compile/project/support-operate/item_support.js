@@ -77,6 +77,7 @@ var MprocessItem = (function () {
         this.checkStyle(oItem, "item-touch", "styleItemTouch");
         this.checkStyle(oItem, "item-box", "styleItemBox");
         this.checkStyle(oItem, "item-text", "styleItemText");
+        this.checkStyle(oItem, "item-icon", "styleItemIcon");
         this.checkStyle(oItem, "item-active", "styleItemActive");
         this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
         this.checkStyle(oItem, 'main-view', 'styleMainView');
