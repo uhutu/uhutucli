@@ -101,8 +101,8 @@ export  default class  extends Component{
     current_support.userLoginCheck(this);
 
     //android注册返回事件
-      BackAndroid.addEventListener('hardwareBackPress', ()=> {
-
+    BackAndroid.addEventListener('hardwareBackPress', ()=> {
+      if(this.refs.navigator&&this.refs.navigator.getCurrentRoutes()){
           var iLength=this.refs.navigator.getCurrentRoutes().length;
 
 
@@ -112,6 +112,7 @@ export  default class  extends Component{
            }
            return false;
       });
+    }
 
   }
 
