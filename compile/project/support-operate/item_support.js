@@ -81,6 +81,7 @@ var MprocessItem = (function () {
         this.checkStyle(oItem, "item-active", "styleItemActive");
         this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
         this.checkStyle(oItem, 'main-view', 'styleMainView');
+        this.checkStyle(oItem, "main-icon", "styleMainIcon");
     };
     return MprocessItem;
 }());
