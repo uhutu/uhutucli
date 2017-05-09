@@ -83,6 +83,19 @@ var MprocessItem = (function () {
         this.checkStyle(oItem, 'main-view', 'styleMainView');
         this.checkStyle(oItem, "main-icon", "styleMainIcon");
     };
+    /**
+     * 基本属性检测
+     *
+     * @param {CTF.ItransformItemInfo} oItem
+     *
+     * @memberof MprocessItem
+     */
+    MprocessItem.prototype.propertyBaseAuto = function (oItem) {
+        this.checkPropWithQuotes(oItem, "name", "pName");
+        this.checkPropWithQuotes(oItem, "color", "pColor");
+        this.checkPropWithQuotes(oItem, "family", "pFamily");
+        this.checkPropWithQuotes(oItem, "text", "pText");
+    };
     return MprocessItem;
 }());
 module.exports = new MprocessItem();

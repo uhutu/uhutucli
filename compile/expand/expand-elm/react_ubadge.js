@@ -4,7 +4,7 @@ var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        processItem.propertyBaseAuto(oItem);
+        processItem.styleBaseAuto(oItem);
         return oItem;
     };
     return MexpandReactUicon;

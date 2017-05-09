@@ -159,6 +159,25 @@ class MprocessItem {
 
     }
 
+    /**
+     * 基本属性检测
+     * 
+     * @param {CTF.ItransformItemInfo} oItem 
+     * 
+     * @memberof MprocessItem
+     */
+    propertyBaseAuto(oItem: CTF.ItransformItemInfo) {
+
+
+        this.checkPropWithQuotes(oItem, "name", "pName");
+        
+        this.checkPropWithQuotes(oItem, "color", "pColor");
+        
+        this.checkPropWithQuotes(oItem, "family", "pFamily");
+        this.checkPropWithQuotes(oItem, "text", "pText");
+
+    }
+
 
 
 

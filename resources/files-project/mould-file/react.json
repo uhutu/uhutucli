@@ -39,13 +39,17 @@
             "tagName": "PlusItemButton",
             "expandFile": "../../expand/expand-elm/react_ubutton"
         },
+        "ubadge": {
+            "tagName": "PlusItemBadge",
+            "expandFile": "../../expand/expand-elm/react_ubase"
+        },
         "uimage": {
             "tagName": "Image",
             "expandFile": "../../expand/expand-elm/react_uimage"
         },
         "uicon": {
             "tagName": "PlusItemIcon",
-            "expandFile": "../../expand/expand-elm/react_uicon"
+            "expandFile": "../../expand/expand-elm/react_ubase"
         },
         "ulink": {
             "tagName": "TouchableOpacity"
