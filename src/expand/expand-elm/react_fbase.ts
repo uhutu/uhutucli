@@ -11,7 +11,7 @@ class MreactFbase implements CTF.ItransformExpandItem {
 
 
         processItem.formBaseAuto(oItem);
-        
+        processItem.styleBaseAuto(oItem);
 
 
         return oItem;
