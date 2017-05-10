@@ -45,6 +45,7 @@ var MtransformCurrentParse = (function () {
          * @memberOf MtransformCurrentParse
          */
         this.elmArrays = [];
+        this.elmUqiue = new Map();
         /**
          * 模板的名称
          *

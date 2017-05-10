@@ -224,6 +224,10 @@ class Mexport {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
                             oCurrentParse.formName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
                             oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName));
+                            //判断formname的名字命名规则
+                            if (!/^[a-z\d]{1,100}$/.test(oCurrentParse.formName)) {
+                                CommonRoot.logWarn(941612002, oCurrentParse.formName);
+                            }
 
 
                             oPageProperty.formNames.push(oCurrentParse.formName);
@@ -237,7 +241,16 @@ class Mexport {
                     }
                     else if (!CommonUtil.utilsString.isEmpty(oCurrentParse.formName)) {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, oTransform.parses.formNameParse(oCurrentParse.formName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr)));
+
+                            let sItemName = oTransform.parses.formNameParse(oCurrentParse.formName + CommonRoot.upProperty().formNameSplit + oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr));
+
+                            if (oCurrentParse.elmUqiue.has(sItemName)) {
+                                CommonRoot.logWarn(941612003, [oCurrentParse.formName, sItemName]);
+                            } else {
+                                oCurrentParse.elmUqiue.set(sItemName, sItemName);
+                            }
+
+                            oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, sItemName);
                         }
                     }
 

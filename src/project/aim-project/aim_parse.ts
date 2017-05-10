@@ -49,6 +49,10 @@ export class MtransformCurrentParse {
      */
     elmArrays: ItransformItemInfo[] = []
 
+
+    elmUqiue: Map<string, string> = new Map<string, string>()
+
+
     /**
      * 模板的名称
      * 
@@ -213,9 +217,9 @@ export interface ItransformExpandItem {
 
 
 
-export interface IpageFileStruct{
-    fileUrl:string
-    fileObject:string
+export interface IpageFileStruct {
+    fileUrl: string
+    fileObject: string
 }
 
 
@@ -236,10 +240,10 @@ export interface IbasePageConfig {
      * @type {string}
      * @memberOf IbasePageConfig
      */
-    styleFile:string
+    styleFile: string
 
-    
-    scriptFiles:IpageFileStruct[]
+
+    scriptFiles: IpageFileStruct[]
 
     //页面初始化时加载的脚本
     scriptInit: string
@@ -263,11 +267,11 @@ export class MbasePageConfig implements IbasePageConfig {
     pageTitle = ""
     masterPath = ""
     tplFile = "tpl/default.ejs"
-    styleFile="./index"
+    styleFile = "./index"
     asyncShow = ""
     scriptInit = ""
 
-    scriptFiles=[]
+    scriptFiles = []
 }
 
 
