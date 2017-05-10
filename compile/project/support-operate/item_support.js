@@ -96,6 +96,7 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "color", "pColor");
         this.checkPropWithQuotes(oItem, "family", "pFamily");
         this.checkPropWithQuotes(oItem, "text", "pText");
+        this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
     };
     return MprocessItem;
 }());

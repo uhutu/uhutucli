@@ -177,6 +177,8 @@ class MprocessItem {
         this.checkPropWithQuotes(oItem, "family", "pFamily");
         this.checkPropWithQuotes(oItem, "text", "pText");
 
+        this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
+
     }
 
 

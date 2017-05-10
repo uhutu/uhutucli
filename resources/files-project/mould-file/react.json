@@ -37,7 +37,7 @@
         },
         "ubutton": {
             "tagName": "PlusItemButton",
-            "expandFile": "../../expand/expand-elm/react_ubutton"
+            "expandFile": "../../expand/expand-elm/react_ubase"
         },
         "ubadge": {
             "tagName": "PlusItemBadge",
