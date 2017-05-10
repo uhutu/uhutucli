@@ -6,6 +6,8 @@ var MexpandReactUicon = (function () {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
         var macroName = processItem.upPropValue(oItem, 'macro');
+        processItem.propertyBaseAuto(oItem);
+        processItem.styleBaseAuto(oItem);
         /*
         oItem.targetAttr.set('renderRow', '{this.' + CommonRoot.upProperty().templateXname + 'render_' + macroName + '.bind(this)}');
 

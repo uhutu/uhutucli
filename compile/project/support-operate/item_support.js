@@ -82,6 +82,7 @@ var MprocessItem = (function () {
         this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
         this.checkStyle(oItem, 'main-view', 'styleMainView');
         this.checkStyle(oItem, "main-icon", "styleMainIcon");
+        this.checkStyle(oItem, "main-text", "styleMainText");
     };
     /**
      * 基本属性检测

@@ -16,6 +16,9 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         let macroName = processItem.upPropValue(oItem, 'macro');
 
+        processItem.propertyBaseAuto(oItem);
+        processItem.styleBaseAuto(oItem);
+
         /*
         oItem.targetAttr.set('renderRow', '{this.' + CommonRoot.upProperty().templateXname + 'render_' + macroName + '.bind(this)}');
 
@@ -42,13 +45,13 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         oItem.targetAttr.set('renderRow', '{this.' + CommonRoot.upProperty().templateXname + 'render_' + macroName + '.bind(this)}');
 
-        processItem.checkPropFull(oItem, "list-source", "plusListSource","{(data)=>{return ","}}","");
+        processItem.checkPropFull(oItem, "list-source", "plusListSource", "{(data)=>{return ", "}}", "");
 
 
         processItem.checkPropWithQuotes(oItem, "macro", "plusMacroName");
 
 
-         processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
+        processItem.checkEventFull(oItem, "end-reached", "onEndReached", "{(info)=>{", "}}", "");
         processItem.checkPropWithBrace(oItem, "threshold", "onEndReachedThreshold");
 
 

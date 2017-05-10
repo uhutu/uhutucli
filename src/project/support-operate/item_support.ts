@@ -156,6 +156,7 @@ class MprocessItem {
         this.checkStyle(oItem, 'main-view', 'styleMainView');
 
         this.checkStyle(oItem, "main-icon", "styleMainIcon");
+        this.checkStyle(oItem, "main-text", "styleMainText");
 
     }
 
