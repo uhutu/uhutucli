@@ -58,7 +58,7 @@ class CappSub implements CTF.ItransformSubExtend {
 
             processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
 
-            
+
 
             //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
 
@@ -119,7 +119,10 @@ class CappOut implements CTF.ItransFormatOut {
                     case "item":
                         sReplace = '{item.' + r[2] + '}';
                         break;
-                        case "item-param":
+                    case "env":
+                        sReplace = '{' + r[2] + '}';
+                        break;
+                    case "item-param":
                         sReplace = 'item.' + r[2] + '';
                         break;
                     default:
