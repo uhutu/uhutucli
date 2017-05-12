@@ -171,9 +171,10 @@ class MprocessItem {
 
 
         this.checkPropWithQuotes(oItem, "name", "pName");
-        
+
         this.checkPropWithQuotes(oItem, "color", "pColor");
-        
+        this.checkPropWithQuotes(oItem, "show", "pShow");
+
         this.checkPropWithQuotes(oItem, "family", "pFamily");
         this.checkPropWithQuotes(oItem, "text", "pText");
 
