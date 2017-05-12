@@ -76,6 +76,9 @@ var CappOut = (function () {
                     case "env":
                         sReplace = '{' + r[2] + '}';
                         break;
+                    case "this":
+                        sReplace = 'this.' + r[2] + '';
+                        break;
                     case "item-param":
                         sReplace = 'item.' + r[2] + '';
                         break;
