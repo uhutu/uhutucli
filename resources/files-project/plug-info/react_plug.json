@@ -60,6 +60,10 @@
         "name": "react-native-scrollable-tab-view",
         "version": "0.7.4"
     },
+    "react_navigation": {
+        "name": "react-navigation",
+        "version": "1.0.0-beta.9"
+    },
     "router_flux": {
         "name": "react-native-router-flux",
         "version": "3.38.0",

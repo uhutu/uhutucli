@@ -12,7 +12,7 @@ import {
     Text
 
 } from 'react-native';
-
+import { TabNavigator,StackNavigator } from 'react-navigation';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 import {PlusOperatePage,PlusItemNavigator,PlusItemIcon} from 'uhutu-plus';
@@ -31,51 +31,37 @@ import styles from "../../../pages/air/resource/layout-style";
 <%- fItem.importName %><% }) %>
 //初始化程序
 
-class ScreenMain  extends Component{
 
-  static navigationOptions = {
-    title: '<%=out.tabItems[0].tabName %>',
+const ScreenTab = TabNavigator({
 
+
+  <% out.tabItems.forEach((fTabItem)=>{ %>
+  <%= fTabItem.tabName %>: {
+    screen: <%= fTabItem.screenName %>,
+    navigationOptions : {
+     
+      tabBarIcon: ({ bFlagForce,tintColor }) => (
+       <PlusItemIcon pName='<%= fTabItem.iconName %>' style={[styles.layout_tab_normal_icon,{color:tintColor}]} />
+      ),
+   
   }
-  render() {
-    return <ScrollableTabView
-      tabBarPosition="bottom"
-      locked={true}
-      scrollWithoutAnimation={true}
-      onChangeTab={(tab)=>{this.props.navigation.setState({title:tab.ref.props.tabLabel.tabTitle})}}
-      renderTabBar={() => <PlusItemNavigator 
-
-      styleBaseBox={styles.layout_tab_base_box} 
-      styleNormalIcon={styles.layout_tab_normal_icon} 
-      styleNormalText={styles.layout_tab_normal_text}
-      styleActiveText={styles.layout_tab_active_text}
-      styleActiveIcon={styles.layout_tab_active_icon}
-      
-       />}
-
-      
-    >
-      
-
-<% out.tabItems.forEach((fTabItem)=>{ %>
-
-  <View style={{flex:1}} tabLabel={{iconName:'<%= fTabItem.iconName %>',tabTitle:'<%= fTabItem.tabName %>'}} >
-      <RouteStack.<%= fTabItem.screenName %>.routeScreen  />
-      </View>
-
-  
+  },
   <% }) %>
-
-    </ScrollableTabView>;
-  } 
-
-}
-
+  
+}, {
+  tabBarOptions: {
+    <%- out.tabOptions.join('\n') %>
+    
+  },
+  tabBarPosition:'bottom',
+  swipeEnabled:false,
+});
 
 const RouteStack={
 <% paths.forEach((fItem)=>{%>
-<%- fItem.uqName %>:{name:"<%- fItem.uqName %>",routeScreen:<%- fItem.uqName %>},<% }) %>
-root_layout_main:{name:"root_layout_main",routeScreen:ScreenMain}
+<%- fItem.uqName %>:{name:"<%- fItem.uqName %>",screen:<%- fItem.uqName %>},<% }) %>
+root_layout_main:{name:"root_layout_main",screen:ScreenTab}
+
 };
 
 
@@ -84,80 +70,32 @@ root_layout_main:{name:"root_layout_main",routeScreen:ScreenMain}
 
 
 
+const ScreenMain = StackNavigator(RouteStack,{initialRouteName:'root_layout_main',
+
+navigationOptions:{
+  headerTitleStyle:styles.layout_nav_title,
+  headerStyle:styles.layout_nav_header,
+  headerTintColor:'#ffffff',
+  headerBackTitleStyle:styles.layout_nav_back
+}
+});
+
+
+
+
 export  default class  extends Component{
 
   constructor(props){
     super(props);
-
     VersionCheck.checkUpdate(this);
-
     current_support.initApplication(this);
-
-    
   }
 
-  componentDidMount() {
-    //默认检测登录状态
-    current_support.userLoginCheck(this);
-
-    //android注册返回事件
-    BackAndroid.addEventListener('hardwareBackPress', ()=> {
-      if(this.refs.navigator&&this.refs.navigator.getCurrentRoutes()){
-          var iLength=this.refs.navigator.getCurrentRoutes().length;
-
-
-           if (iLength>1) {
-             this.refs.navigator.pop();
-             return true;
-           }
-           return false;
-      }});
-    
-
-  }
-
-  _renderScene(router, navigator) {
-    
-
-      PlusOperatePage.pageNavInit(navigator,RouteStack);
-
-    return <router.routeScreen navigation={navigator}  />
-
-  }
+  
     
   render() {
     return (
-      
-      <Navigator
-          ref="navigator"
-          style={[styles.layout_nav_navigator,top_support.upFLagAndroid()?styles.layout_nav_navigator_android:styles.layout_nav_navigator_ios]}
-          initialRoute={RouteStack.<%-out.initialRouteName?out.initialRouteName:'root_layout_main' %>}
-          renderScene={this._renderScene}
-          navigationBar={
-              <Navigator.NavigationBar
-              routeMapper={{
-                LeftButton: (route, navigator, index, navState) =>
-                  { 
-                  
-                  if (index > 0) {
-              return (
-                <PlusItemIcon style={styles.layout_nav_icon} pName="chevron-left" onPress={() => {if (index > 0) {navigator.pop()}}}></PlusItemIcon>
-              );
-            } else {
-              return null;
-            }
-                   },
-                RightButton: (route, navigator, index, navState) =>
-                  { return (route.routeScreen.navigationOptions.navRight); },
-                Title: (route, navigator, index, navState) =>
-                  { return (<Text style={styles.layout_nav_title}>{route.name=="root_layout_main"&&navState.title?navState.title:route.routeScreen.navigationOptions.title}</Text>); },
-              }}
-              style={styles.layout_nav_header}
-            />
-          }
-          >
-          </Navigator>
-          
+      <ScreenMain />
     );
   }
 }

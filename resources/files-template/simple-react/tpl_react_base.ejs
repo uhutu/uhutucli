@@ -64,13 +64,13 @@ export default class  extends Component {
     title: '<%- out.pageConfig.pageTitle %>',
     <% if(out.pageConfig.navToolOption!='') {%>
       <% out.templateInfos.forEach((template)=>{ if(template.templateName==out.pageConfig.navToolOption){ %>
-      navRight: <%- template.templateContent.join('') %>
+      headerRight: <%- template.templateContent.join('') %>
       <% }}) %>
     <%} %>
   };
 
   componentDidMount() {
-    
+    PlusOperatePage.pageNavInit(this.props.navigation);
 
     <%- out.pageConfig.scriptInit %>
   }
