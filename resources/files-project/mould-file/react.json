@@ -23,6 +23,10 @@
             "tagName": "View",
             "expandFile": "../../expand/expand-elm/react_xcall"
         },
+        "uwebview": {
+            "tagName": "PlusItemWebView",
+            "expandFile": "../../expand/expand-elm/react_ubase"
+        },
         "ulistview": {
             "tagName": "PlusItemListview",
             "expandFile": "../../expand/expand-elm/react_ulistview"
