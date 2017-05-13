@@ -1,19 +1,18 @@
 import React, { Component } from "react"
 import {
-  Navigator,
-    TextInput,
-    View,
-    DatePickerIOS,
-    TouchableOpacity,
-    BackAndroid,
-    Picker,
+  
+    
+   
+    
+    
+    
+    
     StyleSheet,
-    Image,
+    
     Text
 
 } from 'react-native';
-import { TabNavigator,StackNavigator } from 'react-navigation';
-import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
+import { TabNavigator,StackNavigator,TabBarBottom } from 'react-navigation';
 
 import {PlusOperatePage,PlusItemNavigator,PlusItemIcon} from 'uhutu-plus';
 
@@ -54,6 +53,8 @@ const ScreenTab = TabNavigator({
     
   },
   tabBarPosition:'bottom',
+  tabBarComponent:TabBarBottom,
+  animationEnabled:false,
   swipeEnabled:false,
 });
 
