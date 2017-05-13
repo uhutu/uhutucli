@@ -1,5 +1,6 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
+var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
 var processItem = require("../../project/support-operate/item_support");
 var CappElms = (function () {
@@ -84,7 +85,7 @@ var CappOut = (function () {
                         break;
                     //指向this
                     case "this":
-                        sReplace = 'this.' + r[2] + '';
+                        sReplace = CommonUtil.utilsString.isEmpty(r[2]) ? 'this' : 'this.' + r[2] + '';
                         break;
                     case "item-param":
                         sReplace = 'item.' + r[2] + '';

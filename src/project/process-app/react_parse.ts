@@ -130,7 +130,7 @@ class CappOut implements CTF.ItransFormatOut {
                         break;
                     //指向this
                     case "this":
-                        sReplace = 'this.' + r[2] + '';
+                        sReplace = CommonUtil.utilsString.isEmpty(r[2]) ? 'this' : 'this.' + r[2] + '';
                         break;
                     case "item-param":
                         sReplace = 'item.' + r[2] + '';
