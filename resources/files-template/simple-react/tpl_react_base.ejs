@@ -60,14 +60,14 @@ export default class  extends Component {
 
 
 
-  static navigationOptions = {
+  static navigationOptions =navprop =>{    return  {
     title: '<%- out.pageConfig.pageTitle %>',
     <% if(out.pageConfig.navToolOption!='') {%>
       <% out.templateInfos.forEach((template)=>{ if(template.templateName==out.pageConfig.navToolOption){ %>
-      headerRight: <%- template.templateContent.join('') %>
+      headerRight: <%- template.templateContent.join('').replace('this,','navprop,') %>
       <% }}) %>
     <%} %>
-  };
+  }};
 
   componentDidMount() {
     PlusOperatePage.pageNavInit(this.props.navigation);

@@ -67,15 +67,22 @@ var CappOut = (function () {
             while (r = reg.exec(sStr)) {
                 var sReplace = r[0];
                 switch (r[1]) {
+                    //state变量
                     case "state":
                         sReplace = '{this.state.' + r[2] + '}';
                         break;
                     case "item":
                         sReplace = '{item.' + r[2] + '}';
                         break;
+                    //变量替换
                     case "env":
                         sReplace = '{' + r[2] + '}';
                         break;
+                    //直接输出
+                    case "tag":
+                        sReplace = '' + r[2] + '';
+                        break;
+                    //指向this
                     case "this":
                         sReplace = 'this.' + r[2] + '';
                         break;

@@ -26,8 +26,8 @@ export default class {
 
     }
 
-    static pageBack() {
-        this.pageNav('?base_jump=back');
+    static pageBack(that) {
+        this.pageNav('?base_jump=back',that);
     }
 
     static upFLagAndroid() {
