@@ -25,7 +25,7 @@
         },
         "uwebview": {
             "tagName": "PlusItemWebView",
-            "expandFile": "../../expand/expand-elm/react_ubase"
+            "expandFile": "../../expand/expand-elm/react_uwebview"
         },
         "ulistview": {
             "tagName": "PlusItemListview",

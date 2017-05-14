@@ -71,7 +71,7 @@ root_layout_main:{name:"root_layout_main",screen:ScreenTab}
 
 
 
-const ScreenMain = StackNavigator(RouteStack,{initialRouteName:'root_layout_main',
+const ScreenMain = StackNavigator(RouteStack,{initialRouteName:'<%- out.initialRouteName?out.initialRouteName:"root_layout_main" %>',
 
 navigationOptions:{
   headerTitleStyle:styles.layout_nav_title,
