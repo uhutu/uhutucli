@@ -85,7 +85,7 @@ navigationOptions:{
 
 const defaultGetStateForAction = ScreenMain.router.getStateForAction;
 ScreenMain.router.getStateForAction = (action, state) => {
-  console.warn(action.type);
+  
   if (state&& action.type === 'CustomNav/replace') {
 
     const routes = [
