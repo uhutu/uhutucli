@@ -83,6 +83,28 @@ navigationOptions:{
 });
 
 
+const defaultGetStateForAction = ScreenMain.router.getStateForAction;
+ScreenMain.router.getStateForAction = (action, state) => {
+  console.warn(action.type);
+  if (state&& action.type === 'CustomNav/replace') {
+
+    const routes = [
+      ...state.routes
+    ];
+
+    routes[routes.length-1]={key: action.routeName, routeName: action.routeName, params: action.params };
+
+    
+    return {
+      ...state,
+      routes,
+      index: routes.length - 1,
+    };
+  }
+  return defaultGetStateForAction(action, state);
+};
+
+
 
 
 export  default class  extends Component{
