@@ -86,6 +86,8 @@ navigationOptions:{
 const defaultGetStateForAction = ScreenMain.router.getStateForAction;
 ScreenMain.router.getStateForAction = (action, state) => {
   
+  PlusOperatePage.onChangeUrl(action.params);
+
   if (state&& action.type === 'CustomNav/replace') {
 
     const routes = [
