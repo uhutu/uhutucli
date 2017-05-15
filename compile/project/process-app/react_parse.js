@@ -1,5 +1,6 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
+var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
 var processItem = require("../../project/support-operate/item_support");
 var CappElms = (function () {
@@ -35,11 +36,10 @@ var CappSub = (function () {
                 oItem.targetAttr.set("style", "{" + CappSub.styleParse(oItem.sourceAttr.get("class")) + "}");
                 //oItem.elmProcess.styleName.push(value);
             }
-            processItem.checkEventFull(oItem, "press", "onPress", "{()=>{", "}}", "");
-            processItem.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
-            processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
-            processItem.checkEventFull(oItem, "link", "onPress", "{()=>{top_support.pageNav(", ",this)}}", "'");
-            processItem.checkStateFull(oItem, "value", "value", "", "", "");
+            processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
+            //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
+            processItem.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+            //processItem.checkStateFull(oItem, "value", "value", "", "", "");
         });
         return oItem;
     };
@@ -68,11 +68,24 @@ var CappOut = (function () {
             while (r = reg.exec(sStr)) {
                 var sReplace = r[0];
                 switch (r[1]) {
+                    //state变量
                     case "state":
                         sReplace = '{this.state.' + r[2] + '}';
                         break;
                     case "item":
                         sReplace = '{item.' + r[2] + '}';
+                        break;
+                    //变量替换
+                    case "env":
+                        sReplace = '{' + r[2] + '}';
+                        break;
+                    //直接输出
+                    case "tag":
+                        sReplace = '' + r[2] + '';
+                        break;
+                    //指向this
+                    case "this":
+                        sReplace = CommonUtil.utilsString.isEmpty(r[2]) ? 'this' : 'this.' + r[2] + '';
                         break;
                     case "item-param":
                         sReplace = 'item.' + r[2] + '';

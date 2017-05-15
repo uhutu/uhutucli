@@ -1,0 +1,15 @@
+{
+    "react": [
+
+        {
+            "exec": "reactAddLink",
+            "set": {
+
+                "link": "react-native-fetch-blob"
+
+            }
+        }
+
+    ]
+
+}

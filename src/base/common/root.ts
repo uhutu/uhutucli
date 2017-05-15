@@ -12,6 +12,7 @@ var cProperty = {
     dataAttrEvent: 'data-on-',
     dataAttrState: 'data-state-',
     dataAttrXary: 'data-x-',
+    dataAttrStyle:'data-style-',
 
     regexOutBegin: "[#",
     regexOutEnd: "]",

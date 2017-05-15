@@ -184,6 +184,10 @@ var PlugProcess = (function () {
                         CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
                     }
                     break;
+                //文件异步复制
+                case 150301:
+                    CommonUtil.utilsIo.copyFileAsync(oSet.sourcePath, oSet.targetPath);
+                    break;
                 //复制文件 并且进行config的替换
                 case 153303:
                     var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);

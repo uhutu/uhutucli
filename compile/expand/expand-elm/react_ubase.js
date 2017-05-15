@@ -1,10 +1,11 @@
 "use strict";
-var root_elm_1 = require("../../expand/aim-expand/root_elm");
+var processItem = require("../../project/support-operate/item_support");
 var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        new root_elm_1.RootExpandReactElm().textInput(oItem);
+        processItem.styleBaseAuto(oItem);
+        processItem.propertyBaseAuto(oItem);
         return oItem;
     };
     return MexpandReactUicon;

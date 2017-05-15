@@ -16,6 +16,12 @@ class MprocessItem {
     }
 
 
+    upEventValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrEvent);
+    }
+
+
     upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
@@ -75,6 +81,13 @@ class MprocessItem {
 
 
 
+    checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
+
+    }
+
+
 
     /**
      * 直接属性  不增加标记
@@ -89,8 +102,8 @@ class MprocessItem {
             if (!sVal.startsWith('@')) {
                 sVal = sSign + sVal + sSign;
             }
-            else{
-                sVal=sVal.substr(1);
+            else {
+                sVal = sVal.substr(1);
             }
 
 
@@ -119,6 +132,53 @@ class MprocessItem {
 
         //正则表达式编号
         this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+
+        //展示类型
+        this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+
+        //扩展显示字符串
+        this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+
+    }
+
+
+    styleBaseAuto(oItem: CTF.ItransformItemInfo) {
+
+
+
+        this.checkStyle(oItem, "item-touch", "styleItemTouch");
+        this.checkStyle(oItem, "item-box", "styleItemBox");
+        this.checkStyle(oItem, "item-text", "styleItemText");
+        this.checkStyle(oItem, "item-icon", "styleItemIcon");
+        this.checkStyle(oItem, "item-active", "styleItemActive");
+
+        this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
+        this.checkStyle(oItem, 'main-view', 'styleMainView');
+
+        this.checkStyle(oItem, "main-icon", "styleMainIcon");
+        this.checkStyle(oItem, "main-text", "styleMainText");
+
+    }
+
+    /**
+     * 基本属性检测
+     * 
+     * @param {CTF.ItransformItemInfo} oItem 
+     * 
+     * @memberof MprocessItem
+     */
+    propertyBaseAuto(oItem: CTF.ItransformItemInfo) {
+
+
+        this.checkPropWithQuotes(oItem, "name", "pName");
+
+        this.checkPropWithQuotes(oItem, "color", "pColor");
+        this.checkPropWithQuotes(oItem, "show", "pShow");
+
+        this.checkPropWithQuotes(oItem, "family", "pFamily");
+        this.checkPropWithQuotes(oItem, "text", "pText");
+
+        this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
 
     }
 

@@ -20,7 +20,7 @@
         "name": "top-file",
         "json": "[@config:file.reactPlugPath]/top_file.json"
     },
-    
+
     "rn_voip": {
         "name": "rn-voip",
         "json": "[@config:file.reactPlugPath]/rn_voip.json",
@@ -38,7 +38,7 @@
 
     "code_push": {
         "name": "react-native-code-push",
-        "version": "1.17.3-beta",
+        "version": "2.0.3-beta",
         "json": "[@config:file.reactPlugPath]/code_push.json"
     },
     "rn_elements": {
@@ -59,6 +59,10 @@
     "scrollable-tab-view": {
         "name": "react-native-scrollable-tab-view",
         "version": "0.7.4"
+    },
+    "react_navigation": {
+        "name": "react-navigation",
+        "version": "1.0.0-beta.9"
     },
     "router_flux": {
         "name": "react-native-router-flux",
@@ -111,6 +115,13 @@
         "version": "0.2.0",
         "json": "[@config:file.reactPlugPath]/rn_mipush.json",
         "disable": true
+    },
+    "rn_fetch_blob": {
+        "name": "react-native-fetch-blob",
+        "version": "0.10.5",
+        "json": "[@config:file.reactPlugPath]/base_link.json",
+        "disable": true
+
     }
 
 

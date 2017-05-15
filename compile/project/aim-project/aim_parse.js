@@ -45,6 +45,7 @@ var MtransformCurrentParse = (function () {
          * @memberOf MtransformCurrentParse
          */
         this.elmArrays = [];
+        this.elmUqiue = new Map();
         /**
          * 模板的名称
          *
@@ -81,6 +82,7 @@ var MbasePageConfig = (function () {
         this.styleFile = "./index";
         this.asyncShow = "";
         this.scriptInit = "";
+        this.scriptFiles = [];
     }
     return MbasePageConfig;
 }());

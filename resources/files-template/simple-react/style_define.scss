@@ -1,12 +1,9 @@
 //以下sd标记开头的由uhutucli自动生成
-
-
 //颜色：白色
-$base_color_white:#ffffff;
-
-
+$define_base_color_white:#ffffff;
+//定义常规文本padding的大小
+$define_base_padding:8;
 //定义普通字体大小
-@mixin top_font_normal{
-    font-size: 12;
+@mixin define_top_font_normal {
+    font-size: 14;
 }
-

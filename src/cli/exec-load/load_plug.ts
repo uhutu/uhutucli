@@ -229,6 +229,12 @@ class PlugProcess {
                         CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
                     }
                     break;
+                //文件异步复制
+                case 150301:
+
+                    CommonUtil.utilsIo.copyFileAsync(oSet.sourcePath, oSet.targetPath);
+
+                    break;
                 //复制文件 并且进行config的替换
                 case 153303:
                     let sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
@@ -291,14 +297,14 @@ class PlugProcess {
 
 
         var sContent = CommonUtil.utilsIo.readFile(oSet.filePath);
-          
+
         var sNewContent = CommonUtil.utilsString.reaplaceBig(sContent,
             CommonUtil.utilsIo.upRowSeq() + CommonRoot.upNoteMessage(1, oSet.name, oSet.noteType),
             CommonRoot.upNoteMessage(2, oSet.name, oSet.noteType),
             CommonUtil.utilsIo.upRowSeq() + sContentInfo + CommonUtil.utilsIo.upRowSeq(),
             sAfterText);
-          
-            
+
+
         if (sContent != sNewContent) {
             CommonUtil.utilsIo.writeFile(oSet.filePath, sNewContent);
         }

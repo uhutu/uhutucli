@@ -3,7 +3,7 @@
 import * as CTF from "../../project/aim-project/aim_parse";
 
 import processItem = require("../../project/support-operate/item_support");
-import {RootExpandReactElm} from "../../expand/aim-expand/root_elm";
+import { RootExpandReactElm } from "../../expand/aim-expand/root_elm";
 
 
 class MexpandReactUicon implements CTF.ItransformExpandItem {
@@ -11,9 +11,10 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
         processItem.formBaseAuto(oItem);
+        processItem.styleBaseAuto(oItem);
 
+        processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
 
-        new RootExpandReactElm().textInput(oItem);
 
         return oItem;
     }

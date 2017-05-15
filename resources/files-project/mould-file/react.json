@@ -23,9 +23,17 @@
             "tagName": "View",
             "expandFile": "../../expand/expand-elm/react_xcall"
         },
+        "uwebview": {
+            "tagName": "PlusItemWebView",
+            "expandFile": "../../expand/expand-elm/react_uwebview"
+        },
         "ulistview": {
-            "tagName": "ListView",
+            "tagName": "PlusItemListview",
             "expandFile": "../../expand/expand-elm/react_ulistview"
+        },
+        "uflatlist": {
+            "tagName": "FlatList",
+            "expandFile": "../../expand/expand-elm/react_uflatlist"
         },
         "uinput": {
             "tagName": "TextInput",
@@ -33,7 +41,11 @@
         },
         "ubutton": {
             "tagName": "PlusItemButton",
-            "expandFile": "../../expand/expand-elm/react_ubutton"
+            "expandFile": "../../expand/expand-elm/react_ubase"
+        },
+        "ubadge": {
+            "tagName": "PlusItemBadge",
+            "expandFile": "../../expand/expand-elm/react_ubase"
         },
         "uimage": {
             "tagName": "Image",
@@ -41,7 +53,7 @@
         },
         "uicon": {
             "tagName": "PlusItemIcon",
-            "expandFile": "../../expand/expand-elm/react_uicon"
+            "expandFile": "../../expand/expand-elm/react_ubase"
         },
         "ulink": {
             "tagName": "TouchableOpacity"
@@ -58,7 +70,7 @@
         },
         "fselect": {
             "tagName": "PlusFormSelect",
-            "expandFile": "../../expand/expand-elm/react_fbase"
+            "expandFile": "../../expand/expand-elm/react_fselect"
         },
         "fimage": {
             "tagName": "PlusFormImage",
@@ -70,6 +82,10 @@
         },
         "fswitch": {
             "tagName": "PlusFormSwitch",
+            "expandFile": "../../expand/expand-elm/react_fbase"
+        },
+        "fdisplay": {
+            "tagName": "PlusFormDisplay",
             "expandFile": "../../expand/expand-elm/react_fbase"
         }
     }

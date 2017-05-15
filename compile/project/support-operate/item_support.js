@@ -6,6 +6,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.upPropValue = function (oItem, sPropName) {
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
     };
+    MprocessItem.prototype.upEventValue = function (oItem, sPropName) {
+        return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrEvent);
+    };
     MprocessItem.prototype.upXaryValue = function (oItem, sPropName) {
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
     };
@@ -36,6 +39,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.checkStateFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight, sSign);
     };
+    MprocessItem.prototype.checkStyle = function (oItem, sSource, sTarget) {
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
+    };
     /**
      * 直接属性  不增加标记
      */
@@ -62,6 +68,36 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-max-size", "formMaxSize");
         //正则表达式编号
         this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+        //展示类型
+        this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+        //扩展显示字符串
+        this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+    };
+    MprocessItem.prototype.styleBaseAuto = function (oItem) {
+        this.checkStyle(oItem, "item-touch", "styleItemTouch");
+        this.checkStyle(oItem, "item-box", "styleItemBox");
+        this.checkStyle(oItem, "item-text", "styleItemText");
+        this.checkStyle(oItem, "item-icon", "styleItemIcon");
+        this.checkStyle(oItem, "item-active", "styleItemActive");
+        this.checkStyle(oItem, 'main-touch', 'styleMainTouch');
+        this.checkStyle(oItem, 'main-view', 'styleMainView');
+        this.checkStyle(oItem, "main-icon", "styleMainIcon");
+        this.checkStyle(oItem, "main-text", "styleMainText");
+    };
+    /**
+     * 基本属性检测
+     *
+     * @param {CTF.ItransformItemInfo} oItem
+     *
+     * @memberof MprocessItem
+     */
+    MprocessItem.prototype.propertyBaseAuto = function (oItem) {
+        this.checkPropWithQuotes(oItem, "name", "pName");
+        this.checkPropWithQuotes(oItem, "color", "pColor");
+        this.checkPropWithQuotes(oItem, "show", "pShow");
+        this.checkPropWithQuotes(oItem, "family", "pFamily");
+        this.checkPropWithQuotes(oItem, "text", "pText");
+        this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
     };
     return MprocessItem;
 }());

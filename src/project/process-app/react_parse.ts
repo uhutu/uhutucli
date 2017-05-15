@@ -56,16 +56,16 @@ class CappSub implements CTF.ItransformSubExtend {
 
             }
 
-            processItem.checkEventFull(oItem, "press", "onPress", "{()=>{", "}}", "");
-
-            processItem.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
-
-            processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
-
-            processItem.checkEventFull(oItem, "link", "onPress", "{()=>{top_support.pageNav(", ",this)}}", "'");
+            processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
 
 
-            processItem.checkStateFull(oItem, "value", "value", "", "", "");
+
+            //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
+
+            processItem.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+
+
+            //processItem.checkStateFull(oItem, "value", "value", "", "", "");
 
 
         });
@@ -113,13 +113,26 @@ class CappOut implements CTF.ItransFormatOut {
             while (r = reg.exec(sStr)) {
                 var sReplace = r[0];
                 switch (r[1]) {
+                    //state变量
                     case "state":
                         sReplace = '{this.state.' + r[2] + '}';
                         break;
                     case "item":
                         sReplace = '{item.' + r[2] + '}';
                         break;
-                        case "item-param":
+                    //变量替换
+                    case "env":
+                        sReplace = '{' + r[2] + '}';
+                        break;
+                    //直接输出
+                    case "tag":
+                        sReplace = '' + r[2] + '';
+                        break;
+                    //指向this
+                    case "this":
+                        sReplace = CommonUtil.utilsString.isEmpty(r[2]) ? 'this' : 'this.' + r[2] + '';
+                        break;
+                    case "item-param":
                         sReplace = 'item.' + r[2] + '';
                         break;
                     default:

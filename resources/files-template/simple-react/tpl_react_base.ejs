@@ -6,14 +6,16 @@ import {
   Text,
   Image,
   ListView,
+  FlatList,
   ScrollView,
   TextInput,
   Dimensions,
+  RefreshControl,
   Switch,
   View
 } from 'react-native';
 
-import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch} from 'uhutu-plus';
+import {PlusFormSelect,PlusFormImage,PlusFormInput,PlusFormDate,PlusOperateForm,PlusOperatePage,PlusItemButton,PlusItemIcon,PlusFormSwitch,PlusFormDisplay,PlusItemListview,PlusItemBadge,PlusItemWebView} from 'uhutu-plus';
 import ScrollableTabView, {DefaultTabBar, } from 'react-native-scrollable-tab-view';
 
 import styles from "<%- out.pageConfig.styleFile %>-style";
@@ -21,22 +23,21 @@ import styles from "<%- out.pageConfig.styleFile %>-style";
 import RootSuperPage from "../../../simple/root/super/super_page";
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
+ <% out.pageConfig.scriptFiles.forEach((scriptFile)=>{ %>
+import <%-scriptFile.fileObject%> from "<%-scriptFile.fileUrl%>";
+ <% })%>
 
-
-
-export default class  extends RootSuperPage {
+export default class  extends Component {
 
   constructor(props) {
     super(props);
 
     top_support.initPage(this,<%- JSON.stringify(out.pageProperty) %>);
 
-    <% out.templateInfos.forEach((template)=>{ %>
-        //var x_template_list_<%- template.templateName-%> = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-      <% }) %>
+  
 
     this.state = {
-      <% out.templateInfos.forEach((template)=>{ %>x_template_data_<%- template.templateName-%>: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}).cloneWithRows(<%- template.templateSource!=''?template.templateSource:'[]'-%>),<% }) %>
+      
       rootAsyncShow:<%= (out.pageConfig.asyncShow=="true")?"true":"false" %>};
   }
 
@@ -59,23 +60,23 @@ export default class  extends RootSuperPage {
 
 
 
-  static navigationOptions = {
+  static navigationOptions =navprop =>{    return  {
     title: '<%- out.pageConfig.pageTitle %>',
     <% if(out.pageConfig.navToolOption!='') {%>
       <% out.templateInfos.forEach((template)=>{ if(template.templateName==out.pageConfig.navToolOption){ %>
-      navRight: <%- template.templateContent.join('') %>
+      headerRight: <%- template.templateContent.join('').replace('this,','navprop,') %>
       <% }}) %>
     <%} %>
-  };
+  }};
 
   componentDidMount() {
-    
+    PlusOperatePage.pageNavInit(this.props.navigation);
 
     <%- out.pageConfig.scriptInit %>
   }
  
 
-  rootRender(){
+  render(){
     return (
       <%- out.content.join('') %>
     )

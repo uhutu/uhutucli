@@ -45,7 +45,20 @@
       }
     }
   ],
-  "android": [
+  "android": [{
+      "exec": "baseFileContent",
+      "set": {
+        "filePath": "[@config:define.workSpace]/.gitignore",
+        "name": "plug_rn_voip_gitig",
+        "noteType": 2,
+        "contentInfo": ["react*/android/IMLib",
+          "react*/android/IMKit",
+          "react*/android/CallLib",
+          "react*/android/CallKit",
+          "react*/ios/Podfile.lock"
+        ]
+      }
+    },
 
     {
       "exec": "baseFileOption",
@@ -69,7 +82,7 @@
     {
       "exec": "baseContentReplace",
       "set": {
-       
+
         "filePath": "[@config:file.reactAndroidWork]/IMLib/AndroidManifest.xml",
         "withText": "android:value=\"[@config:params.voipAppKey]\" />",
         "replaceText": ["android:value=\".*?\" />"]
@@ -77,19 +90,19 @@
     },
     {
       "exec": "baseFileContent",
-      "disable":true,
+      "disable": true,
       "set": {
         "name": "react_note_plug_rn_voip_android_app_file_provider",
         "filePath": "[@config:file.reactAndroidWork]/app/src/main/AndroidManifest.xml",
         "noteType": 4,
         "withText": "</application>",
         "contentInfo": ["<provider",
-        "android:name=\"android.support.v4.content.FileProvider\"",
-        "android:authorities=\"[@config:project.domainSpace].FileProvider\"",
-        "android:exported=\"false\" android:grantUriPermissions=\"true\">",
-        
-        "<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/rc_file_path\" />",
-        "</provider>"
+          "android:name=\"android.support.v4.content.FileProvider\"",
+          "android:authorities=\"[@config:project.domainSpace].FileProvider\"",
+          "android:exported=\"false\" android:grantUriPermissions=\"true\">",
+
+          "<meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/rc_file_path\" />",
+          "</provider>"
         ]
       }
     },
@@ -118,8 +131,7 @@
         "filePath": "[@config:file.reactAndroidWork]/app/src/main/java/com/[@config:appReact.workName]/MainApplication.java",
         "noteType": 1,
         "withText": "new MainReactPackage\\(\\),",
-        "contentInfo": ["            new VoipReactPackage(),"
-        ]
+        "contentInfo": ["            new VoipReactPackage(),"]
       }
     }
   ]
