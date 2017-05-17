@@ -20,6 +20,11 @@ export default class {
         PlusCommonWidget.msgAlert(sMessage);
     }
 
+
+    static openUrl(sUrl) {
+        PlusCommonWidget.openUrl(sUrl);
+    }
+
     static pageNav(sPage, that) {
         //that.props.navigation.navigate(sPage);
         PlusOperatePage.pageNaviger(that, sPage);
@@ -27,7 +32,7 @@ export default class {
     }
 
     static pageBack(that) {
-        this.pageNav('?base_jump=back',that);
+        this.pageNav('?base_jump=back', that);
     }
 
     static upFLagAndroid() {

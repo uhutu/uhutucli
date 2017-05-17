@@ -10,6 +10,10 @@
 
     code-push deployment history [@config:project.projectName]-ios Production
 
+强制更新指定版本
+code-push release-react [@config:project.projectName]-ios ios --dev false --d Production -m --targetBinaryVersion 1.0.0
+code-push release-react [@config:project.projectName]-android android --dev false --d Production -m --targetBinaryVersion 1.0.0
+
 * android更新
 
     code-push release-react [@config:project.projectName]-android android --dev false --d Production

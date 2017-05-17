@@ -14,13 +14,12 @@ import {
 } from 'react-native';
 import { TabNavigator,StackNavigator,TabBarBottom } from 'react-navigation';
 
-import {PlusOperatePage,PlusItemNavigator,PlusItemIcon} from 'uhutu-plus';
+import {PlusOperatePage,PlusItemNavigator,PlusItemIcon,PlusCommonUpdate} from 'uhutu-plus';
 
 import top_support from "../../../code/top/support/top_support";
 import current_support from "../../../code/current/support/current_support";
 
  
-import VersionCheck from "../../../native-plug/code-push/version_check";
 
 import styles from "../../../pages/air/resource/layout-style";
 
@@ -83,13 +82,37 @@ navigationOptions:{
 });
 
 
+const defaultGetStateForAction = ScreenMain.router.getStateForAction;
+ScreenMain.router.getStateForAction = (action, state) => {
+  
+  PlusOperatePage.onChangeUrl(action.params);
+
+  if (state&& action.type === 'CustomNav/replace') {
+
+    const routes = [
+      ...state.routes
+    ];
+
+    routes[routes.length-1]={key: action.routeName, routeName: action.routeName, params: action.params };
+
+    
+    return {
+      ...state,
+      routes,
+      index: routes.length - 1,
+    };
+  }
+  return defaultGetStateForAction(action, state);
+};
+
+
 
 
 export  default class  extends Component{
 
   constructor(props){
     super(props);
-    VersionCheck.checkUpdate(this);
+    PlusCommonUpdate.checkUpdate(this);
     current_support.initApplication(this);
   }
 
