@@ -181,7 +181,7 @@ var PlugProcess = (function () {
                 //文件不存在则拷贝 否则不处理
                 case 150302:
                     if (!CommonUtil.utilsIo.flagExist(oSet.targetPath)) {
-                        CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                        CommonUtil.utilsIo.copyFile(oSet.filePath, oSet.targetPath);
                     }
                     break;
                 //文件异步复制

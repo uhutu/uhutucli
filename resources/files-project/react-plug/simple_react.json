@@ -10,24 +10,7 @@
             }
         },
 
-        {
-            "exec": "baseFileOption",
-            "set": {
-                "optType": 150306,
-                "filePath": "[@config:define.resourcePath]/files-template/simple-react/super_page.js",
-                "targetPath": "[@config:define.devPath]/statics/react/project/simple/root/super/super_page.js"
-
-            }
-        },
-        {
-            "exec": "baseFileOption",
-            "set": {
-                "optType": 150306,
-                "filePath": "[@config:define.resourcePath]/files-template/simple-react/top_support.js",
-                "targetPath": "[@config:define.devPath]/statics/react/project/code/top/support/top_support.js"
-
-            }
-        },
+        
         {
             "exec": "baseFileOption",
             "set": {
@@ -39,7 +22,7 @@
         },
         {
             "exec": "baseFileOption",
-            "disable": true,
+            
             "set": {
                 "optType": 150302,
                 "filePath": "[@config:define.resourcePath]/files-template/simple-react/layout_index.json",
