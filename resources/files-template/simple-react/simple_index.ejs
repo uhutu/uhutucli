@@ -18,7 +18,8 @@ import {PlusOperatePage,PlusItemNavigator,PlusItemIcon,PlusCommonUpdate} from 'u
 
 import current_support from 'uhutu-plus/dist/youth/ginkgo/current';
 import top_support from 'uhutu-plus/dist/youth/top/support';
-
+//data_items是临时代码  后续改
+import data_items from "../../../code/top/data/data_items";
 
  
 
@@ -93,7 +94,9 @@ export  default class  extends Component{
   constructor(props){
     super(props);
     PlusCommonUpdate.checkUpdate(this);
-    current_support.initApplication(this);
+
+    //data_items是临时代码  后续改
+    current_support.initApplication(this,data_items);
   }
 
   
