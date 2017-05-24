@@ -6,6 +6,7 @@ var MexpandReactUicon = (function () {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
         processItem.formBaseAuto(oItem);
+        processItem.propertyBaseAuto(oItem);
         new root_elm_1.RootExpandReactElm().textInput(oItem);
         return oItem;
     };

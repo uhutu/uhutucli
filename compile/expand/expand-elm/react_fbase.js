@@ -4,6 +4,7 @@ var MreactFbase = (function () {
     function MreactFbase() {
     }
     MreactFbase.prototype.expandOpen = function (oItem) {
+        processItem.propertyBaseAuto(oItem);
         processItem.formBaseAuto(oItem);
         processItem.styleBaseAuto(oItem);
         return oItem;

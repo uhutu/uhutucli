@@ -185,6 +185,16 @@ class MprocessItem {
 
 
 
+    propertyEventAuto(oItem: CTF.ItransformItemInfo) {
+        this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
+        this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+    }
+
+
+
+
 }
 
 export = new MprocessItem();

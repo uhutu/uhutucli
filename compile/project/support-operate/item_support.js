@@ -99,6 +99,11 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "text", "pText");
         this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
     };
+    MprocessItem.prototype.propertyEventAuto = function (oItem) {
+        this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
+        this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+    };
     return MprocessItem;
 }());
 module.exports = new MprocessItem();
