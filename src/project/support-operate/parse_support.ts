@@ -358,6 +358,24 @@ class Mexport {
         }, {
                 decodeEntities: true
             });
+
+
+
+        //开始处理include文件内容
+
+        if (oParseFile.fileContent.indexOf('<!--') > -1) {
+            let regInclude = new RegExp('<!--\\s+#include\\s+file.*?\"(.*?)\"\\s+-->', 'gm');
+            let sSource = oParseFile.fileContent.toString();
+            let result;
+            while ((result = regInclude.exec(sSource)) != null) {
+                let sFileContent = CommonUtil.utilsIo.readFile(CommonUtil.utilsIo.pathJoin(oLocalConfig.define.devPath, result[1]));
+                sSource = sSource.replace(result[0], sFileContent);
+            }
+
+            oParseFile.fileContent = sSource;
+        }
+
+
         //转换处理文件内容
         parser.write(oParseFile.fileContent);
         parser.end();

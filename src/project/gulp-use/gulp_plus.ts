@@ -37,7 +37,7 @@ class Mexport {
 
             var oParseFile = new AimParse.MprocessParseFile();
             oParseFile.parseType = sType;
-            oParseFile.fileContent = file.contents;
+            oParseFile.fileContent = file.contents.toString();
 
 
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
