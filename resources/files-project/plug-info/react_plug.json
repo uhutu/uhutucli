@@ -62,7 +62,7 @@
     },
     "react_navigation": {
         "name": "react-navigation",
-        "version": "1.0.0-beta.9"
+        "version": "1.0.0-beta.11"
     },
     "router_flux": {
         "name": "react-native-router-flux",
