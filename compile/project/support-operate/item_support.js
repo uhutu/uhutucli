@@ -72,6 +72,8 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
         //扩展显示字符串
         this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+        //扩展查询字符串
+        this.checkPropWithQuotes(oItem, "form-extend-query", "formExtendQuery");
     };
     MprocessItem.prototype.styleBaseAuto = function (oItem) {
         this.checkStyle(oItem, "item-touch", "styleItemTouch");
