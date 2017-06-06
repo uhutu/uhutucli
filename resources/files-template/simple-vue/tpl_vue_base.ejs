@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    
+    <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css"/>
+
+    <title><%- out.pageConfig.pageTitle %></title>
+</head>
+<body>
+
+<%- out.content.join('') %>
+
+<script type="text/x-template" id="page_vue_template" >
+  
+</script>
+
+<div id="page_vue_app">
+   <page_vue_template v-bind:record="record"></page_vue_template>
+</div>
+
+<script type="text/javascript">
+
+
+
+
+
+</script>
+
+</body>
+</html>

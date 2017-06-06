@@ -322,6 +322,16 @@ class PlugProcess {
 class MloadPlug {
 
 
+    /**
+     * 刷新加载模块
+     * 
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig 
+     * @param {AimLocal.IAimLocalNexusApp} oApp 
+     * @param {AimLocal.IAimLocalNexusPlug} oPlug 
+     * @returns {AimLocal.IAimLocalNexusPlug} 
+     * 
+     * @memberof MloadPlug
+     */
     refreshPlug(oLocalConfig: AimLocal.IAimLocalConfig, oApp: AimLocal.IAimLocalNexusApp, oPlug: AimLocal.IAimLocalNexusPlug): AimLocal.IAimLocalNexusPlug {
 
 

@@ -10,7 +10,7 @@ import LoadConfig = require("../../cli/exec-load/load_config");
 
 import initInstall=require("../../cli/exec-init/init_install");
 import LoadPlug = require("../../cli/exec-load/load_plug");
-import ModuleInstall = require("../../cli/module-react/module_install");
+
 import start_base = require("../../cli/cmd-start/start_base");
 
 

@@ -64,6 +64,7 @@ let currentConfig: AimLocal.IAimLocalConfig = {
         reactPackage: "[@config:appReact.workPath]/package.json",
         reactStartPage: "./project/simple/main/layout/index",
         reactPlugPath: "[@config:define.resourcePath]/files-project/react-plug",
+        vuePlugPath: "[@config:define.resourcePath]/files-project/vue-plug",
         reactIosWork: "[@config:appReact.workPath]/ios",
         reactIosInfoPlist: "[@config:file.reactIosWork]/[@config:appReact.workName]/Info.plist",
         reactAndroidWork: "[@config:appReact.workPath]/android",
@@ -73,6 +74,8 @@ let currentConfig: AimLocal.IAimLocalConfig = {
      * 参考plugInfo的定义
      */
     plugReact: {
+    },
+    plugVue: {
     },
     system: {
         editionCode: 1001,
