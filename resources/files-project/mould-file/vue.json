@@ -9,6 +9,10 @@
         "utext": {
             "tagName": "div"
         },
+        "uicon": {
+            "tagName": "i",
+            "styleName": ["glyphicon","glyphicon-align-left"]
+        },
         "ulistview": {
             "tagName": "div"
         },
@@ -17,6 +21,7 @@
             "primeAttr": {
                 "type": "button"
             },
+            "styleName": ["btn", "btn-primary", "btn-block"],
             "expandFile": "../../expand/expand-elm/vue_uinput"
         },
         "uinput": {
