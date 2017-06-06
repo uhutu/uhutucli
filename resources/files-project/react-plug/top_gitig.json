@@ -12,7 +12,8 @@
         "contentInfo":[".DS_Store",
         "/disk/",
         "react*/ios/Pods/",
-        "react*/project/"
+        "react*/project/",
+        "vue*/pages/"
         ]
       }
     }
