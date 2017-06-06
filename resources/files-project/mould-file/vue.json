@@ -12,10 +12,24 @@
         "ulistview": {
             "tagName": "div"
         },
+        "ubutton": {
+            "tagName": "input",
+            "primeAttr": {
+                "type": "button",
+                "class":"btn btn-default"
+            },
+            "expandFile": "../../expand/expand-elm/vue_uinput"
+        },
         "uinput": {
             "tagName": "input",
-            "primeAttr":{
-                "type":"text"
+            "primeAttr": {
+                "type": "text"
+            }
+        },
+        "finput": {
+            "tagName": "input",
+            "primeAttr": {
+                "type": "text"
             }
         }
     }

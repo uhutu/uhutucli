@@ -17,6 +17,26 @@ class CappElms implements CTF.ItransformElmentProcess {
 
 
 class CappSub implements CTF.ItransformSubExtend {
+    static styleParse(sClassStyle) {
+
+        var aStyle = [];
+
+        sClassStyle.split(' ').forEach(
+            function (f) {
+                //判断如果有点 则是特殊定义操作
+                if (f.indexOf('.') > -1) {
+                    aStyle.push(f);
+                }
+                else {
+                    aStyle.push( f);
+                }
+
+            }
+        );
+        
+        return aStyle.length > 1 ? (aStyle.join(' ')) : aStyle[0];
+
+    }
 
     formNameParse(sName:string)
     {
@@ -27,7 +47,15 @@ class CappSub implements CTF.ItransformSubExtend {
 
 
         oItem.sourceAttr.forEach(function (value, key) {
-            oItem.targetAttr.set(key, value);
+            
+            if (key === "class") {
+                
+                
+                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class")  + "\"");
+
+                
+
+            }
         });
 
         return oItem;
@@ -46,7 +74,7 @@ class CappOut implements CTF.ItransFormatOut {
 class MappParse implements CTF.ItransformParse {
     elms = new CappElms();
     inc = {
-        attr_replace: " {key}=\"{value}\" "
+        attr_replace: " {key}={value} "
     }
     parses = new CappSub();
     mould
