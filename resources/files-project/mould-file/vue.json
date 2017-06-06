@@ -15,8 +15,7 @@
         "ubutton": {
             "tagName": "input",
             "primeAttr": {
-                "type": "button",
-                "class":"btn btn-default"
+                "type": "button"
             },
             "expandFile": "../../expand/expand-elm/vue_uinput"
         },
