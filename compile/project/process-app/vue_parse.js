@@ -11,12 +11,27 @@ var CappElms = (function () {
 var CappSub = (function () {
     function CappSub() {
     }
+    CappSub.styleParse = function (sClassStyle) {
+        var aStyle = [];
+        sClassStyle.split(' ').forEach(function (f) {
+            //判断如果有点 则是特殊定义操作
+            if (f.indexOf('.') > -1) {
+                aStyle.push(f);
+            }
+            else {
+                aStyle.push(f);
+            }
+        });
+        return aStyle.length > 1 ? (aStyle.join(' ')) : aStyle[0];
+    };
     CappSub.prototype.formNameParse = function (sName) {
         return "" + sName + "";
     };
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
-            oItem.targetAttr.set(key, value);
+            if (key === "class") {
+                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class") + "\"");
+            }
         });
         return oItem;
     };
@@ -34,7 +49,7 @@ var MappParse = (function () {
     function MappParse() {
         this.elms = new CappElms();
         this.inc = {
-            attr_replace: " {key}=\"{value}\" "
+            attr_replace: " {key}={value} "
         };
         this.parses = new CappSub();
         this.pageConfig = new CTF.MbasePageConfig();

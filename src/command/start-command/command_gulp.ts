@@ -200,6 +200,12 @@ class CommandGulp {
                     }
                     sPath.dirname = sPathName;
 
+                    //特殊判断 如果是jsx文件则替换为js结尾
+                    if (sPath.extname === ".jsx") {
+                        sPath.extname = ".js"
+                    }
+
+
                 }))
                 .pipe(gulp.dest(oLocalConfig.define.workSpace));
         });

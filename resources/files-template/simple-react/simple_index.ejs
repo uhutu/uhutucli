@@ -16,8 +16,10 @@ import { TabNavigator,StackNavigator,TabBarBottom } from 'react-navigation';
 
 import {PlusOperatePage,PlusItemNavigator,PlusItemIcon,PlusCommonUpdate} from 'uhutu-plus';
 
-import top_support from "../../../code/top/support/top_support";
-import current_support from "../../../code/current/support/current_support";
+import current_support from 'uhutu-plus/dist/youth/ginkgo/current';
+import top_support from 'uhutu-plus/dist/youth/top/support';
+//data_items是临时代码  后续改
+import data_items from "../../../code/top/data/data_items";
 
  
 
@@ -82,28 +84,7 @@ navigationOptions:{
 });
 
 
-const defaultGetStateForAction = ScreenMain.router.getStateForAction;
-ScreenMain.router.getStateForAction = (action, state) => {
-  
-  PlusOperatePage.onChangeUrl(action.params);
-
-  if (state&& action.type === 'CustomNav/replace') {
-
-    const routes = [
-      ...state.routes
-    ];
-
-    routes[routes.length-1]={key: action.routeName, routeName: action.routeName, params: action.params };
-
-    
-    return {
-      ...state,
-      routes,
-      index: routes.length - 1,
-    };
-  }
-  return defaultGetStateForAction(action, state);
-};
+ScreenMain.router.getStateForAction=PlusOperatePage.upNavAction(ScreenMain.router.getStateForAction);
 
 
 
@@ -113,7 +94,9 @@ export  default class  extends Component{
   constructor(props){
     super(props);
     PlusCommonUpdate.checkUpdate(this);
-    current_support.initApplication(this);
+
+    //data_items是临时代码  后续改
+    current_support.initApplication(this,data_items);
   }
 
   

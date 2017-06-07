@@ -72,6 +72,8 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
         //扩展显示字符串
         this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+        //扩展查询字符串
+        this.checkPropWithQuotes(oItem, "form-extend-query", "formExtendQuery");
     };
     MprocessItem.prototype.styleBaseAuto = function (oItem) {
         this.checkStyle(oItem, "item-touch", "styleItemTouch");
@@ -98,6 +100,11 @@ var MprocessItem = (function () {
         this.checkPropWithQuotes(oItem, "family", "pFamily");
         this.checkPropWithQuotes(oItem, "text", "pText");
         this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
+    };
+    MprocessItem.prototype.propertyEventAuto = function (oItem) {
+        this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
+        this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     };
     return MprocessItem;
 }());

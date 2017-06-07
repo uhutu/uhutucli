@@ -17,15 +17,7 @@
 
       }
     },
-    {
-      "exec": "baseFileOption",
-      "set": {
-        "optType": 153303,
-        "filePath": "[@config:define.resourcePath]/files-native/rn-voip/voip_react.js",
-        "targetPath": "[@config:appReact.buildPath]/native-plug/voip/voip_react.js"
 
-      }
-    },
     {
       "exec": "baseFileOption",
       "set": {
@@ -77,6 +69,22 @@
         "noteType": 1,
         "withText": "dependencies {",
         "contentInfo": ["compile project(':CallKit')"]
+      }
+    },
+    {
+      "exec": "baseFileContent",
+      "set": {
+        "name": "react_note_plug_rn_voip_android_setting",
+        "filePath": "[@config:file.reactAndroidWork]/settings.gradle",
+        "noteType": 1,
+        "withText": "",
+        "contentInfo": [
+          "include ':IMLib', ':IMKit', ':CallLib', ':CallKit'",
+          "project(':IMLib').projectDir = new File(rootProject.projectDir, './IMLib')",
+          "project(':IMKit').projectDir = new File(rootProject.projectDir, './IMKit')",
+          "project(':CallLib').projectDir = new File(rootProject.projectDir, './CallLib')",
+          "project(':CallKit').projectDir = new File(rootProject.projectDir, './CallKit')"
+        ]
       }
     },
     {

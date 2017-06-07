@@ -4,9 +4,10 @@ var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
+        processItem.propertyBaseAuto(oItem);
         processItem.formBaseAuto(oItem);
         processItem.styleBaseAuto(oItem);
-        processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+        //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
         return oItem;
     };
     return MexpandReactUicon;

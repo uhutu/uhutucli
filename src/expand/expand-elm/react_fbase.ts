@@ -9,7 +9,7 @@ class MreactFbase implements CTF.ItransformExpandItem {
 
     expandOpen(oItem: CTF.ItransformItemInfo) {
 
-
+        processItem.propertyBaseAuto(oItem);
         processItem.formBaseAuto(oItem);
         processItem.styleBaseAuto(oItem);
 

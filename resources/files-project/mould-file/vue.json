@@ -9,13 +9,31 @@
         "utext": {
             "tagName": "div"
         },
+        "uicon": {
+            "tagName": "i",
+            "styleName": ["glyphicon","glyphicon-align-left"]
+        },
         "ulistview": {
             "tagName": "div"
         },
+        "ubutton": {
+            "tagName": "input",
+            "primeAttr": {
+                "type": "button"
+            },
+            "styleName": ["btn", "btn-primary", "btn-block"],
+            "expandFile": "../../expand/expand-elm/vue_uinput"
+        },
         "uinput": {
             "tagName": "input",
-            "primeAttr":{
-                "type":"text"
+            "primeAttr": {
+                "type": "text"
+            }
+        },
+        "finput": {
+            "tagName": "input",
+            "primeAttr": {
+                "type": "text"
             }
         }
     }

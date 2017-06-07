@@ -181,7 +181,7 @@ var PlugProcess = (function () {
                 //文件不存在则拷贝 否则不处理
                 case 150302:
                     if (!CommonUtil.utilsIo.flagExist(oSet.targetPath)) {
-                        CommonUtil.utilsIo.copyFileAsync(oSet.filePath, oSet.targetPath);
+                        CommonUtil.utilsIo.copyFile(oSet.filePath, oSet.targetPath);
                     }
                     break;
                 //文件异步复制
@@ -239,6 +239,16 @@ var PlugProcess = (function () {
 var MloadPlug = (function () {
     function MloadPlug() {
     }
+    /**
+     * 刷新加载模块
+     *
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig
+     * @param {AimLocal.IAimLocalNexusApp} oApp
+     * @param {AimLocal.IAimLocalNexusPlug} oPlug
+     * @returns {AimLocal.IAimLocalNexusPlug}
+     *
+     * @memberof MloadPlug
+     */
     MloadPlug.prototype.refreshPlug = function (oLocalConfig, oApp, oPlug) {
         var sFileContent = CommonUtil.utilsIo.readFile(oApp.plugInfo);
         sFileContent = LoadConfig.formatConfigString(sFileContent, oLocalConfig);

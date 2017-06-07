@@ -1,0 +1,9 @@
+{
+    
+    "simple_vue": {
+        "name": "simple-vue",
+        "json": "[@config:file.vuePlugPath]/simple_vue.json"
+    }
+
+
+}

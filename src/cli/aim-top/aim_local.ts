@@ -96,6 +96,11 @@ export interface IAimLocalConfig {
      */
     plugReact: IAimLocalNexusPlug
 
+    /**
+     * react的模块功能
+     */
+    plugVue: IAimLocalNexusPlug
+
     system: IAimLocalNexusSystem
 }
 
@@ -105,7 +110,7 @@ export interface IAimLocalConfig {
  * 系统的定义
  */
 export interface IAimLocalNexusPlug {
-
+    [key: string]: IAimLocalNexusPlugDefine
 
 }
 
@@ -196,6 +201,8 @@ export interface IAimLocalNexusFile {
      * react插件配置目录
      */
     reactPlugPath: string
+
+    vuePlugPath: string
     /**
      * ios项目的配置文件
      */

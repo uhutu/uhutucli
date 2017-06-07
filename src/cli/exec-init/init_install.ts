@@ -1,19 +1,25 @@
+import CommonRoot = require("../../base/common/root");
 
 
-import UtilsIo = require("../../base/utils/io");
 
 import * as AimLocal from "../../cli/aim-top/aim_local";
 
-import ModuleInstall = require("../../cli/module-react/module_install");
+import ModuleReact = require("../../cli/module-install/module_react");
+import ModuleVue = require("../../cli/module-install/module_vue");
 
 class MinitInstall {
 
     initStart(oLocalConfig: AimLocal.IAimLocalConfig) {
 
 
-
-        ModuleInstall.installProject(oLocalConfig);
-
+        if (!oLocalConfig.appReact.disable) {
+            CommonRoot.logDebug(970312007, oLocalConfig.appReact.appType);
+            ModuleReact.installProject(oLocalConfig);
+        }
+        if (!oLocalConfig.appVue.disable) {
+            CommonRoot.logDebug(970312007, oLocalConfig.appVue.appType);
+            ModuleVue.installProject(oLocalConfig);
+        }
 
     }
 

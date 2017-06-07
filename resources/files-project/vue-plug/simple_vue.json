@@ -1,0 +1,14 @@
+{
+
+    "all": [{
+        "exec": "baseFileOption",
+        "set": {
+            "optType": 150306,
+            "filePath": "[@config:define.resourcePath]/files-template/simple-vue/tpl_vue_base.ejs",
+            "targetPath": "[@config:define.devPath]/master/vue/tpl/default.ejs"
+
+        }
+    }]
+
+
+}

@@ -5,7 +5,7 @@
     },
     "top_uhutu_plus": {
         "name": "uhutu-plus",
-        "version": "1.1.0"
+        "version": "latest"
     },
     "top_speed": {
         "name": "top-speed",
@@ -62,7 +62,7 @@
     },
     "react_navigation": {
         "name": "react-navigation",
-        "version": "1.0.0-beta.9"
+        "version": "1.0.0-beta.11"
     },
     "router_flux": {
         "name": "react-native-router-flux",
@@ -119,6 +119,13 @@
     "rn_fetch_blob": {
         "name": "react-native-fetch-blob",
         "version": "0.10.5",
+        "json": "[@config:file.reactPlugPath]/base_link.json",
+        "disable": true
+
+    },
+    "rn_svg": {
+        "name": "react-native-svg",
+        "version": "5.1.8",
         "json": "[@config:file.reactPlugPath]/base_link.json",
         "disable": true
 

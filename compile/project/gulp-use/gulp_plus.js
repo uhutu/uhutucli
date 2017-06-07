@@ -23,7 +23,7 @@ var Mexport = (function () {
             // 然后将处理后的字符串，再转成Buffer形式
             var oParseFile = new AimParse.MprocessParseFile();
             oParseFile.parseType = sType;
-            oParseFile.fileContent = file.contents;
+            oParseFile.fileContent = file.contents.toString();
             oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
             //var content = initWork.parseContent(oConfig, oParseFile);
             var content = ParseHtml.contentParse(oLocalConfig, oParseFile);

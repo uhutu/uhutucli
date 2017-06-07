@@ -139,6 +139,10 @@ class MprocessItem {
         //扩展显示字符串
         this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
 
+
+        //扩展查询字符串
+        this.checkPropWithQuotes(oItem, "form-extend-query", "formExtendQuery");
+
     }
 
 
@@ -180,6 +184,16 @@ class MprocessItem {
 
         this.checkPropWithQuotes(oItem, "subscribe", "pSubscribe");
 
+    }
+
+
+
+
+    propertyEventAuto(oItem: CTF.ItransformItemInfo) {
+        this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
+        this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     }
 
 

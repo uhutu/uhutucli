@@ -13,7 +13,7 @@ var MinitConfig = (function () {
      */
     MinitConfig.prototype.initStart = function (envs) {
         if (!this.flagExistConfig(envs)) {
-            CommonUtil.utilsIo.copyFileAsync(this._upSourceFile(envs), this._upTargetFile(envs));
+            CommonUtil.utilsIo.copyFile(this._upSourceFile(envs), this._upTargetFile(envs));
         }
         else {
             CommonRoot.logError(930312004);

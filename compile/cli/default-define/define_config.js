@@ -54,8 +54,9 @@ var currentConfig = {
     file: {
         diskConfigFile: "[@config:define.diskPath]/disk_config.json",
         reactPackage: "[@config:appReact.workPath]/package.json",
-        reactStartPage: "./project/pages/air/layout/index",
+        reactStartPage: "./project/simple/main/layout/index",
         reactPlugPath: "[@config:define.resourcePath]/files-project/react-plug",
+        vuePlugPath: "[@config:define.resourcePath]/files-project/vue-plug",
         reactIosWork: "[@config:appReact.workPath]/ios",
         reactIosInfoPlist: "[@config:file.reactIosWork]/[@config:appReact.workName]/Info.plist",
         reactAndroidWork: "[@config:appReact.workPath]/android",
@@ -65,6 +66,7 @@ var currentConfig = {
      * 参考plugInfo的定义
      */
     plugReact: {},
+    plugVue: {},
     system: {
         editionCode: 1001,
         cliVersion: ''
