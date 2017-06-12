@@ -7,7 +7,7 @@
             "tagName": "div"
         },
         "utext": {
-            "tagName": "div"
+            "tagName": "span"
         },
         "uicon": {
             "tagName": "i",
@@ -26,12 +26,14 @@
         },
         "uinput": {
             "tagName": "input",
+            
             "primeAttr": {
                 "type": "text"
             }
         },
         "finput": {
             "tagName": "input",
+            "styleName": ["theme_web_item_form_input_base"],
             "primeAttr": {
                 "type": "text"
             }

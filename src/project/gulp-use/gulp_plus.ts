@@ -8,7 +8,7 @@ import through = require('through2');
 import gutil = require('gulp-util');
 
 import ParseHtml = require("../../project/gulp-use/parse_html");
-
+import ParseScss = require("../../project/gulp-use/parse_scss");
 class Mexport {
 
 
@@ -54,6 +54,62 @@ class Mexport {
             cb();
         });
 
+
+    }
+
+
+
+    /**
+     * css的特定操作
+     * 
+     * @param {AimLocal.IAimLocalConfig} oLocalConfig 
+     * @param {string} sType 
+     * @returns 
+     * 
+     * @memberof Mexport
+     */
+    gulpCss(oLocalConfig: AimLocal.IAimLocalConfig, sType: string) {
+
+        return through.obj(function (file, enc, cb) {
+
+            // 如果文件为空，不做任何操作，转入下一个操作，即下一个 .pipe()
+            if (file.isNull()) {
+                this.push(file);
+                return cb();
+            }
+
+            // 插件不支持对 Stream 对直接操作，跑出异常
+            if (file.isStream()) {
+                this.emit('error', new gutil.PluginError("GulpPlus", 'Streaming not supported'));
+                return cb();
+            }
+
+            // 将文件内容转成字符串，并调用 preprocess 组件进行预处理
+            // 然后将处理后的字符串，再转成Buffer形式
+
+
+            var oParseFile = new AimParse.MprocessParseFile();
+            oParseFile.parseType = sType;
+            oParseFile.fileContent = file.contents.toString();
+
+
+            oParseFile.fileBasename = CommonUtil.utilsIo.upBaseName(file.relative, undefined);
+
+
+            let sContent = file.contents.toString();
+
+
+            //var content = initWork.parseContent(oConfig, oParseFile);
+            let content = ParseScss.scssParse(oLocalConfig, oParseFile);
+
+            file.contents = new Buffer(content);
+
+
+            // 下面这两句基本是标配啦，可以参考下 through2 的API
+            this.push(file);
+
+            cb();
+        });
 
     }
 

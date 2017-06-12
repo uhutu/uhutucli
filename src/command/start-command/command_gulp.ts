@@ -235,8 +235,9 @@ class CommandGulp {
         if (!oLocalConfig.appVue.disable) {
             oTask.inSubTask("vue", function () {
                 return watch(oGulpDefine.pathSass, { ignoreInitial: false })
-
+                    .pipe(GulpPlus.gulpCss(oLocalConfig, "vue"))
                     .pipe(sass().on('error', sass.logError))
+
                     .pipe(gulp.dest(oLocalConfig.appVue.buildPath + "/" + oLocalConfig.inc.projectPage)).pipe(connect.reload());
             });
         }
