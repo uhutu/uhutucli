@@ -9,10 +9,7 @@
         "utext": {
             "tagName": "span"
         },
-        "uicon": {
-            "tagName": "i",
-            "styleName": ["glyphicon","glyphicon-align-left"]
-        },
+        
         "ulistview": {
             "tagName": "div"
         },
@@ -26,14 +23,27 @@
         },
         "uinput": {
             "tagName": "input",
-            
+
             "primeAttr": {
                 "type": "text"
             }
         },
+        "xcall": {
+            "tagName": "xcall",
+
+            "expandFile": "../../expand/expand-elm/vue_xcall"
+
+        },
+        "ulink": {
+            "tagName": "a",
+
+            "expandFile": "../../expand/expand-elm/vue_ubase"
+
+        },
         "finput": {
             "tagName": "input",
             "styleName": ["theme_web_item_form_input_base"],
+            "expandFile": "../../expand/expand-elm/vue_ubase",
             "primeAttr": {
                 "type": "text"
             }

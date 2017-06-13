@@ -67,6 +67,13 @@ class MprocessItem {
     }
 
 
+    checkXaryFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrXary, sLeft, sRight, sSign);
+    }
+
+
+
 
     checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 

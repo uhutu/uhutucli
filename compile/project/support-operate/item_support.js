@@ -33,6 +33,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.checkPropFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight, sSign);
     };
+    MprocessItem.prototype.checkXaryFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrXary, sLeft, sRight, sSign);
+    };
     MprocessItem.prototype.checkEventFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight, sSign);
     };

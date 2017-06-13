@@ -9,15 +9,44 @@
     <link rel="stylesheet" href="../../theme/web/item.css"/>
     <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css"/>
 
+<script src="../../../scripts/ginkgo/current.js"></script>
     <title><%- out.pageConfig.pageTitle %></title>
 </head>
 <body>
 
+
+<% out.templateInfos.forEach((template)=>{ %>
+
+    <script type="text/x-template" id="<%- template.templateName %>" >
+
+         <%- template.templateContent.join('') %>
+    </script>
+    <script>
+        Vue.component('<%- template.templateName %>', {
+  template: '#<%- template.templateName %>',
+  props:['item']
+})
+    </script>
+<% }) %>
+
+<div id="tpl_body">
+
 <%- out.content.join('') %>
+
+</div>
+
 
 <script type="text/x-template" id="page_vue_template" >
   
 </script>
+
+
+
+
+
+
+
+
 
 <div id="page_vue_app">
    <page_vue_template v-bind:record="record"></page_vue_template>
@@ -25,7 +54,14 @@
 
 <script type="text/javascript">
 
-
+    // 创建根实例
+new Vue({
+  el: '#tpl_body',
+  data:{
+    current_support:current_support
+  }
+  
+})
 
 
 
