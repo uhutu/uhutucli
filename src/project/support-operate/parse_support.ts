@@ -34,7 +34,7 @@ class CitemParse implements AimParse.ItransformItemInfo {
 
 class ChelperParse {
 
-    upElmParse(sName: string, oTransform: AimParse.ItransformParse, oAttr): CitemParse {
+    upElmParse(sName: string, oTransform: AimParse.ItransformParse, oAttr, oParseFile: AimParse.MprocessParseFile): CitemParse {
         var oElm = new CitemParse();
 
         //初始化元素对象
@@ -46,15 +46,29 @@ class ChelperParse {
 
         if (sName === "script") {
 
-            oElm.elmType = 5;
+            oElm.elmType = 0;
             if (oElm.sourceAttr.has("type")) {
                 let sType = oElm.sourceAttr.get("type");
                 if (sType === "text/u-template") {
                     oElm.elmType = 2;
                 } else if (sType === "text/u-config") {
                     oElm.elmType = 3;
+                } else if (sType === "text/javascript") {
+                    oElm.elmType = 5;
+                } else {
+
+                    if (sType.startsWith("apps/") && sType.endsWith(oParseFile.parseType)) {
+                        oElm.elmType = 6;
+                    }
+
                 }
+            } else {
+                //如果没有type则定义为通用js
+                oElm.elmType = 5;
             }
+
+
+
         } else if (sName === CommonRoot.upProperty().pageElementMacro) {
             oElm.elmType = 4;
         } else if (sName === "style") {
@@ -169,7 +183,7 @@ class Mexport {
         var parser = new htmlparser.Parser({
             onopentag: function (sName: string, oAttr) {
 
-                let oItem: AimParse.ItransformItemInfo = helperParse.upElmParse(sName, oTransform, oAttr);
+                let oItem: AimParse.ItransformItemInfo = helperParse.upElmParse(sName, oTransform, oAttr, oParseFile);
                 //判断元素名是否为空
                 if (!CommonUtil.utilsString.isEmpty(oItem.elmName)) {
 
@@ -326,7 +340,16 @@ class Mexport {
                     oOut.scriptInfos.push(oScript);
 
 
+                } else if (oItem.elmType == 6) {
+
+                    
+                    oOut.content.push(oCurrentParse.textContents.join(''));
+
                 }
+
+
+
+
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
 
