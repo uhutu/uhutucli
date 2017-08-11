@@ -135,6 +135,12 @@
         "version": "3.2.1",
         "disable": true
 
+    },
+    "rn_qrcode": {
+        "name": "react-native-qrcode",
+        "version": "0.2.5",
+        "disable": true
+
     }
 
 
