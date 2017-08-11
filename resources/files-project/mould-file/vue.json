@@ -22,17 +22,29 @@
             "expandFile": "../../expand/expand-elm/vue_uinput"
         },
         "uinput": {
-            "tagName": "input",
+            "tagName": "el-input"
 
+            
+        },
+        "fdate": {
+            "tagName": "el-date-picker",
             "primeAttr": {
-                "type": "text"
+                "type": "datetime"
             }
+
+            
         },
         "xcall": {
             "tagName": "xcall",
 
             "expandFile": "../../expand/expand-elm/vue_xcall"
 
+        },
+        "xscript": {
+            "tagName": "script",
+            "primeAttr": {
+                "type": "text/javascript"
+            }
         },
         "ulink": {
             "tagName": "a",
@@ -41,12 +53,9 @@
 
         },
         "finput": {
-            "tagName": "input",
+            "tagName": "el-input",
             "styleName": ["theme_web_item_form_input_base"],
-            "expandFile": "../../expand/expand-elm/vue_ubase",
-            "primeAttr": {
-                "type": "text"
-            }
+            "expandFile": "../../expand/expand-elm/vue_ubase"
         }
     }
 }
