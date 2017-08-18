@@ -3,6 +3,9 @@
         "upage": {
             "tagName": "div"
         },
+        "uscroll": {
+            "tagName": "div"
+        },
         "uview": {
             "tagName": "div"
         },
@@ -26,6 +29,11 @@
 
             
         },
+        "uicon":{
+            "tagName": "i"
+        },
+
+
         "fdate": {
             "tagName": "el-date-picker",
             "primeAttr": {

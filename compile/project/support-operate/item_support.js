@@ -109,6 +109,11 @@ var MprocessItem = (function () {
         this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     };
+    MprocessItem.prototype.VueEventAuto = function (oItem) {
+        this.checkEventFull(oItem, "press", "onClick", "", "", "");
+        this.checkEventFull(oItem, "link", "v-bind:href", "\"'javascript:top_support.pageNav(\\''+", "+'\\',this)'\"", "'");
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+    };
     return MprocessItem;
 }());
 module.exports = new MprocessItem();

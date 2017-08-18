@@ -2,6 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
+var processItem = require("../../project/support-operate/item_support");
 var CappElms = (function () {
     function CappElms() {
     }
@@ -35,6 +36,7 @@ var CappSub = (function () {
                 oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class") + "\"");
             }
         });
+        processItem.VueEventAuto(oItem);
         return oItem;
     };
     return CappSub;
