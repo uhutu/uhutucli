@@ -33,6 +33,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.checkPropFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight, sSign);
     };
+    MprocessItem.prototype.checkXaryFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrXary, sLeft, sRight, sSign);
+    };
     MprocessItem.prototype.checkEventFull = function (oItem, sSource, sTarget, sLeft, sRight, sSign) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight, sSign);
     };
@@ -104,6 +107,11 @@ var MprocessItem = (function () {
     MprocessItem.prototype.propertyEventAuto = function (oItem) {
         this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
         this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+    };
+    MprocessItem.prototype.VueEventAuto = function (oItem) {
+        this.checkEventFull(oItem, "press", "onClick", "", "", "");
+        this.checkEventFull(oItem, "link", "v-bind:href", "\"'javascript:top_support.pageNav(\\''+", "+'\\',this)'\"", "'");
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     };
     return MprocessItem;

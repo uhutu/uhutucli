@@ -145,6 +145,9 @@ export interface ItransformItemInfo {
      * 1:为普通直接输出   
      * 2:为模板元素
      * 3:为json配置数据
+     * 4:为macro定义
+     * 5:通用脚本输出
+     * 6:专用脚本输出(apps/类型)
      */
     elmType: number
     /**

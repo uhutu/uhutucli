@@ -67,6 +67,13 @@ class MprocessItem {
     }
 
 
+    checkXaryFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrXary, sLeft, sRight, sSign);
+    }
+
+
+
 
     checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
@@ -192,6 +199,15 @@ class MprocessItem {
     propertyEventAuto(oItem: CTF.ItransformItemInfo) {
         this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
         this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
+
+        this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
+    }
+
+
+
+    VueEventAuto(oItem: CTF.ItransformItemInfo) {
+        this.checkEventFull(oItem, "press", "onClick", "", "", "");
+        this.checkEventFull(oItem, "link", "v-bind:href", "\"'javascript:top_support.pageNav(\\''+", "+'\\',this)'\"", "'");
 
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     }

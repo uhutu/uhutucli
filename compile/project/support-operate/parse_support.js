@@ -20,14 +20,14 @@ var CitemParse = (function () {
 var ChelperParse = (function () {
     function ChelperParse() {
     }
-    ChelperParse.prototype.upElmParse = function (sName, oTransform, oAttr) {
+    ChelperParse.prototype.upElmParse = function (sName, oTransform, oAttr, oParseFile) {
         var oElm = new CitemParse();
         //初始化元素对象
         oElm.sourceName = sName;
         var mAttrMap = CommonUtil.utilsMap.initMap(oAttr);
         oElm.sourceAttr = mAttrMap;
         if (sName === "script") {
-            oElm.elmType = 5;
+            oElm.elmType = 0;
             if (oElm.sourceAttr.has("type")) {
                 var sType = oElm.sourceAttr.get("type");
                 if (sType === "text/u-template") {
@@ -36,6 +36,18 @@ var ChelperParse = (function () {
                 else if (sType === "text/u-config") {
                     oElm.elmType = 3;
                 }
+                else if (sType === "text/javascript") {
+                    oElm.elmType = 5;
+                }
+                else {
+                    if (sType.startsWith("apps/") && sType.endsWith(oParseFile.parseType)) {
+                        oElm.elmType = 6;
+                    }
+                }
+            }
+            else {
+                //如果没有type则定义为通用js
+                oElm.elmType = 5;
             }
         }
         else if (sName === CommonRoot.upProperty().pageElementMacro) {
@@ -111,7 +123,7 @@ var Mexport = (function () {
         //定义转换函数对象
         var parser = new htmlparser.Parser({
             onopentag: function (sName, oAttr) {
-                var oItem = helperParse.upElmParse(sName, oTransform, oAttr);
+                var oItem = helperParse.upElmParse(sName, oTransform, oAttr, oParseFile);
                 //判断元素名是否为空
                 if (!CommonUtil.utilsString.isEmpty(oItem.elmName)) {
                     if (oItem.transSub != null) {
@@ -215,6 +227,9 @@ var Mexport = (function () {
                         oScript.scriptType = oItem.sourceAttr.get('type');
                     }
                     oOut.scriptInfos.push(oScript);
+                }
+                else if (oItem.elmType == 6) {
+                    oOut.content.push(oCurrentParse.textContents.join(''));
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
