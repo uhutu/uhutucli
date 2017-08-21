@@ -10,3 +10,5 @@ npm-debug.log
 build/
 
 test/testdemo/
+
+yarn.lock
