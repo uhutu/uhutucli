@@ -12,3 +12,4 @@ build/
 test/testdemo/
 
 yarn.lock
+package-lock.json
