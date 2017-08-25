@@ -13,6 +13,7 @@ var CitemParse = (function () {
         this.sourceAttr = new Map();
         this.targetAttr = new Map();
         this.transSub = null;
+        this.readScript = "";
     }
     return CitemParse;
 }());
@@ -246,6 +247,11 @@ var Mexport = (function () {
                     else {
                         oTemplateInfo.templateContent.push(aOutInfo.join(''));
                     }
+                }
+                if (!CommonUtil.utilsString.isEmpty(oItem.readScript)) {
+                    var oScript = new AimParse.MtransformPageScript();
+                    oScript.scriptContent = oItem.readScript;
+                    oOut.scriptReady.push(oScript);
                 }
                 oCurrentParse.textContents = [];
                 oCurrentParse.elmArrays.pop();

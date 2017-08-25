@@ -1,47 +1,51 @@
 <html>
+
 <head>
     <script src="../../../scripts/libs/vue/vue.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="../../../scripts/libs/element/index.css">
-<script src="../../../scripts/libs/jquery/jquery.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="../../../scripts/libs/element/index.js"></script>
-    <link rel="stylesheet" href="../../theme/web/item.css"/>
-    <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css"/>
+    <link rel="stylesheet" href="../../../scripts/libs/element/index.css">
+    <script src="../../../scripts/libs/jquery/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../../../scripts/libs/element/index.js"></script>
+    <link rel="stylesheet" href="../../theme/web/item.css" />
+    <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css" />
 
-<script src="../../../scripts/ginkgo/current.js"></script>
-<script src="../../../scripts/ginkgo/top.js"></script>
-    <title><%- out.pageConfig.pageTitle %></title>
+    <script src="../../../scripts/client/web.js"></script>
+    <script src="../../../scripts/ginkgo/baby.js"></script>
+    <script src="../../../scripts/ginkgo/current.js"></script>
+    <script src="../../../scripts/ginkgo/top.js"></script>
+    <title>
+        <%- out.pageConfig.pageTitle %>
+    </title>
 </head>
+
 <body>
 
 
-<% out.templateInfos.forEach((template)=>{ %>
+    <% out.templateInfos.forEach((template)=>{ %>
 
-    <script type="text/x-template" id="<%- template.templateName %>" >
+        <script type="text/x-template" id="<%- template.templateName %>">
 
-         <%- template.templateContent.join('') %>
-    </script>
-    <script>
-        Vue.component('<%- template.templateName %>', {
-  template: '#<%- template.templateName %>',
-  props:['item']
-})
-    </script>
-<% }) %>
+            <%- template.templateContent.join('') %>
+        </script>
+        <script>
+            Vue.component('<%- template.templateName %>', {
+                template: '#<%- template.templateName %>',
+                props: ['item']
+            })
+        </script>
+        <% }) %>
 
-<div id="tpl_body">
+            <div id="tpl_body">
 
-<%- out.content.join('') %>
+                <%- out.content.join('') %>
 
-</div>
-
-
-<script type="text/x-template" id="page_vue_template" >
-  
-</script>
+            </div>
 
 
+            <script type="text/x-template" id="page_vue_template">
+
+            </script>
 
 
 
@@ -49,24 +53,31 @@
 
 
 
-<div id="page_vue_app">
-   <page_vue_template v-bind:record="record"></page_vue_template>
-</div>
-
-<script type="text/javascript">
-
-    // 创建根实例
-new Vue({
-  el: '#tpl_body',
-  data:{
-    current_support:current_support
-  }
-  
-})
 
 
+            <div id="page_vue_app">
+                <page_vue_template v-bind:record="record"></page_vue_template>
+            </div>
 
-</script>
+            <script type="text/javascript">
+                // 创建根实例
+                var vue_main = new Vue({
+                    el: '#tpl_body',
+                    data: {
+                        list_data: [],
+                        current_support: current_support
+                    },
+                    mounted:function() {
+                        var _self=this;
+                        <% out.scriptReady.forEach((scringInfo)=>{ %>
+                           <%-scringInfo.scriptContent%>
+                        <% })%>
+                    }
+
+                })
+
+            </script>
 
 </body>
+
 </html>

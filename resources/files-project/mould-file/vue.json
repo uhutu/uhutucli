@@ -14,7 +14,8 @@
         },
         
         "ulistview": {
-            "tagName": "div"
+            "tagName": "div",
+            "expandFile": "../../expand/expand-elm/vue_ulistview"
         },
         "ubutton": {
             "tagName": "input",

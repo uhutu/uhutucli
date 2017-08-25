@@ -76,9 +76,18 @@ export class MtransformPageOut {
 
     templateInfos: MtransformTemplateInfo[] = []
 
+    /**页面属性 */
     pageProperty: MtransformPageProperty
 
+    /**
+     * 页面直接输出的脚本内容
+     */
     scriptInfos: MtransformPageScript[] = []
+
+    /**
+     * 页面加载完成时执行的脚本内容
+     */
+    scriptReady: MtransformPageScript[] = []
 
 }
 
@@ -180,6 +189,11 @@ export interface ItransformItemInfo {
      * 子系统处理
      */
     transSub: ItransformSubExtend
+
+    /**
+     * 页面加载完成时执行的操作
+     */
+    readScript: string
 
 }
 

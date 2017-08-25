@@ -20,7 +20,7 @@ class CitemParse implements AimParse.ItransformItemInfo {
     targetAttr: Map<string, string> = new Map<string, string>()
     transSub: AimParse.ItransformSubExtend = null
 
-
+    readScript: string = ""
 
 
 
@@ -342,7 +342,7 @@ class Mexport {
 
                 } else if (oItem.elmType == 6) {
 
-                    
+
                     oOut.content.push(oCurrentParse.textContents.join(''));
 
                 }
@@ -374,6 +374,19 @@ class Mexport {
                         oTemplateInfo.templateContent.push(aOutInfo.join(''));
                     }
                 }
+
+
+                if (!CommonUtil.utilsString.isEmpty(oItem.readScript)) {
+
+                    let oScript = new AimParse.MtransformPageScript();
+
+                    oScript.scriptContent = oItem.readScript;
+
+                    oOut.scriptReady.push(oScript);
+                }
+
+
+
                 oCurrentParse.textContents = [];
                 oCurrentParse.elmArrays.pop();
             }

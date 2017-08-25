@@ -69,7 +69,14 @@ var MtransformPageOut = (function () {
     function MtransformPageOut() {
         this.content = [];
         this.templateInfos = [];
+        /**
+         * 页面直接输出的脚本内容
+         */
         this.scriptInfos = [];
+        /**
+         * 页面加载完成时执行的脚本内容
+         */
+        this.scriptReady = [];
     }
     return MtransformPageOut;
 }());
