@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../../theme/web/item.css" />
     <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css" />
 
+    <script src="../../../scripts/libs/plus/plus.js"></script>
+
+    <script src="../../../scripts/client/util.js"></script>
     <script src="../../../scripts/client/web.js"></script>
     <script src="../../../scripts/ginkgo/baby.js"></script>
     <script src="../../../scripts/ginkgo/current.js"></script>
@@ -59,7 +62,12 @@
                 <page_vue_template v-bind:record="record"></page_vue_template>
             </div>
 
+            
+
             <script type="text/javascript">
+
+                baby_support.initPage();
+
                 // 创建根实例
                 var vue_main = new Vue({
                     el: '#tpl_body',
