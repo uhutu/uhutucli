@@ -111,7 +111,7 @@ var MprocessItem = (function () {
     };
     MprocessItem.prototype.VueEventAuto = function (oItem) {
         this.checkEventFull(oItem, "press", "onClick", "", "", "");
-        this.checkEventFull(oItem, "link", "v-bind:href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
+        this.checkEventFull(oItem, "link", CommonRoot.upProperty().vueBind + "href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     };
     MprocessItem.prototype.VueFormAuto = function (oItem) {
@@ -122,6 +122,9 @@ var MprocessItem = (function () {
             oItem.formField.fieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
             oItem.formField.fieldType = oItem.elmName;
         }
+    };
+    MprocessItem.prototype.VuePropFormat = function (sVal) {
+        return sVal.replace('@', '').replace(/\\{/, '').replace(/\\}/, '');
     };
     return MprocessItem;
 }());

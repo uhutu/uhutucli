@@ -32,7 +32,8 @@
             "tagName": "el-input"
         },
         "uicon": {
-            "tagName": "i"
+            "tagName": "i",
+            "expandFile": "../../expand/expand-elm/vue_uicon"
         },
         "fform": {
             "tagName": "form"

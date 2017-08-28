@@ -1,4 +1,5 @@
 
+import CommonRoot = require("../../base/common/root");
 
 import * as CTF from "../../project/aim-project/aim_parse";
 
@@ -16,9 +17,9 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
         oItem.sourceContent=`<`+macroName+` v-for="(item, index) in list_data"
-        v-bind:item="item"
-        v-bind:index="index"
-        v-bind:key="item.id"></`+macroName+`>`;
+        `+CommonRoot.upProperty().vueBind+`item="item"
+        `+CommonRoot.upProperty().vueBind+`index="index"
+        `+CommonRoot.upProperty().vueBind+`key="item.id"></`+macroName+`>`;
 
 
         let listSource = processItem.upPropValue(oItem, 'list-source');

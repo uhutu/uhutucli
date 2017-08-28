@@ -13,7 +13,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         oItem.elmName=processItem.upXaryValue(oItem, 'macro');
        
-        processItem.checkXaryFull(oItem,'source','v-bind:item','','','');
+        processItem.checkXaryFull(oItem,'source',CommonRoot.upProperty().vueBind+'item','','','');
 
         return oItem;
     }

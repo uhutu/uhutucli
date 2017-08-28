@@ -31,6 +31,8 @@ var cProperty = {
 
     templateSourceName: 'source',
 
+    vueBind:'v-bind:',
+
     defaultName: 'default'
 
 

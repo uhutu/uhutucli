@@ -20,6 +20,7 @@ var cProperty = {
     formBaseAttr: 'name',
     templateXname: 'x_template_',
     templateSourceName: 'source',
+    vueBind: 'v-bind:',
     defaultName: 'default'
 };
 var RootResult = (function () {
