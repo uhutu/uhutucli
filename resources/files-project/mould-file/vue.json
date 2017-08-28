@@ -12,7 +12,6 @@
         "utext": {
             "tagName": "span"
         },
-        
         "ulistview": {
             "tagName": "div",
             "expandFile": "../../expand/expand-elm/vue_ulistview"
@@ -22,32 +21,32 @@
             "primeAttr": {
                 "type": "button"
             },
-            "styleName": ["btn", "btn-primary", "btn-block"],
+            "styleName": [
+                "btn",
+                "btn-primary",
+                "btn-block"
+            ],
             "expandFile": "../../expand/expand-elm/vue_uinput"
         },
         "uinput": {
             "tagName": "el-input"
-
-            
         },
-        "uicon":{
+        "uicon": {
             "tagName": "i"
         },
-
-
+        "fform": {
+            "tagName": "form"
+        },
         "fdate": {
             "tagName": "el-date-picker",
             "primeAttr": {
                 "type": "datetime"
-            }
-
-            
+            },
+            "expandFile": "../../expand/expand-elm/vue_finput"
         },
         "xcall": {
             "tagName": "xcall",
-
             "expandFile": "../../expand/expand-elm/vue_xcall"
-
         },
         "xscript": {
             "tagName": "script",
@@ -57,14 +56,14 @@
         },
         "ulink": {
             "tagName": "a",
-
             "expandFile": "../../expand/expand-elm/vue_ubase"
-
         },
         "finput": {
             "tagName": "el-input",
-            "styleName": ["theme_web_item_form_input_base"],
-            "expandFile": "../../expand/expand-elm/vue_ubase"
+            "styleName": [
+                "theme_web_item_form_input_base"
+            ],
+            "expandFile": "../../expand/expand-elm/vue_finput"
         }
     }
 }

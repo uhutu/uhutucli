@@ -53,7 +53,7 @@ class CappSub implements CTF.ItransformSubExtend {
             if (key === "class") {
                 
                 
-                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class")  + "\"");
+                oItem.targetAttr.set("class", "" + oItem.sourceAttr.get("class")  + "");
 
                 
 
@@ -147,7 +147,7 @@ class CappOut implements CTF.ItransFormatOut {
 class MappParse implements CTF.ItransformParse {
     elms = new CappElms();
     inc = {
-        attr_replace: " {key}={value} "
+        attr_replace: " {key}=\"{value}\" "
     }
     parses = new CappSub();
     mould

@@ -33,7 +33,7 @@ var CappSub = (function () {
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
             if (key === "class") {
-                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class") + "\"");
+                oItem.targetAttr.set("class", "" + oItem.sourceAttr.get("class") + "");
             }
         });
         processItem.VueEventAuto(oItem);
@@ -102,7 +102,7 @@ var MappParse = (function () {
     function MappParse() {
         this.elms = new CappElms();
         this.inc = {
-            attr_replace: " {key}={value} "
+            attr_replace: " {key}=\"{value}\" "
         };
         this.parses = new CappSub();
         this.pageConfig = new CTF.MbasePageConfig();

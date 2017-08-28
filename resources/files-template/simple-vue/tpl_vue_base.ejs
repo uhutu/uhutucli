@@ -66,17 +66,25 @@
 
             <script type="text/javascript">
 
-                baby_support.initPage();
+                baby_support.initPage(<%- JSON.stringify(out.pageProperty) %>);
 
                 // 创建根实例
                 var vue_main = new Vue({
                     el: '#tpl_body',
                     data: {
                         list_data: [],
+                        <% out.pageProperty.formNames.forEach((formName)=>{ %>
+                           <%-formName%>:baby_support.upFormInit("<%-formName%>"),
+                        <% })%>
+                        
+
                         current_support: current_support
                     },
                     mounted:function() {
                         var _self=this;
+
+                        baby_support.loadPage(_self);
+
                         <% out.scriptReady.forEach((scringInfo)=>{ %>
                            <%-scringInfo.scriptContent%>
                         <% })%>

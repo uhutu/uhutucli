@@ -18,10 +18,27 @@ exports.MtransformTemplateInfo = MtransformTemplateInfo;
 var MtransformPageProperty = (function () {
     function MtransformPageProperty() {
         this.formNames = [];
+        this.formClient = [];
     }
     return MtransformPageProperty;
 }());
 exports.MtransformPageProperty = MtransformPageProperty;
+var MtransformClientProperty = (function () {
+    function MtransformClientProperty() {
+        this.formName = '';
+        this.formFields = [];
+    }
+    return MtransformClientProperty;
+}());
+exports.MtransformClientProperty = MtransformClientProperty;
+var MtransformFieldProperty = (function () {
+    function MtransformFieldProperty() {
+        this.fieldName = '';
+        this.fieldType = '';
+    }
+    return MtransformFieldProperty;
+}());
+exports.MtransformFieldProperty = MtransformFieldProperty;
 var MtransformCurrentParse = (function () {
     function MtransformCurrentParse() {
         /**

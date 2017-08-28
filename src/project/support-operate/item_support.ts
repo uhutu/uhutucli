@@ -207,10 +207,29 @@ class MprocessItem {
 
     VueEventAuto(oItem: CTF.ItransformItemInfo) {
         this.checkEventFull(oItem, "press", "onClick", "", "", "");
-        this.checkEventFull(oItem, "link", "v-bind:href", "\"'javascript:top_support.pageNav(\\''+", "+'\\',this)'\"", "'");
+        this.checkEventFull(oItem, "link", "v-bind:href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
 
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     }
+
+
+
+    VueFormAuto(oItem: CTF.ItransformItemInfo) {
+
+        if (oItem.targetAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+            oItem.targetAttr.set("v-model", oItem.targetAttr.get(CommonRoot.upProperty().formBaseAttr).replace(CommonRoot.upProperty().formNameSplit, "."));
+        }
+
+
+        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+            oItem.formField.fieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+            oItem.formField.fieldType=oItem.elmName;
+        }
+
+
+
+    }
+
 
 
 

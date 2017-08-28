@@ -22,6 +22,22 @@ export class MtransformTemplateInfo {
 
 export class MtransformPageProperty {
     formNames: string[] = []
+
+    formClient: MtransformClientProperty[] = []
+}
+
+
+export class MtransformClientProperty {
+    formName: string = ''
+    formFields: MtransformFieldProperty[] = []
+
+
+}
+
+export class MtransformFieldProperty {
+    fieldName: string = ''
+    fieldType: string = ''
+    fieldAttr: Map<string, string>
 }
 
 
@@ -185,6 +201,12 @@ export interface ItransformItemInfo {
      * 目标属性  经过转换后的属性配置
      */
     targetAttr: Map<string, string>
+
+
+
+    formField: MtransformFieldProperty
+
+
     /**
      * 子系统处理
      */

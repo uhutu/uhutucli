@@ -4,8 +4,7 @@ var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        oItem.elmName = processItem.upXaryValue(oItem, 'macro');
-        processItem.checkXaryFull(oItem, 'source', 'v-bind:item', '', '', '');
+        processItem.VueFormAuto(oItem);
         return oItem;
     };
     return MexpandReactUicon;

@@ -12,6 +12,7 @@ var CitemParse = (function () {
         this.sourceContent = "";
         this.sourceAttr = new Map();
         this.targetAttr = new Map();
+        this.formField = new AimParse.MtransformFieldProperty();
         this.transSub = null;
         this.readScript = "";
     }
@@ -148,10 +149,6 @@ var Mexport = (function () {
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
-                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
-                        var oExpand = require(oItem.elmentInfo.expandFile);
-                        oItem = oExpand.expandOpen(oItem, oOut);
-                    }
                     //form的处理逻辑
                     if (oItem.sourceName === CommonRoot.upProperty().pageElmentForm) {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
@@ -162,6 +159,10 @@ var Mexport = (function () {
                                 CommonRoot.logWarn(941612002, oCurrentParse.formName);
                             }
                             oPageProperty.formNames.push(oCurrentParse.formName);
+                            var oFormClient = new AimParse.MtransformClientProperty();
+                            oFormClient.formName = oCurrentParse.formName;
+                            oFormClient.formFields = [];
+                            oPageProperty.formClient.push(oFormClient);
                         }
                         else {
                             CommonRoot.logWarn(941612001, oParseFile.fileBasename);
@@ -177,6 +178,17 @@ var Mexport = (function () {
                                 oCurrentParse.elmUqiue.set(sItemName, sItemName);
                             }
                             oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, sItemName);
+                        }
+                    }
+                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
+                        var oExpand = require(oItem.elmentInfo.expandFile);
+                        oItem = oExpand.expandOpen(oItem, oOut);
+                    }
+                    if (!CommonUtil.utilsString.isEmpty(oCurrentParse.formName)) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            if (!CommonUtil.utilsString.isEmpty(oItem.formField.fieldName)) {
+                                oPageProperty.formClient[oPageProperty.formClient.length - 1].formFields.push(oItem.formField);
+                            }
                         }
                     }
                     var aOutInfo_1 = [];
