@@ -10,7 +10,10 @@
             "tagName": "div"
         },
         "utext": {
-            "tagName": "span"
+            "tagName": "div",
+            "styleName": [
+                "glob_web_utext"
+            ]
         },
         "ulistview": {
             "tagName": "div",
@@ -43,6 +46,9 @@
             "primeAttr": {
                 "type": "datetime"
             },
+            "styleName": [
+                "glob_web_finput"
+            ],
             "expandFile": "../../expand/expand-elm/vue_finput"
         },
         "xcall": {
@@ -62,7 +68,7 @@
         "finput": {
             "tagName": "el-input",
             "styleName": [
-                "theme_web_item_form_input_base"
+                "glob_web_finput"
             ],
             "expandFile": "../../expand/expand-elm/vue_finput"
         }

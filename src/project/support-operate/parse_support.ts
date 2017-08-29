@@ -118,7 +118,7 @@ class ChelperParse {
     //重新合并处理样式class
     upStyleRecheck(oElm: AimParse.ItransformItemInfo) {
 
-        var sReturn = "";
+        let sReturn = "";
         if (oElm.sourceAttr.has('class')) {
             sReturn = oElm.sourceAttr.get("class");
         }
@@ -142,6 +142,8 @@ class ChelperParse {
             sReturn = aNew.join(' ');
             oElm.sourceAttr.set("class", sReturn);
         }
+
+        
 
         return sReturn;
 

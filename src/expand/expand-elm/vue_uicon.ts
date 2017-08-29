@@ -13,7 +13,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
         let sFontName = processItem.VuePropFormat(processItem.upPropValue(oItem, 'name'));
-        let sFontFamily = '';
+        let sFontFamily = 'material';
         if (processItem.upPropValue(oItem, 'family')) {
             sFontFamily = processItem.VuePropFormat(processItem.upPropValue(oItem, 'family'));
         }
@@ -25,14 +25,25 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
 
             oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'class', '\'font_\'+' + sFontFamily + '+\' font_\'+' + sFontFamily + '+\'_\'+' + sFontName);
+        } else {
+
+
+            let sClass = oItem.targetAttr.get('class');
+            if (!sClass) {
+                sClass = '';
+            }
+
+            oItem.targetAttr.set('class', sClass + ' ' + 'font_' + sFontFamily + ' font_' + sFontFamily + '_' + sFontName)
+
+
         }
 
 
 
-        let sColor=processItem.upPropValue(oItem,"color");
+        let sColor = processItem.upPropValue(oItem, "color");
 
-        if(sColor){
-            oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'style', "'color:'+"+sColor);
+        if (sColor) {
+            oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'style', "'color:'+" + sColor);
         }
 
 
