@@ -26,6 +26,17 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
             oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'class', '\'font_\'+' + sFontFamily + '+\' font_\'+' + sFontFamily + '+\'_\'+' + sFontName);
         }
+
+
+
+        let sColor=processItem.upPropValue(oItem,"color");
+
+        if(sColor){
+            oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'style', "'color:'+"+sColor);
+        }
+
+
+
         return oItem;
     }
 

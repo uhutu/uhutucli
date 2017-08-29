@@ -11,6 +11,16 @@ var PlugProcess = (function () {
         }
     };
     /**
+     *
+     * 这是一个空操作  用于扩展类的处理操作占用
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
+    PlugProcess.prototype.expandOption = function (oLocalConfig, oPlugin, oSet) {
+        return true;
+    };
+    /**
      * react添加内容
      * @param oLocalConfig
      * @param oPlugin

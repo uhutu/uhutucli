@@ -13,6 +13,10 @@ var MexpandReactUicon = (function () {
         if (sFontName.indexOf('#') > -1) {
             oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'class', '\'font_\'+' + sFontFamily + '+\' font_\'+' + sFontFamily + '+\'_\'+' + sFontName);
         }
+        var sColor = processItem.upPropValue(oItem, "color");
+        if (sColor) {
+            oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'style', "'color:'+" + sColor);
+        }
         return oItem;
     };
     return MexpandReactUicon;

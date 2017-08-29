@@ -24,7 +24,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         let listSource = processItem.upPropValue(oItem, 'list-source');
 
-        oItem.readScript=listSource+`.then((data)=>{_self.list_data=data;})`;
+        oItem.readScript=listSource+`.then((data)=>{ baby_support.dataShowListPage(_self,data)})`;
 
         return oItem;
     }

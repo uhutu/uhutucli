@@ -9,7 +9,7 @@ var MexpandReactUicon = (function () {
         var macroName = processItem.upPropValue(oItem, 'macro');
         oItem.sourceContent = "<" + macroName + " v-for=\"(item, index) in list_data\"\n        " + CommonRoot.upProperty().vueBind + "item=\"item\"\n        " + CommonRoot.upProperty().vueBind + "index=\"index\"\n        " + CommonRoot.upProperty().vueBind + "key=\"item.id\"></" + macroName + ">";
         var listSource = processItem.upPropValue(oItem, 'list-source');
-        oItem.readScript = listSource + ".then((data)=>{_self.list_data=data;})";
+        oItem.readScript = listSource + ".then((data)=>{ baby_support.dataShowListPage(_self,data)})";
         return oItem;
     };
     return MexpandReactUicon;
