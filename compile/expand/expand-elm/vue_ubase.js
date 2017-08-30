@@ -1,10 +1,10 @@
 "use strict";
-var processItem = require("../../project/support-operate/item_support");
+var item_support_1 = require("../../project/support-operate/item_support");
 var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        processItem.checkPropWithEmpty(oItem, "text", "value");
+        item_support_1.ItemSupportVue.checkPropWithEmpty(oItem, "text", "value");
         return oItem;
     };
     return MexpandReactUicon;

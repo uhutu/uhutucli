@@ -6,29 +6,31 @@ import * as CTF from "../../project/aim-project/aim_parse";
 
 
 
-class MprocessItem {
+abstract class MprocessItem {
 
 
+    static checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) { };
 
-    upPropValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+
+    static upPropValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrProp);
     }
 
 
-    upEventValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+    static upEventValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrEvent);
     }
 
 
-    upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
+    static upXaryValue(oItem: CTF.ItransformItemInfo, sPropName: string) {
 
         return this.zeroUpPropValue(oItem, sPropName, CommonRoot.upProperty().dataAttrXary);
     }
 
 
-    zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
+    static zeroUpPropValue(oItem: CTF.ItransformItemInfo, sPropName, sAttr) {
         return oItem.sourceAttr.get(sAttr + sPropName);
 
     }
@@ -37,14 +39,14 @@ class MprocessItem {
     /**
      * 使用引号修改属性
      */
-    checkPropWithQuotes(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+    static checkPropWithQuotes(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
         this.checkPropFull(oItem, sSource, sTarget, "", "", "\"");
 
     }
 
 
-    checkPropWithBrace(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+    static checkPropWithBrace(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
 
         this.checkPropFull(oItem, sSource, sTarget, "{", "}", "");
@@ -54,20 +56,20 @@ class MprocessItem {
     /**
      * 直接属性  不增加标记
      */
-    checkPropWithEmpty(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+    static checkPropWithEmpty(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
 
         this.checkPropFull(oItem, sSource, sTarget, "", "", "");
 
     }
 
-    checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+    static checkPropFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrProp, sLeft, sRight, sSign);
     }
 
 
-    checkXaryFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+    static checkXaryFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrXary, sLeft, sRight, sSign);
     }
@@ -75,39 +77,31 @@ class MprocessItem {
 
 
 
-    checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+    static checkEventFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrEvent, sLeft, sRight, sSign);
     }
 
 
-    checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
+    static checkStateFull(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sLeft: string, sRight: string, sSign: string) {
 
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrState, sLeft, sRight, sSign);
     }
 
 
 
-    checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
-
-        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
-
-    }
 
 
 
-    checkStyleVue(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
-        this.zeroFieldCheck(oItem, sSource, CommonRoot.upProperty().vueBind+sTarget, CommonRoot.upProperty().dataAttrStyle, "'", "'", "");
 
-    }
 
 
 
     /**
      * 直接属性  不增加标记
      */
-    zeroFieldCheck(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sAttr: string, sLeft: string, sRight: string, sSign: string) {
+    static zeroFieldCheck(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string, sAttr: string, sLeft: string, sRight: string, sSign: string) {
 
         if (oItem.sourceAttr.has(sAttr + sSource)) {
 
@@ -130,38 +124,38 @@ class MprocessItem {
 
 
 
-    formBaseAuto(oItem: CTF.ItransformItemInfo) {
+    static formBaseAuto(oItem: CTF.ItransformItemInfo) {
 
 
         //数据列表源编号
-        this.checkPropWithQuotes(oItem, "form-source-items", "formSourceItems");
+        this.checkForm(oItem, "form-source-items", "formSourceItems");
 
         //默认值
-        this.checkPropWithQuotes(oItem, "form-default-value", "formDefaultValue");
+        this.checkForm(oItem, "form-default-value", "formDefaultValue");
 
         //最小长度
-        this.checkPropWithQuotes(oItem, "form-min-size", "formMinSize");
+        this.checkForm(oItem, "form-min-size", "formMinSize");
 
         //最大长度
-        this.checkPropWithQuotes(oItem, "form-max-size", "formMaxSize");
+        this.checkForm(oItem, "form-max-size", "formMaxSize");
 
         //正则表达式编号
-        this.checkPropWithQuotes(oItem, "form-regex-code", "formRegexCode");
+        this.checkForm(oItem, "form-regex-code", "formRegexCode");
 
         //展示类型
-        this.checkPropWithQuotes(oItem, "form-show-type", "formShowType");
+        this.checkForm(oItem, "form-show-type", "formShowType");
 
         //扩展显示字符串
-        this.checkPropWithQuotes(oItem, "form-extend-display", "formExtendDisplay");
+        this.checkForm(oItem, "form-extend-display", "formExtendDisplay");
 
 
         //扩展查询字符串
-        this.checkPropWithQuotes(oItem, "form-extend-query", "formExtendQuery");
+        this.checkForm(oItem, "form-extend-query", "formExtendQuery");
 
     }
 
 
-    styleBaseAuto(oItem: CTF.ItransformItemInfo) {
+    static styleBaseAuto(oItem: CTF.ItransformItemInfo) {
 
 
 
@@ -180,23 +174,7 @@ class MprocessItem {
     }
 
 
-    styleVueAuto(oItem: CTF.ItransformItemInfo) {
 
-
-
-        this.checkStyleVue(oItem, "item-touch", "styleItemTouch");
-        this.checkStyleVue(oItem, "item-box", "styleItemBox");
-        this.checkStyleVue(oItem, "item-text", "styleItemText");
-        this.checkStyleVue(oItem, "item-icon", "styleItemIcon");
-        this.checkStyleVue(oItem, "item-active", "styleItemActive");
-
-        this.checkStyleVue(oItem, 'main-touch', 'styleMainTouch');
-        this.checkStyleVue(oItem, 'main-view', 'styleMainView');
-
-        this.checkStyleVue(oItem, "main-icon", "styleMainIcon");
-        this.checkStyleVue(oItem, "main-text", "styleMainText");
-
-    }
 
 
     /**
@@ -206,7 +184,7 @@ class MprocessItem {
      * 
      * @memberof MprocessItem
      */
-    propertyBaseAuto(oItem: CTF.ItransformItemInfo) {
+    static propertyBaseAuto(oItem: CTF.ItransformItemInfo) {
 
 
         this.checkPropWithQuotes(oItem, "name", "pName");
@@ -224,7 +202,7 @@ class MprocessItem {
 
 
 
-    propertyEventAuto(oItem: CTF.ItransformItemInfo) {
+    static propertyEventAuto(oItem: CTF.ItransformItemInfo) {
         this.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
         this.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
 
@@ -233,7 +211,7 @@ class MprocessItem {
 
 
 
-    VueEventAuto(oItem: CTF.ItransformItemInfo) {
+    static VueEventAuto(oItem: CTF.ItransformItemInfo) {
         this.checkEventFull(oItem, "press", "onClick", "", "", "");
         this.checkEventFull(oItem, "link", CommonRoot.upProperty().vueBind + "href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
 
@@ -242,7 +220,47 @@ class MprocessItem {
 
 
 
-    VueFormAuto(oItem: CTF.ItransformItemInfo) {
+
+
+
+    static VuePropFormat(sVal: string) {
+        return sVal.replace('@', '').replace(/\\{/, '').replace(/\\}/, '');
+    }
+
+
+    static checkForm(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+
+
+    }
+
+
+
+
+
+}
+
+
+
+export class ItemSupportReact extends MprocessItem {
+    static checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
+
+    }
+
+    static checkForm(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.checkPropWithQuotes(oItem, sSource, sTarget);
+
+    }
+
+}
+
+
+export class ItemSupportVue extends MprocessItem {
+
+    static VueFormAuto(oItem: CTF.ItransformItemInfo) {
 
         let sFieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
 
@@ -262,14 +280,30 @@ class MprocessItem {
     }
 
 
-    VuePropFormat(sVal: string) {
-        return sVal.replace('@', '').replace(/\\{/, '').replace(/\\}/, '');
+    /**
+   * 使用引号修改属性
+   */
+    static checkForm(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.checkPropWithEmpty(oItem, sSource,  'pform_' + sTarget);
+
     }
 
 
+    static checkStyle(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
 
+        //this.checkPropWithEmpty(oItem, sSource,  'pstyle_' + sTarget);
 
+       this.zeroFieldCheck(oItem, sSource,  'pstyle_' + sTarget, CommonRoot.upProperty().dataAttrStyle, "", "", "");
+
+    }
 
 }
 
-export = new MprocessItem();
+
+
+
+
+
+
+

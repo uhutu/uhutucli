@@ -1,7 +1,7 @@
 import CommonRoot = require("../../base/common/root");
 import CommonUtil = require("../../base/common/util");
 import * as CTF from "../../project/aim-project/aim_parse";
-import processItem = require("../../project/support-operate/item_support");
+import {ItemSupportVue as processItem} from "../../project/support-operate/item_support";
 
 class CappElms implements CTF.ItransformElmentProcess {
 

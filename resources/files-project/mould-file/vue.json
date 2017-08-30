@@ -73,7 +73,7 @@
             "expandFile": "../../expand/expand-elm/vue_finput"
         },
         "fselect": {
-            "tagName": "div",
+            "tagName": "u-select-report",
             
             "styleName": [
                 "glob_web_finput"

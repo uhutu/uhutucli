@@ -1,14 +1,14 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
-var processItem = require("../../project/support-operate/item_support");
+var item_support_1 = require("../../project/support-operate/item_support");
 var MexpandReactUicon = (function () {
     function MexpandReactUicon() {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
-        var sFontName = processItem.VuePropFormat(processItem.upPropValue(oItem, 'name'));
+        var sFontName = item_support_1.ItemSupportVue.VuePropFormat(item_support_1.ItemSupportVue.upPropValue(oItem, 'name'));
         var sFontFamily = 'material';
-        if (processItem.upPropValue(oItem, 'family')) {
-            sFontFamily = processItem.VuePropFormat(processItem.upPropValue(oItem, 'family'));
+        if (item_support_1.ItemSupportVue.upPropValue(oItem, 'family')) {
+            sFontFamily = item_support_1.ItemSupportVue.VuePropFormat(item_support_1.ItemSupportVue.upPropValue(oItem, 'family'));
         }
         if (sFontName.indexOf('#') > -1) {
             oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'class', '\'font_\'+' + sFontFamily + '+\' font_\'+' + sFontFamily + '+\'_\'+' + sFontName);
@@ -20,7 +20,7 @@ var MexpandReactUicon = (function () {
             }
             oItem.targetAttr.set('class', sClass + ' ' + 'font_' + sFontFamily + ' font_' + sFontFamily + '_' + sFontName);
         }
-        var sColor = processItem.upPropValue(oItem, "color");
+        var sColor = item_support_1.ItemSupportVue.upPropValue(oItem, "color");
         if (sColor) {
             oItem.targetAttr.set(CommonRoot.upProperty().vueBind + 'style', "'color:'+" + sColor);
         }

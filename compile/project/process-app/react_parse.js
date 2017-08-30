@@ -2,7 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
-var processItem = require("../../project/support-operate/item_support");
+var item_support_1 = require("../../project/support-operate/item_support");
 var CappElms = (function () {
     function CappElms() {
     }
@@ -39,7 +39,7 @@ var CappSub = (function () {
             //processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
             //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
             //processItem.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
-            processItem.propertyEventAuto(oItem);
+            item_support_1.ItemSupportReact.propertyEventAuto(oItem);
             //processItem.checkStateFull(oItem, "value", "value", "", "", "");
         });
         return oItem;
