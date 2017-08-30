@@ -73,11 +73,8 @@
             "expandFile": "../../expand/expand-elm/vue_finput"
         },
         "fselect": {
-            "tagName": "u-select-report",
+            "tagName": "u-item-select",
             
-            "styleName": [
-                "glob_web_finput"
-            ],
             "expandFile": "../../expand/expand-elm/vue_fselect"
         }
     }

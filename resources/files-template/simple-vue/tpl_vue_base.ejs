@@ -29,8 +29,9 @@
     <script src="../../../statics/client/data.js"></script>
     <script src="../../../statics/client/web.js"></script>
     <script src="../../../statics/ginkgo/baby.js"></script>
-    <script src="../../../statics/ginkgo/current.js"></script>
+    
     <script src="../../../statics/ginkgo/top.js"></script>
+    <script src="../../../statics/ginkgo/current.js"></script>
     <script src="../../../statics/ginkgo/hackjs.js"></script>
     
     <title>
@@ -56,6 +57,12 @@
         <% }) %>
 
             <div id="tpl_body">
+
+                <div class="theme_web_item_header">
+                    <div class="theme_web_item_header_left" onclick="top_support.pageBack()"><i class="theme_web_item_header_left_icon font_material font_material_arrow-left"></i></div>
+                    <div class="theme_web_item_header_text"><%- out.pageConfig.pageTitle %></div>
+                    
+                </div>
 
                 <%- out.content.join('') %>
 
