@@ -22,6 +22,12 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         }
 
+
+
+
+        processItem.styleVueAuto(oItem);
+
+
         let sShowType = processItem.upPropValue(oItem, 'form-show-type');
 
         if (sShowType === "report") {

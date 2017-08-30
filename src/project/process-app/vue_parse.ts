@@ -107,7 +107,7 @@ class CappOut implements CTF.ItransFormatOut {
                 switch (r[1]) {
                     //state变量
                     case "state":
-                        sReplace = '{{vdata_form.' + r[2] + '}}';
+                        sReplace = '{{vdata_state.' + r[2] + '}}';
                         break;
                     case "item":
                         sReplace = '{{item.' + r[2] + '}}';

@@ -96,6 +96,14 @@ class MprocessItem {
 
 
 
+    checkStyleVue(oItem: CTF.ItransformItemInfo, sSource: string, sTarget: string) {
+
+        this.zeroFieldCheck(oItem, sSource, CommonRoot.upProperty().vueBind+sTarget, CommonRoot.upProperty().dataAttrStyle, "'", "'", "");
+
+    }
+
+
+
     /**
      * 直接属性  不增加标记
      */
@@ -171,6 +179,26 @@ class MprocessItem {
 
     }
 
+
+    styleVueAuto(oItem: CTF.ItransformItemInfo) {
+
+
+
+        this.checkStyleVue(oItem, "item-touch", "styleItemTouch");
+        this.checkStyleVue(oItem, "item-box", "styleItemBox");
+        this.checkStyleVue(oItem, "item-text", "styleItemText");
+        this.checkStyleVue(oItem, "item-icon", "styleItemIcon");
+        this.checkStyleVue(oItem, "item-active", "styleItemActive");
+
+        this.checkStyleVue(oItem, 'main-touch', 'styleMainTouch');
+        this.checkStyleVue(oItem, 'main-view', 'styleMainView');
+
+        this.checkStyleVue(oItem, "main-icon", "styleMainIcon");
+        this.checkStyleVue(oItem, "main-text", "styleMainText");
+
+    }
+
+
     /**
      * 基本属性检测
      * 
@@ -207,7 +235,7 @@ class MprocessItem {
 
     VueEventAuto(oItem: CTF.ItransformItemInfo) {
         this.checkEventFull(oItem, "press", "onClick", "", "", "");
-        this.checkEventFull(oItem, "link", CommonRoot.upProperty().vueBind+"href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
+        this.checkEventFull(oItem, "link", CommonRoot.upProperty().vueBind + "href", "'javascript:top_support.pageNav(\\''+", "+'\\',this)'", "'");
 
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     }
@@ -216,17 +244,17 @@ class MprocessItem {
 
     VueFormAuto(oItem: CTF.ItransformItemInfo) {
 
-        let sFieldName=oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+        let sFieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
 
         if (oItem.targetAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-            
-            oItem.targetAttr.set("v-model",'vdata_form.'+sFieldName);
+
+            oItem.targetAttr.set("v-model", 'vdata_form.' + sFieldName);
         }
 
 
         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
             oItem.formField.fieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
-            oItem.formField.fieldType=oItem.sourceName;
+            oItem.formField.fieldType = oItem.sourceName;
         }
 
 
@@ -234,8 +262,8 @@ class MprocessItem {
     }
 
 
-    VuePropFormat(sVal:string){
-        return sVal.replace('@','').replace(/\\{/,'').replace(/\\}/,'');
+    VuePropFormat(sVal: string) {
+        return sVal.replace('@', '').replace(/\\{/, '').replace(/\\}/, '');
     }
 
 

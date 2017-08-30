@@ -11,6 +11,7 @@ var MexpandReactUicon = (function () {
             oItem.targetAttr.delete('v-model');
             //oItem.targetAttr.set("v-model", oItem.targetAttr.get("v-model")+"_f_text");
         }
+        processItem.styleVueAuto(oItem);
         var sShowType = processItem.upPropValue(oItem, 'form-show-type');
         if (sShowType === "report") {
             var sItemSource = processItem.upPropValue(oItem, 'form-source-items');

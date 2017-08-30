@@ -45,6 +45,9 @@ var MprocessItem = (function () {
     MprocessItem.prototype.checkStyle = function (oItem, sSource, sTarget) {
         this.zeroFieldCheck(oItem, sSource, sTarget, CommonRoot.upProperty().dataAttrStyle, "{styles.", "}", "");
     };
+    MprocessItem.prototype.checkStyleVue = function (oItem, sSource, sTarget) {
+        this.zeroFieldCheck(oItem, sSource, CommonRoot.upProperty().vueBind + sTarget, CommonRoot.upProperty().dataAttrStyle, "'", "'", "");
+    };
     /**
      * 直接属性  不增加标记
      */
@@ -88,6 +91,17 @@ var MprocessItem = (function () {
         this.checkStyle(oItem, 'main-view', 'styleMainView');
         this.checkStyle(oItem, "main-icon", "styleMainIcon");
         this.checkStyle(oItem, "main-text", "styleMainText");
+    };
+    MprocessItem.prototype.styleVueAuto = function (oItem) {
+        this.checkStyleVue(oItem, "item-touch", "styleItemTouch");
+        this.checkStyleVue(oItem, "item-box", "styleItemBox");
+        this.checkStyleVue(oItem, "item-text", "styleItemText");
+        this.checkStyleVue(oItem, "item-icon", "styleItemIcon");
+        this.checkStyleVue(oItem, "item-active", "styleItemActive");
+        this.checkStyleVue(oItem, 'main-touch', 'styleMainTouch');
+        this.checkStyleVue(oItem, 'main-view', 'styleMainView');
+        this.checkStyleVue(oItem, "main-icon", "styleMainIcon");
+        this.checkStyleVue(oItem, "main-text", "styleMainText");
     };
     /**
      * 基本属性检测
