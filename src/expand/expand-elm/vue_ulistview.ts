@@ -16,7 +16,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
         let macroName = processItem.upPropValue(oItem, 'macro');
 
 
-        oItem.sourceContent=`<`+macroName+` v-for="(item, index) in list_data"
+        oItem.sourceContent=`<`+macroName+` v-for="(item, index) in vdata_list"
         `+CommonRoot.upProperty().vueBind+`item="item"
         `+CommonRoot.upProperty().vueBind+`index="index"
         `+CommonRoot.upProperty().vueBind+`key="item.id"></`+macroName+`>`;

@@ -8,7 +8,7 @@
                 "filePath": "[@config:appVue.buildPath]/statics/client/data.js",
                 "sourcePath": "[@config:define.devPath]/table/data/data_item.json",
                 "noteType": 1,
-                "withText": "const client_data="
+                "withText": "var data_items="
             }
         }
     ]

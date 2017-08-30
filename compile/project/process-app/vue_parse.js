@@ -66,7 +66,7 @@ var CappOut = (function () {
                 switch (r[1]) {
                     //state变量
                     case "state":
-                        sReplace = '{this.state.' + r[2] + '}';
+                        sReplace = '{{vdata_form.' + r[2] + '}}';
                         break;
                     case "item":
                         sReplace = '{{item.' + r[2] + '}}';

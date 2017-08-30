@@ -115,8 +115,9 @@ var MprocessItem = (function () {
         this.checkEventFull(oItem, "value-change", "onValueChange", "{(item)=>{", "}}", "");
     };
     MprocessItem.prototype.VueFormAuto = function (oItem) {
+        var sFieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
         if (oItem.targetAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-            oItem.targetAttr.set("v-model", 'formdata_' + oItem.targetAttr.get(CommonRoot.upProperty().formBaseAttr).replace(CommonRoot.upProperty().formNameSplit, "."));
+            oItem.targetAttr.set("v-model", 'vdata_form.' + sFieldName);
         }
         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
             oItem.formField.fieldName = oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);

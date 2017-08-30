@@ -216,8 +216,11 @@ class MprocessItem {
 
     VueFormAuto(oItem: CTF.ItransformItemInfo) {
 
+        let sFieldName=oItem.sourceAttr.get(CommonRoot.upProperty().formBaseAttr);
+
         if (oItem.targetAttr.has(CommonRoot.upProperty().formBaseAttr)) {
-            oItem.targetAttr.set("v-model",'formdata_'+ oItem.targetAttr.get(CommonRoot.upProperty().formBaseAttr).replace(CommonRoot.upProperty().formNameSplit, "."));
+            
+            oItem.targetAttr.set("v-model",'vdata_form.'+sFieldName);
         }
 
 
