@@ -76,6 +76,13 @@
             "tagName": "u-item-select",
             
             "expandFile": "../../expand/expand-elm/vue_fselect"
+        },
+        "fimage": {
+            "tagName": "u-item-image",
+            "styleName": [
+                "glob_web_fimage"
+            ],
+            "expandFile": "../../expand/expand-elm/vue_fbase"
         }
     }
 }
