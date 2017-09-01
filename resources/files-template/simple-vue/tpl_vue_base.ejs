@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <script src="../../../statics/libs/vue/vue.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="../../../statics/libs/element/index.css">
@@ -59,8 +60,12 @@
             <div id="tpl_body">
 
                 <div class="theme_web_item_header">
-                    <div class="theme_web_item_header_left" onclick="top_support.pageBack()"><i class="theme_web_item_header_left_icon font_material font_material_arrow-left"></i></div>
-                    <div class="theme_web_item_header_text"><%- out.pageConfig.pageTitle %></div>
+                        <div class="theme_web_item_header_left">
+                            <%if(!out.pageConfig.disableBack){%>
+                            <el-button type="success" icon="arrow-left" size="small" onclick="top_support.pageBack()"></el-button>
+                            <%}%>
+                        </div>
+                        <div class="theme_web_item_header_text"><%- out.pageConfig.pageTitle %></div> 
                     
                 </div>
 
