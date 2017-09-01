@@ -79,9 +79,7 @@
         },
         "fimage": {
             "tagName": "u-item-image",
-            "styleName": [
-                "glob_web_fimage"
-            ],
+            
             "expandFile": "../../expand/expand-elm/vue_fbase"
         }
     }
