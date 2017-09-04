@@ -62,11 +62,13 @@
             <div id="tpl_body">
 
                 <div class="theme_web_item_header">
-                        <div class="theme_web_item_header_left">
-                            <%if(!out.pageConfig.disableBack){%>
-                            <el-button type="success" icon="arrow-left" size="small" onclick="top_support.pageBack()"></el-button>
-                            <%}%>
+                        <%if(!out.pageConfig.flagDisableBack===true){%>
+                        <div class="theme_web_item_header_left" onclick="top_support.pageBack()">
+                            
+                            <i class="el-icon-arrow-left theme_web_item_header_left_icon"></i>
+                           
                         </div>
+                        <%}%>
                         <div class="theme_web_item_header_text"><%- out.pageConfig.pageTitle %></div> 
                     
                 </div>

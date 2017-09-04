@@ -106,6 +106,7 @@ var MbasePageConfig = (function () {
         this.styleFile = "./index";
         this.asyncShow = "";
         this.scriptInit = "";
+        this.flagDisableBack = false;
         this.scriptFiles = [];
     }
     return MbasePageConfig;

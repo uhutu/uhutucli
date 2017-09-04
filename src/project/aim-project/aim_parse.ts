@@ -295,6 +295,11 @@ export interface IbasePageConfig {
      */
     asyncShow: string
 
+    /**
+     * 是否有返回操作
+     */
+    flagDisableBack:boolean
+
 
 
 }
@@ -309,7 +314,7 @@ export class MbasePageConfig implements IbasePageConfig {
     styleFile = "./index"
     asyncShow = ""
     scriptInit = ""
-
+    flagDisableBack=false
     scriptFiles = []
 }
 
