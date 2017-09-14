@@ -3,7 +3,7 @@ import Log4js = require("log4js");
 import CommonUtil = require("../../base/common/util");
 
 let logger = Log4js.getLogger("u");
-logger.setLevel('info');
+//logger.setLevel('info');
 
 var cProperty = {
 
