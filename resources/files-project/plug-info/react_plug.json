@@ -5,7 +5,7 @@
     },
     "top_uhutu_plus": {
         "name": "uhutu-plus",
-        "version": "latest"
+        "version": "git://github.com/liudongpu/uhutuplus.git"
     },
     "top_speed": {
         "name": "top-speed",
