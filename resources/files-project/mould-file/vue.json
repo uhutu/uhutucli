@@ -20,16 +20,14 @@
             "expandFile": "../../expand/expand-elm/vue_ulistview"
         },
         "ubutton": {
-            "tagName": "input",
+            "tagName": "el-button",
             "primeAttr": {
-                "type": "button"
+                "type": "primary"
             },
             "styleName": [
-                "btn",
-                "btn-primary",
-                "btn-block"
+                "glob_web_ubutton"
             ],
-            "expandFile": "../../expand/expand-elm/vue_uinput"
+            "expandFile": "../../expand/expand-elm/vue_ubutton"
         },
         "uinput": {
             "tagName": "el-input"
