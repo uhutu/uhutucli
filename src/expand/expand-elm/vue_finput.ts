@@ -11,7 +11,7 @@ class MexpandReactUicon implements CTF.ItransformExpandItem {
 
         
         processItem.VueFormAuto(oItem);
-        
+        processItem.checkPropWithEmpty(oItem, "type", "type");
         
         return oItem;
     }

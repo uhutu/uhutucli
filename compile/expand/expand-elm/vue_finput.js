@@ -5,6 +5,7 @@ var MexpandReactUicon = (function () {
     }
     MexpandReactUicon.prototype.expandOpen = function (oItem) {
         item_support_1.ItemSupportVue.VueFormAuto(oItem);
+        item_support_1.ItemSupportVue.checkPropWithEmpty(oItem, "type", "type");
         return oItem;
     };
     return MexpandReactUicon;
