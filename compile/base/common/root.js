@@ -23,7 +23,7 @@ var cProperty = {
     vueBind: 'v-bind:',
     defaultName: 'default'
 };
-var RootResult = (function () {
+var RootResult = /** @class */ (function () {
     function RootResult() {
         this.resultCode = 1;
         this.resultMessage = "";
@@ -37,7 +37,7 @@ var RootResult = (function () {
     };
     return RootResult;
 }());
-var McommonRoot = (function () {
+var McommonRoot = /** @class */ (function () {
     function McommonRoot() {
     }
     /**
@@ -124,7 +124,7 @@ var McommonRoot = (function () {
     };
     return McommonRoot;
 }());
-var LogLoad = (function () {
+var LogLoad = /** @class */ (function () {
     function LogLoad() {
         var _this = this;
         this._currentMap = new Map();

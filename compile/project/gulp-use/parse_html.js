@@ -6,7 +6,7 @@ var ReactParse = require("../../project/process-app/react_parse");
 var VueParse = require("../../project/process-app/vue_parse");
 var WeappParse = require("../../project/process-app/weapp_parse");
 var ejs = require("ejs");
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     Mexport.prototype.contentParse = function (oLocalConfig, oParseFile) {

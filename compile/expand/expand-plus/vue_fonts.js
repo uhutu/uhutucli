@@ -1,6 +1,6 @@
 "use strict";
 var CommonUtil = require("../../base/common/util");
-var VueFonts = (function () {
+var VueFonts = /** @class */ (function () {
     function VueFonts() {
     }
     VueFonts.prototype.exec = function (oLocalConfig, oPlugin, oSet) {

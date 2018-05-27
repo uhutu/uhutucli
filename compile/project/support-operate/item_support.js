@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var CommonRoot = require("../../base/common/root");
-var MprocessItem = (function () {
+var MprocessItem = /** @class */ (function () {
     function MprocessItem() {
     }
     MprocessItem.checkStyle = function (oItem, sSource, sTarget) { };
@@ -131,7 +131,7 @@ var MprocessItem = (function () {
     };
     return MprocessItem;
 }());
-var ItemSupportReact = (function (_super) {
+var ItemSupportReact = /** @class */ (function (_super) {
     __extends(ItemSupportReact, _super);
     function ItemSupportReact() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -145,7 +145,7 @@ var ItemSupportReact = (function (_super) {
     return ItemSupportReact;
 }(MprocessItem));
 exports.ItemSupportReact = ItemSupportReact;
-var ItemSupportVue = (function (_super) {
+var ItemSupportVue = /** @class */ (function (_super) {
     __extends(ItemSupportVue, _super);
     function ItemSupportVue() {
         return _super !== null && _super.apply(this, arguments) || this;

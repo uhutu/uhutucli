@@ -7,7 +7,7 @@ var oLocalConfig = null;
  *
  * @class McommandTest
  */
-var McommandTest = (function () {
+var McommandTest = /** @class */ (function () {
     function McommandTest() {
         var oEnv = DefineEnv.upEnv();
         oEnv.pathCwd = "./test/testdemo";

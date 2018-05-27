@@ -9,7 +9,7 @@ var UtilsMap = require("../../base/utils/map");
 /**
  * 注意该类为原始方法  里面无任何业务相关逻辑
  */
-var McommonUtil = (function () {
+var McommonUtil = /** @class */ (function () {
     function McommonUtil() {
         this.utilsString = UtilsString;
         this.utilsIo = UtilsIo;

@@ -1,6 +1,6 @@
 "use strict";
 var item_support_1 = require("../../project/support-operate/item_support");
-var MreactFbase = (function () {
+var MreactFbase = /** @class */ (function () {
     function MreactFbase() {
     }
     MreactFbase.prototype.expandOpen = function (oItem) {

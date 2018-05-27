@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var MprocessParseFile = (function () {
+var MprocessParseFile = /** @class */ (function () {
     function MprocessParseFile() {
     }
     return MprocessParseFile;
 }());
 exports.MprocessParseFile = MprocessParseFile;
-var MtransformTemplateInfo = (function () {
+var MtransformTemplateInfo = /** @class */ (function () {
     function MtransformTemplateInfo() {
         this.templateName = '';
         this.templateSource = '';
@@ -15,7 +15,7 @@ var MtransformTemplateInfo = (function () {
     return MtransformTemplateInfo;
 }());
 exports.MtransformTemplateInfo = MtransformTemplateInfo;
-var MtransformPageProperty = (function () {
+var MtransformPageProperty = /** @class */ (function () {
     function MtransformPageProperty() {
         this.formNames = [];
         this.formClient = [];
@@ -23,7 +23,7 @@ var MtransformPageProperty = (function () {
     return MtransformPageProperty;
 }());
 exports.MtransformPageProperty = MtransformPageProperty;
-var MtransformClientProperty = (function () {
+var MtransformClientProperty = /** @class */ (function () {
     function MtransformClientProperty() {
         this.formName = '';
         this.formFields = [];
@@ -31,7 +31,7 @@ var MtransformClientProperty = (function () {
     return MtransformClientProperty;
 }());
 exports.MtransformClientProperty = MtransformClientProperty;
-var MtransformFieldProperty = (function () {
+var MtransformFieldProperty = /** @class */ (function () {
     function MtransformFieldProperty() {
         this.fieldName = '';
         this.fieldType = '';
@@ -39,7 +39,7 @@ var MtransformFieldProperty = (function () {
     return MtransformFieldProperty;
 }());
 exports.MtransformFieldProperty = MtransformFieldProperty;
-var MtransformCurrentParse = (function () {
+var MtransformCurrentParse = /** @class */ (function () {
     function MtransformCurrentParse() {
         /**
          * 过程中的form名称
@@ -74,7 +74,7 @@ var MtransformCurrentParse = (function () {
     return MtransformCurrentParse;
 }());
 exports.MtransformCurrentParse = MtransformCurrentParse;
-var MtransformPageScript = (function () {
+var MtransformPageScript = /** @class */ (function () {
     function MtransformPageScript() {
         this.scriptType = '';
         this.scriptContent = '';
@@ -82,7 +82,7 @@ var MtransformPageScript = (function () {
     return MtransformPageScript;
 }());
 exports.MtransformPageScript = MtransformPageScript;
-var MtransformPageOut = (function () {
+var MtransformPageOut = /** @class */ (function () {
     function MtransformPageOut() {
         this.content = [];
         this.templateInfos = [];
@@ -98,7 +98,7 @@ var MtransformPageOut = (function () {
     return MtransformPageOut;
 }());
 exports.MtransformPageOut = MtransformPageOut;
-var MbasePageConfig = (function () {
+var MbasePageConfig = /** @class */ (function () {
     function MbasePageConfig() {
         this.pageTitle = "";
         this.masterPath = "";
@@ -115,7 +115,7 @@ exports.MbasePageConfig = MbasePageConfig;
 /**
  * 转换帮助类
  */
-var MtransformParseHelper = (function () {
+var MtransformParseHelper = /** @class */ (function () {
     function MtransformParseHelper() {
     }
     /**

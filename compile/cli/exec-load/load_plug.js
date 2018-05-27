@@ -2,7 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var LoadConfig = require("../../cli/exec-load/load_config");
-var PlugProcess = (function () {
+var PlugProcess = /** @class */ (function () {
     function PlugProcess() {
     }
     PlugProcess.prototype._logShow = function (oSet) {
@@ -246,7 +246,7 @@ var PlugProcess = (function () {
     };
     return PlugProcess;
 }());
-var MloadPlug = (function () {
+var MloadPlug = /** @class */ (function () {
     function MloadPlug() {
     }
     /**

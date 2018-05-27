@@ -1,5 +1,5 @@
 "use strict";
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     Mexport.prototype.scssParse = function (oLocalConfig, oParseFile) {

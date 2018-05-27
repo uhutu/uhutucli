@@ -17,7 +17,7 @@ var oGulpDefine = {
     task_default: []
 };
 var oLocalConfig;
-var GulpTask = (function () {
+var GulpTask = /** @class */ (function () {
     function GulpTask(sTaskName) {
         this.taskName = "";
         this.subTask = [];
@@ -35,7 +35,7 @@ var GulpTask = (function () {
     };
     return GulpTask;
 }());
-var CommandGulp = (function () {
+var CommandGulp = /** @class */ (function () {
     function CommandGulp() {
     }
     CommandGulp.prototype.initStart = function () {

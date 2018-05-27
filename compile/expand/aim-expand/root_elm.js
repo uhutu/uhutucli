@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var item_support_1 = require("../../project/support-operate/item_support");
-var RootExpandReactElm = (function () {
+var RootExpandReactElm = /** @class */ (function () {
     function RootExpandReactElm() {
     }
     RootExpandReactElm.prototype.textInput = function (oItem) {

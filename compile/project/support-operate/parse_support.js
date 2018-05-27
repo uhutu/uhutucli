@@ -3,7 +3,7 @@ var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var AimParse = require("../../project/aim-project/aim_parse");
 var htmlparser = require("htmlparser2");
-var CitemParse = (function () {
+var CitemParse = /** @class */ (function () {
     function CitemParse() {
         this.elmType = 0;
         this.elmName = "";
@@ -19,7 +19,7 @@ var CitemParse = (function () {
     return CitemParse;
 }());
 ;
-var ChelperParse = (function () {
+var ChelperParse = /** @class */ (function () {
     function ChelperParse() {
     }
     ChelperParse.prototype.upElmParse = function (sName, oTransform, oAttr, oParseFile) {
@@ -107,7 +107,7 @@ var ChelperParse = (function () {
     return ChelperParse;
 }());
 var helperParse = new ChelperParse();
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     /**

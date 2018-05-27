@@ -1,7 +1,7 @@
 "use strict";
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
-var MinitConfig = (function () {
+var MinitConfig = /** @class */ (function () {
     function MinitConfig() {
     }
     /**
