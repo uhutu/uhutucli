@@ -1,4 +1,4 @@
-package com.[@config:appReact.workName];
+package com.reactmediciner;
 
 
 
@@ -11,7 +11,10 @@ import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.uimanager.ViewManager;
+
+import android.app.Activity;
 import android.util.Log;
+import android.view.WindowManager;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +33,7 @@ public class VoipReactModule extends ReactContextBaseJavaModule  {
 
   public VoipReactModule(ReactApplicationContext reactContext) {
     super(reactContext);
-    
+
   }
 
 
@@ -46,6 +49,19 @@ public class VoipReactModule extends ReactContextBaseJavaModule  {
     //RongIMClient.init(getReactApplicationContext());
 
      RongIM.init(getReactApplicationContext());
+
+
+    final Activity activity = getCurrentActivity();
+
+    if (activity != null) {
+      activity.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+      });
+    }
+
   }
 
 
