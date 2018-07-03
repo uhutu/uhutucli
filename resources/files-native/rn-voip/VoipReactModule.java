@@ -1,4 +1,4 @@
-package com.reactmediciner;
+package com.[@config:appReact.workName];
 
 
 
