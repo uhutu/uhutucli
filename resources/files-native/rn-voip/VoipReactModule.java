@@ -12,6 +12,8 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.uimanager.ViewManager;
 import android.util.Log;
+import android.app.Activity;
+import android.view.WindowManager;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,6 +48,17 @@ public class VoipReactModule extends ReactContextBaseJavaModule  {
     //RongIMClient.init(getReactApplicationContext());
 
      RongIM.init(getReactApplicationContext());
+
+     final Activity activity = getCurrentActivity();
+
+     if (activity != null) {
+        activity.runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+          }
+        });
+      }
   }
 
 
