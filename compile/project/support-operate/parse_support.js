@@ -226,6 +226,7 @@ var Mexport = /** @class */ (function () {
                     oOut.templateInfos.push(oTemplateInfo);
                     oCurrentParse.templateName = '';
                 }
+                //判断如果是配置数据
                 else if (oItem.elmType === 3) {
                     var sJson = oCurrentParse.textContents.join('');
                     oOut.pageConfig = CommonUtil.utilsHelper.deepAssign(oTransform.pageConfig, CommonUtil.utilsJson.parse(sJson));
