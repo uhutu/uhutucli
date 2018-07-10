@@ -161,7 +161,7 @@ class McommonRoot {
     }
 
     inLogLevel(sLogType: string) {
-        logger.setLevel(sLogType);
+        //logger.setLevel(sLogType);
     }
 }
 
