@@ -3,7 +3,7 @@ import Log4js = require("log4js");
 import CommonUtil = require("../../base/common/util");
 
 let logger = Log4js.getLogger("u");
-logger.setLevel('info');
+//logger.setLevel('info');
 
 var cProperty = {
 
@@ -30,6 +30,8 @@ var cProperty = {
     templateXname: 'x_template_',
 
     templateSourceName: 'source',
+
+    vueBind:'v-bind:',
 
     defaultName: 'default'
 
@@ -159,7 +161,7 @@ class McommonRoot {
     }
 
     inLogLevel(sLogType: string) {
-        logger.setLevel(sLogType);
+        //logger.setLevel(sLogType);
     }
 }
 

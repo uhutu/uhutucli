@@ -1,7 +1,6 @@
 import * as CTF from "../../project/aim-project/aim_parse";
 import CommonRoot = require("../../base/common/root");
-import processItem = require("../../project/support-operate/item_support");
-
+import {ItemSupportReact as processItem} from "../../project/support-operate/item_support";
 
 
 export class RootExpandReactElm {

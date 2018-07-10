@@ -5,7 +5,7 @@ import * as AimLocal from "../../cli/aim-top/aim_local";
 import * as CTF from "../../project/aim-project/aim_parse";
 
 
-import processItem = require("../../project/support-operate/item_support");
+import {ItemSupportReact as processItem} from "../../project/support-operate/item_support";
 
 
 class CappElms implements CTF.ItransformElmentProcess {

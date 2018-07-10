@@ -23,7 +23,8 @@ code-push release-react [@config:project.projectName]-android android --dev fals
     code-push deployment history [@config:project.projectName]-android Production
 
 
-
+codepush version 1.12.9-beta
+code-push deployment clear <appName> <deploymentName>
 
 ## 生成key
 * android添加生成key

@@ -1,5 +1,5 @@
 "use strict";
-var MutilsMap = (function () {
+var MutilsMap = /** @class */ (function () {
     function MutilsMap() {
     }
     MutilsMap.prototype.initMap = function (oAttr) {

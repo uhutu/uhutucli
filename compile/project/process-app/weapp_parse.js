@@ -1,6 +1,6 @@
 "use strict";
 var CTF = require("../../project/aim-project/aim_parse");
-var CappElms = (function () {
+var CappElms = /** @class */ (function () {
     function CappElms() {
     }
     CappElms.prototype.upProcess = function (oTransform, oItem) {
@@ -8,7 +8,7 @@ var CappElms = (function () {
     };
     return CappElms;
 }());
-var CappSub = (function () {
+var CappSub = /** @class */ (function () {
     function CappSub() {
     }
     CappSub.prototype.formNameParse = function (sName) {
@@ -22,7 +22,7 @@ var CappSub = (function () {
     };
     return CappSub;
 }());
-var CappOut = (function () {
+var CappOut = /** @class */ (function () {
     function CappOut() {
     }
     CappOut.prototype.contentFormat = function (oOut) {
@@ -30,7 +30,7 @@ var CappOut = (function () {
     };
     return CappOut;
 }());
-var MappParse = (function () {
+var MappParse = /** @class */ (function () {
     function MappParse() {
         this.elms = new CappElms();
         this.inc = {

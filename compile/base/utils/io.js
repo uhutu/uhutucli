@@ -3,7 +3,7 @@ var fs = require("fs");
 var path = require("path");
 var utilsString = require("./string");
 var glob = require("glob");
-var MUtilsIo = (function () {
+var MUtilsIo = /** @class */ (function () {
     function MUtilsIo() {
     }
     MUtilsIo.prototype.chmodSync = function (sPath, iMode) {

@@ -5,7 +5,7 @@
     },
     "top_uhutu_plus": {
         "name": "uhutu-plus",
-        "version": "latest"
+        "version": "git://github.com/liudongpu/uhutuplus.git"
     },
     "top_speed": {
         "name": "top-speed",
@@ -38,22 +38,22 @@
 
     "code_push": {
         "name": "react-native-code-push",
-        "version": "2.0.3-beta",
+        "version": "5.0.0-beta",
         "json": "[@config:file.reactPlugPath]/code_push.json"
     },
     "rn_elements": {
         "name": "react-native-elements",
-        "version": "0.9.2",
+        "version": "0.16.0",
         "disable": true
     },
     "rn_native_base": {
         "name": "native-base",
-        "version": "2.1.0",
+        "version": "2.3.1",
         "disable": true
     },
     "vector_icons": {
         "name": "react-native-vector-icons",
-        "version": "4.0.1",
+        "version": "4.3.0",
         "json": "[@config:file.reactPlugPath]/vector_icons.json"
     },
     "scrollable-tab-view": {
@@ -66,7 +66,7 @@
     },
     "router_flux": {
         "name": "react-native-router-flux",
-        "version": "3.38.0",
+        "version": "4.0.0-beta.18",
         "disable": true
     },
     "rn_webrtc": {
@@ -77,37 +77,37 @@
     },
     "rn_storage": {
         "name": "react-native-storage",
-        "version": "0.1.5",
+        "version": "0.2.2",
         "disable": true
     },
 
     "rn_realm": {
         "name": "realm",
-        "version": "1.2.0",
+        "version": "1.10.3",
         "json": "[@config:file.reactPlugPath]/rn_realm.json",
         "disable": true
     },
 
     "rn_sound": {
         "name": "react-native-sound",
-        "version": "0.9.0",
+        "version": "0.10.3",
         "json": "[@config:file.reactPlugPath]/rn_sound.json",
         "disable": true
     },
     "rn_camera": {
         "name": "react-native-camera",
-        "version": "0.6.0",
+        "version": "0.10.0",
         "json": "[@config:file.reactPlugPath]/rn_camera.json"
     },
     "rn_image_picker": {
         "name": "react-native-image-picker",
-        "version": "0.26.3",
+        "version": "0.26.4",
         "json": "[@config:file.reactPlugPath]/rn_image_picker.json"
     },
 
     "rn_date_picker": {
         "name": "react-native-datepicker",
-        "version": "1.4.7"
+        "version": "1.6.0"
     },
 
     "rn_mipush": {
@@ -118,21 +118,21 @@
     },
     "rn_fetch_blob": {
         "name": "react-native-fetch-blob",
-        "version": "0.10.5",
+        "version": "0.10.8",
         "json": "[@config:file.reactPlugPath]/base_link.json",
         "disable": true
 
     },
     "rn_svg": {
         "name": "react-native-svg",
-        "version": "5.1.8",
+        "version": "5.4.1",
         "json": "[@config:file.reactPlugPath]/base_link.json",
         "disable": true
 
     },
     "rn_progress": {
         "name": "react-native-progress",
-        "version": "3.2.1",
+        "version": "3.3.0",
         "disable": true
 
     },

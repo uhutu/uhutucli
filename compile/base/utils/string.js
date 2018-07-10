@@ -1,5 +1,5 @@
 "use strict";
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
         this.temp = {
             EMPTY: "",

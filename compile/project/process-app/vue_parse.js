@@ -2,8 +2,8 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
-var processItem = require("../../project/support-operate/item_support");
-var CappElms = (function () {
+var item_support_1 = require("../../project/support-operate/item_support");
+var CappElms = /** @class */ (function () {
     function CappElms() {
     }
     CappElms.prototype.upProcess = function (oTransform, oItem) {
@@ -11,7 +11,7 @@ var CappElms = (function () {
     };
     return CappElms;
 }());
-var CappSub = (function () {
+var CappSub = /** @class */ (function () {
     function CappSub() {
     }
     CappSub.styleParse = function (sClassStyle) {
@@ -33,15 +33,15 @@ var CappSub = (function () {
     CappSub.prototype.attrParse = function (oItem) {
         oItem.sourceAttr.forEach(function (value, key) {
             if (key === "class") {
-                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class") + "\"");
+                oItem.targetAttr.set("class", "" + oItem.sourceAttr.get("class") + "");
             }
         });
-        processItem.VueEventAuto(oItem);
+        item_support_1.ItemSupportVue.VueEventAuto(oItem);
         return oItem;
     };
     return CappSub;
 }());
-var CappOut = (function () {
+var CappOut = /** @class */ (function () {
     function CappOut() {
     }
     CappOut.prototype.contentFormat = function (oOut) {
@@ -66,7 +66,7 @@ var CappOut = (function () {
                 switch (r[1]) {
                     //state变量
                     case "state":
-                        sReplace = '{this.state.' + r[2] + '}';
+                        sReplace = '{{vdata_state.' + r[2] + '}}';
                         break;
                     case "item":
                         sReplace = '{{item.' + r[2] + '}}';
@@ -98,11 +98,11 @@ var CappOut = (function () {
     };
     return CappOut;
 }());
-var MappParse = (function () {
+var MappParse = /** @class */ (function () {
     function MappParse() {
         this.elms = new CappElms();
         this.inc = {
-            attr_replace: " {key}={value} "
+            attr_replace: " {key}=\"{value}\" "
         };
         this.parses = new CappSub();
         this.pageConfig = new CTF.MbasePageConfig();

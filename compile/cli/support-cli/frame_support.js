@@ -1,5 +1,5 @@
 "use strict";
-var MframeSupport = (function () {
+var MframeSupport = /** @class */ (function () {
     function MframeSupport() {
     }
     return MframeSupport;

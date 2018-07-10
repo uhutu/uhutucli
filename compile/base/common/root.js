@@ -2,7 +2,7 @@
 var Log4js = require("log4js");
 var CommonUtil = require("../../base/common/util");
 var logger = Log4js.getLogger("u");
-logger.setLevel('info');
+//logger.setLevel('info');
 var cProperty = {
     dataAttrProp: 'data-p-',
     dataAttrEvent: 'data-on-',
@@ -20,9 +20,10 @@ var cProperty = {
     formBaseAttr: 'name',
     templateXname: 'x_template_',
     templateSourceName: 'source',
+    vueBind: 'v-bind:',
     defaultName: 'default'
 };
-var RootResult = (function () {
+var RootResult = /** @class */ (function () {
     function RootResult() {
         this.resultCode = 1;
         this.resultMessage = "";
@@ -36,7 +37,7 @@ var RootResult = (function () {
     };
     return RootResult;
 }());
-var McommonRoot = (function () {
+var McommonRoot = /** @class */ (function () {
     function McommonRoot() {
     }
     /**
@@ -123,7 +124,7 @@ var McommonRoot = (function () {
     };
     return McommonRoot;
 }());
-var LogLoad = (function () {
+var LogLoad = /** @class */ (function () {
     function LogLoad() {
         var _this = this;
         this._currentMap = new Map();

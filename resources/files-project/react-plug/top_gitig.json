@@ -13,7 +13,9 @@
         "/disk/",
         "react*/ios/Pods/",
         "react*/project/",
-        "vue*/pages/"
+        "vue*/pages/",
+        "yarn.lock",
+        "package-lock.json"
         ]
       }
     }

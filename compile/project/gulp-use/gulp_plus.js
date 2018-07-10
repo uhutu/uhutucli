@@ -5,7 +5,7 @@ var through = require("through2");
 var gutil = require("gulp-util");
 var ParseHtml = require("../../project/gulp-use/parse_html");
 var ParseScss = require("../../project/gulp-use/parse_scss");
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     Mexport.prototype.gulpContent = function (oLocalConfig, sType) {

@@ -2,13 +2,23 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var LoadConfig = require("../../cli/exec-load/load_config");
-var PlugProcess = (function () {
+var PlugProcess = /** @class */ (function () {
     function PlugProcess() {
     }
     PlugProcess.prototype._logShow = function (oSet) {
         if (oSet.logCode != undefined) {
             CommonRoot.logAuto(oSet.logCode, oSet.logParams);
         }
+    };
+    /**
+     *
+     * 这是一个空操作  用于扩展类的处理操作占用
+     * @param oLocalConfig
+     * @param oPlugin
+     * @param oSet
+     */
+    PlugProcess.prototype.expandOption = function (oLocalConfig, oPlugin, oSet) {
+        return true;
     };
     /**
      * react添加内容
@@ -236,7 +246,7 @@ var PlugProcess = (function () {
     };
     return PlugProcess;
 }());
-var MloadPlug = (function () {
+var MloadPlug = /** @class */ (function () {
     function MloadPlug() {
     }
     /**

@@ -2,7 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var LoadPlug = require("../../cli/exec-load/load_plug");
-var MmoduleInstall = (function () {
+var MmoduleInstall = /** @class */ (function () {
     function MmoduleInstall() {
     }
     MmoduleInstall.prototype.installProject = function (oLocalConfig) {

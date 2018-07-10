@@ -5,7 +5,7 @@ var InitConfig = require("../../cli/exec-init/init_config");
 var InitInstall = require("../../cli/exec-init/init_install");
 var InitBuild = require("../../cli/exec-init/init_build");
 var LoadConfig = require("../../cli/exec-load/load_config");
-var MstartBase = (function () {
+var MstartBase = /** @class */ (function () {
     function MstartBase() {
     }
     MstartBase.prototype._execInitStep = function (oEnv, localConfig) {

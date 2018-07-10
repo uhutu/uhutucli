@@ -1,0 +1,15 @@
+{
+    "all": [
+        {
+            "exec": "expandOption",
+            "set": {
+                "contentInfo": [
+                    "[{\"name\":\"material\",\"file\":\"MaterialCommunityIcons\"},{\"name\":\"evil\",\"file\":\"EvilIcons\"}]"
+                ],
+                "filePath": "[@config:appVue.buildPath]/statics/theme/font.css",
+                "targetPath":"[@config:appVue.buildPath]/statics/theme/fonts"
+            },
+            "expand": "../../expand/expand-plus/vue_fonts"
+        }
+    ]
+}

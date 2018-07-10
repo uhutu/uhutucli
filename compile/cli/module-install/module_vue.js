@@ -1,6 +1,6 @@
 "use strict";
 var LoadPlug = require("../../cli/exec-load/load_plug");
-var MmoduleVue = (function () {
+var MmoduleVue = /** @class */ (function () {
     function MmoduleVue() {
     }
     MmoduleVue.prototype.installProject = function (oLocalConfig) {

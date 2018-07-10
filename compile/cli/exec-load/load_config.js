@@ -4,7 +4,7 @@ var CommonUtil = require("../../base/common/util");
 var DefineConfig = require("../../cli/default-define/define_config");
 var RegexStrBegin = "[@";
 var RegexStrEnd = "]";
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     /**

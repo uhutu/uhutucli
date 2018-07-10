@@ -13,6 +13,22 @@ class PlugProcess {
 
     }
 
+    /**
+     * 
+     * 这是一个空操作  用于扩展类的处理操作占用
+     * @param oLocalConfig 
+     * @param oPlugin 
+     * @param oSet 
+     */
+
+    expandOption(oLocalConfig: AimLocal.IAimLocalConfig, oPlugin: AimLocal.IAimLocalNexusPlugDefine, oSet: AimLocal.IAimLocalPlugSet): boolean {
+
+
+        return true;
+
+    }
+
+
 
     /**
      * react添加内容

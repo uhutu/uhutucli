@@ -18,9 +18,12 @@ class CitemParse implements AimParse.ItransformItemInfo {
     sourceAttr: Map<string, string> = new Map<string, string>()
 
     targetAttr: Map<string, string> = new Map<string, string>()
+
+    formField: AimParse.MtransformFieldProperty = new AimParse.MtransformFieldProperty()
+
     transSub: AimParse.ItransformSubExtend = null
 
-
+    readScript: string = ""
 
 
 
@@ -115,7 +118,7 @@ class ChelperParse {
     //重新合并处理样式class
     upStyleRecheck(oElm: AimParse.ItransformItemInfo) {
 
-        var sReturn = "";
+        let sReturn = "";
         if (oElm.sourceAttr.has('class')) {
             sReturn = oElm.sourceAttr.get("class");
         }
@@ -139,6 +142,8 @@ class ChelperParse {
             sReturn = aNew.join(' ');
             oElm.sourceAttr.set("class", sReturn);
         }
+
+        
 
         return sReturn;
 
@@ -224,13 +229,7 @@ class Mexport {
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
 
-                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
 
-                        var oExpand: AimParse.ItransformExpandItem = require(oItem.elmentInfo.expandFile);
-
-                        oItem = oExpand.expandOpen(oItem, oOut);
-
-                    }
 
 
                     //form的处理逻辑
@@ -245,6 +244,12 @@ class Mexport {
 
 
                             oPageProperty.formNames.push(oCurrentParse.formName);
+
+                            let oFormClient = new AimParse.MtransformClientProperty();
+                            oFormClient.formName = oCurrentParse.formName;
+                            oFormClient.formFields = [];
+
+                            oPageProperty.formClient.push(oFormClient);
 
                         }
                         else {
@@ -268,6 +273,30 @@ class Mexport {
                         }
                     }
 
+
+                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
+
+                        var oExpand: AimParse.ItransformExpandItem = require(oItem.elmentInfo.expandFile);
+
+                        oItem = oExpand.expandOpen(oItem, oOut);
+
+                    }
+
+
+
+                    if (!CommonUtil.utilsString.isEmpty(oCurrentParse.formName)) {
+
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+
+                            if (!CommonUtil.utilsString.isEmpty(oItem.formField.fieldName)) {
+
+
+                                oPageProperty.formClient[oPageProperty.formClient.length - 1].formFields.push(oItem.formField);
+                            }
+
+                        }
+
+                    }
 
 
                     let aOutInfo = [];
@@ -342,7 +371,7 @@ class Mexport {
 
                 } else if (oItem.elmType == 6) {
 
-                    
+
                     oOut.content.push(oCurrentParse.textContents.join(''));
 
                 }
@@ -374,6 +403,19 @@ class Mexport {
                         oTemplateInfo.templateContent.push(aOutInfo.join(''));
                     }
                 }
+
+
+                if (!CommonUtil.utilsString.isEmpty(oItem.readScript)) {
+
+                    let oScript = new AimParse.MtransformPageScript();
+
+                    oScript.scriptContent = oItem.readScript;
+
+                    oOut.scriptReady.push(oScript);
+                }
+
+
+
                 oCurrentParse.textContents = [];
                 oCurrentParse.elmArrays.pop();
             }

@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var processItem = require("../../project/support-operate/item_support");
-var RootExpandReactElm = (function () {
+var item_support_1 = require("../../project/support-operate/item_support");
+var RootExpandReactElm = /** @class */ (function () {
     function RootExpandReactElm() {
     }
     RootExpandReactElm.prototype.textInput = function (oItem) {
-        processItem.checkPropWithQuotes(oItem, "placeholder", "placeholder");
-        processItem.checkPropWithBrace(oItem, "secure", "secureTextEntry");
-        processItem.checkPropWithQuotes(oItem, "keyboard", "keyboardType");
-        processItem.checkPropWithBrace(oItem, "multiline", "multiline");
-        processItem.checkPropWithQuotes(oItem, "placeholder-color", "placeholderTextColor");
-        processItem.checkPropWithBrace(oItem, "form-max-size", "maxLength");
-        processItem.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
+        item_support_1.ItemSupportReact.checkPropWithQuotes(oItem, "placeholder", "placeholder");
+        item_support_1.ItemSupportReact.checkPropWithBrace(oItem, "secure", "secureTextEntry");
+        item_support_1.ItemSupportReact.checkPropWithQuotes(oItem, "keyboard", "keyboardType");
+        item_support_1.ItemSupportReact.checkPropWithBrace(oItem, "multiline", "multiline");
+        item_support_1.ItemSupportReact.checkPropWithQuotes(oItem, "placeholder-color", "placeholderTextColor");
+        item_support_1.ItemSupportReact.checkPropWithBrace(oItem, "form-max-size", "maxLength");
+        item_support_1.ItemSupportReact.checkEventFull(oItem, "change-text", "onChangeText", "{(text)=>{", "}}", "");
         oItem.targetAttr.set('underlineColorAndroid', '"transparent"');
         oItem.targetAttr.set('autoCapitalize', '"none"');
         return oItem;

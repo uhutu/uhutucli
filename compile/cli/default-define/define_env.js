@@ -1,5 +1,5 @@
 "use strict";
-var DefineEnv = (function () {
+var DefineEnv = /** @class */ (function () {
     function DefineEnv() {
         this.fileConfig = "config.json";
         this.dirTemplateInit = "resources/files-template/project-init";
@@ -11,7 +11,7 @@ var DefineEnv = (function () {
     }
     return DefineEnv;
 }());
-var MAimLocalEnv = (function () {
+var MAimLocalEnv = /** @class */ (function () {
     function MAimLocalEnv() {
     }
     MAimLocalEnv.prototype.upEnv = function () {

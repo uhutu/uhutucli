@@ -1,7 +1,7 @@
 "use strict";
 var beautify = require("beautify");
 var utilsIo = require("./io");
-var MutilsJson = (function () {
+var MutilsJson = /** @class */ (function () {
     function MutilsJson() {
     }
     MutilsJson.prototype.saveJsonFile = function (sPath, oJson) {

@@ -1,7 +1,7 @@
 import CommonRoot = require("../../base/common/root");
 import CommonUtil = require("../../base/common/util");
 import * as CTF from "../../project/aim-project/aim_parse";
-import processItem = require("../../project/support-operate/item_support");
+import {ItemSupportVue as processItem} from "../../project/support-operate/item_support";
 
 class CappElms implements CTF.ItransformElmentProcess {
 
@@ -53,7 +53,7 @@ class CappSub implements CTF.ItransformSubExtend {
             if (key === "class") {
                 
                 
-                oItem.targetAttr.set("class", "\"" + oItem.sourceAttr.get("class")  + "\"");
+                oItem.targetAttr.set("class", "" + oItem.sourceAttr.get("class")  + "");
 
                 
 
@@ -107,7 +107,7 @@ class CappOut implements CTF.ItransFormatOut {
                 switch (r[1]) {
                     //state变量
                     case "state":
-                        sReplace = '{this.state.' + r[2] + '}';
+                        sReplace = '{{vdata_state.' + r[2] + '}}';
                         break;
                     case "item":
                         sReplace = '{{item.' + r[2] + '}}';
@@ -147,7 +147,7 @@ class CappOut implements CTF.ItransFormatOut {
 class MappParse implements CTF.ItransformParse {
     elms = new CappElms();
     inc = {
-        attr_replace: " {key}={value} "
+        attr_replace: " {key}=\"{value}\" "
     }
     parses = new CappSub();
     mould

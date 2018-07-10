@@ -2,8 +2,8 @@
 var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var CTF = require("../../project/aim-project/aim_parse");
-var processItem = require("../../project/support-operate/item_support");
-var CappElms = (function () {
+var item_support_1 = require("../../project/support-operate/item_support");
+var CappElms = /** @class */ (function () {
     function CappElms() {
     }
     CappElms.prototype.upProcess = function (oTransform, oItem) {
@@ -11,7 +11,7 @@ var CappElms = (function () {
     };
     return CappElms;
 }());
-var CappSub = (function () {
+var CappSub = /** @class */ (function () {
     function CappSub() {
     }
     CappSub.styleParse = function (sClassStyle) {
@@ -39,14 +39,14 @@ var CappSub = (function () {
             //processItem.checkEventFull(oItem, "press", "onPress", "{(event)=>{", "}}", "");
             //processItem.checkEventFull(oItem, "value-change", "onValueChange", "{(value)=>{", "}}", "");
             //processItem.checkEventFull(oItem, "link", "onPress", "{(event)=>{top_support.pageNav(", ",this)}}", "'");
-            processItem.propertyEventAuto(oItem);
+            item_support_1.ItemSupportReact.propertyEventAuto(oItem);
             //processItem.checkStateFull(oItem, "value", "value", "", "", "");
         });
         return oItem;
     };
     return CappSub;
 }());
-var CappOut = (function () {
+var CappOut = /** @class */ (function () {
     function CappOut() {
     }
     CappOut.prototype.contentFormat = function (oOut) {
@@ -103,7 +103,7 @@ var CappOut = (function () {
     };
     return CappOut;
 }());
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
         this.elms = new CappElms();
         this.inc = {

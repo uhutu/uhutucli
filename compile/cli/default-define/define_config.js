@@ -72,7 +72,7 @@ var currentConfig = {
         cliVersion: ''
     }
 };
-var MAimLocalEnv = (function () {
+var MAimLocalEnv = /** @class */ (function () {
     function MAimLocalEnv() {
     }
     MAimLocalEnv.prototype.upConfig = function (oEnv) {

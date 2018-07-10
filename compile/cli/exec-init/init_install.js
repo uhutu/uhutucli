@@ -2,7 +2,7 @@
 var CommonRoot = require("../../base/common/root");
 var ModuleReact = require("../../cli/module-install/module_react");
 var ModuleVue = require("../../cli/module-install/module_vue");
-var MinitInstall = (function () {
+var MinitInstall = /** @class */ (function () {
     function MinitInstall() {
     }
     MinitInstall.prototype.initStart = function (oLocalConfig) {

@@ -3,7 +3,7 @@ var CommonRoot = require("../../base/common/root");
 var CommonUtil = require("../../base/common/util");
 var AimParse = require("../../project/aim-project/aim_parse");
 var htmlparser = require("htmlparser2");
-var CitemParse = (function () {
+var CitemParse = /** @class */ (function () {
     function CitemParse() {
         this.elmType = 0;
         this.elmName = "";
@@ -12,12 +12,14 @@ var CitemParse = (function () {
         this.sourceContent = "";
         this.sourceAttr = new Map();
         this.targetAttr = new Map();
+        this.formField = new AimParse.MtransformFieldProperty();
         this.transSub = null;
+        this.readScript = "";
     }
     return CitemParse;
 }());
 ;
-var ChelperParse = (function () {
+var ChelperParse = /** @class */ (function () {
     function ChelperParse() {
     }
     ChelperParse.prototype.upElmParse = function (sName, oTransform, oAttr, oParseFile) {
@@ -105,7 +107,7 @@ var ChelperParse = (function () {
     return ChelperParse;
 }());
 var helperParse = new ChelperParse();
-var Mexport = (function () {
+var Mexport = /** @class */ (function () {
     function Mexport() {
     }
     /**
@@ -147,10 +149,6 @@ var Mexport = (function () {
                 }
                 //如果是基本元素  则添加结束标记
                 if (oItem.elmType == 1) {
-                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
-                        var oExpand = require(oItem.elmentInfo.expandFile);
-                        oItem = oExpand.expandOpen(oItem, oOut);
-                    }
                     //form的处理逻辑
                     if (oItem.sourceName === CommonRoot.upProperty().pageElmentForm) {
                         if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
@@ -161,6 +159,10 @@ var Mexport = (function () {
                                 CommonRoot.logWarn(941612002, oCurrentParse.formName);
                             }
                             oPageProperty.formNames.push(oCurrentParse.formName);
+                            var oFormClient = new AimParse.MtransformClientProperty();
+                            oFormClient.formName = oCurrentParse.formName;
+                            oFormClient.formFields = [];
+                            oPageProperty.formClient.push(oFormClient);
                         }
                         else {
                             CommonRoot.logWarn(941612001, oParseFile.fileBasename);
@@ -176,6 +178,17 @@ var Mexport = (function () {
                                 oCurrentParse.elmUqiue.set(sItemName, sItemName);
                             }
                             oItem.targetAttr.set(CommonRoot.upProperty().formBaseAttr, sItemName);
+                        }
+                    }
+                    if (!CommonUtil.utilsString.isEmpty(oItem.elmentInfo.expandFile)) {
+                        var oExpand = require(oItem.elmentInfo.expandFile);
+                        oItem = oExpand.expandOpen(oItem, oOut);
+                    }
+                    if (!CommonUtil.utilsString.isEmpty(oCurrentParse.formName)) {
+                        if (oItem.sourceAttr.has(CommonRoot.upProperty().formBaseAttr)) {
+                            if (!CommonUtil.utilsString.isEmpty(oItem.formField.fieldName)) {
+                                oPageProperty.formClient[oPageProperty.formClient.length - 1].formFields.push(oItem.formField);
+                            }
                         }
                     }
                     var aOutInfo_1 = [];
@@ -213,6 +226,7 @@ var Mexport = (function () {
                     oOut.templateInfos.push(oTemplateInfo);
                     oCurrentParse.templateName = '';
                 }
+                //判断如果是配置数据
                 else if (oItem.elmType === 3) {
                     var sJson = oCurrentParse.textContents.join('');
                     oOut.pageConfig = CommonUtil.utilsHelper.deepAssign(oTransform.pageConfig, CommonUtil.utilsJson.parse(sJson));
@@ -246,6 +260,11 @@ var Mexport = (function () {
                     else {
                         oTemplateInfo.templateContent.push(aOutInfo.join(''));
                     }
+                }
+                if (!CommonUtil.utilsString.isEmpty(oItem.readScript)) {
+                    var oScript = new AimParse.MtransformPageScript();
+                    oScript.scriptContent = oItem.readScript;
+                    oOut.scriptReady.push(oScript);
                 }
                 oCurrentParse.textContents = [];
                 oCurrentParse.elmArrays.pop();

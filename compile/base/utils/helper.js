@@ -1,7 +1,7 @@
 "use strict";
 var childProcess = require("child_process");
 var assignDeep = require("assign-deep");
-var MutilsHelper = (function () {
+var MutilsHelper = /** @class */ (function () {
     function MutilsHelper() {
         this._flagSpeepEnd = false;
     }

@@ -1,12 +1,12 @@
 "use strict";
 var CommonUtil = require("../../base/common/util");
 var ejs = require("ejs");
-var CfileInfo = (function () {
+var CfileInfo = /** @class */ (function () {
     function CfileInfo() {
     }
     return CfileInfo;
 }());
-var SimpleReact = (function () {
+var SimpleReact = /** @class */ (function () {
     function SimpleReact() {
     }
     SimpleReact.prototype.exec = function (oLocalConfig, oPlugin, oSet) {

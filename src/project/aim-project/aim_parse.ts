@@ -22,6 +22,22 @@ export class MtransformTemplateInfo {
 
 export class MtransformPageProperty {
     formNames: string[] = []
+
+    formClient: MtransformClientProperty[] = []
+}
+
+
+export class MtransformClientProperty {
+    formName: string = ''
+    formFields: MtransformFieldProperty[] = []
+
+
+}
+
+export class MtransformFieldProperty {
+    fieldName: string = ''
+    fieldType: string = ''
+    fieldAttr: Map<string, string>
 }
 
 
@@ -76,9 +92,18 @@ export class MtransformPageOut {
 
     templateInfos: MtransformTemplateInfo[] = []
 
+    /**页面属性 */
     pageProperty: MtransformPageProperty
 
+    /**
+     * 页面直接输出的脚本内容
+     */
     scriptInfos: MtransformPageScript[] = []
+
+    /**
+     * 页面加载完成时执行的脚本内容
+     */
+    scriptReady: MtransformPageScript[] = []
 
 }
 
@@ -176,10 +201,21 @@ export interface ItransformItemInfo {
      * 目标属性  经过转换后的属性配置
      */
     targetAttr: Map<string, string>
+
+
+
+    formField: MtransformFieldProperty
+
+
     /**
      * 子系统处理
      */
     transSub: ItransformSubExtend
+
+    /**
+     * 页面加载完成时执行的操作
+     */
+    readScript: string
 
 }
 
@@ -259,6 +295,11 @@ export interface IbasePageConfig {
      */
     asyncShow: string
 
+    /**
+     * 是否有返回操作
+     */
+    flagDisableBack:boolean
+
 
 
 }
@@ -273,7 +314,7 @@ export class MbasePageConfig implements IbasePageConfig {
     styleFile = "./index"
     asyncShow = ""
     scriptInit = ""
-
+    flagDisableBack=false
     scriptFiles = []
 }
 

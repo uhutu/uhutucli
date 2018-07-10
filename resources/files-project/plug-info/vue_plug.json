@@ -3,6 +3,14 @@
     "simple_vue": {
         "name": "simple-vue",
         "json": "[@config:file.vuePlugPath]/simple_vue.json"
+    },
+    "vue_fonts": {
+        "name": "vue_fonts",
+        "json": "[@config:file.vuePlugPath]/vue_fonts.json"
+    },
+    "client_data": {
+        "name": "client_data",
+        "json": "[@config:file.vuePlugPath]/client_data.json"
     }
 
 

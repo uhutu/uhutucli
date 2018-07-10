@@ -1,72 +1,136 @@
 <html>
-<head>
-    <script src="../../../scripts/libs/vue/vue.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-<link rel="stylesheet" href="../../../scripts/libs/element/index.css">
-<script src="../../../scripts/libs/jquery/jquery.js"></script>
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="../../../scripts/libs/element/index.js"></script>
-    <link rel="stylesheet" href="../../theme/web/item.css"/>
-    <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css"/>
 
-<script src="../../../scripts/ginkgo/current.js"></script>
-<script src="../../../scripts/ginkgo/top.js"></script>
-    <title><%- out.pageConfig.pageTitle %></title>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <script src="../../../statics/libs/vue/vue.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="../../../statics/libs/element/index.css">
+    <script src="../../../statics/libs/jquery/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="../../../statics/libs/element/index.js"></script>
+    <link rel="stylesheet" href="../../theme/web/item.css" />
+
+    <link rel="stylesheet" href="../../../statics/theme/font.css">
+   
+    
+    
+    
+    <link rel="stylesheet" href="../../../statics/theme/last.css">
+    <link rel="stylesheet" href="<%- out.pageConfig.styleFile %>.css" />
+
+
+    <link rel="stylesheet" href="../../../statics/theme/glob.css">
+    <link rel="stylesheet" href="../../../statics/theme/hackcss.css">
+
+    <script src="../../../statics/libs/plus/plus.js"></script>
+    
+
+    <script src="../../../statics/client/util.js"></script>
+    <script src="../../../statics/client/data.js"></script>
+    <script src="../../../statics/client/web.js"></script>
+    <script src="../../../statics/ginkgo/baby.js"></script>
+    
+    <script src="../../../statics/ginkgo/top.js"></script>
+    <script src="../../../statics/ginkgo/current.js"></script>
+
+    <script src="../../../statics/client/vuecomponent.js"></script>
+    
+    <script src="../../../statics/ginkgo/hackjs.js"></script>
+    
+    <title>
+        <%- out.pageConfig.pageTitle %>
+    </title>
 </head>
+
 <body>
 
 
-<% out.templateInfos.forEach((template)=>{ %>
+    <% out.templateInfos.forEach((template)=>{ %>
 
-    <script type="text/x-template" id="<%- template.templateName %>" >
+        <script type="text/x-template" id="<%- template.templateName %>">
 
-         <%- template.templateContent.join('') %>
-    </script>
-    <script>
-        Vue.component('<%- template.templateName %>', {
-  template: '#<%- template.templateName %>',
-  props:['item']
-})
-    </script>
-<% }) %>
+            <%- template.templateContent.join('') %>
+        </script>
+        <script>
+            Vue.component('<%- template.templateName %>', {
+                template: '#<%- template.templateName %>',
+                props: ['item']
+            })
+        </script>
+        <% }) %>
 
-<div id="tpl_body">
+            <div id="tpl_body">
 
-<%- out.content.join('') %>
+                <div class="theme_web_item_header">
+                        <%if(!out.pageConfig.flagDisableBack===true){%>
+                        <div class="theme_web_item_header_left" onclick="top_support.pageBack()">
+                            
+                            <i class="el-icon-arrow-left theme_web_item_header_left_icon"></i>
+                           
+                        </div>
+                        <%}%>
+                        <div class="theme_web_item_header_text"><%- out.pageConfig.pageTitle %></div> 
+                    
+                </div>
 
-</div>
+                <%- out.content.join('') %>
+
+            </div>
 
 
-<script type="text/x-template" id="page_vue_template" >
-  
-</script>
+            <script type="text/x-template" id="page_vue_template">
 
-
-
-
-
-
-
-
-
-<div id="page_vue_app">
-   <page_vue_template v-bind:record="record"></page_vue_template>
-</div>
-
-<script type="text/javascript">
-
-    // 创建根实例
-new Vue({
-  el: '#tpl_body',
-  data:{
-    current_support:current_support
-  }
-  
-})
+            </script>
 
 
 
-</script>
+
+
+
+
+
+
+            <div id="page_vue_app">
+                <page_vue_template v-bind:record="record"></page_vue_template>
+            </div>
+
+            
+
+            <script type="text/javascript">
+
+                baby_support.initPage(<%- JSON.stringify(out.pageProperty) %>);
+
+                // 创建根实例
+                var vue_main = new Vue({
+                    el: '#tpl_body',
+                    data: {
+                        vdata_list: [],
+
+                        item_data:client_data,
+
+                        vdata_state:{},
+
+                        <% out.pageProperty.formNames.forEach((formName)=>{ %>
+                            vdata_form:baby_support.upFormInit("<%-formName%>"),
+                        <% })%>
+                        
+
+                        current_support: current_support
+                    },
+                    mounted:function() {
+                        var _self=this;
+
+                        baby_support.loadPage(_self);
+
+                        <% out.scriptReady.forEach((scringInfo)=>{ %>
+                           <%-scringInfo.scriptContent%>
+                        <% })%>
+                    }
+
+                })
+
+            </script>
 
 </body>
+
 </html>

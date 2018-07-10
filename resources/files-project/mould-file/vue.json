@@ -10,43 +10,48 @@
             "tagName": "div"
         },
         "utext": {
-            "tagName": "span"
+            "tagName": "div",
+            "styleName": [
+                "glob_web_utext"
+            ]
         },
-        
         "ulistview": {
-            "tagName": "div"
+            "tagName": "div",
+            "expandFile": "../../expand/expand-elm/vue_ulistview"
         },
         "ubutton": {
-            "tagName": "input",
+            "tagName": "el-button",
             "primeAttr": {
-                "type": "button"
+                "type": "primary"
             },
-            "styleName": ["btn", "btn-primary", "btn-block"],
-            "expandFile": "../../expand/expand-elm/vue_uinput"
+            "styleName": [
+                "glob_web_ubutton"
+            ],
+            "expandFile": "../../expand/expand-elm/vue_ubutton"
         },
         "uinput": {
             "tagName": "el-input"
-
-            
         },
-        "uicon":{
-            "tagName": "i"
+        "uicon": {
+            "tagName": "i",
+            "expandFile": "../../expand/expand-elm/vue_uicon"
         },
-
-
+        "fform": {
+            "tagName": "form"
+        },
         "fdate": {
             "tagName": "el-date-picker",
             "primeAttr": {
                 "type": "datetime"
-            }
-
-            
+            },
+            "styleName": [
+                "glob_web_finput"
+            ],
+            "expandFile": "../../expand/expand-elm/vue_finput"
         },
         "xcall": {
             "tagName": "xcall",
-
             "expandFile": "../../expand/expand-elm/vue_xcall"
-
         },
         "xscript": {
             "tagName": "script",
@@ -56,14 +61,24 @@
         },
         "ulink": {
             "tagName": "a",
-
             "expandFile": "../../expand/expand-elm/vue_ubase"
-
         },
         "finput": {
             "tagName": "el-input",
-            "styleName": ["theme_web_item_form_input_base"],
-            "expandFile": "../../expand/expand-elm/vue_ubase"
+            "styleName": [
+                "glob_web_finput"
+            ],
+            "expandFile": "../../expand/expand-elm/vue_finput"
+        },
+        "fselect": {
+            "tagName": "u-item-select",
+            
+            "expandFile": "../../expand/expand-elm/vue_fselect"
+        },
+        "fimage": {
+            "tagName": "u-item-image",
+            
+            "expandFile": "../../expand/expand-elm/vue_fbase"
         }
     }
 }

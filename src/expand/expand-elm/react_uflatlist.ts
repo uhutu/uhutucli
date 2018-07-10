@@ -3,7 +3,7 @@ import CommonRoot = require("../../base/common/root");
 
 import * as CTF from "../../project/aim-project/aim_parse";
 
-import processItem = require("../../project/support-operate/item_support");
+import {ItemSupportReact as processItem} from "../../project/support-operate/item_support";
 
 
 class MexpandReactUicon implements CTF.ItransformExpandItem {
